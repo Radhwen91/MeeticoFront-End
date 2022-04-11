@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Trip } from 'src/app/models/trip';
+import { TripService } from 'src/app/services/tripservices/trip.service';
 
 @Component({
   selector: 'app-trip-management',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripManagementComponent implements OnInit {
 
-  constructor() { }
+  listoftrips:Trip[];
+  constructor(private tripservice:TripService) { }
 
   ngOnInit(): void {
+    this.tripservice.getTrips().subscribe(
+      data => {
+        console.log('data',data);
+        this.listoftrips = data;
+      }
+    );
   }
 
 }
