@@ -20,5 +20,12 @@ export class TripManagementComponent implements OnInit {
       }
     );
   }
+  supprimer(trip :any){
+    this.tripservice.deleteTrip(trip.idTrip).subscribe(
+      data => {
+       
+      }
+    );
+  }
 
 }

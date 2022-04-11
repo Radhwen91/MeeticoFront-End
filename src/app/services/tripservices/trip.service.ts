@@ -13,9 +13,18 @@ const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json
 export class TripService {
 
   tripsUrl="http://localhost:8089/SpringMVC/Trip/get-trip";
+  addtripsUrl="http://localhost:8089/SpringMVC/Trip/ajouttrip";
+  deletetripsUrl="http://localhost:8089/SpringMVC/delete-trip";
   constructor(private http : HttpClient) { }
 
   getTrips() : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.tripsUrl);
     }
+  ajoutTrip(trip :Trip,id:number): Observable<Trip>{
+    return this.http.post<Trip>(`${this.addtripsUrl}/${id}`,trip);
+  }
+  deleteTrip(id:number): any{
+    return this.http.delete(`${this.deletetripsUrl}/${id}`);
+  }
+  
 }

@@ -11,6 +11,7 @@ import { PublicationManagementComponent } from 'src/app/pages/publication-manage
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
+import { AjouterModifierComponent } from 'src/app/pages/trip-management/ajouterModifier/ajouterModifier.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'feedback-management',           component: FeedbackManagementComponent },
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
-    { path: 'trip-management',           component: TripManagementComponent }
+    { path: 'trip-management',           component: TripManagementComponent },
+    { path: 'trip-management/add',           component: AjouterModifierComponent }
 ];
