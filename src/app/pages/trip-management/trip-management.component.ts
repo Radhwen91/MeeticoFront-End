@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
@@ -10,7 +11,7 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
 export class TripManagementComponent implements OnInit {
 
   listoftrips:Trip[];
-  constructor(private tripservice:TripService) { }
+  constructor(private tripservice:TripService,private router:Router) { }
 
   ngOnInit(): void {
     this.tripservice.getTrips().subscribe(
@@ -21,10 +22,11 @@ export class TripManagementComponent implements OnInit {
     );
   }
   supprimer(trip :any){
-    this.tripservice.deleteTrip(trip.idTrip).subscribe(
-      data => {
-       
+    this.tripservice.deleteTrip(trip.idTrip).subscribe(()=>this.tripservice.getTrips().subscribe(
+      data=>{
+        this.listoftrips=data
       }
+    )
     );
   }
 

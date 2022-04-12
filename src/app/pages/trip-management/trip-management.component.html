@@ -132,10 +132,10 @@
                     </div>
                   </th>
                   <td>
-                    {{t.startdate}}
+                    {{t.startDate}}
                   </td>
                   <td>
-                     {{t.enddate}}
+                     {{t.endDate}}
                    
                   </td>
                   <td>
@@ -163,7 +163,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="javascript:void(0)">modifier</a>
+                        <a class="dropdown-item" [routerLink]="['/trip-management/modifier', t.idTrip ]">modifier</a>
                         <a class="dropdown-item" (click)="supprimer(t)">supprimer</a>
                         <a class="dropdown-item" href="javascript:void(0)">afficher</a>
                       </div>

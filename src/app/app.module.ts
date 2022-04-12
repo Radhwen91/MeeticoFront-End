@@ -13,7 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { TripManagementComponent } from './pages/trip-management/trip-management.component';
-import { AjouterModifierComponent } from './pages/trip-management/ajouterModifier/ajouterModifier.component';
+import { AjouterComponent } from './pages/trip-management/ajouter/ajouter.component';
+import { ModifierComponent } from './pages/trip-management/modifier/modifier.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AjouterModifierComponent } from './pages/trip-management/ajouterModifie
     AdminLayoutComponent,
     AuthLayoutComponent,
     TripManagementComponent,
-    AjouterModifierComponent
+    AjouterComponent,
+    ModifierComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

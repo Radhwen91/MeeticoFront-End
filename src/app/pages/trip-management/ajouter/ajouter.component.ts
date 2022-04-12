@@ -5,11 +5,11 @@ import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
 @Component({
-  selector: 'app-ajouterModifier-trip',
-  templateUrl: './ajouterModifier.component.html',
-  styleUrls: ['./ajouterModifier.component.scss']
+  selector: 'app-ajouter-trip',
+  templateUrl: './ajoutercomponent.html',
+  styleUrls: ['./ajouter.component.scss']
 })
-export class AjouterModifierComponent implements OnInit {
+export class AjouterComponent implements OnInit {
 
   public tripForm: FormGroup;
   constructor(private tripservice:TripService,private router:Router) { }
@@ -34,5 +34,6 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   }
 );
 }
+
 
 }
