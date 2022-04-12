@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
@@ -27,6 +27,13 @@ export class TripManagementComponent implements OnInit {
         this.listoftrips=data
       }
     )
+    );
+  }
+  get(trip :any){
+    this.tripservice.getpdfbytrip(trip.idTrip).subscribe(
+      data => {
+        this.router.navigate(["/trip-management"])
+      }
     );
   }
 

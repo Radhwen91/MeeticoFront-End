@@ -4,8 +4,8 @@ import { FileDB } from "./fileDB";
 export class Trip {
     idTrip: Number;
     destination: String;
-    startdate: Date;
-    enddate: Date;
+    startDate: Date;
+    endDate: Date;
     object: String;
     users:User[];
     user:User;

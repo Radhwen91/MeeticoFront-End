@@ -114,7 +114,7 @@
                   <th scope="col">Destination</th>
                   <th scope="col">Start Date</th>
                   <th scope="col">End Date</th>
-                  <th scope="col">Users</th>
+                  <th scope="col">Entrepreneur</th>
                   <th scope="col">Object</th>
                   <th scope="col"></th>
                 </tr>
@@ -153,6 +153,7 @@
                         <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
                       </a>
                     </div>
+                    
                   </td>
                   <td>
                     {{t.object}}
@@ -165,7 +166,7 @@
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                         <a class="dropdown-item" [routerLink]="['/trip-management/modifier', t.idTrip ]">modifier</a>
                         <a class="dropdown-item" (click)="supprimer(t)">supprimer</a>
-                        <a class="dropdown-item" href="javascript:void(0)">afficher</a>
+                        <a class="dropdown-item" (click)="get(t)">afficher</a>
                       </div>
                     </div>
                   </td>
