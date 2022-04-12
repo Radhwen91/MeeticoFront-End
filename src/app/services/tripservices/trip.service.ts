@@ -38,6 +38,6 @@ export class TripService {
     return this.http.put<Trip>(`${this.updatetripsUrl}/${id}`,trip);
   }
   getpdfbytrip(id:number)  {
-    return this.http.get<FileDB>(`${this.pdfbytrip}/${id}`);
+    return this.http.get(`${this.pdfbytrip}/${id}`);
     }
 }
