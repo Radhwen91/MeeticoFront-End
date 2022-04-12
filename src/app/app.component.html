@@ -1,1 +1,112 @@
-<router-outlet></router-outlet>
+<div *ngIf="underConstruction">
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()" id="menu-spacer" matTooltip="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button [routerLink]="'/home'" id="logo-spacer">Meetico</button>
+  </div>
+  <div>
+    <a id="date-spacer">{{now}}</a>
+  </div>
+  <div class="search-container" [ngClass]="{'hasValue' : hasValue}">
+    <mat-form-field floatLabel="never">
+      <input
+        matInput
+        [(ngModel)]="searchedText"
+        placeholder="what are you looking for?"
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </mat-form-field>
+    <button
+      mat-icon-button
+      class="searchIcon"
+      id="mat-icon-button1"
+      (click)="hasValue = !hasValue"
+    >
+      <mat-icon *ngIf="!hasValue" matTooltip="Search">search</mat-icon>
+      <mat-icon *ngIf="hasValue">close</mat-icon>
+    </button>
+  </div>
+  <div id="list-spacer">
+    <button mat-icon-button id="mat-icon-button2">
+      <mat-icon matBadge="" matBadgeColor="warn" matTooltip="Notifications">notifications</mat-icon>
+    </button>
+    <button mat-icon-button id="mat-icon-button3">
+      <mat-icon matTooltip="Favorites">favorites</mat-icon>
+    </button>
+    <button mat-icon-button id="mat-icon-button4">
+      <mat-icon matBadge="" matBadgeColor="warn" matTooltip="Purchased Products">shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button id="mat-icon-button5">
+      <mat-icon matBadge="" matBadgeColor="warn" matTooltip="Messages">message</mat-icon>
+    </button>
+    <button mat-icon-button id="mat-icon-button6">
+      <mat-icon matTooltip="Settings">settings</mat-icon>
+    </button>
+    <button mat-icon-button id="mat-icon-button7">
+      <mat-icon matTooltip="Help">help</mat-icon>
+    </button>
+    <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" id="mat-icon-button8">
+      <mat-icon matTooltip="More">more_vert</mat-icon>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <div class="content">
+          <div class="left">
+            <div class="first-item">
+              <div class="head">
+                <button mat-fab style="margin-top: 16px; margin-right: 16px; margin-left: 16px; margin-bottom: 16px;" color="accent" (click)="onClick()">
+                  <mat-icon *ngIf="!darkMode">wb_sunny</mat-icon>
+                  <mat-icon *ngIf="darkMode">brightness_3</mat-icon>
+                </button>
+              </div>
+              <div class="text">
+                <a>Dark Mode</a>
+              </div>
+            </div>
+            <div class="second-item">
+              <div class="head">
+                <button mat-fab style="margin-top: 16px; margin-right: 16px; margin-left: 16px; margin-bottom: 16px;" color="warn">
+                  <mat-icon>power_settings_new</mat-icon>
+                </button>
+              </div>
+              <div class="text">
+                <a>Log Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-menu>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list *ngIf="loggedIn">
+      <a mat-list-item *ngIf="showAdminBoard" [routerLink]="'/admin'"> Show Admin Board </a>
+      <a mat-list-item *ngIf="showModeratorBoard" [routerLink]="'/moderator'"> Show Moderator Board </a>
+      <a mat-list-item [routerLink]="'/user'"> Show User Board </a>
+      <a mat-list-item (click)="onLogOut()"> Log Out </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="!loggedIn">
+      <a mat-list-item (click)="!sidenav.toggle()" [routerLink]="'/register'"> <mat-icon id="sidenav-spacer">person_add</mat-icon> Create a new account </a>
+      <a mat-list-item (click)="!sidenav.toggle()" [routerLink]="'/login'"> <mat-icon id="sidenav-spacer">exit_to_app</mat-icon> Login to your account </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh">
+      <ul>
+        <li *ngFor="let searchResult of searchOptions | appFilter: searchedText"
+          appHighlight [key]="searchedText" [content]="searchResult"
+        >
+          {{ searchResult }}
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

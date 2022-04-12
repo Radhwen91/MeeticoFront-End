@@ -1,0 +1,64 @@
+<div mat-dialog-content></div>
+<div class="login-form-bg h-100">
+  <div class="container h-100">
+    <div class="row justify-content-center h-100">
+      <div class="col-xl-6">
+        <div class="form-input-content">
+          <div class="card login-form mb-0">
+            <button mat-raised-button class="button-container" onclick="window.location.href='/home'">
+              <mat-icon>close</mat-icon>
+            </button>
+            <div class="card-body pt-5">
+              <a class="text-center" href="index.html">
+                <h4>Sign in to Meetico</h4>
+              </a>
+              <form class="form-container" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm" novalidate>
+                <mat-form-field class="field-container" appearance="fill">
+                  <mat-label>Username</mat-label>
+                  <input matInput name="username" [(ngModel)]="form.username" #username="ngModel" required minlength="6"
+                    #inputUsername maxlength="30" spellcheck="false" autocapitalize="off"
+                    pattern="[. A-Z a-z 0-9 .]{6,30}">
+                  <mat-hint align="end">{{inputUsername.value.length || 0}}/30</mat-hint>
+                  <mat-error *ngIf="username.errors && f.submitted">
+                    <mat-error *ngIf="username.errors.required">Please enter a username.</mat-error>
+                    <mat-error *ngIf="username.errors.minlength">Your username must be between 6 and 30 characters
+                      long.</mat-error>
+                    <mat-error *ngIf="!username.errors.minlength && username.errors.pattern">Only letters, digits
+                      and dots are allowed.</mat-error>
+                  </mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field class="field-container" appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input matInput name="password" [(ngModel)]="form.password" #password="ngModel" type="password"
+                    required minlength="0" #inputPassword spellcheck="false"
+                    [type]="hidePassword ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint align="end">{{inputPassword.value.length || 0}}/20</mat-hint>
+                  <mat-error *ngIf="password.errors && f.submitted">
+                    <mat-error *ngIf="password.errors.required">Please enter a password.</mat-error>
+                    <mat-error *ngIf="password.errors.minLength">Your password must be at least 8 characters long.
+                    </mat-error>
+                  </mat-error>
+                </mat-form-field>
+                <br><br>
+                <button mat-raised-button color="primary">Sign Up</button>
+                <div *ngIf="f.submitted && isLoginFailed">
+                  Login failed : {{ errorMessage }}
+                </div>
+              </form>
+              <p class="mt-5 login-form__footer">Don't have an account? <a href="/register" class="text-primary">Sign
+                  up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoggedIn">
+  Logged in as {{ roles }}.
+</div>
