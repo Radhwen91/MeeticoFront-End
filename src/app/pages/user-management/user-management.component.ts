@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InitService } from 'src/app/services/init.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,12 +12,11 @@ export class UserManagementComponent implements OnInit {
   public users: any;
   public currentUser: any;
   
-  constructor(private initService: InitService, private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.initService.retrieveAllUsers().subscribe(
+    this.userService.retrieveAllUsers().subscribe(
       data => {
-        console.log(data);
         this.users = data;
       }
     );
@@ -29,12 +27,8 @@ export class UserManagementComponent implements OnInit {
   }
 
   removeUser() {
-    this.userService.removeUser(this.currentUser.userId).subscribe(
-      data => {
-        console.log(data);
-        window.location.reload();
-      }
-    );
+    this.userService.removeUser(this.currentUser.userId).subscribe();
+    window.location.reload();
   }
 
 }

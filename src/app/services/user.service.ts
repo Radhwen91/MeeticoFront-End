@@ -13,13 +13,16 @@ export class UserService {
   registerEntrepreneur(data: any): Observable<any> {
     return this.http.post(url + 'registerEntrepreneur', data);
   }
-  verifyUser(code: string): Observable<any> {
-    return this.http.get(url + 'verifyUser' + code);
+  approvePendingEmployee(verificationCode: number): Observable<any> {
+    return this.http.put(url + 'approvePendingEmployee?verificationCode=' + verificationCode, null);
   }
   authenticateUser(data: any): Observable<any> {
     return this.http.post(url + 'authenticateUser', data);
   }
-  removeUser(userId: any): Observable<any> {
-    return this.http.delete(url + 'removeUser/' + userId);
+  removeUser(userId: number): Observable<any> {
+    return this.http.delete(url + 'removeUser?userId=' + userId);
+  }
+  retrieveAllUsers(): Observable<any> {
+    return this.http.get(url + 'retrieveAllUsers');
   }
 }
