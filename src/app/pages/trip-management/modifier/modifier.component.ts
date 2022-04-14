@@ -58,7 +58,20 @@ this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).
 );
 }
 affecter(user :any){
-  this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe();
+  this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
+    data=>{
+      this.listofusers=data
+    }
+  ));
+  
+}
+desaffecter(user :any){
+  this.tripservice.desaffeteraffectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
+    data=>{
+      this.listofusers=data
+    }
+  ));
+  
 }
 
 }

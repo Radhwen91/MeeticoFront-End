@@ -48,10 +48,13 @@ export class TripService {
   getpdfbytrip(id:number) :Observable<any> {
     return this.http.get(`${this.pdfbytrip}/${id}`);
     }
-    ajoutFile(file :FileDB): Observable<FileDB>{
-      return this.http.post<FileDB>(this.uploadfile,file);
+    ajoutFile(file :File): Observable<File>{
+      return this.http.post<File>(this.uploadfile,file);
     }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
       return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
+    }
+    desaffeteraffectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
+      return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/delete-user-from-trip/"+id+"/"+idu,trip);
     }
 }

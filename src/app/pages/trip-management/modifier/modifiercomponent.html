@@ -76,10 +76,16 @@
                   
                 </td>
                 <td class="text-right">
-                  <div>
+                  <div *ngIf="u.etat !== 'En Voyage'">
                    
                   
-                    <button (click)="affecter(u)">ajouter</button>
+                    <button (click)="affecter(u)" >{{u.etat}}</button>
+                  
+                  </div>
+                  <div *ngIf="u.etat !== 'disponible'">
+                   
+                  
+                    <button (click)="desaffecter(u)" >{{u.etat}}</button>
                   
                   </div>
                 </td>

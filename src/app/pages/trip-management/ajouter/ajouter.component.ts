@@ -36,13 +36,16 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   }
 );
 }
-upload(file:FileDB){
-  /*
-  this.tripservice.ajoutFile(file).subscribe(
+onFileSelected(data){
+  console.log(data.target.files[0])
+  console.log(data)
+  this.tripservice.ajoutFile(data.target.files[0]).subscribe(
     data=>{
     }
-  );*/
-  }
+  );
+  
+}
+
 
 
 }

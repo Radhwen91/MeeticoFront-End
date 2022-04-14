@@ -27,9 +27,9 @@
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Image</label>
         <div class="col-10">
-          <input class="form-control" type="file"  formControlName="file">
+          <input class="form-control" type="file" (change)="onFileSelected($event)"  formControlName="file">
         </div>
-        <button type="submit" class="btn btn-primary" style="left:90%;" >upload</button>
+        <button type="submit" class="btn btn-primary"  style="left:90%;" >upload</button>
       </div>
       </form>
       <button type="submit" class="btn btn-primary" (click)="ajouter()">submit</button>
