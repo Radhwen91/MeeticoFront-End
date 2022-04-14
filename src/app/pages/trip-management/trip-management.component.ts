@@ -29,7 +29,7 @@ export class TripManagementComponent implements OnInit {
     )
     );
   }
-  get(trip :any){
+  get(trip :any):void{
     this.tripservice.getpdfbytrip(trip.idTrip).subscribe(
       data => {
         this.router.navigate(["/trip-management"])

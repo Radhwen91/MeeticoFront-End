@@ -3,26 +3,33 @@
         <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Destination</label>
         <div class="col-10">
-          <input class="form-control" type="text" id="example-text-input"  formControlName="destination">
+          <input class="form-control" type="text"   formControlName="destination">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-search-input" class="col-2 col-form-label">object</label>
         <div class="col-10">
-          <input class="form-control" type="search" id="example-search-input" formControlName="object">
+          <input class="form-control" type="search" formControlName="object">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
         <div class="col-10">
-          <input class="form-control" type="date" id="example-date-input"  formControlName="startDate">
+          <input class="form-control" type="date"   formControlName="startDate">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">End Date</label>
         <div class="col-10">
-          <input class="form-control" type="date" value="2011-08-19" id="example-date-input"formControlName="endDate">
+          <input class="form-control" type="date" value="2011-08-19" formControlName="endDate">
         </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Image</label>
+        <div class="col-10">
+          <input class="form-control" type="file"  formControlName="file">
+        </div>
+        <button type="submit" class="btn btn-primary" style="left:90%;" >upload</button>
       </div>
       </form>
       <button type="submit" class="btn btn-primary" (click)="ajouter()">submit</button>

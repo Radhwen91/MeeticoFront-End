@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
@@ -24,6 +25,7 @@ export class AjouterComponent implements OnInit {
         startDate: new FormControl(),
         endDate: new FormControl(),
         object: new FormControl(),
+        file: new FormControl(),
     })
 }
 ajouter(){
@@ -34,6 +36,13 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   }
 );
 }
+upload(file:FileDB){
+  /*
+  this.tripservice.ajoutFile(file).subscribe(
+    data=>{
+    }
+  );*/
+  }
 
 
 }

@@ -6,7 +6,7 @@ export class User {
     userId: Number;
     active: Boolean;
     activityField: ActivityField[];
-    address: String;
+    city: String;
     birthday: Date;
     email: String;
     firstName: String;
