@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { FormControl } from '@angular/forms';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-user-management',
@@ -9,8 +10,10 @@ import { UserService } from 'src/app/services/user.service';
 
 export class UserManagementComponent implements OnInit {
   
-  public users: any;
-  public currentUser: any;
+  users: any;
+  currentUser: any;
+  toppings = new FormControl();
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   
   constructor(private userService: UserService) { }
 

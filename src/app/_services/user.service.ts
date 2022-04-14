@@ -11,7 +11,7 @@ const url = "http://localhost:8081/user/";
 export class UserService {
   constructor(private http: HttpClient) { }
   registerEntrepreneur(data: any): Observable<any> {
-    return this.http.post(url + 'registerEntrepreneur', data);
+    return this.http.post(url + 'registerEntrepreneur', +data);
   }
   approvePendingEmployee(verificationCode: number): Observable<any> {
     return this.http.put(url + 'approvePendingEmployee?verificationCode=' + verificationCode, null);

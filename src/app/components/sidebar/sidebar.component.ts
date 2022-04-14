@@ -7,6 +7,7 @@ declare interface RouteInfo {
     icon: string;
     class: string;
 }
+
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-chart-bar-32 text-info', class: '' },
 //  { path: '/icons', title: 'Icons',  icon:'ni-planet text-light', class: '' },
@@ -28,13 +29,11 @@ export const ROUTES: RouteInfo[] = [
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
+
 export class SidebarComponent implements OnInit {
-
-  public menuItems: any[];
-  public isCollapsed = true;
-
+  menuItems: any[];
+  isCollapsed = true;
   constructor(private router: Router) { }
-
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {

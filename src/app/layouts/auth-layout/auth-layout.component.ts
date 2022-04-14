@@ -6,12 +6,11 @@ import { Router } from '@angular/router';
   templateUrl: './auth-layout.component.html',
   styleUrls: ['./auth-layout.component.scss']
 })
+
 export class AuthLayoutComponent implements OnInit, OnDestroy {
   test: Date = new Date();
-  public isCollapsed = true;
-
+  isCollapsed = true;
   constructor(private router: Router) { }
-
   ngOnInit() {
     var html = document.getElementsByTagName("html")[0];
     html.classList.add("auth-layout");
@@ -20,7 +19,6 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
-
   }
   ngOnDestroy() {
     var html = document.getElementsByTagName("html")[0];

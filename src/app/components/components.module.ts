@@ -5,7 +5,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserManagementComponent } from '../pages/user-management/user-management.component';
 
 @NgModule({
   imports: [
@@ -17,13 +16,12 @@ import { UserManagementComponent } from '../pages/user-management/user-managemen
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    UserManagementComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
-    UserManagementComponent
+    SidebarComponent
   ]
 })
+
 export class ComponentsModule { }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { TokenService } from 'src/app/services/token.service';
+import { Component } from '@angular/core';
+import { UserService } from 'src/app/_services/user.service';
+import { TokenService } from 'src/app/_services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,12 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private token: TokenService) { }
-  public user: any = {
+  constructor(private userService: UserService, private token: TokenService, private router: Router) { }
+  signedUp = false;
+  user: any = {
     username: null,
-    password: null,
+    password: null
   };
-  public signedUp = false;
-  public signUpFailed = false;
-  public errorMessage: string;
   onSubmit() {
     const connectedUser = {
       username: this.user.username,
@@ -23,9 +22,13 @@ export class LoginComponent {
     };
     this.userService.authenticateUser(connectedUser).subscribe(
       data => {
-        this.token.saveToken(data.accessToken);
-        this.token.saveUser(data);
+        //this.token.saveToken(data.accessToken);
+        //this.token.saveUser(data);
+        this.signedUp=true;
       }
     );
+    if(this.signedUp === true) {
+      this.router.navigate(['dashboard']);
+    }
   }
 }
