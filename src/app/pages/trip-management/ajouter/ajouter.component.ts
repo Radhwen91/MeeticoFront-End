@@ -35,16 +35,15 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
     this.router.navigate(["/trip-management"])
   }
 );
-}
+}/*
 onFileSelected(data){
-  console.log(data.target.files[0])
   console.log(data)
   this.tripservice.ajoutFile(data.target.files[0]).subscribe(
     data=>{
     }
   );
-  
-}
+}*/
+
 
 
 

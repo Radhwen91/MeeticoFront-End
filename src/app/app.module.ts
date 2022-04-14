@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { TripManagementComponent } from './pages/trip-management/trip-management.component';
 import { AjouterComponent } from './pages/trip-management/ajouter/ajouter.component';
 import { ModifierComponent } from './pages/trip-management/modifier/modifier.component';
+import { UploadFilesComponent } from './pages/trip-management/upload-files/upload-files.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ModifierComponent } from './pages/trip-management/modifier/modifier.com
     AuthLayoutComponent,
     TripManagementComponent,
     AjouterComponent,
-    ModifierComponent
+    ModifierComponent,
+    UploadFilesComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
