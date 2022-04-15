@@ -1,0 +1,65 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <!-- Table -->
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Add Reclamation</h3>
+            </div>
+            <div class="table-responsive">
+
+ <form >
+  <div class="col-sm-10">
+    <label for="exampleFormControlTextarea1">Title</label>
+    <input type="text" class="form-control" id="inputtitle" placeholder="title" [(ngModel)]="reclamation.title">{{reclamation.title}}
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="reclamation.description" ></textarea>{{reclamation.description}}
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Type of reclamation</label>
+  <select class="form-control" [(ngModel)]="reclamation.type">
+    <option>Select Type</option>
+    <option value="USER">User</option>
+    <option value="TRIP">Trip</option>
+    <option value="SOFTWARE">Software</option>
+    <option value="OTHER">Other</option>
+  </select>
+  {{reclamation.type}}
+</div>
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">priority</label>
+  <select class="form-control" [(ngModel)]="reclamation.priority">
+    <option value="">Select Priority </option>
+    <option value="NORMAL">Normal</option>
+    <option value="IMPORTANT">Important</option>
+    <option value="URGENTE">Urgente</option>
+  </select>
+  {{reclamation.priority}}
+</div>
+<div class="form-group">
+<label class="form-label" for="customFile">Default file input example</label>
+<input type="file" class="form-control" id="customFile" />
+  </div>
+<div class="col-12">
+  <button class="btn btn-primary" type="submit" (click)="addReclamation()">Submit form</button>
+</div>
+
+
+</form>
+
+            </div>
+          </div>
+          </div>
+          </div>

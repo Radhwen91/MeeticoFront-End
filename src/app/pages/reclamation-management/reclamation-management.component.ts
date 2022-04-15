@@ -7,18 +7,48 @@ import { ReclamationService } from 'src/app/services/reclamation.service';
   templateUrl: './reclamation-management.component.html',
   styleUrls: ['./reclamation-management.component.scss']
 })
+
 export class ReclamationManagementComponent implements OnInit {
 listReclamations:Reclamation[];
-  constructor(private userService:ReclamationService) { }
+reclamation:Reclamation;
+  constructor(private reclamationService:ReclamationService) {
+    this.reclamation= new Reclamation();
+   }
 
+
+
+  public  deleteReclamationById(idReclamation:number){
+    let res= this.reclamationService.deleteReclamartionById(idReclamation).subscribe(
+      ()=>this.reclamationService.getAllReclamationByType().subscribe(
+        data => {
+          console.log(data);
+          this.listReclamations = data;
+        })
+      );
+    }
+   
+    public retriveReclamation(idReclamation:number){
+      this.reclamationService.retriveReclamationById(idReclamation).subscribe(
+        (res)=>{
+          this.reclamation=res;
+        }
+
+      );
+      
+    }
+
+    
+    
   ngOnInit(): void {
-    this.userService.getAllReclamationByType().subscribe(
+    this.reclamationService.getAllReclamationByType().subscribe(
       data => {
         console.log(data);
         this.listReclamations = data;
       }
     );
 
+
+   
   }
 
 }

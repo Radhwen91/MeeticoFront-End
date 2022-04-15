@@ -1,0 +1,44 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">Reclamations table</h3>
+          </div>
+
+  <form class="row g-3 needs-validation">
+    
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" name="title" [(ngModel)]="feedback.title">{{feedback.title}}    <div class="valid-feedback">
+      Name
+    </div>
+  
+    <div class="mb-3">
+<label for="exampleFormControlTextarea1" class="form-label"> Description</label>
+<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="feedback.description"></textarea>{{feedback.description}} 
+</div>
+
+<div class="mb-3">
+<label for="validationCustom01" class="form-label">Reating</label>
+<ngb-rating [(ngModel)]="feedback.stars">aaaaaaaaaa</ngb-rating>  
+</div>
+ 
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit" (click)="addFeedback()">Submit form</button>
+  </div>
+</form>
+</div>
+</div>
+</div>
+
+

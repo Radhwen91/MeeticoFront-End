@@ -21,6 +21,7 @@
                 <h3 class="mb-0">Reclamations table</h3>
               </div>
               <div class="table-responsive">
+                <button type="button" class="btn btn-outline-success" [routerLink]="['addReclamation']">Add Reclamation</button>
                 <table class="table align-items-center table-flush">
                   <thead class="thead-light">
                     <tr>
@@ -41,18 +42,19 @@
                       <th scope="row">
                         <div class="media align-items-center">
                           <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg" >
                           </a>
                           <div class="media-body">
-                            <span class="mb-0 text-sm"> {{a.idReclamation}} </span>
+                           
+                            <span class="mb-0 text-sm" > {{a.idReclamation}} </span>
                           </div>
                         </div>
                       </th>
                       
                         <td>{{a.title}}</td>
                         <td>{{a.description}}</td>
-                        <td>{{a.Type}}</td>
-                        <td>{{a.Priority}}</td>
+                        <td>{{a.type}}</td>
+                        <td>{{a.priority}}</td>
                         <td>{{a.sendingDate}}</td>
                         <td>{{a.lastModificationDate}}</td>
                         <td>{{a.answerAdmin}}</td>
@@ -95,9 +97,9 @@
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                            <a class="dropdown-item" href="javascript:void(0)" >Verif</a>
+                            <a class="dropdown-item" href="javascript:void(0)" (click)="deleteReclamationById(a.idReclamation)">Delete</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Modifier</a>
                           </div>
                         </div>
                       </td>

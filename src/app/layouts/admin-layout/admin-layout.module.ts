@@ -12,6 +12,10 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
+import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
+import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,7 +32,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    FeedbackManagementComponent,
+    ReclamationManagementComponent,
+    AddfeedbackComponent,
+    AddreclamationComponent
+  ],
+  exports: [
+    RouterModule
   ]
 })
 
