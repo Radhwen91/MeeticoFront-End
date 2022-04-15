@@ -1,38 +1,29 @@
-<div style="margin: 15px;" *ngIf="trip">
-    <form [formGroup]="tripForm" >
+<div style="margin: 15px;">
+    <form [formGroup]="alghForm">
         <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Destination</label>
         <div class="col-10">
-          <input class="form-control" type="text" id="example-text-input"  formControlName="destination">
+          <input class="form-control" type="text"   formControlName="destination">
         </div>
       </div>
       <div class="form-group row">
-        <label for="example-search-input" class="col-2 col-form-label">object</label>
+        <label for="example-search-input" class="col-2 col-form-label">city</label>
         <div class="col-10">
-          <input class="form-control" type="search" id="example-search-input" formControlName="object">
+          <input class="form-control" type="search" formControlName="city">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
         <div class="col-10">
-          <input class="form-control" type="date" id="example-date-input" formControlName="startDate">
+          <input class="form-control" type="date"   formControlName="startDate">
         </div>
       </div>
-      <div class="form-group row">
-        <label for="example-date-input" class="col-2 col-form-label">End Date</label>
-        <div class="col-10">
-          <input class="form-control" type="date" value="2011-08-19" id="example-date-input" formControlName="endDate">
-        </div>
-      </div>
-      <app-upload-files></app-upload-files>
+
       </form>
-      <button type="submit" class="btn btn-primary" (click)="modifier()">submit</button>
-      
+      <button type="submit" class="btn btn-primary" (click)="search()">submit</button>
 </div>
-
-
-  <!-- Table -->
-<div class="row">
+ <!-- Table -->
+ <div class="row">
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
@@ -46,7 +37,6 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
-                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -75,20 +65,6 @@
                     </a>
                   </div>
                   
-                </td>
-                <td class="text-right">
-                  <div *ngIf="u.etat !== 'En Voyage'">
-                   
-                  
-                    <button (click)="affecter(u)" >{{u.etat}}</button>
-                  
-                  </div>
-                  <div *ngIf="u.etat !== 'disponible'">
-                   
-                  
-                    <button (click)="desaffecter(u)" >{{u.etat}}</button>
-                  
-                  </div>
                 </td>
               </tr>
             </tbody>

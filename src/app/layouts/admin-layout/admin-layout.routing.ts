@@ -13,6 +13,7 @@ import { TripManagementComponent } from 'src/app/pages/trip-management/trip-mana
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
 import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.component';
 import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
+import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -27,5 +28,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'trip-management/add',           component: AjouterComponent },
-    { path: 'trip-management/modifier/:id',           component: ModifierComponent }
+    { path: 'trip-management/modifier/:id',           component: ModifierComponent },
+    { path: 'trip-management/search',           component: AlgorithmedematchingComponent }
 ];

@@ -1,6 +1,8 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FileDB } from 'src/app/models/fileDB';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
 @Component({
@@ -8,16 +10,27 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
   templateUrl: './upload-files.component.html',
   styleUrls: ['./upload-files.component.scss']
 })
-export class UploadFilesComponent implements OnInit {
+export class UploadFilesComponent implements OnInit,AfterContentInit {
 
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
   fileInfos: Observable<any>;
-  constructor(private tripservice:TripService) { }
+  listfile: FileDB[];
+  constructor(private tripservice:TripService,private router:ActivatedRoute) { }
+  ngAfterContentInit(): void {
+    this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+      data => {
+        console.log('data',data);
+        this.listfile = data;
+      }
+    );
+  }
 
   ngOnInit(): void {
+  
+    
   }
 
   selectFile(event) {
@@ -26,13 +39,14 @@ export class UploadFilesComponent implements OnInit {
   upload() {
     this.progress = 0;
     this.currentFile = this.selectedFiles.item(0);
-    this.tripservice.upload(this.currentFile).subscribe(
+   this.tripservice.upload(this.currentFile).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.fileInfos = this.tripservice.getFiles();
+          this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+          console.log()
         }
       },
       err => {

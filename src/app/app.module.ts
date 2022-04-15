@@ -16,6 +16,7 @@ import { TripManagementComponent } from './pages/trip-management/trip-management
 import { AjouterComponent } from './pages/trip-management/ajouter/ajouter.component';
 import { ModifierComponent } from './pages/trip-management/modifier/modifier.component';
 import { UploadFilesComponent } from './pages/trip-management/upload-files/upload-files.component';
+import { AlgorithmedematchingComponent } from './pages/trip-management/algorithmedematching/algorithmedematching.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UploadFilesComponent } from './pages/trip-management/upload-files/uploa
     TripManagementComponent,
     AjouterComponent,
     ModifierComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    AlgorithmedematchingComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,9 +22,11 @@ export class TripService {
   updatetripsUrl="http://localhost:8089/SpringMVC/Trip/update-trip";
   pdfbytrip="http://localhost:8089/SpringMVC/Trip/trip-to-pdf";
   uploadfile="http://localhost:8089/SpringMVC/File/upload";
-  getfile="http://localhost:8089/SpringMVC/File/files";
+  uploadfilef="http://localhost:8089/SpringMVC/File/uploadf";
+  getfile="http://localhost:8089/SpringMVC/File/filesdevoyage";
   affecterfile="http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip";
   affecterusertrip="http://localhost:8089/SpringMVC/Trip/affecter-utilisateur";
+  algmatching="http://localhost:8089/SpringMVC/Trip/get-utilisateur-by-matching";
   constructor(private http : HttpClient) { }
   
   getTrips() : Observable<Trip[]> {
@@ -33,6 +35,10 @@ export class TripService {
     getUserss() : Observable<User[]> {
       return this.http.get<User[]>(this.usersUrl);
       }
+      getUserssbymatching(destination:String,startdate:Date,city:String) : Observable<User[]> {
+        return this.http.get<User[]>("http://localhost:8089/SpringMVC/Trip/get-utilisateur-by-matching/"+destination+"/"+startdate
+        +"/"+city);
+        }
   ajoutTrip(trip :Trip,id:number): Observable<Trip>{
     return this.http.post<Trip>(`${this.addtripsUrl}/${id}`,trip);
   }
@@ -52,16 +58,19 @@ export class TripService {
     upload(file: File): Observable<HttpEvent<any>> {
       const formData: FormData = new FormData();
       formData.append('file', file);
-      const req = new HttpRequest('POST', `${this.uploadfile}`, formData, {
+      const req = new HttpRequest('POST', `${this.uploadfilef}`, formData, {
         reportProgress: true,
         responseType: 'json'
       });
-      return this.http.request(req);
+      return this.http.request(req);   
     }
-    getFiles(): Observable<any> {
-      return this.http.get(`${this.getfile}`);
+
+    getFiles(id:number): Observable<FileDB[]> {
+      return this.http.get<FileDB[]>(`${this.getfile}/${id}`);
     }
-    
+    affecterfileauvoyage(id:number,idf:number,trip :Trip):Observable<Trip>{
+      return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip/"+id+"/"+idf,trip);
+    }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
       return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
     }

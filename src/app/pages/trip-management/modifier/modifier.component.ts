@@ -1,6 +1,7 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { User } from 'src/app/models/user';
 import { TripService } from 'src/app/services/tripservices/trip.service';
@@ -15,6 +16,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   trip:Trip;
   public tripForm: FormGroup;
   listofusers:User[];
+  
   constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router) { }
   ngAfterContentInit(): void {
     this.get(this.router.snapshot.params.id)
@@ -28,6 +30,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
         this.listofusers = data;
       }
     );
+  
     
   }
   initForm(data) {
