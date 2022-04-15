@@ -18,7 +18,8 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   message = '';
   fileInfos: Observable<any>;
   listfile: FileDB[];
-  file:FileDB;
+  file: FileDB;
+  id:number;
   constructor(private tripservice:TripService,private router:ActivatedRoute) { }
   ngAfterContentInit(): void {
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
@@ -46,19 +47,28 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.tripservice.getFilesdetail(event.body).subscribe(
-            data => {
-             // console.log('data',data);
-              this.file = data;
+          this.id=event.body;
+          
+          this.tripservice.getFilesdetail(this.id).subscribe(
+            data=>{
+              this.file=data;
+              console.log(this.id)
+              console.log('file',this.file)
+              console.log(this.router.snapshot.params.id)
+              this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
+
+                ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+                  data=>{
+                    this.listfile=data
+                  }
+                )
+              )
+              
+              
             }
           );
-          const json = event.body;
-          const obj = JSON.parse(json);
-         // console.log(obj)
-          //console.log(this.router.snapshot.params.id)
-          //console.log(this.file)
-          this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,obj,this.file);
-          this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+          //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+        
         
         }
       },
@@ -69,5 +79,6 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
       });
     this.selectedFiles = undefined;
   }
+  
   
 }
