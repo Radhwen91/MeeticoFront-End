@@ -20,6 +20,7 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   listfile: FileDB[];
   file: FileDB;
   id:number;
+  idf:number[];
   constructor(private tripservice:TripService,private router:ActivatedRoute) { }
   ngAfterContentInit(): void {
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
@@ -55,6 +56,8 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
               console.log(this.id)
               console.log('file',this.file)
               console.log(this.router.snapshot.params.id)
+              //this.idf=[];
+              //this.idf.push(this.id);
               this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
 
                 ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(

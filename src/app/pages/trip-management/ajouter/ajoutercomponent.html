@@ -32,7 +32,64 @@
         </div>
         
       </div>
-
+      <div>
+        <div *ngIf="currentFile" class="progress">
+          <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            attr.aria-valuenow="{{ progress }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }"
+          >
+            {{ progress }}%
+          </div>
+        </div>
+        <label class="btn btn-default">
+          <input type="file" (change)="selectFile($event)" />
+        </label>
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+        <div class="alert alert-light" role="alert">{{ message }}</div>
+        
+           <div class="card">
+          <div class="card-header">List of Files</div>
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">name</th>
+                <th scope="col">image</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let file of listfile">
+                <th scope="row" >
+                  <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{file.id}}">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{ file.name }}</span>
+                    </div>
+                  </div>
+                </th>
+                <td class="text-right">
+                  <div ngbDropdown placement="bottom-right">
+                    <button>supprimer</button>
+      
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+       
+      
+      
+      </div>
       </form>
       <button type="submit" class="btn btn-primary" (click)="ajouter()">submit</button>
 </div>

@@ -17,6 +17,9 @@ import { AjouterComponent } from './pages/trip-management/ajouter/ajouter.compon
 import { ModifierComponent } from './pages/trip-management/modifier/modifier.component';
 import { UploadFilesComponent } from './pages/trip-management/upload-files/upload-files.component';
 import { AlgorithmedematchingComponent } from './pages/trip-management/algorithmedematching/algorithmedematching.component';
+import { UploadFilesAjoutComponent } from './pages/trip-management/upload-files-ajout/upload-files-ajout.component';
+
+
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { AlgorithmedematchingComponent } from './pages/trip-management/algorithm
     AjouterComponent,
     ModifierComponent,
     UploadFilesComponent,
-    AlgorithmedematchingComponent
+    AlgorithmedematchingComponent,
+    UploadFilesAjoutComponent
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

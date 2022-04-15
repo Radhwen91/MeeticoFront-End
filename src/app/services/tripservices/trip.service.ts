@@ -81,7 +81,7 @@ export class TripService {
     getFilesdetail(id:number): Observable<FileDB> {
       return this.http.get<FileDB>(`${this.getfiledetail}/${id}`);
     }
-    affecterfileauvoyage(id:number,idf:number,file :FileDB):Observable<FileDB>{
+    affecterfileauvoyage(id:Number,idf:number,file :FileDB):Observable<FileDB>{
       return this.http.put<FileDB>("http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
     }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
