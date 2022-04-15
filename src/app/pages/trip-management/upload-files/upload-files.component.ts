@@ -18,6 +18,7 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   message = '';
   fileInfos: Observable<any>;
   listfile: FileDB[];
+  file:FileDB;
   constructor(private tripservice:TripService,private router:ActivatedRoute) { }
   ngAfterContentInit(): void {
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
@@ -45,8 +46,18 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
+          this.tripservice.getFilesdetail(event.body).subscribe(
+            data => {
+              console.log('data',data);
+              this.file = data;
+            }
+          );
+          const json = event.body;
+          const obj = JSON.parse(json);
+          this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,obj,this.file);
           this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
-          console.log()
+          console.log(obj)
+          console.log(this.router.snapshot.params.id)
         }
       },
       err => {
@@ -56,4 +67,5 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
       });
     this.selectedFiles = undefined;
   }
+  
 }

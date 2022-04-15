@@ -27,6 +27,7 @@ export class TripService {
   affecterfile="http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip";
   affecterusertrip="http://localhost:8089/SpringMVC/Trip/affecter-utilisateur";
   algmatching="http://localhost:8089/SpringMVC/Trip/get-utilisateur-by-matching";
+  getfiledetail="http://localhost:8089/SpringMVC/File/filesdetail"
   constructor(private http : HttpClient) { }
   
   getTrips() : Observable<Trip[]> {
@@ -62,14 +63,26 @@ export class TripService {
         reportProgress: true,
         responseType: 'json'
       });
+      console.log(req.responseType)
       return this.http.request(req);   
     }
+      /*
+      upload(file: File): Observable<number> {
+        const formData: FormData = new FormData();
+        formData.append('file', file);
+        var a= this.http.post<number>(`${this.uploadfilef}`,formData);
+        console.log(a)
+        return a;
+      }*/
 
     getFiles(id:number): Observable<FileDB[]> {
       return this.http.get<FileDB[]>(`${this.getfile}/${id}`);
     }
-    affecterfileauvoyage(id:number,idf:number,trip :Trip):Observable<Trip>{
-      return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip/"+id+"/"+idf,trip);
+    getFilesdetail(id:number): Observable<FileDB> {
+      return this.http.get<FileDB>(`${this.getfiledetail}/${id}`);
+    }
+    affecterfileauvoyage(id:number,idf:number,file :FileDB):Observable<FileDB>{
+      return this.http.put<FileDB>("http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
     }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
       return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
