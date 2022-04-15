@@ -48,16 +48,18 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
           this.message = event.body.message;
           this.tripservice.getFilesdetail(event.body).subscribe(
             data => {
-              console.log('data',data);
+             // console.log('data',data);
               this.file = data;
             }
           );
           const json = event.body;
           const obj = JSON.parse(json);
+         // console.log(obj)
+          //console.log(this.router.snapshot.params.id)
+          //console.log(this.file)
           this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,obj,this.file);
           this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
-          console.log(obj)
-          console.log(this.router.snapshot.params.id)
+        
         }
       },
       err => {

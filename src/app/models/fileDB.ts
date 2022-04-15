@@ -4,6 +4,6 @@ export class FileDB {
     name:String;
     type:String;
     data:Int32Array[];
-    Trip :Trip;
+    trip :Trip;
 }
     

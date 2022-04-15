@@ -63,7 +63,7 @@ export class TripService {
         reportProgress: true,
         responseType: 'json'
       });
-      console.log(req.responseType)
+     
       return this.http.request(req);   
     }
       /*
