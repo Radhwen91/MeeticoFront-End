@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/_services/user.service';
-import { TokenService } from 'src/app/_services/token.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/_services/token.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private token: TokenService, private router: Router) { }
-  signedUp = false;
-  user: any = {
+  hidePassword = true;
+  credentials: any = {
     username: null,
     password: null
   };
+  constructor(private userService: UserService, private token: TokenService, private router: Router) { }
   onSubmit() {
-    const connectedUser = {
-      username: this.user.username,
-      password: this.user.password
-    };
-    this.userService.authenticateUser(connectedUser).subscribe(
+    this.userService.authenticateUser(this.credentials).subscribe(
       data => {
-        //this.token.saveToken(data.accessToken);
-        //this.token.saveUser(data);
-        this.signedUp=true;
+        this.token.saveToken(data.accessToken);
+        this.token.saveUser(data);
+        this.router.navigate(['dashboard']);
       }
     );
-    if(this.signedUp === true) {
-      this.router.navigate(['dashboard']);
-    }
   }
 }

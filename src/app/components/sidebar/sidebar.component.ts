@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/_services/token.service';
 
 declare interface RouteInfo {
     path: string;
@@ -10,12 +11,6 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-chart-bar-32 text-info', class: '' },
-//  { path: '/icons', title: 'Icons',  icon:'ni-planet text-light', class: '' },
-//  { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-light', class: '' },
-//  { path: '/user-profile', title: 'User profile',  icon:'ni-circle-08 text-light', class: '' },
-//  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-light', class: '' },
-//  { path: '/login', title: 'Login',  icon:'ni-key-25 text-light', class: '' },
-//  { path: '/register', title: 'Register',  icon:'ni-circle-08 text-light', class: '' },
     { path: '/user-management', title: 'User Management',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/event-management', title: 'Event Management',  icon:'ni-tie-bow text-pink', class: '' },
     { path: '/feedback-management', title: 'Feedback Management',  icon:'ni-laptop text-cyan', class: '' },
@@ -33,11 +28,19 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
   isCollapsed = true;
-  constructor(private router: Router) { }
+  username: any;
+  picture: any;
+  constructor(private router: Router, private tokenService: TokenService) { }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+   this.username = this.tokenService.getUser().username.toUpperCase();
+   this.picture = this.tokenService.getUser().picturePath;
+  }
+  signOut() {
+    this.tokenService.signOut();
+    this.router.navigate(['login']);
   }
 }

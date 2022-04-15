@@ -9,7 +9,6 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { MaterialModule } from './material.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    MaterialModule
   ],
   declarations: [
     AppComponent,

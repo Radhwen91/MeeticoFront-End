@@ -78,12 +78,13 @@
                   </td>
                   <td class="text-right">
                     <div ngbDropdown placement="bottom-right">
-                      <a class="btn btn-sm btn-icon-only text-light bg-danger" ngbDropdownToggle (click)="setActiveUser(user)">
+                      <a class="btn btn-sm btn-icon-only text-light bg-danger" ngbDropdownToggle
+                        (click)="setActiveUser(user)">
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                         <a class="dropdown-item" href="javascript:void(0)" (click)="removeUser()">Delete</a>
-                        <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                        <a class="dropdown-item" href="javascript:void(0)" (click)="userDetails()">Details</a>
                         <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                       </div>
                     </div>

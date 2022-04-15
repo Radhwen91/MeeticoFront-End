@@ -12,6 +12,8 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
+import { MaterialModule } from 'src/app/material.module';
+import { LoginComponent } from 'src/app/pages/login/login.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { UserManagementComponent } from 'src/app/pages/user-management/user-mana
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MaterialModule
   ],
   declarations: [
     DashboardComponent,
@@ -29,7 +32,7 @@ import { UserManagementComponent } from 'src/app/pages/user-management/user-mana
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    UserManagementComponent
+    DashboardComponent
   ]
 })
 
