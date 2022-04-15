@@ -45,14 +45,15 @@ console.log(this.tripForm.value);
 this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   data=>{
     console.log(this.listfile)
-    for(var i;i<this.listfile.length;i++)
+    for(var f of this.listfile)
     {
-      this.tripservice.affecterfileauvoyage(data.idTrip,this.listfile[i].id,this.listfile[i]).subscribe(
+      console.log('file',f);
+      this.tripservice.affecterfileauvoyage(data.idTrip,f.id,f).subscribe(
         res=>{
-
+            
         }
      
-    )
+    );
     }
   
     this.router.navigate(["/trip-management"])
