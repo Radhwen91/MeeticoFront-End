@@ -1,3 +1,14 @@
+<style type="text/css">
+  #desaffecter { color: rgb(238, 6, 6);
+              background-color: rgb(52, 114, 207);
+              border-radius: 30%;
+              font-weight: bold; }  
+ #affecter { color: rgb(38, 241, 19);
+              background-color: rgb(52, 114, 207);
+              border-radius: 30%;
+              font-weight: bold;  }  
+   
+</style>
 <div style="margin: 15px;" *ngIf="trip">
     <form [formGroup]="tripForm" >
         <div class="form-group row">
@@ -80,13 +91,13 @@
                   <div *ngIf="u.etat !== 'En Voyage'">
                    
                   
-                    <button (click)="affecter(u)" >{{u.etat}}</button>
+                    <button id="affecter" (click)="affecter(u)" >{{u.etat}}</button>
                   
                   </div>
                   <div *ngIf="u.etat !== 'disponible'">
                    
                   
-                    <button (click)="desaffecter(u)" >{{u.etat}}</button>
+                    <button id="desaffecter" (click)="desaffecter(u)" >{{u.etat}}</button>
                   
                   </div>
                 </td>
