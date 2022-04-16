@@ -13,8 +13,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { TestComponent } from './pages/test/test.component';
-import { AddfeedbackComponent } from './pages/addfeedback/addfeedback.component';
-import { AddreclamationComponent } from './pages/addreclamation/addreclamation.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { UpdateReclamationComponent } from './pages/update-reclamation/update-reclamation.component';
+
+
+
 
 
 @NgModule({
@@ -33,8 +36,11 @@ import { AddreclamationComponent } from './pages/addreclamation/addreclamation.c
     AuthLayoutComponent,
     TestComponent,
    
+   
+   
+   
   ],
-  providers: [],
+  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

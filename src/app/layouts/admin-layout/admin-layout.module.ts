@@ -16,6 +16,9 @@ import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/f
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -25,7 +28,8 @@ import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclama
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MatDialogModule
   ],
   declarations: [
     DashboardComponent,
@@ -36,7 +40,9 @@ import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclama
     FeedbackManagementComponent,
     ReclamationManagementComponent,
     AddfeedbackComponent,
-    AddreclamationComponent
+    AddreclamationComponent,
+    DetailReclamationComponent,
+    UpdateReclamationComponent,
   ],
   exports: [
     RouterModule

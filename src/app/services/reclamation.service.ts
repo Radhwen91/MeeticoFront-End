@@ -41,7 +41,9 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
         return this.http.post<Reclamation>(url+"AddAffectReclamationUser",raclamation);
       }
 
-
+  updateReclamation(raclamation:Reclamation){
+    return this.http.put<Reclamation>(url+"UpdateReclamation",raclamation);
+  }
 
 
     // public upload(imagen: File): Observable<any> {
