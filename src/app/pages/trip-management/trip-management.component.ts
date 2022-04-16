@@ -67,17 +67,22 @@ export class TripManagementComponent implements OnInit {
     return s;
   }*/
 
-  imagebyid(id:Number):String{
-      var s;
-    this.tripservice.getFiles(id).subscribe(
-      data=>{
-        this.fileById=data;
-        for (var f of this.fileById) {
-          var s;
+  imagebyid(f:FileDB):String{
+    
+      
+      this.counters.forEach(() => {
+        setInterval(() => {
+          this.counters[0]++;
+          this.counters[1] = this.counters[1] + 10;
+          this.counters[2] = this.counters[2] + 17;
           
-                s="http://localhost:8089/SpringMVC/File/files/"+f.id;
-              }
-            })
-return s;
+          if (this.counters[0] + this.counters[1] + this.counters[2] > 500) {
+            clearInterval();
+            this.imageSource="http://localhost:8089/SpringMVC/File/files/"+f.id;
+          }
+        }, 3000);
+      });
+    
+return this.imageSource;
     }
 }
