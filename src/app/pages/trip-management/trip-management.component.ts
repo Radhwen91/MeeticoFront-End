@@ -1,5 +1,6 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 
@@ -11,6 +12,9 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
 export class TripManagementComponent implements OnInit {
 
   listoftrips:Trip[];
+  fileById:FileDB[];
+  imageSource:string;
+  counters = [100, 200, 10];
   constructor(private tripservice:TripService,private router:Router) { }
 
   ngOnInit(): void {
@@ -18,6 +22,7 @@ export class TripManagementComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
+        
       }
     );
   }
@@ -35,6 +40,44 @@ export class TripManagementComponent implements OnInit {
         this.router.navigate(["/trip-management"])
       }
     );
-  }
+  }/*
+  imagebyid(id:Number):String{
+      
+        this.tripservice.getFiles(id).subscribe(
+          data=>{
+            this.fileById=data;
+            for (var f of this.fileById) {
+              var s;
+              this.counters.forEach(() => {
+                setInterval(() => {
+                  this.counters[0]++;
+                  this.counters[1] = this.counters[1] + 10;
+                  this.counters[2] = this.counters[2] + 17;
+                  
+                  if (this.counters[0] + this.counters[1] + this.counters[2] > 500) {
+                    clearInterval();
+                    s="http://localhost:8089/SpringMVC/File/files/"+f.id;
+                  }
+                }, 3000);
+              });
+             }
 
+          }
+        )
+    return s;
+  }*/
+
+  imagebyid(id:Number):String{
+      var s;
+    this.tripservice.getFiles(id).subscribe(
+      data=>{
+        this.fileById=data;
+        for (var f of this.fileById) {
+          var s;
+          
+                s="http://localhost:8089/SpringMVC/File/files/"+f.id;
+              }
+            })
+return s;
+    }
 }

@@ -3,6 +3,22 @@
   #ajouter { color: white;
               background-color: rgb(52, 114, 207);
               border-radius: 30%; }  
+  .zied {
+        width: 130px;
+        height: 195px;
+        position: relative;
+        display: inline-block;
+    }
+  .zied .zied-top {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+  .zied:hover .zied-top {
+        display: inline;
+    } 
    
 </style>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
@@ -124,9 +140,10 @@
               <tbody>
                 <tr *ngFor="let t of listoftrips">
                   <th scope="row" >
-                    <div class="media align-items-center">
+                    <div class="media align-items-center" class="zied"  >
                       <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                        <img alt="Image placeholder" [src]="imagebyid(t.idTrip)" >
+                        <img  *ngFor="let f of t.files" alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
                       </a>
                       <div class="media-body">
                         <span class="mb-0 text-sm">{{t.destination}}</span>

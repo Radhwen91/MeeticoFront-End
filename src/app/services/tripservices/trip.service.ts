@@ -75,7 +75,7 @@ export class TripService {
         return a;
       }*/
 
-    getFiles(id:number): Observable<FileDB[]> {
+    getFiles(id:Number): Observable<FileDB[]> {
       return this.http.get<FileDB[]>(`${this.getfile}/${id}`);
     }
     getFilesdetail(id:number): Observable<FileDB> {

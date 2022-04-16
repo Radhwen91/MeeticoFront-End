@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
-import { UploadFilesAjoutComponent } from '../upload-files-ajout/upload-files-ajout.component';
+
 import { Observable } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 
