@@ -82,6 +82,16 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
       });
     this.selectedFiles = undefined;
   }
-  
+  supprimer(files :Number){
+    this.tripservice.deletefile(files).subscribe(
+      data=>{
+      this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+        data=>{
+        this.listfile=data
+      }
+    )
+  }
+  );
+}
   
 }

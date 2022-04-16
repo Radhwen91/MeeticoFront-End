@@ -140,8 +140,8 @@
               <tbody>
                 <tr *ngFor="let t of listoftrips">
                   <th scope="row" >
-                    <div class="media align-items-center" class="zied" *ngFor="let f of t.files"  >
-                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3" ><!--
+                    <div class="media align-items-center" class="zied"   >
+                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3"*ngFor="let f of t.files" ><!--
                           <img alt="Image placeholder" [src]="imagebyid(f)" >
                         <img   alt="Image placeholder" [src]="imagebyid(f)" class="zied-top" >
                       -->

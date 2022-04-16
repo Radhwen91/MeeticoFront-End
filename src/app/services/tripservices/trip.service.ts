@@ -27,7 +27,8 @@ export class TripService {
   affecterfile="http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip";
   affecterusertrip="http://localhost:8089/SpringMVC/Trip/affecter-utilisateur";
   algmatching="http://localhost:8089/SpringMVC/Trip/get-utilisateur-by-matching";
-  getfiledetail="http://localhost:8089/SpringMVC/File/filesdetail"
+  getfiledetail="http://localhost:8089/SpringMVC/File/filesdetail";
+  deletefiles="http://localhost:8089/SpringMVC/File/delete-file"
   constructor(private http : HttpClient) { }
   
   getTrips() : Observable<Trip[]> {
@@ -83,6 +84,9 @@ export class TripService {
     }
     affecterfileauvoyage(id:Number,idf:number,file :FileDB):Observable<FileDB>{
       return this.http.put<FileDB>("http://localhost:8089/SpringMVC/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
+    }
+    deletefile(id:Number): any{
+      return this.http.delete(`${this.deletefiles}/${id}`);
     }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
       return this.http.put<Trip>("http://localhost:8089/SpringMVC/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
