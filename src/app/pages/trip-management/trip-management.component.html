@@ -140,13 +140,14 @@
               <tbody>
                 <tr *ngFor="let t of listoftrips">
                   <th scope="row" >
-                    <div class="media align-items-center" class="zied"   >
+                    <div class="media align-items-center" class="zied" *ngFor="let f of t.files"  >
                       <a href="javascript:void(0)" class="avatar rounded-circle mr-3" ><!--
+                          <img alt="Image placeholder" [src]="imagebyid(f)" >
+                        <img   alt="Image placeholder" [src]="imagebyid(f)" class="zied-top" >
+                      -->
+                      
                         <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
                         <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
-                      -->
-                        <img *ngFor="let f of t.files" alt="Image placeholder" [src]="imagebyid(f)" >
-                        <img  *ngFor="let f of t.files" alt="Image placeholder" [src]="imagebyid(f)" class="zied-top" >
                       </a>
                       <div class="media-body">
                         <span class="mb-0 text-sm">{{t.destination}}</span>

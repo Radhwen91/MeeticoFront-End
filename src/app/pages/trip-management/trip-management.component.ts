@@ -13,7 +13,7 @@ export class TripManagementComponent implements OnInit {
 
   listoftrips:Trip[];
   fileById:FileDB[];
-  imageSource:string;
+  imageSource:String;
   counters = [100, 200, 10];
   constructor(private tripservice:TripService,private router:Router) { }
 
@@ -22,6 +22,11 @@ export class TripManagementComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
+        /*
+        for(var t of this.listoftrips){
+          this.imageSource=this.imagebyid(t.idTrip);
+        }
+        */
         
       }
     );
@@ -56,7 +61,7 @@ export class TripManagementComponent implements OnInit {
                   
                   if (this.counters[0] + this.counters[1] + this.counters[2] > 500) {
                     clearInterval();
-                    s="http://localhost:8089/SpringMVC/File/files/"+f.id;
+                    this.imageSource="http://localhost:8089/SpringMVC/File/files/"+f.id;
                   }
                 }, 3000);
               });
@@ -64,8 +69,8 @@ export class TripManagementComponent implements OnInit {
 
           }
         )
-    return s;
-  }*/
+    return this.imageSource;
+  }
 
   imagebyid(f:FileDB):String{
     
@@ -85,4 +90,5 @@ export class TripManagementComponent implements OnInit {
     
 return this.imageSource;
     }
+    */
 }
