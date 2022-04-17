@@ -160,9 +160,9 @@
             </div>
           </div>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive"*ngFor="let t of listoftrips">
           <!-- Projects table -->
-          <table class="table align-items-center table-flush" *ngFor="let t of listoftrips">
+          <table class="table align-items-center table-flush" >
             <thead class="thead-light">
               <tr>
                 <th scope="col">destination</th>
