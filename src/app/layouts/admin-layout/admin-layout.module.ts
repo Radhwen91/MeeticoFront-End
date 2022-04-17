@@ -13,7 +13,6 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
 import { MaterialModule } from 'src/app/material.module';
-import { LoginComponent } from 'src/app/pages/login/login.component';
 
 @NgModule({
   imports: [
@@ -32,7 +31,8 @@ import { LoginComponent } from 'src/app/pages/login/login.component';
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserManagementComponent
   ]
 })
 

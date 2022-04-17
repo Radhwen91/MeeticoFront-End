@@ -1,6 +1,18 @@
 <div class="header bg-gradient-yellow pb-8 pt-5 pt-md-8">
   <!-- Page content -->
-  <div class="container-fluid mt--7">
+  <div class="container-fluid mt--6">
+    <!-- Form -->
+    <form class="navbar-search navbar-search-light form-inline mr-3 d-none d-md-flex ml-lg-auto justify-content-center">
+      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true" (blur)="focus = false"
+            (keyup)="searchForUsers($event)">
+        </div>
+      </div>
+    </form>
     <!-- Table -->
     <div class="row mt-5">
       <div class="col">
@@ -84,7 +96,7 @@
                       </a>
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                         <a class="dropdown-item" href="javascript:void(0)" (click)="removeUser()">Delete</a>
-                        <a class="dropdown-item" href="javascript:void(0)" (click)="userDetails()">Details</a>
+                        <a class="dropdown-item" href="javascript:void(0)" (click)="userDetails(content)">Details</a>
                         <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                       </div>
                     </div>
@@ -122,3 +134,16 @@
       </div>
     </div>
   </div>
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>Hello, {{ name }}!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>

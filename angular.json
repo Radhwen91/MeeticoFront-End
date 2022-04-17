@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
@@ -31,7 +31,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/argon.scss"
+              "src/assets/scss/argon.scss",
+              "src/assets/css/open-sans.css",
+              "src/assets/css/material-icons.css",
+              "src/assets/vendor/nucleo/css/nucleo.css",
+              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
@@ -162,7 +166,7 @@
   "defaultProject": "argon-dashboard-angular",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   },
   "cli": {

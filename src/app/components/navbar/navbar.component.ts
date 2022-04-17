@@ -11,7 +11,6 @@ import { TokenService } from 'src/app/_services/token.service';
 })
 
 export class NavbarComponent implements OnInit {
-  focus: any;
   listTitles: any[];
   location: Location;
   username: any;

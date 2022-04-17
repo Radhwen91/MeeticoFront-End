@@ -26,7 +26,7 @@ export class TokenService {
   getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return JSON.parse(user).data;
+      return JSON.parse(user);
     }
     return {};
   }

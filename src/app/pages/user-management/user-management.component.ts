@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/_services/user.service';
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-management',
@@ -9,13 +9,20 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class UserManagementComponent implements OnInit {
+  @Input() name;
+  focus: any;
   users: any[];
   currentUser: any;
-  constructor(private userService: UserService, private modalService: NgbModal) { }
+  input: any;
+
+  constructor(private userService: UserService, config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+  
   ngOnInit() {
     this.userService.retrieveAllUsers().subscribe(
       data => {
-        console.log(data);
         this.users = data;
       }
     );
@@ -27,37 +34,16 @@ export class UserManagementComponent implements OnInit {
     this.userService.removeUser(this.currentUser.userId).subscribe();
     window.location.reload();
   }
-  userDetails() {
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.name = 'World';
+  searchForUsers(event) {
+    console.log(event);
+    this.userService.searchForUsers(event.target.value).subscribe(
+      data => {
+        this.users = data;
+      }
+    );
   }
-}
-
-@Component({
-  selector: 'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Hi there!</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <p>Hello, {{name}}!</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-    </div>
-  `
-})
-export class NgbdModalContent {
-  @Input() name;
-  constructor(public activeModal: NgbActiveModal) {}
-}
-
-@Component({selector: 'ngbd-modal-component', templateUrl: './user-management.component.html'})
-export class NgbdModalComponent {
-  constructor(private modalService: NgbModal) {}
-  userDetails() {
-    const modalRef = this.modalService.open(NgbdModalContent);
+  userDetails(content) {
+    const modalRef = this.modalService.open(content);
     modalRef.componentInstance.name = 'World';
   }
 }

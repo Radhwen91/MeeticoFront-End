@@ -14,12 +14,12 @@ export class LoginComponent {
     username: null,
     password: null
   };
-  constructor(private userService: UserService, private token: TokenService, private router: Router) { }
+  constructor(private userService: UserService, private tokenService: TokenService, private router: Router) { }
   onSubmit() {
     this.userService.authenticateUser(this.credentials).subscribe(
-      data => {
-        this.token.saveToken(data.accessToken);
-        this.token.saveUser(data);
+      user => {
+        this.tokenService.saveToken(user.accessToken);
+        this.tokenService.saveUser(user.data);
         this.router.navigate(['dashboard']);
       }
     );

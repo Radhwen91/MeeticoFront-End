@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,9 +13,6 @@ export class UserService {
   registerEntrepreneur(data: any): Observable<any> {
     return this.http.post(url + 'registerEntrepreneur', data);
   }
-  approvePendingEmployee(verificationCode: number): Observable<any> {
-    return this.http.put(url + 'approvePendingEmployee?verificationCode=' + verificationCode, null);
-  }
   authenticateUser(data: any): Observable<any> {
     return this.http.post(url + 'authenticateUser', data);
   }
@@ -24,5 +21,19 @@ export class UserService {
   }
   retrieveAllUsers(): Observable<any> {
     return this.http.get(url + 'retrieveAllUsers');
+  }
+  approvePendingEmployee(verificationCode: number): Observable<any> {
+    return this.http.put(url + 'approvePendingEmployee?verificationCode=' + verificationCode, null);
+  }
+  assignPictureToUser(userId: any, file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.put(url + 'assignPictureToUser?userId=' + userId, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+  }
+  searchForUsers(input: string): Observable<any> {
+    return this.http.get(url + 'searchForUsers?input=' + input);
   }
 }
