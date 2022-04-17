@@ -1,3 +1,4 @@
+import { UploadImageComponent } from './../../pages/upload-image/upload-image.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -19,6 +20,9 @@ import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclama
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
+import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -29,7 +33,10 @@ import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/upd
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxSpinnerModule,
+    
+    
   ],
   declarations: [
     DashboardComponent,
@@ -43,6 +50,8 @@ import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/upd
     AddreclamationComponent,
     DetailReclamationComponent,
     UpdateReclamationComponent,
+    AnswerAdminComponent,
+    UploadImageComponent
   ],
   exports: [
     RouterModule

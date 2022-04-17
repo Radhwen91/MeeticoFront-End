@@ -14,11 +14,6 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { TestComponent } from './pages/test/test.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { UpdateReclamationComponent } from './pages/update-reclamation/update-reclamation.component';
-
-
-
-
 
 @NgModule({
   imports: [
@@ -28,13 +23,15 @@ import { UpdateReclamationComponent } from './pages/update-reclamation/update-re
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    TestComponent,
+    TestComponent
+    
    
    
    

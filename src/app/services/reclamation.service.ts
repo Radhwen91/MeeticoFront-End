@@ -35,14 +35,22 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
 
   }
 
-  addReclamation(raclamation:Reclamation/*, picture:Picture*/){
+  addReclamation(reclamation:Reclamation/*, picture:Picture*/){
          
          
-        return this.http.post<Reclamation>(url+"AddAffectReclamationUser",raclamation);
+        return this.http.post<Reclamation>(url+"AddAffectReclamationUser",reclamation);
       }
 
   updateReclamation(raclamation:Reclamation){
     return this.http.put<Reclamation>(url+"UpdateReclamation",raclamation);
+  }
+
+  
+  answerAdmin(reclamation:Reclamation){
+    return this.http.put<Reclamation>(url+"answerAdmin",reclamation);
+  }
+  verifBySendingEmail(reclamation:Reclamation){
+    return this.http.put<Reclamation>(url+"SendMailReclamation/"+reclamation.idReclamation,reclamation);
   }
 
 

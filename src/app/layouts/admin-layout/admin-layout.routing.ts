@@ -14,6 +14,7 @@ import { UserManagementComponent } from 'src/app/pages/user-management/user-mana
 import { TestComponent } from 'src/app/pages/test/test.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -30,5 +31,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'Test',           component: TestComponent },
     { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
+    { path: 'test',           component: UploadImageComponent},
+
+    
 
 ];

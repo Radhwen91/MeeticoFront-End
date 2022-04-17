@@ -11,20 +11,21 @@ import { Reclamation } from 'src/app/models/reclamation';
 })
 export class UpdateReclamationComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:ReclamationService, private router:Router) {
+  reclamation:Reclamation;
 
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Reclamation,private service:ReclamationService, private router:Router) {
+ this.reclamation=data;
+console.warn('datreclamationa',this.reclamation)
    }
 
   
 
   ngOnInit(): void {
-    console.log(this.data);
-    
+    console.log(this.data); 
   }
 
   public updateReclamation(){
-    this.service.addReclamation(this.data).subscribe(
+    this.service.updateReclamation(this.data).subscribe(
       ()=>this.router.navigateByUrl("/reclamation-management")
         );
   }

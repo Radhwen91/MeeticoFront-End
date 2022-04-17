@@ -1,3 +1,4 @@
+import { AnswerAdminComponent } from './../answer-admin/answer-admin.component';
 import { UpdateReclamationComponent } from './../update-reclamation/update-reclamation.component';
 import { Reclamation } from './../../models/reclamation';
 import { Component, OnInit } from '@angular/core';
@@ -50,17 +51,37 @@ reclamation:Reclamation;
       console.log(`Dialog result: ${data}`);
     });
     }
-
+ 
     showUpdateReclamation(r:Reclamation){
       const dialogRef = this.dialog.open(UpdateReclamationComponent,
          {data:r}
+        
+
       );
+      console.warn('r',r);
     
         dialogRef.afterClosed().subscribe(data => {
           console.log(`Dialog result: ${data}`);
         });
         }
+
+        showAnswerAdmin(r:Reclamation){
+          const dialogRef = this.dialog.open(AnswerAdminComponent,
+             {data:r}
+          );
+        
+            dialogRef.afterClosed().subscribe(data => {
+              console.log(`Dialog result: ${data}`);
+            });
+            }
     
+
+            verifReclamation(reclamation:Reclamation){
+              if( reclamation.type.toString()=="SOFTWARE"){
+                return this.reclamationService.answerAdmin(reclamation);
+              }else
+              return this.showAnswerAdmin(reclamation);
+            }
     
   ngOnInit(): void {
     this.reclamationService.getAllReclamationByType().subscribe(

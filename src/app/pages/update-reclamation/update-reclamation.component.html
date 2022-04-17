@@ -1,50 +1,44 @@
-<h1 mat-dialog-title>Detail reclamation</h1>
+<h2 mat-dialog-title>Update Reclamation</h2>
 <mat-dialog-content class="mat-typography">
-    <form >
-        <div class="col-sm-10">
-          <label for="exampleFormControlTextarea1">Title</label>
-          <input type="text" class="form-control" id="inputtitle"  [(ngModel)]="data.title">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Description</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.description" ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Type of reclamation</label>
-        <select class="form-control" [(ngModel)]="data.type">
-          <option value="">Select type </option>
-          <option value="USER">User</option>
-          <option value="TRIP">Trip</option>
-          <option value="SOFTWARE">Software</option>
-          <option value="OTHER">Other</option>
-        </select>
-        
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">priority</label>
-        <select class="form-control" [(ngModel)]="data.priority">
-          <option value="">Select Priority </option>
-          <option value="NORMAL">Normal</option>
-          <option value="IMPORTANT">Important</option>
-          <option value="URGENTE">Urgente</option>
-        </select>
-        
-      </div>
-      <div class="form-group">
-      <label class="form-label" for="customFile">Default file input example</label>
-      <input type="file" class="form-control" id="customFile" />
-        </div>
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit" >Submit form</button>
-      </div>
-      </form>
-      
-                 
+  <div>
+    <label>Title</label>
+    <input type="text" class="form-control"  value="{{reclamation.title}}"  [(ngModel)]="reclamation.title"  >
+  </div>
+  <div>
+  
+  <label >Description</label>
+  <textarea class="form-control" rows="3" value="{{reclamation.description}}"   [(ngModel)]="reclamation.description" ></textarea>
+</div>
+  <div>
+    <label>Type of reclamation</label>
+  <select  value="{{reclamation.type}}"  [(ngModel)]="reclamation.type" >
+    <option value="">Select type </option>
+    <option value="USER">User</option>
+    <option value="TRIP">Trip</option>
+    <option value="SOFTWARE">Software</option>
+    <option value="OTHER">Other</option>
+  </select>
+  
+</div>
+
+<div>
+  <label>priority</label>
+  <select value="{{reclamation.priority}}" [(ngModel)]="reclamation.priority" >
+    <option value="">Select Priority </option>
+    <option value="NORMAL">Normal</option>
+    <option value="IMPORTANT">Important</option>
+    <option value="URGENTE">Urgente</option>
+  </select>
+  
+</div>
+<div >
+  <label >upload file </label>
+  <input type="file"/>
+    </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  
+ 
+  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="updateReclamation()">Submit</button>
   <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
-  <button type="button" class="btn btn-success"mat-button [mat-dialog-close]="true" (click)="updateReclamation()" cdkFocusInitial>Submit</button>
   
 </mat-dialog-actions>
-

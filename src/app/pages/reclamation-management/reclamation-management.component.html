@@ -92,12 +92,12 @@
                         </div>
                       </td>
                       <td class="text-right">
-                        <div ngbDropdown placement="bottom-right">
+                        <div ngbDropdown placement="bottom-right">  
                           <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="javascript:void(0)" >Verif</a>
+                            <a class="dropdown-item" href="javascript:void(0)" (click)="verifReclamation(a)">Verif</a>
                             <a class="dropdown-item" href="javascript:void(0)" (click)="deleteReclamationById(a.idReclamation)">Delete</a>
                             <a class="dropdown-item" href="javascript:void(0)" (click)="showUpdateReclamation(a)">Modifier</a>
                           </div>
