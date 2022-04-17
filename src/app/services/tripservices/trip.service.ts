@@ -4,6 +4,7 @@ import { Trip } from 'src/app/models/trip';
 import { Observable } from 'rxjs';
 import { FileDB } from 'src/app/models/fileDB';
 import { User } from 'src/app/models/user';
+import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
 
 
 
@@ -28,12 +29,16 @@ export class TripService {
   affecterusertrip="http://localhost:8089/SpringMVC/Trip/affecter-utilisateur";
   algmatching="http://localhost:8089/SpringMVC/Trip/get-utilisateur-by-matching";
   getfiledetail="http://localhost:8089/SpringMVC/File/filesdetail";
-  deletefiles="http://localhost:8089/SpringMVC/File/delete-file"
+  deletefiles="http://localhost:8089/SpringMVC/File/delete-file";
+  stat="http://localhost:8089/SpringMVC/Trip/get-DestionationVisitorsCount";
   constructor(private http : HttpClient) { }
   
   getTrips() : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.tripsUrl);
     }
+    getDestionationVisitCount() : Observable<DestionationVisitorsCount[]> {
+      return this.http.get<DestionationVisitorsCount[]>(this.stat);
+      }
     getUserss() : Observable<User[]> {
       return this.http.get<User[]>(this.usersUrl);
       }

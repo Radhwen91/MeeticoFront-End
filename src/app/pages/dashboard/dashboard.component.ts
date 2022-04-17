@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
+import { TripService } from 'src/app/services/tripservices/trip.service';
 
 // core components
 import {
@@ -21,6 +23,8 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  listoftrips:DestionationVisitorsCount[];
+  constructor(private tripservice:TripService) { }
 
   ngOnInit() {
 
@@ -49,6 +53,13 @@ export class DashboardComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
+    this.tripservice.getDestionationVisitCount().subscribe(
+      data => {
+        console.log('data',data);
+        this.listoftrips = data;
+        
+      }
+    );
   }
 
 

@@ -22,11 +22,6 @@ export class TripManagementComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
-        /*
-        for(var t of this.listoftrips){
-          this.imageSource=this.imagebyid(t.idTrip);
-        }
-        */
         
       }
     );
