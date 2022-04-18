@@ -20,9 +20,7 @@
         display: inline;
     } 
 
-    HTML
-TS
-CSS
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -42,6 +40,15 @@ CSS
 .mat-table {
   overflow: auto;
   max-height: 500px;
+}
+#ziedpag {
+  color: blanchedalmond;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 </style>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
@@ -126,7 +133,7 @@ CSS
                   <!-- Color Column -->
                   <ng-container matColumnDef="entrepreneur">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
-                    <mat-cell *matCellDef="let row" > {{row.user.email}} </mat-cell>
+                    <mat-cell *matCellDef="let row" style="font-size: x-small;"> {{row.user.email}} </mat-cell>
                   </ng-container>
                    <!-- Color Column -->
                    <ng-container matColumnDef="object">
@@ -134,14 +141,17 @@ CSS
                     <mat-cell *matCellDef="let row" > {{row.object}} </mat-cell>
                   </ng-container>
                   <!-- Color Column -->
-                  <ng-container matColumnDef="option">
+                  <ng-container matColumnDef="option" >
                     <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
-                    <mat-cell *matCellDef="let row" >
-                      <div>
-                        <a class="dropdown-item" [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</a>
-                        <a class="dropdown-item" (click)="supprimer(row)">supprimer</a>
-                        <a class="dropdown-item" (click)="get(row)">afficher</a>
-                      </div>
+                    <mat-cell *matCellDef="let row" class="text-right">
+                      
+                        <div >
+                          <button class="dropdown-item"  id="ziedpag" style="background-color: orange;"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
+                          <button class="dropdown-item"  id="ziedpag" style="background-color: red;" (click)="supprimer(row)">supprimer</button><br>
+                          <button class="dropdown-item" id="ziedpag" style="background-color: blue" (click)="get(row)">afficher</button>
+                        </div>
+                    
+                      
                       
                      </mat-cell>
                   </ng-container>
