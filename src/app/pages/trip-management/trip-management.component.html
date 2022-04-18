@@ -122,6 +122,7 @@
         <div class="card shadow">
           <button id="ajouter" routerLink="/trip-management/add">ajouter</button>
           <button id="ajouter" routerLink="/trip-management/search">search</button>
+          <button id="ajouter" routerLink="/trip-management/acceuil">acceuil</button>
           <div class="card-header border-0">
             <h3 class="mb-0">Trip List</h3>
           </div>
@@ -140,12 +141,11 @@
               <tbody>
                 <tr *ngFor="let t of listoftrips">
                   <th scope="row" >
-                    <div class="media align-items-center" class="zied"   >
-                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3"*ngFor="let f of t.files" ><!--
+                    <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
+                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3" ><!--
                           <img alt="Image placeholder" [src]="imagebyid(f)" >
                         <img   alt="Image placeholder" [src]="imagebyid(f)" class="zied-top" >
                       -->
-                      
                         <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
                         <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
                       </a>

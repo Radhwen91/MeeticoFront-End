@@ -15,6 +15,7 @@ import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.
 import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
 import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
 
+
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
@@ -29,5 +30,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'trip-management/add',           component: AjouterComponent },
     { path: 'trip-management/modifier/:id',           component: ModifierComponent },
-    { path: 'trip-management/search',           component: AlgorithmedematchingComponent }
+    { path: 'trip-management/search',           component: AlgorithmedematchingComponent },
+   
 ];

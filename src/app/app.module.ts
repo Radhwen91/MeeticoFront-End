@@ -22,6 +22,7 @@ import { AlgorithmedematchingComponent } from './pages/trip-management/algorithm
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
@@ -24,22 +24,33 @@ export class AjouterComponent implements OnInit {
   fileInfos: Observable<any>;
   file: FileDB;
   id:number;
-  constructor(private tripservice:TripService,private router:Router) { }
+  constructor(private tripservice:TripService,private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.initForm()
     this.listfile=[];
     
   }
-  initForm() {
+  initForm() {/*
     this.tripForm = new FormGroup({
-        destination: new FormControl(),
-        startDate: new FormControl(),
-        endDate: new FormControl(),
-        object: new FormControl(),
-        file: new FormControl(),
-    })
+        destination: new FormControl('',[Validators.required,Validators.minLength(3)]),
+        startDate: new FormControl('',[Validators.required]),
+        endDate: new FormControl('',[Validators.required]),
+        object: new FormControl('',[Validators.required,Validators.maxLength(40)]),
+    })*/
+    this.tripForm = this.formBuilder.group({
+      destination: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      object: ['', [Validators.required, ,Validators.maxLength(40)]],
+  
+  });
+  this.tripForm.valueChanges.subscribe(
+    data=>{console.log(this.tripForm)}
+  )
 }
+
+//get f() { return this.tripForm.; }
 ajouter(){
 console.log(this.tripForm.value);
 this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
@@ -55,7 +66,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
      
     );
     }
-  
+    this.router.navigate(["/trip-management"])
     
   }
   
