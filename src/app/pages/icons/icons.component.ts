@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss']
 })
-export class IconsComponent implements OnInit {
 
-  public copy: string;
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class IconsComponent {
+  copy: string;
 }

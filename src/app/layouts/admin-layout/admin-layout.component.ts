@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.scss']
 })
-export class AdminLayoutComponent {
-  constructor() { }
-}
+
+export class AdminLayoutComponent { }

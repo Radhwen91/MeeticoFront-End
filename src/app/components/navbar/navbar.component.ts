@@ -1,8 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/_services/token.service';
+import { ROUTES } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,27 +11,27 @@ import { TokenService } from 'src/app/_services/token.service';
 })
 
 export class NavbarComponent implements OnInit {
-  listTitles: any[];
   location: Location;
-  username: any;
-  picture: any;
-  constructor(location: Location, private element: ElementRef, private router: Router, private tokenService: TokenService) {
+  titles: any[];
+  picture: string;
+  username: string;
+  constructor(location: Location, private tokenService: TokenService, private router: Router) {
     this.location = location;
   }
-  ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.username = this.tokenService.getUser().username.charAt(0).toUpperCase() + this.tokenService.getUser().username.slice(1);
+  ngOnInit(): void {
+    this.titles = ROUTES.filter(title => title);
     this.picture = this.tokenService.getUser().picturePath;
+    this.username = this.tokenService.getUser().username.charAt(0).toUpperCase() + this.tokenService.getUser().username.slice(1);
   }
-  getTitle() {
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if(titlee.charAt(0) === '#'){
-        titlee = titlee.slice(1);
+  getTitle(): string {
+    var title = this.location.prepareExternalUrl(this.location.path());
+    if (title.charAt(0) === '#') {
+      title = title.slice(1);
     }
-    for(var item = 0; item < this.listTitles.length; item++){
-        if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
-        }
+    for (var item = 0; item < this.titles.length; item++) {
+      if (this.titles[item].path === title) {
+        return this.titles[item].title;
+      }
     }
     return 'Dashboard';
   }

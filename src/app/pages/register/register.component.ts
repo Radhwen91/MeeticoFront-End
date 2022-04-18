@@ -1,27 +1,28 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { TokenService } from 'src/app/_services/token.service';
-import { UserService } from 'src/app/_services/user.service';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { User } from "src/app/_models/user";
+import { UserService } from "src/app/_services/user.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent {
-  user: any = {
-    firstName: null,
-    lastName: null,
-    gender: null,
+  user: Partial<User> = {
     email: null,
+    firstName: null,
+    gender: null,
+    lastName: null,
+    password: null,
     phoneNumber: null,
-    username: null,
-    password: null
+    username: null
   };
   constructor(private userService: UserService, private router: Router) { }
-  onSubmit() {
+  ngSubmit(): void {
     this.userService.registerEntrepreneur(this.user).subscribe(
-      data => {
+      user => {
         this.router.navigate(['login']);
       }
     );

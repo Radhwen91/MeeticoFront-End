@@ -52,7 +52,6 @@
                 },
                 "fonts": true
               },
-              "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
@@ -71,15 +70,7 @@
               "sourceMap": true,
               "namedChunks": true,
               "buildOptimizer": false,
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": true
-                },
-                "fonts": true
-              },
-              "outputHashing": "all"
+              "optimization": false
             }
           }
         },

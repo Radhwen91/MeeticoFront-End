@@ -9,7 +9,6 @@
     "polyfills.ts"
   ],
   "include": [
-    "**/*.ts",
     "**/*.module.ts"
   ],
   "exclude": [

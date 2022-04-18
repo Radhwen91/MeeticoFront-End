@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 declare const google: any;
 
 @Component({
@@ -6,11 +7,11 @@ declare const google: any;
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.scss']
 })
+
 export class MapsComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
+
     let map = document.getElementById('map-canvas');
     let lat = map.getAttribute('data-lat');
     let lng = map.getAttribute('data-lng');

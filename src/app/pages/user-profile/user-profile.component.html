@@ -12,18 +12,6 @@
           <span>Select Image</span>
           <input #imageInput type="file" accept="image/*" (change)="uploadImage($event)">
         </label>
-        <div *ngIf="image" class="progress">
-          <div
-            class="progress-bar progress-bar-info progress-bar-striped"
-            role="progressbar"
-            attr.aria-valuenow="{{ progress }}"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            [ngStyle]="{ width: progress + '%' }"
-          >
-            {{ progress }}%
-          </div>
-        </div>
       </div>
     </div>
   </div>

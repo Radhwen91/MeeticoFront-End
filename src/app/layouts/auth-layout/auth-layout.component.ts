@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-auth-layout',
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 
 export class AuthLayoutComponent implements OnInit, OnDestroy {
-  test: Date = new Date();
+  date = new Date();
   isCollapsed = true;
   constructor(private router: Router) { }
   ngOnInit() {

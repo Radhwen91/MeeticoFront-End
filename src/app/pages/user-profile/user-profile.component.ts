@@ -1,4 +1,3 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/_services/token.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -8,18 +7,20 @@ import { UserService } from 'src/app/_services/user.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+
 export class UserProfileComponent implements OnInit {
-  focus: any;
-  userId: any;
-  picture: any;
-  image: File;
+  focus: boolean;
+  userId: number;
+  picture: string;
   constructor(private tokenService: TokenService, private userService: UserService) { }
   ngOnInit() {
     this.userId = this.tokenService.getUser().userId;
   }
   uploadImage(event) {
-    this.image = event.target.files.item(0);
-    this.userService.assignPictureToUser(this.userId, this.image).subscribe(
+    const formData = new FormData();
+    this.picture = event.target.files.item(0);
+    formData.append('file', this.picture);
+    this.userService.assignPictureToUser(this.userId, formData).subscribe(
       user => {
         this.tokenService.saveUser(user);
         window.location.reload();

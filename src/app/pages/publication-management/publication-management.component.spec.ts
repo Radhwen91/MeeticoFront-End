@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PublicationManagementComponent } from './publication-management.component';
 
 describe('PublicationManagementComponent', () => {

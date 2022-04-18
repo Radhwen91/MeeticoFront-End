@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
-import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-management',
@@ -9,25 +9,19 @@ import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-boots
 })
 
 export class UserManagementComponent implements OnInit {
-  @Input() name;
-  focus: any;
-  users: any[];
-  currentUser: any;
+  users: User[];
+  currentUser: User;
+  focus: boolean;
   input: any;
-
-  constructor(private userService: UserService, config: NgbModalConfig, private modalService: NgbModal) {
-    config.backdrop = 'static';
-    config.keyboard = false;
-  }
-  
+  constructor(private userService: UserService) { }
   ngOnInit() {
     this.userService.retrieveAllUsers().subscribe(
-      data => {
-        this.users = data;
+      users => {
+        this.users = users;
       }
     );
   }
-  setActiveUser(user: any) {
+  setActiveUser(user: User) {
     this.currentUser = user;
   }
   removeUser() {
@@ -35,15 +29,10 @@ export class UserManagementComponent implements OnInit {
     window.location.reload();
   }
   searchForUsers(event) {
-    console.log(event);
     this.userService.searchForUsers(event.target.value).subscribe(
-      data => {
-        this.users = data;
+      users => {
+        this.users = users;
       }
     );
-  }
-  userDetails(content) {
-    const modalRef = this.modalService.open(content);
-    modalRef.componentInstance.name = 'World';
   }
 }
