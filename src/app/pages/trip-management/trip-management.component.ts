@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
@@ -14,44 +14,49 @@ import { MatChipsModule } from '@angular/material/chips';
   templateUrl: './trip-management.component.html',
   styleUrls: ['./trip-management.component.scss']
 })
-export class TripManagementComponent implements OnInit {
+export class TripManagementComponent implements OnInit, AfterViewInit {
 
   listoftrips:Trip[];
   fileById:FileDB[];
   imageSource:String;
   counters = [100, 200, 10];
   meilleurDestination:any;
-  displayedColumns = ['id', 'name', 'progress', 'color'];
+  displayedColumns = ['destination', 'enddate', 'startdate', 'entrepreneur','object'];
   dataSource: MatTableDataSource<Trip>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private tripservice:TripService,private router:Router) { }
-
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
   ngOnInit(): void {
-    this.tripservice.getTrips().subscribe(
-      data => {
-        console.log('data',data);
-        this.listoftrips = data;
-        this.dataSource = new MatTableDataSource(this.listoftrips);
-        
-      }
-    );
+    
     this.tripservice.getmeiulleurdestination().subscribe(
       data=>{
         console.log(data)
         this.meilleurDestination=data
       }
-    )
+    );
+    this.tripservice.getTrips().subscribe(
+      data => {
+        console.log('data',data);
+        this.listoftrips = data;
+        this.dataSource = new MatTableDataSource(this.listoftrips);
+        console.log(this.listoftrips)
+        
+        
+        
+      }
+    );
+    
   }
   supprimer(trip :any){
     this.tripservice.deleteTrip(trip.idTrip).subscribe(()=>this.tripservice.getTrips().subscribe(

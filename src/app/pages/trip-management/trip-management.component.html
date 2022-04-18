@@ -19,7 +19,26 @@
   .zied:hover .zied-top {
         display: inline;
     } 
-   
+    .example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
 </style>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
@@ -47,50 +66,9 @@
       </div>
     </div>
   </div>
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-  </div>
   
-  <div class="example-container mat-elevation-z8">
-  
-    <mat-table [dataSource]="dataSource" matSort>
-  
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-      </ng-container>
-  
-      <!-- Progress Column -->
-      <ng-container matColumnDef="progress">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-      </ng-container>
-  
-      <!-- Color Column -->
-      <ng-container matColumnDef="color">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-        <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-      </ng-container>
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;">
-      </mat-row>
-    </mat-table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
-  <!-- Page content -->
-  <div class="container-fluid mt--7">
-    <!-- Table -->
+   <div class="container-fluid mt--7">
+    
     <div class="row">
       <div class="col">
         <div class="card shadow">
@@ -100,7 +78,64 @@
           <div class="card-header border-0">
             <h3 class="mb-0">Trip List</h3>
           </div>
+        </div>
+        <div>
           <div class="table-responsive">
+            <div class="example-header">
+              <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" style="border-color: black;">
+              </mat-form-field>
+            </div>
+            
+            <div class="example-container mat-elevation-z8">
+            
+              <mat-table [dataSource]="dataSource" matSort>
+            
+                <!-- ID Column -->
+                <ng-container matColumnDef="destination">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> destination </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.destination}} </mat-cell>
+                </ng-container>
+            
+                <!-- Progress Column -->
+                <ng-container matColumnDef="enddate">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> enddate </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.endDate}} </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="startdate">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> startdate </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.startDate}} </mat-cell>
+                </ng-container>
+            
+                <!-- Color Column -->
+                <ng-container matColumnDef="entrepreneur">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
+                  <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.user.email}} </mat-cell>
+                </ng-container>
+                 <!-- Color Column -->
+                 <ng-container matColumnDef="object">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> object </mat-header-cell>
+                  <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.object}} </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+              </mat-table>
+            
+              <mat-paginator #paginator
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 20]"
+                           [showFirstLastButtons]="true">
+            </mat-paginator>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+  <!--
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
@@ -116,10 +151,8 @@
                 <tr *ngFor="let t of listoftrips">
                   <th scope="row" >
                     <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
-                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3" ><!--
-                          <img alt="Image placeholder" [src]="imagebyid(f)" >
-                        <img   alt="Image placeholder" [src]="imagebyid(f)" class="zied-top" >
-                      -->
+                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
+                        
                         <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
                         <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
                       </a>
@@ -189,9 +222,5 @@
                 </li>
               </ul>
             </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div>-->
   

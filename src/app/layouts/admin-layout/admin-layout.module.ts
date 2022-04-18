@@ -15,33 +15,30 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ViewChild} from '@angular/core';;
 import {MatSort, SortDirection} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource,MatTableModule } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-
-
-
-
 
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
+    
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatPaginator,
+    MatTableModule,
     MatPaginatorModule,
-    ViewChild,
-    MatSort,
-    MatTableDataSource,
-    MatChipsModule,
+    MatFormFieldModule,
     MatInputModule
+ 
+
   ],
   declarations: [
     DashboardComponent,
