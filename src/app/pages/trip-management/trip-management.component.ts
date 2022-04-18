@@ -21,15 +21,15 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
   imageSource:String;
   counters = [100, 200, 10];
   meilleurDestination:any;
-  displayedColumns = ['destination', 'enddate', 'startdate', 'entrepreneur','object'];
+  displayedColumns = ['destination', 'enddate', 'startdate', 'entrepreneur','object','option'];
   dataSource: MatTableDataSource<Trip>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private tripservice:TripService,private router:Router) { }
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
+   
   }
 
   applyFilter(filterValue: string) {
@@ -50,18 +50,23 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
         console.log('data',data);
         this.listoftrips = data;
         this.dataSource = new MatTableDataSource(this.listoftrips);
-        console.log(this.listoftrips)
+        this.dataSource._renderChangesSubscription;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        
         
         
         
       }
     );
-    
+    console.log(this.listoftrips)
+    console.log(this.dataSource)
   }
   supprimer(trip :any){
     this.tripservice.deleteTrip(trip.idTrip).subscribe(()=>this.tripservice.getTrips().subscribe(
       data=>{
         this.listoftrips=data
+        this.dataSource = new MatTableDataSource(this.listoftrips);
       }
     )
     );

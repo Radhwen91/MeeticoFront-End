@@ -19,7 +19,11 @@
   .zied:hover .zied-top {
         display: inline;
     } 
-    .example-container {
+
+    HTML
+TS
+CSS
+.example-container {
   display: flex;
   flex-direction: column;
   min-width: 300px;
@@ -78,149 +82,149 @@
           <div class="card-header border-0">
             <h3 class="mb-0">Trip List</h3>
           </div>
+          <div>
+            <div class="table-responsive">
+              <div class="example-header">
+                <mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
+                </mat-form-field>
+              </div>
+              
+              <div class="example-container mat-elevation-z8">
+              
+                <mat-table [dataSource]="dataSource" matSort >
+              
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="destination">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> destination </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <div class="media align-items-center" class="zied"  *ngFor="let f of row.files" >
+                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
+                          
+                          <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
+                          <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{row.destination}}</span>
+                        </div>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+              
+                  <!-- Progress Column -->
+                  <ng-container matColumnDef="enddate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> enddate </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.endDate}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="startdate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> startdate </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.startDate}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- Color Column -->
+                  <ng-container matColumnDef="entrepreneur">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.user.email}} </mat-cell>
+                  </ng-container>
+                   <!-- Color Column -->
+                   <ng-container matColumnDef="object">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> object </mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.object}} </mat-cell>
+                  </ng-container>
+                  <!-- Color Column -->
+                  <ng-container matColumnDef="option">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
+                    <mat-cell *matCellDef="let row" >
+                      <div>
+                        <a class="dropdown-item" [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</a>
+                        <a class="dropdown-item" (click)="supprimer(row)">supprimer</a>
+                        <a class="dropdown-item" (click)="get(row)">afficher</a>
+                      </div>
+                      
+                     </mat-cell>
+                  </ng-container>
+              
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;">
+                  </mat-row>
+                </mat-table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                <!--
+                    <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Entrepreneur</th>
+                    <th scope="col">Object</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                
+                    <tbody>
+                  <tr *ngFor="let t of listoftrips">
+                    <th scope="row" >
+                      <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
+                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
+                          
+                          <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
+                          <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{t.destination}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      {{t.startDate}}
+                    </td>
+                    <td>
+                       {{t.endDate}}
+                     
+                    </td>
+                    <td>
+                      
+                        <div>
+                        <a >
+                          {{t.user.email}}
+                        </a>
+                      </div>
+                      
+                      
+                      
+                    </td>
+                    <td>
+                      {{t.object}}
+                    </td>
+                    <td class="text-right">
+                      <div ngbDropdown placement="bottom-right">
+                        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" [routerLink]="['/trip-management/modifier', t.idTrip ]">modifier</a>
+                          <a class="dropdown-item" (click)="supprimer(t)">supprimer</a>
+                          <a class="dropdown-item" (click)="get(t)">afficher</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                
+                
+              </table>
+                -->
+                    
+                
+              
+          </div>
         </div>
-        <div>
-          <div class="table-responsive">
-            <div class="example-header">
-              <mat-form-field>
-                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" style="border-color: black;">
-              </mat-form-field>
-            </div>
-            
-            <div class="example-container mat-elevation-z8">
-            
-              <mat-table [dataSource]="dataSource" matSort>
-            
-                <!-- ID Column -->
-                <ng-container matColumnDef="destination">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> destination </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.destination}} </mat-cell>
-                </ng-container>
-            
-                <!-- Progress Column -->
-                <ng-container matColumnDef="enddate">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> enddate </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.endDate}} </mat-cell>
-                </ng-container>
-            
-                <!-- Name Column -->
-                <ng-container matColumnDef="startdate">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> startdate </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.startDate}} </mat-cell>
-                </ng-container>
-            
-                <!-- Color Column -->
-                <ng-container matColumnDef="entrepreneur">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
-                  <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.user.email}} </mat-cell>
-                </ng-container>
-                 <!-- Color Column -->
-                 <ng-container matColumnDef="object">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> object </mat-header-cell>
-                  <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.object}} </mat-cell>
-                </ng-container>
-            
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;">
-                </mat-row>
-              </mat-table>
-            
-              <mat-paginator #paginator
-                           [pageSize]="10"
-                           [pageSizeOptions]="[5, 10, 20]"
-                           [showFirstLastButtons]="true">
-            </mat-paginator>
-        </div>
-        </div>
+        
+      
       </div>
     </div>
   </div>   
-  <!--
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Destination</th>
-                  <th scope="col">Start Date</th>
-                  <th scope="col">End Date</th>
-                  <th scope="col">Entrepreneur</th>
-                  <th scope="col">Object</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let t of listoftrips">
-                  <th scope="row" >
-                    <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
-                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
-                        
-                        <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
-                        <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{t.destination}}</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>
-                    {{t.startDate}}
-                  </td>
-                  <td>
-                     {{t.endDate}}
-                   
-                  </td>
-                  <td>
-                    
-                      <div>
-                      <a >
-                        {{t.user.email}}
-                      </a>
-                    </div>
-                    
-                    
-                    
-                  </td>
-                  <td>
-                    {{t.object}}
-                  </td>
-                  <td class="text-right">
-                    <div ngbDropdown placement="bottom-right">
-                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" [routerLink]="['/trip-management/modifier', t.idTrip ]">modifier</a>
-                        <a class="dropdown-item" (click)="supprimer(t)">supprimer</a>
-                        <a class="dropdown-item" (click)="get(t)">afficher</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0)">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>-->
   
