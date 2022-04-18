@@ -15,6 +15,7 @@ export class TripManagementComponent implements OnInit {
   fileById:FileDB[];
   imageSource:String;
   counters = [100, 200, 10];
+  meilleurDestination:any;
   constructor(private tripservice:TripService,private router:Router) { }
 
   ngOnInit(): void {
@@ -25,6 +26,12 @@ export class TripManagementComponent implements OnInit {
         
       }
     );
+    this.tripservice.getmeiulleurdestination().subscribe(
+      data=>{
+        console.log(data)
+        this.meilleurDestination=data
+      }
+    )
   }
   supprimer(trip :any){
     this.tripservice.deleteTrip(trip.idTrip).subscribe(()=>this.tripservice.getTrips().subscribe(
