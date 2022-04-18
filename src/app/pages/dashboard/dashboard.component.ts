@@ -24,10 +24,11 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
   listoftrips:DestionationVisitorsCount[];
+  meilleurDestination:any;
   constructor(private tripservice:TripService) { }
 
   ngOnInit() {
-
+  
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -57,10 +58,18 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
-        
+       
       }
     );
+     this.tripservice.getmeiulleurdestination().subscribe(
+       data=>{
+         console.log(data)
+         this.meilleurDestination=data
+       }
+     )
+      
   }
+
 
 
   public updateOptions() {
