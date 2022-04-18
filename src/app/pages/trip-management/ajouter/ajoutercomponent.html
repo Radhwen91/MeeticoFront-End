@@ -4,22 +4,22 @@
         <label for="example-text-input" class="col-2 col-form-label">Destination</label>
         <div class="col-10">
           <input class="form-control" type="text"   formControlName="destination">
-         <div *ngIf="  tripForm.get('destination').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+         <div *ngIf="  tripForm.get('destination').hasError('required')" style="color: red;"><a style="font-weight: bold;">.</a> required</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="example-search-input" class="col-2 col-form-label">object</label>
         <div class="col-10">
           <input class="form-control" type="search" formControlName="object">
-          <div *ngIf="  tripForm.get('object').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
-          <div *ngIf="  tripForm.get('object').hasError('maxlength')" style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>object must at maiximum 40 character</div>
+          <div *ngIf="  tripForm.get('object').hasError('required')" style="color: red;"><a style="font-weight: bold;">.</a> required</div>
+          <div *ngIf="  tripForm.get('object').hasError('maxlength')" style="color: red;"> <a style="font-weight: bold;">.</a>object must at maiximum 40 character</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
         <div class="col-10">
           <input class="form-control" type="date"   formControlName="startDate">
-          <div *ngIf="  tripForm.get('startDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+          <div *ngIf="  tripForm.get('startDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">.</a> required</div>
           
         </div>
       </div>
@@ -27,7 +27,7 @@
         <label for="example-date-input" class="col-2 col-form-label">End Date</label>
         <div class="col-10">
           <input class="form-control" type="date" value="2011-08-19" formControlName="endDate">
-          <div *ngIf="  tripForm.get('endDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+          <div *ngIf="  tripForm.get('endDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">.</a> required</div>
         </div>
       </div>
       <div class="form-group row">
@@ -97,5 +97,5 @@
       
       </div>
       </form>
-      <button type="submit" class="btn btn-primary" [disabled]="tripForm.invalid" (click)="ajouter()">submit</button>
+      <button type="submit" class="btn btn-primary" (click)="ajouter()">submit</button>
 </div>
