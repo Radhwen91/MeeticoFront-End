@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Picture } from '../models/picture';
@@ -8,22 +8,37 @@ import { Picture } from '../models/picture';
 })
 export class ImagenServiceService {
 
-  imagenURL = 'http://localhost:8081/cloudinary';
+  imagenURL = "http://localhost:8081/cloudinary/upload";
+  getfiledetail="http://localhost:8081/cloudinary/getPicture"
 
   constructor(private httpClient: HttpClient) { }
 
    
 
-  public upload(imagen: File): Observable<any> {
+  public  upload(imagen: File): Observable<any> {
 
     
     const formData = new FormData();
     formData.append('multipartFile', imagen);
   
-    return this.httpClient.post<any>(this.imagenURL + '/upload', formData);
+    return this.httpClient.post<any>(this.imagenURL , formData);
   }
 
-  public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.imagenURL + `/delete/${id}`);
+
+  upload2(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.imagenURL}`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+   
+    return this.httpClient.request(req);   
   }
+
+  getFilesdetail(id:number): Observable<Picture> {
+    return this.httpClient.get<Picture>(`${this.getfiledetail}/${id}`);
+
+  
+}
 }
