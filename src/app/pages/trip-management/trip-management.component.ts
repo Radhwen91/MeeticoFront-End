@@ -3,7 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
-
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
 @Component({
   selector: 'app-trip-management',
   templateUrl: './trip-management.component.html',
@@ -16,13 +21,28 @@ export class TripManagementComponent implements OnInit {
   imageSource:String;
   counters = [100, 200, 10];
   meilleurDestination:any;
+  displayedColumns = ['id', 'name', 'progress', 'color'];
+  dataSource: MatTableDataSource<Trip>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   constructor(private tripservice:TripService,private router:Router) { }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
   ngOnInit(): void {
     this.tripservice.getTrips().subscribe(
       data => {
         console.log('data',data);
         this.listoftrips = data;
+        this.dataSource = new MatTableDataSource(this.listoftrips);
         
       }
     );

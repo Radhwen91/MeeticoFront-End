@@ -12,6 +12,19 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
+
+
+
+
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -21,7 +34,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MatPaginator,
+    MatPaginatorModule,
+    ViewChild,
+    MatSort,
+    MatTableDataSource,
+    MatChipsModule,
+    MatInputModule
   ],
   declarations: [
     DashboardComponent,

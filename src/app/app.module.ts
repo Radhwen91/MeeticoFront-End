@@ -18,6 +18,14 @@ import { ModifierComponent } from './pages/trip-management/modifier/modifier.com
 import { UploadFilesComponent } from './pages/trip-management/upload-files/upload-files.component';
 import { AlgorithmedematchingComponent } from './pages/trip-management/algorithmedematching/algorithmedematching.component';
 
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 
@@ -33,6 +41,15 @@ import { AlgorithmedematchingComponent } from './pages/trip-management/algorithm
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatPaginator,
+    MatPaginatorModule,
+    ViewChild,
+    MatSort,
+    MatTableDataSource,
+    MatChipsModule,
+    MatInputModule,
+    
+    
   ],
   declarations: [
     AppComponent,
@@ -42,7 +59,8 @@ import { AlgorithmedematchingComponent } from './pages/trip-management/algorithm
     AjouterComponent,
     ModifierComponent,
     UploadFilesComponent,
-    AlgorithmedematchingComponent
+    AlgorithmedematchingComponent,
+    
 
   
   ],
