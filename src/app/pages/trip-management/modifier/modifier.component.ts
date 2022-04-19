@@ -5,6 +5,7 @@ import { FileDB } from 'src/app/models/fileDB';
 import { Trip } from 'src/app/models/trip';
 import { User } from 'src/app/models/user';
 import { TripService } from 'src/app/services/tripservices/trip.service';
+import { FormBuilder,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -17,7 +18,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   public tripForm: FormGroup;
   listofusers:User[];
   
-  constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router) { }
+  constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
   ngAfterContentInit(): void {
     this.get(this.router.snapshot.params.id)
   }
@@ -34,11 +35,15 @@ export class ModifierComponent implements OnInit,AfterContentInit {
     
   }
   initForm(data) {
-    this.tripForm = new FormGroup({
+    this.tripForm = this.formBuilder.group({/*
         destination: new FormControl(data?.destination),
-        startDate: new FormControl(data?.startDate),
+        startDate: new FormControl(data?.startDate,
         endDate: new FormControl(data?.endDate),
-        object: new FormControl(data?.object),
+        object: new FormControl(data?.object),*/
+        destination: [data?.destination, Validators.required],
+      startDate: [data?.startDate, Validators.required],
+      endDate: [data?.endDate, Validators.required],
+      object: [data?.object, [Validators.required, ,Validators.maxLength(50)]],
     })
 }
 get(id:number){

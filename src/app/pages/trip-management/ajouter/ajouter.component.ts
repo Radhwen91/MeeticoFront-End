@@ -42,7 +42,7 @@ export class AjouterComponent implements OnInit {
       destination: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      object: ['', [Validators.required, ,Validators.maxLength(40)]],
+      object: ['', [Validators.required, ,Validators.maxLength(50)]],
   
   });
   this.tripForm.valueChanges.subscribe(
@@ -61,7 +61,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
       console.log('file',f);
       this.tripservice.affecterfileauvoyage(data.idTrip,f.id,f).subscribe(
         res=>{
-          this.router.navigate(["/trip-management"])
+         // this.router.navigate(["/trip-management"])
         }
      
     );

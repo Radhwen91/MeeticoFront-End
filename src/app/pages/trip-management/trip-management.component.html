@@ -24,7 +24,8 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 500px;
+  
 }
 
 .example-header {
@@ -39,7 +40,7 @@
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
+  max-height: 700px;
 }
 #ziedpag {
   color: blanchedalmond;
@@ -49,6 +50,12 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  
+}
+.marrowzied {
+        height: 200px !important;
+        overflow: auto;
+        flex-direction: column;
 }
 </style>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
@@ -99,21 +106,22 @@
               
               <div class="example-container mat-elevation-z8">
               
-                <mat-table [dataSource]="dataSource" matSort >
-              
+                <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+                  
                   <!-- ID Column -->
                   <ng-container matColumnDef="destination">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> destination </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header > destination </mat-header-cell>
+                    <mat-cell *matCellDef="let row"  class="marrowzied">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{row.destination}}</span>
+                      </div>
                       <div class="media align-items-center" class="zied"  *ngFor="let f of row.files" >
                         <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
                           
                           <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
                           <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
                         </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">{{row.destination}}</span>
-                        </div>
+                        
                       </div>
                     </mat-cell>
                   </ng-container>
@@ -121,30 +129,29 @@
                   <!-- Progress Column -->
                   <ng-container matColumnDef="enddate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> enddate </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.endDate}} </mat-cell>
+                    <mat-cell *matCellDef="let row" class="marrowzied"> {{row.endDate}} </mat-cell>
                   </ng-container>
               
                   <!-- Name Column -->
                   <ng-container matColumnDef="startdate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> startdate </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.startDate}} </mat-cell>
+                    <mat-cell *matCellDef="let row" class="marrowzied"> {{row.startDate}} </mat-cell>
                   </ng-container>
               
                   <!-- Color Column -->
                   <ng-container matColumnDef="entrepreneur">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
-                    <mat-cell *matCellDef="let row" style="font-size: x-small;"> {{row.user.email}} </mat-cell>
+                    <mat-cell *matCellDef="let row" style="overflow: scroll;" class="marrowzied"> {{row.user.email}} </mat-cell>
                   </ng-container>
                    <!-- Color Column -->
                    <ng-container matColumnDef="object">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> object </mat-header-cell>
-                    <mat-cell *matCellDef="let row" > {{row.object}} </mat-cell>
+                    <mat-cell *matCellDef="let row" class="marrowzied" > {{row.object}} </mat-cell>
                   </ng-container>
                   <!-- Color Column -->
                   <ng-container matColumnDef="option" >
                     <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="text-right">
-                      
+                    <mat-cell *matCellDef="let row" class="text-right " class="marrowzied">
                         <div >
                           <button class="dropdown-item"  id="ziedpag" style="background-color: orange;"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
                           <button class="dropdown-item"  id="ziedpag" style="background-color: red;" (click)="supprimer(row)">supprimer</button><br>
@@ -161,8 +168,8 @@
                   </mat-row>
                 </mat-table>
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                <!--
-                    <table class="table align-items-center table-flush">
+               <!--
+                <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Destination</th>
@@ -177,15 +184,16 @@
                     <tbody>
                   <tr *ngFor="let t of listoftrips">
                     <th scope="row" >
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{t.destination}}</span>
+                      </div>
                       <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
                         <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
                           
                           <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
                           <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
                         </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">{{t.destination}}</span>
-                        </div>
+                       
                       </div>
                     </th>
                     <td>
@@ -226,7 +234,9 @@
                 
                 
               </table>
-                -->
+                
+               -->
+                    
                     
                 
               

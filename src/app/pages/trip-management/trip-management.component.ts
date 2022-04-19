@@ -57,6 +57,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
         
         
         
+        
       }
     );
     console.log(this.listoftrips)
