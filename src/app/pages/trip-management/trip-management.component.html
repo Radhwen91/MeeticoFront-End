@@ -7,12 +7,14 @@
         width: 130px;
         height: 195px;
         position: relative;
+        top: 50px;
+        right: 0px;
         display: inline-block;
     }
   .zied .zied-top {
         display: none;
         position: absolute;
-        top: 0;
+        top: 0px;
         left: 0;
         z-index: 99;
     }
@@ -44,19 +46,27 @@
 }
 #ziedpag {
   color: blanchedalmond;
-  border: none;
-  padding: 15px 32px;
+  border: #FAFAD2;;
+  height: 40px;
+  width: 110px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-radius: 20%;
   font-size: 16px;
+  margin: 10px 50px 20px;
   
 }
-.marrowzied {
-        height: 200px !important;
+.matrowzied {
         overflow: auto;
-        flex-direction: column;
+        
+        
+        
 }
+.contenue{
+ bottom:12px;
+}
+
 </style>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
@@ -107,15 +117,14 @@
               <div class="example-container mat-elevation-z8">
               
                 <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
-                  
-                  <!-- ID Column -->
-                  <ng-container matColumnDef="destination">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header > destination </mat-header-cell>
-                    <mat-cell *matCellDef="let row"  class="marrowzied">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{row.destination}}</span>
-                      </div>
-                      <div class="media align-items-center" class="zied"  *ngFor="let f of row.files" >
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="image">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> image </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="matrowzied"> 
+                      <ng-container  *ngFor="let f of row.files" >
+                        
+
+                      <div   class="media align-items-center" class="zied" >
                         <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
                           
                           <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
@@ -123,39 +132,53 @@
                         </a>
                         
                       </div>
+                      
+                    </ng-container>
+                  </mat-cell>
+                  </ng-container>
+                  
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="destination">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header > destination </mat-header-cell>
+                    <mat-cell *matCellDef="let row" >
+                      <div class="matrowzied">
+                        {{row.destination}}
+                      </div>
+                      
+                      
                     </mat-cell>
                   </ng-container>
               
                   <!-- Progress Column -->
                   <ng-container matColumnDef="enddate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> enddate </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="marrowzied"> {{row.endDate}} </mat-cell>
+                    <mat-cell *matCellDef="let row"  > <div > {{row.endDate}}  </div></mat-cell>
                   </ng-container>
               
                   <!-- Name Column -->
                   <ng-container matColumnDef="startdate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> startdate </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="marrowzied"> {{row.startDate}} </mat-cell>
+                    <mat-cell *matCellDef="let row"  > <div >{{row.startDate}} </div></mat-cell>
                   </ng-container>
               
                   <!-- Color Column -->
                   <ng-container matColumnDef="entrepreneur">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
-                    <mat-cell *matCellDef="let row" style="overflow: scroll;" class="marrowzied"> {{row.user.email}} </mat-cell>
+                    <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.user.firstName}} {{row.user.lastName}} </div> </mat-cell>
                   </ng-container>
                    <!-- Color Column -->
                    <ng-container matColumnDef="object">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> object </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="marrowzied" > {{row.object}} </mat-cell>
+                    <mat-cell *matCellDef="let row"  > <div class="matrowzied">{{row.object}}</div> </mat-cell>
                   </ng-container>
                   <!-- Color Column -->
                   <ng-container matColumnDef="option" >
                     <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="text-right " class="marrowzied">
+                    <mat-cell *matCellDef="let row" class="text-right " >
                         <div >
-                          <button class="dropdown-item"  id="ziedpag" style="background-color: orange;"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
-                          <button class="dropdown-item"  id="ziedpag" style="background-color: red;" (click)="supprimer(row)">supprimer</button><br>
-                          <button class="dropdown-item" id="ziedpag" style="background-color: blue" (click)="get(row)">afficher</button>
+                          <button  class="dropdown-item"  id="ziedpag" style="background-color:#DC143C"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
+                          <button  class="dropdown-item"  id="ziedpag"  style="background-color: #FA8072;" (click)="supprimer(row)">supprimer</button><br>
+                          <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="get(row)">afficher</button>
                         </div>
                     
                       

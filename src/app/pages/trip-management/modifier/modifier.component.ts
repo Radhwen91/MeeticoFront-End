@@ -6,6 +6,8 @@ import { Trip } from 'src/app/models/trip';
 import { User } from 'src/app/models/user';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 import { FormBuilder,Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -13,7 +15,15 @@ import { FormBuilder,Validators } from '@angular/forms';
   styleUrls: ['./modifier.component.scss']
 })
 export class ModifierComponent implements OnInit,AfterContentInit {
-
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+  fileInfos: Observable<any>;
+  listfile: FileDB[];
+  file: FileDB;
+  id:number;
+  idf:number[];
   trip:Trip;
   public tripForm: FormGroup;
   listofusers:User[];
@@ -29,6 +39,13 @@ export class ModifierComponent implements OnInit,AfterContentInit {
       data => {
         console.log('data',data);
         this.listofusers = data;
+      }
+    );
+    this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+      data => {
+        console.log('data',data);
+        this.listfile = data;
+        
       }
     );
   
@@ -61,9 +78,98 @@ modifier(){
 
 this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).subscribe(
   data=>{
-    this.route.navigate(["/trip-management"])
+    
+    this.progress = 0;
+    this.currentFile = this.selectedFiles.item(0);
+   this.tripservice.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.id=event.body;
+          
+          this.tripservice.getFilesdetail(this.id).subscribe(
+            data=>{
+              this.file=data;
+              console.log(this.id)
+              console.log('file',this.file)
+              console.log(this.router.snapshot.params.id)
+              //this.idf=[];
+              //this.idf.push(this.id);
+              this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
+  
+                ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+                  data=>{
+                    this.listfile=data
+                    this.route.navigate(["/trip-management"])
+                  }
+                )
+              )
+              
+              
+            }
+          );
+          //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+        
+        
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+    this.selectedFiles = undefined;
   }
 );
+this.route.navigate(["/trip-management"])
+}
+selectFile(event) {
+  this.selectedFiles = event.target.files;
+}
+upload() {
+  this.progress = 0;
+  this.currentFile = this.selectedFiles.item(0);
+ this.tripservice.upload(this.currentFile).subscribe(
+    event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        this.message = event.body.message;
+        this.id=event.body;
+        
+        this.tripservice.getFilesdetail(this.id).subscribe(
+          data=>{
+            this.file=data;
+            console.log(this.id)
+            console.log('file',this.file)
+            console.log(this.router.snapshot.params.id)
+            //this.idf=[];
+            //this.idf.push(this.id);
+            this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
+
+              ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+                data=>{
+                  this.listfile=data
+                }
+              )
+            )
+            
+            
+          }
+        );
+        //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+      
+      
+      }
+    },
+    err => {
+      this.progress = 0;
+      this.message = 'Could not upload the file!';
+      this.currentFile = undefined;
+    });
+  this.selectedFiles = undefined;
 }
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
@@ -80,6 +186,17 @@ desaffecter(user :any){
     }
   ));
   
+}
+supprimer(files :Number){
+  this.tripservice.deletefile(files).subscribe(
+    data=>{
+    this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
+      data=>{
+      this.listfile=data
+    }
+  )
+}
+);
 }
 
 

@@ -21,6 +21,7 @@ export class AjouterComponent implements OnInit {
   currentFile: File;
   progress = 0;
   message = '';
+  trip:Trip;
   fileInfos: Observable<any>;
   file: FileDB;
   id:number;
@@ -55,27 +56,46 @@ ajouter(){
 console.log(this.tripForm.value);
 this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   data=>{
-    console.log(this.listfile)
-    for(var f of this.listfile)
-    {
-      console.log('file',f);
-      this.tripservice.affecterfileauvoyage(data.idTrip,f.id,f).subscribe(
-        res=>{
-         this.router.navigate(["/trip-management"])
-        }
-     
-    );
-    }
-    this.router.navigate(["/trip-management"])
-    
-  }
-  
+    console.log(data)
+    this.trip=data;
+    this.progress = 0;
+  this.currentFile = this.selectedFiles.item(0);
+  this.tripservice.upload(this.currentFile).subscribe(
+    event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        this.message = event.body.message;
+        this.tripservice.getFilesdetail(event.body).subscribe(
+          res=>{
+            this.file=res;
+            console.log(this.trip)
+            console.log(res)
+            this.tripservice.affecterfileauvoyage(this.trip.idTrip,res.id,this.file).subscribe(
+              res=>{
+               // this.router.navigate(["/trip-management"])
+               this.router.navigate(["/trip-management"])
+              }
+           
+          );
+          }
+        );
+
+      }
+    },
+    err => {
+      this.progress = 0;
+      this.message = 'Could not upload the file!';
+      this.currentFile = undefined;
+    });
+  this.selectedFiles = undefined;
+ }
 );
 }
 selectFile(event) {
   this.selectedFiles = event.target.files;
 }
-upload() :FileDB[]{
+upload() :FileDB{
   this.progress = 0;
   this.currentFile = this.selectedFiles.item(0);
   this.tripservice.upload(this.currentFile).subscribe(
@@ -103,7 +123,7 @@ upload() :FileDB[]{
       this.currentFile = undefined;
     });
   this.selectedFiles = undefined;
-  return this.listfile;
+  return this.file;
 }
 
 supprimer(file :FileDB){

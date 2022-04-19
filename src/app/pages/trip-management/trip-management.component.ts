@@ -21,7 +21,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
   imageSource:String;
   counters = [100, 200, 10];
   meilleurDestination:any;
-  displayedColumns = ['destination', 'enddate', 'startdate', 'entrepreneur','object','option'];
+  displayedColumns = ['image','destination', 'enddate', 'startdate', 'entrepreneur','object','option'];
   dataSource: MatTableDataSource<Trip>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
