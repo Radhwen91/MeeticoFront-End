@@ -31,12 +31,16 @@ export class TripService {
   getfiledetail="http://localhost:8089/SpringMVC/File/filesdetail";
   deletefiles="http://localhost:8089/SpringMVC/File/delete-file";
   stat="http://localhost:8089/SpringMVC/Trip/get-DestionationVisitorsCount";
-  sattm="http://localhost:8089/SpringMVC/Trip/meilleur-destination"
+  sattm="http://localhost:8089/SpringMVC/Trip/meilleur-destination";
+  gettripbyfile="http://localhost:8089/SpringMVC/File/filebytrip"
   constructor(private http : HttpClient) { }
   
   getTrips() : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.tripsUrl);
     }
+    getTripbyFile(id:number) : Observable<Trip> {
+      return this.http.get<Trip>(`${this.gettripbyfile}/${id}`);
+      }
     getDestionationVisitCount() : Observable<DestionationVisitorsCount[]> {
       return this.http.get<DestionationVisitorsCount[]>(this.stat);
       }

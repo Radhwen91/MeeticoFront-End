@@ -2,20 +2,23 @@
 <style type="text/css">
   #ajouter { color: white;
               background-color: rgb(52, 114, 207);
-              border-radius: 30%; }  
+              border-radius: 30%; } 
+  #imageid{
+          top: 50px;
+              } 
   .zied {
         width: 130px;
-        height: 195px;
-        position: relative;
+        height: 195px;        
         top: 50px;
         right: 0px;
-        display: inline-block;
+
     }
   .zied .zied-top {
+        width: 400px;
+        height: 400px;
         display: none;
         position: absolute;
-        top: 0px;
-        left: 0;
+        left: 50%;
         z-index: 99;
     }
   .zied:hover .zied-top {
@@ -65,6 +68,14 @@
 }
 .contenue{
  bottom:12px;
+}
+#btnControl {
+    display: none;
+}
+
+#btnControl+ label > img {
+    width: 70px;
+    height: 74px;
 }
 
 </style>
@@ -120,16 +131,20 @@
                   <!-- Name Column -->
                   <ng-container matColumnDef="image">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> image </mat-header-cell>
-                    <mat-cell *matCellDef="let row" class="matrowzied"> 
+                    <mat-cell *matCellDef="let row" > 
                       <ng-container  *ngFor="let f of row.files" >
                         
 
-                      <div   class="media align-items-center" class="zied" >
-                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
+                      <div   class="matrowzied" >
+                        <!--
+                            <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
                           
-                          <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
-                          <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
+                          <img  alt="Image placeholder" [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}"  >
+                          
                         </a>
+                        -->
+                        <input type="checkbox" id="btnControl"/>
+                        <label class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" id="btnLeft" /></label>
                         
                       </div>
                       

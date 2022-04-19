@@ -78,7 +78,13 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
         this.router.navigate(["/trip-management"])
       }
     );
-  }/*
+  }
+  getimageurl(id:Number):String{
+    var url="http://localhost:8089/SpringMVC/File/files/"+id;
+    window.open(url, "height=300,width=400");
+      return url;
+  }
+  /*
   imagebyid(id:Number):String{
       
         this.tripservice.getFiles(id).subscribe(

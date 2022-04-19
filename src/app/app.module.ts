@@ -26,6 +26,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ImageComponent } from './pages/trip-management/image/image.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -44,7 +46,8 @@ import {MatInputModule} from '@angular/material/input';
     MatPaginatorModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
     
     
   ],
@@ -56,7 +59,8 @@ import {MatInputModule} from '@angular/material/input';
     AjouterComponent,
     ModifierComponent,
     UploadFilesComponent,
-    AlgorithmedematchingComponent
+    AlgorithmedematchingComponent,
+    ImageComponent
 
   
   ],

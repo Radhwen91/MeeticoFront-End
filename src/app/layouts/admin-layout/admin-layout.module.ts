@@ -22,6 +22,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+import {MatCardModule} from '@angular/material/card';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -36,7 +38,8 @@ import {MatInputModule} from '@angular/material/input';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
  
 
   ],
