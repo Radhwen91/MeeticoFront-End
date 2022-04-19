@@ -13,7 +13,7 @@ const url = "api/Feedback/";
 })
 export class FeedbackService {
   
-
+  
   constructor(private http : HttpClient) { }
 
 
@@ -37,6 +37,11 @@ export class FeedbackService {
     deleteFeedbackById(id:number){
           return this.http.delete(url+"DeleteFeedback/"+id);
         }
+
+      statPercentageFeedbacksByStars(): Observable<any[]>{
+        
+        return this.http.get<any[]>(url + 'Statistique', httpOptions);
+      }
       
    
   

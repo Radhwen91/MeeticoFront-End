@@ -52,6 +52,19 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
   verifBySendingEmail(reclamation:Reclamation){
     return this.http.put<Reclamation>(url+"SendMailReclamation/"+reclamation.idReclamation,reclamation);
   }
+  statWatingReclamation(){
+    return this.http.get<any>(url + 'statWatingReclamation', httpOptions);
+  }
+  
+  statReclamationByPriority(priority:String){
+    return this.http.get<any>(url + 'statWatingReclamationByPriority/'+priority, httpOptions);
+  }
+  statReclamationByType(type:String){
+    return this.http.get<any>(url + 'statWatingReclamationByType/'+type, httpOptions);
+  }
+  statReclamationByTypeAndPriority(priority:String,type:String){
+    return this.http.get<any>(url + 'statWatingReclamationbytypeandpriority/'+type+'/'+priority, httpOptions);
+  }
 
 
     // public upload(imagen: File): Observable<any> {

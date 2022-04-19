@@ -22,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -35,7 +37,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ClipboardModule,
     MatDialogModule,
     NgxSpinnerModule,
-    
+    MatPaginatorModule
     
   ],
   declarations: [
