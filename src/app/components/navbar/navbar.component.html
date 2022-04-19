@@ -8,16 +8,16 @@
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span id="avatar" class="avatar avatar-sm rounded-circle">
-              <img src="{{ picture ? picture : 'assets/upload/default.jpg'}}">
+              <img src="{{ user.picture ? user.picture : 'assets/upload/default.jpg'}}">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm text-dark font-weight-bold">{{ username }}</span>
+              <span class="mb-0 text-sm text-dark font-weight-bold">{{ user.username }}</span>
             </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0 text-center" >Welcome aboard, {{ username }}!</h6>
+            <h6 class="text-overflow m-0 text-center" >Welcome aboard, {{ user.username }}!</h6>
           </div>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-single-02"></i>

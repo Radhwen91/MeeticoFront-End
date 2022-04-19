@@ -15,7 +15,7 @@ export class User {
     lastName: string;
     password: string;
     phoneNumber: number;
-    picturePath: string;
+    picture: string;
     professions: Profession[];
     requests: Request[];
     role: Role;

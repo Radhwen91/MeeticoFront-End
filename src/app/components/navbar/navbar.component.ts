@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 import { ROUTES } from '../sidebar/sidebar.component';
 
@@ -13,15 +14,13 @@ import { ROUTES } from '../sidebar/sidebar.component';
 export class NavbarComponent implements OnInit {
   location: Location;
   titles: any[];
-  picture: string;
-  username: string;
+  user: User;
   constructor(location: Location, private tokenService: TokenService, private router: Router) {
     this.location = location;
   }
   ngOnInit(): void {
     this.titles = ROUTES.filter(title => title);
-    this.picture = this.tokenService.getUser().picturePath;
-    this.username = this.tokenService.getUser().username.charAt(0).toUpperCase() + this.tokenService.getUser().username.slice(1);
+    this.user = this.tokenService.getUser();
   }
   getTitle(): string {
     var title = this.location.prepareExternalUrl(this.location.path());

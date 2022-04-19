@@ -44,7 +44,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="First Name" type="text" [(ngModel)]="user.firstName">
+                <input class="form-control" placeholder="First Name" type="text" [(ngModel)]="user.firstName" name="firstName">>
               </div>
             </div>
             <div class="form-group">
@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Last Name" type="text" [(ngModel)]="user.lastName">
+                <input class="form-control" placeholder="Last Name" type="text" [(ngModel)]="user.lastName" name="lastName">
               </div>
             </div>
             <div class="form-group">
@@ -60,7 +60,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-favourite-28"></i></span>
                 </div>
-                <select class="form-control" [(ngModel)]="user.gender">
+                <select class="form-control" [(ngModel)]="user.gender" name="gender">>
                   <option value="" disabled selected hidden>Gender</option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
@@ -72,7 +72,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email" [(ngModel)]="user.email">
+                <input class="form-control" placeholder="Email" type="email" [(ngModel)]="user.email" name="email">>
               </div>
             </div>
             <div class="form-group">
@@ -80,7 +80,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                 </div>
-                <input class="form-control" placeholder="Phone Number" type="tel" [(ngModel)]="user.phoneNumber">
+                <input class="form-control" placeholder="Phone Number" type="tel" [(ngModel)]="user.phoneNumber" name="phoneNumber">
               </div>
             </div>
             <div class="form-group">
@@ -88,7 +88,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                 </div>
-                <input class="form-control" placeholder="Username" type="text" [(ngModel)]="user.username">
+                <input class="form-control" placeholder="Username" type="text" [(ngModel)]="user.username" name="username">
               </div>
             </div>
             <div class="form-group">
@@ -96,7 +96,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" [(ngModel)]="user.password">
+                <input class="form-control" placeholder="Password" type="password" [(ngModel)]="user.password" name="password">
               </div>
             </div>
             <div class="input-group input-group-alternative">
@@ -120,6 +120,8 @@
             <div class="text-center">
               <button type="button" class="btn btn-primary mt-4" (click)="ngSubmit()">Create account</button>
             </div>
+            <br>
+            <re-captcha class="d-flex justify-content-center" (resolved)="resolved($event)" siteKey="6LcuIIAfAAAAAJ5lozgs7Yoe-Bd_gTUKmQ-N6YX5"></re-captcha>
           </form>
         </div>
       </div>

@@ -22,9 +22,12 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) { }
   ngSubmit(): void {
     this.userService.registerEntrepreneur(this.user).subscribe(
-      user => {
+      DATA => {
         this.router.navigate(['login']);
       }
     );
+  }
+  resolved(captchaResponse: string): void {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 }

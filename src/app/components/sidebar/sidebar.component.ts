@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 
 declare interface RouteInfo {
@@ -28,16 +29,14 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
   isCollapsed = true;
-  username: any;
-  picture: any;
+  user: User;
   constructor(private router: Router, private tokenService: TokenService) { }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
-   this.username = this.tokenService.getUser().username.toUpperCase();
-   this.picture = this.tokenService.getUser().picturePath;
+   this.user = this.tokenService.getUser();
   }
   signOut() {
     this.tokenService.signOut();
