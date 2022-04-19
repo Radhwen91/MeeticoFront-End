@@ -61,7 +61,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
       console.log('file',f);
       this.tripservice.affecterfileauvoyage(data.idTrip,f.id,f).subscribe(
         res=>{
-         // this.router.navigate(["/trip-management"])
+         this.router.navigate(["/trip-management"])
         }
      
     );
@@ -106,8 +106,9 @@ upload() :FileDB[]{
   return this.listfile;
 }
 
-supprimer(file :any){
-  this.listfile.splice(file);
+supprimer(file :FileDB){
+  
+  this.listfile.splice(this.listfile.indexOf(file),1)
 }
 
 }
