@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/event-management', title: 'Event Management',  icon:'ni-tie-bow text-pink', class: '' },
     { path: '/feedback-management', title: 'Feedback Management',  icon:'ni-laptop text-cyan', class: '' },
     { path: '/publication-management', title: 'Publication Management',  icon:'ni-notification-70 text-blue', class: '' },
+    { path: '/request-management', title: 'Request Management',  icon:'ni-badge text-black', class: '' },
     { path: '/reclamation-management', title: 'Reclamation Management',  icon:'ni-paper-diploma text-orange', class: '' },
     { path: '/trip-management', title: 'Trip Management',  icon:'ni-square-pin text-green', class: '' }
 ];

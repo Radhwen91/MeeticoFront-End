@@ -10,6 +10,7 @@ import { FeedbackManagementComponent } from "src/app/pages/feedback-management/f
 import { PublicationManagementComponent } from "src/app/pages/publication-management/publication-management.component";
 import { ReclamationManagementComponent } from "src/app/pages/reclamation-management/reclamation-management.component";
 import { TripManagementComponent } from "src/app/pages/trip-management/trip-management.component";
+import { RequestManagementComponent } from "src/app/pages/request-management/request-management.component";
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
@@ -22,5 +23,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'feedback-management',           component: FeedbackManagementComponent },
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
+    { path: 'request-management',           component: RequestManagementComponent },
     { path: 'trip-management',           component: TripManagementComponent }
 ];
