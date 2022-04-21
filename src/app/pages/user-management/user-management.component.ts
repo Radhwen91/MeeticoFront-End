@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -13,13 +15,16 @@ export class UserManagementComponent implements OnInit {
   currentUser: User;
   focus: boolean;
   input: any;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
   ngOnInit() {
     this.userService.retrieveAllUsers().subscribe(
       users => {
         this.users = users;
       }
     );
+  }
+  openDialog() {
+    
   }
   setActiveUser(user: User) {
     this.currentUser = user;

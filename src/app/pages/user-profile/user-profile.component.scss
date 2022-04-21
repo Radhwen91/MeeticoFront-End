@@ -1,11 +1,7 @@
-.display-2,
-.text-white {
-  text-transform: capitalize;
-}
-input {
+#input-picture {
   display: none;
 }
-.image-upload-container {
+.card-profile-image {
   cursor: pointer;
 }
 @keyframes lds-dual-ring {
@@ -16,7 +12,3 @@ input {
     transform: rotate(360deg);
   }
 }
-.btn-bwm {
-  margin-left: 9px;
-}
-

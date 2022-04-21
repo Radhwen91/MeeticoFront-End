@@ -13,18 +13,29 @@ export class UserProfileComponent implements OnInit {
   focus: boolean;
   user: User;
   age: number;
+  address: string[];
+  disabled = true;
   constructor(private tokenService: TokenService, private userService: UserService) { }
   ngOnInit() {
     this.user = this.tokenService.getUser();
-    let timeDiff = Math.abs(Date.now() - this.user.birthday.getTime());
-    console.log(timeDiff)
-    this.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
+    this.address = this.tokenService.getUser().address.split(", ", 3);
   }
-  uploadImage(event) {
+  uploadPicture(event) {
     let formData = new FormData();
     this.user.picture = event.target.files.item(0);
     formData.append('file', this.user.picture);
     this.userService.assignPictureToUser(this.user.userId, formData).subscribe(
+      user => {
+        this.tokenService.saveUser(user);
+        window.location.reload();
+      }
+    );
+  }
+  editProfile() {
+   this.disabled = false;
+  }
+  updateProfile() {
+    this.userService.updateProfile(this.user.userId, this.user).subscribe(
       user => {
         this.tokenService.saveUser(user);
         window.location.reload();

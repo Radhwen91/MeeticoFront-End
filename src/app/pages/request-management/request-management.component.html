@@ -1,4 +1,4 @@
-<div class="header bg-gradient-teal pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-light pb-8 pt-5 pt-md-8">
     <!-- Page content -->
     <div class="container-fluid mt--6">
       <!-- Form -->
@@ -9,7 +9,7 @@
               <span class="input-group-text"><i class="fas fa-search"></i></span>
             </div>
             <input class="form-control" placeholder="Search" type="text" (focus)="focus = true" (blur)="focus = false"
-              (keyup)="searchForUsers($event)">
+              (keyup)="searchForRequests($event)">
           </div>
         </div>
       </form>
@@ -33,24 +33,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of users">
+                  <tr *ngFor="let request of requests">
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                           <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"> {{ user.userId }} </span>
+                          <span class="mb-0 text-sm"> {{ request.requestId }} </span>
                         </div>
                       </div>
                     </th>
                     <td>
-                      {{ user.firstName + ' ' + user.lastName }}
+                      {{ request.firstName + ' ' + request.lastName }}
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending'
-                        }}
+                        <i [class]="request.active ? 'bg-success' : 'bg-warning'"></i> {{ request.active ? 'active' : 'pending' }}
                       </span>
                     </td>
                     <td>
@@ -90,8 +89,8 @@
                     </td>
                     <td class="text-right">
                       <div ngbDropdown placement="bottom-right">
-                        <a class="btn btn-sm btn-icon-only text-light bg-danger" ngbDropdownToggle
-                          (click)="setActiveUser(user)">
+                        <a class="btn btn-sm btn-icon-only text-light bg-success" ngbDropdownToggle
+                          (click)="setActiveUser(request)">
                           <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
@@ -115,7 +114,7 @@
                     </a>
                   </li>
                   <li class="page-item active">
-                    <a class="page-link bg-danger border-0" href="javascript:void(0)">1</a>
+                    <a class="page-link bg-success border-0" href="javascript:void(0)">1</a>
                   </li>
                   <li class="page-item">
                     <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>

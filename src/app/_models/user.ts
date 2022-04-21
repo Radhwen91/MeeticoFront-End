@@ -10,6 +10,7 @@ export class User {
     address: string;
     birthday: Date;
     email: string;
+    entrepreneur: User;
     firstName: string;
     gender: Gender;
     lastName: string;

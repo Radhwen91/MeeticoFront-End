@@ -3,7 +3,6 @@ import { User } from "./user";
 enum Status { UNSENT, DELIVERED, SEEN, APPROVED }
 
 export class Request {
-	converted: boolean;
 	email: string;
 	firstName: string;
 	gender: string;
