@@ -1,3 +1,4 @@
+import { UploadImageComponent } from './../../pages/upload-image/upload-image.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,18 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
+import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
+import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
+import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -21,14 +34,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MatDialogModule,
+    NgxSpinnerModule,
+    MatPaginatorModule
+    
   ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    FeedbackManagementComponent,
+    ReclamationManagementComponent,
+    AddfeedbackComponent,
+    AddreclamationComponent,
+    DetailReclamationComponent,
+    UpdateReclamationComponent,
+    AnswerAdminComponent,
+    UploadImageComponent
+  ],
+  exports: [
+    RouterModule
   ]
 })
 

@@ -13,6 +13,11 @@ import { TripManagementComponent } from 'src/app/pages/trip-management/trip-mana
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
+import { TestComponent } from 'src/app/pages/test/test.component';
+import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -26,5 +31,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
     { path: 'trip-management',           component: TripManagementComponent },
-   
+    { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
+    { path: 'Test',           component: TestComponent },
+    { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
+    { path: 'test',           component: UploadImageComponent},
 ];

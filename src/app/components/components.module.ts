@@ -17,6 +17,7 @@ import { TypographyComponent } from '../pages/typography/typography.component';
 import { BasicelementsComponent } from '../pages/basicelements/basicelements.component';
 import { NavigationComponent } from '../pages/navigation/navigation.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +41,6 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     
     NgbdModalComponent,
     NgbdModalContent
-    
   ],
   exports: [
     FooterComponent,
