@@ -1,3 +1,4 @@
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -30,12 +31,8 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    UserLayoutComponent
     TestComponent
-    
-   
-   
-   
-   
   ],
   providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
