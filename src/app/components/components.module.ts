@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserManagementComponent } from '../pages/user-management/user-management.component';
 import { ReclamationManagementComponent } from '../pages/reclamation-management/reclamation-management.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,14 +20,17 @@ import { ReclamationManagementComponent } from '../pages/reclamation-management/
     NavbarComponent,
     SidebarComponent,
     UserManagementComponent,
-    ReclamationManagementComponent
+   
+    
+   
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
     UserManagementComponent,
-    ReclamationManagementComponent
+   
+    
   ]
 })
 export class ComponentsModule { }
