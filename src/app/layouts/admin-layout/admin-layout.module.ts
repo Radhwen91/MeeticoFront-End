@@ -1,3 +1,4 @@
+import { TestComponent } from './../../pages/test/test.component';
 import { UploadImageComponent } from './../../pages/upload-image/upload-image.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
@@ -53,7 +54,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     DetailReclamationComponent,
     UpdateReclamationComponent,
     AnswerAdminComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    TestComponent
   ],
   exports: [
     RouterModule
