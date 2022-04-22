@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
 import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 
@@ -31,6 +32,8 @@ export class SidebarComponent implements OnInit {
   menuItems: any[];
   isCollapsed = true;
   user: User;
+  socialUser: SocialUser;
+  picture: string;
   constructor(private router: Router, private tokenService: TokenService) { }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -38,7 +41,14 @@ export class SidebarComponent implements OnInit {
       this.isCollapsed = true;
    });
    this.user = this.tokenService.getUser();
-  }
+   if(this.user) {
+     this.socialUser = this.tokenService.getSocialUser();
+     if(this.socialUser.provider == "GOOGLE")
+       this.picture = this.socialUser.photoUrl;
+     else
+     this.picture = this.socialUser.response.picture.data.url;
+   }
+ }
   signOut() {
     this.tokenService.signOut();
     this.router.navigate(['login']);

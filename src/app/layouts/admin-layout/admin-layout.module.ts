@@ -11,7 +11,7 @@ import { IconsComponent } from "src/app/pages/icons/icons.component";
 import { MapsComponent } from "src/app/pages/maps/maps.component";
 import { RequestManagementComponent } from "src/app/pages/request-management/request-management.component";
 import { TablesComponent } from "src/app/pages/tables/tables.component";
-import { UserManagementComponent } from "src/app/pages/user-management/user-management.component";
+import { UserDetailsDialog, UserManagementComponent } from "src/app/pages/user-management/user-management.component";
 import { UserProfileComponent } from "src/app/pages/user-profile/user-profile.component";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 
@@ -33,8 +33,10 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
     TablesComponent,
     UserProfileComponent,
     UserManagementComponent,
+    UserDetailsDialog,
     RequestManagementComponent
-  ]
+  ],
+  entryComponents: [UserDetailsDialog]
 })
 
 export class AdminLayoutModule {}

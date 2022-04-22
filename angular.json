@@ -35,7 +35,10 @@
               "src/assets/css/open-sans.css",
               "src/assets/css/material-icons.css",
               "src/assets/vendor/nucleo/css/nucleo.css",
-              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              }
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",

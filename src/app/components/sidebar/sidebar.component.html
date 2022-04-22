@@ -26,13 +26,13 @@
         <a class="nav-link" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img src="{{ user.picture ? user.picture : 'assets/img/upload/default.jpg'}}">
+              <img src="{{ user.picture ? user.picture : picture ? picture : 'assets/upload/default.jpg'}}">
             </span>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome aboard, {{ user.username }}!</h6>
+            <h6 class="text-overflow m-0">Welcome aboard, {{ user.username ? user.username : socialUser.firstName }}!</h6>
           </div>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-single-02"></i>
