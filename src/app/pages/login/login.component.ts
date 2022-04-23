@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { User } from 'src/app/_models/user';
+import { DataService } from 'src/app/_services/data.service';
 import { TokenService } from 'src/app/_services/token.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -11,27 +12,28 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
+
+export class LoginComponent implements OnInit {
   hidePassword = true;
   credentials: Partial<User> = {
     username: null,
     password: null
   };
-  socialUser: SocialUser;
-  isLoggedin?: boolean;
-  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService) { }
+  isLoggedin: boolean;
+  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService, private dataService: DataService) { }
   ngOnInit(): void {
+    this.dataService.currentStatus.subscribe(isLogged => this.isLoggedin = isLogged);
     this.socialAuthService.authState.subscribe(
       user => {
-        console.log(user)
-        this.socialUser = user;
-        this.isLoggedin = user != null;
-        this.tokenService.saveSocialUser(this.socialUser);
-        if (this.socialUser.provider == "GOOGLE")
-          this.tokenService.saveToken(this.socialUser.response.id_token);
-        else
-          this.tokenService.saveToken(this.socialUser.authToken);
-        this.router.navigate(['dashboard']);
+        if (this.isLoggedin) {
+          this.tokenService.saveSocialUser(user);
+          if (user.provider == "GOOGLE")
+            this.tokenService.saveToken(user.idToken);
+          else {
+            this.tokenService.saveToken(user.authToken);
+          }
+          this.router.navigate(['dashboard']);
+        }
       }
     );
   }
@@ -45,9 +47,15 @@ export class LoginComponent {
     );
   }
   GoogleAuthentication(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    if (this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)) {
+      this.dataService.currentStatus.subscribe(login => this.isLoggedin = !login);
+      console.log(this.isLoggedin)
+
+    }
   }
   FacebookAuthentication(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    if (this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)) {
+      this.dataService.currentStatus.subscribe(login => this.isLoggedin = !login);
+    }
   }
 }

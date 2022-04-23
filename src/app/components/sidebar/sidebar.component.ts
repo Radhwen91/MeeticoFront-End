@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { User } from 'src/app/_models/user';
+import { DataService } from 'src/app/_services/data.service';
 import { TokenService } from 'src/app/_services/token.service';
 
 declare interface RouteInfo {
@@ -34,8 +35,7 @@ export class SidebarComponent implements OnInit {
   user: User;
   socialUser: SocialUser;
   picture: string;
-  constructor(private router: Router, private tokenService: TokenService, private socialAuthService: SocialAuthService) { }
-
+  constructor(private router: Router, private tokenService: TokenService, private socialAuthService: SocialAuthService, private dataService: DataService) { }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
@@ -49,10 +49,12 @@ export class SidebarComponent implements OnInit {
     }
   }
   signOut() {
-    // if (this.socialAuthService.authState)
-    //   this.tokenService.signOut();
-    // else
+    if (this.socialUser)
+      this.tokenService.signOut();
+    else {
       this.socialAuthService.signOut();
+      this.dataService.currentStatus.subscribe(isLogged => isLogged = !isLogged);
+    }
     this.router.navigate(['login']);
   }
 }

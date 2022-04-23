@@ -2,7 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { LoginComponent } from 'src/app/pages/login/login.component';
 import { User } from 'src/app/_models/user';
+import { DataService } from 'src/app/_services/data.service';
 import { TokenService } from 'src/app/_services/token.service';
 import { ROUTES } from '../sidebar/sidebar.component';
 
@@ -18,7 +20,7 @@ export class NavbarComponent implements OnInit {
   user: User;
   socialUser: SocialUser;
   picture: string;
-  constructor(location: Location, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService) {
+  constructor(location: Location, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService, private dataService: DataService) {
     this.location = location;
   }
   ngOnInit(): void {
@@ -45,8 +47,10 @@ export class NavbarComponent implements OnInit {
   signOut() {
     if (this.socialUser)
       this.tokenService.signOut();
-    else
+    else {
       this.socialAuthService.signOut();
+      this.dataService.currentStatus.subscribe(isLogged => isLogged = !isLogged);
+    }
     this.router.navigate(['login']);
   }
 }
