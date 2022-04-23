@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocialUser } from 'angularx-social-login';
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 import { ROUTES } from '../sidebar/sidebar.component';
@@ -18,18 +18,16 @@ export class NavbarComponent implements OnInit {
   user: User;
   socialUser: SocialUser;
   picture: string;
-  constructor(location: Location, private tokenService: TokenService, private router: Router) {
+  constructor(location: Location, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService) {
     this.location = location;
   }
   ngOnInit(): void {
     this.titles = ROUTES.filter(title => title);
     this.user = this.tokenService.getUser();
-    if(this.user) {
+    if (this.user) {
       this.socialUser = this.tokenService.getSocialUser();
-      if(this.socialUser.provider == "GOOGLE")
-        this.picture = this.socialUser.photoUrl;
-      else
-      this.picture = this.socialUser.response.picture.data.url;
+      if (this.socialUser.provider == "FACEBOOK")
+        this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
     }
   }
   getTitle(): string {
@@ -45,7 +43,10 @@ export class NavbarComponent implements OnInit {
     return 'Dashboard';
   }
   signOut() {
-    this.tokenService.signOut();
+    if (this.socialUser)
+      this.tokenService.signOut();
+    else
+      this.socialAuthService.signOut();
     this.router.navigate(['login']);
   }
 }

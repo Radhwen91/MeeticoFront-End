@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
@@ -18,22 +17,18 @@ export class LoginComponent {
     username: null,
     password: null
   };
-  loginForm!: FormGroup;
-  socialUser!: SocialUser;
+  socialUser: SocialUser;
   isLoggedin?: boolean;
-  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private formBuilder: FormBuilder, private socialAuthService: SocialAuthService, private activeRoute: ActivatedRoute) { }
+  constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService) { }
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
     this.socialAuthService.authState.subscribe(
       user => {
+        console.log(user)
         this.socialUser = user;
         this.isLoggedin = user != null;
         this.tokenService.saveSocialUser(this.socialUser);
-        if(this.socialUser.provider == "GOOGLE")
-          this.tokenService.saveToken(this.socialUser.idToken);
+        if (this.socialUser.provider == "GOOGLE")
+          this.tokenService.saveToken(this.socialUser.response.id_token);
         else
           this.tokenService.saveToken(this.socialUser.authToken);
         this.router.navigate(['dashboard']);
