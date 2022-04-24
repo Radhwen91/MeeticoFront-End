@@ -4,9 +4,10 @@ import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.comp
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { SignupComponent } from 'src/app/pages/signup/signup.component';
+import {TestfaresComponent} from "../../pages/testfares/testfares.component";
 
 
- 
+
 
 
 export const UserLayoutRoutes: Routes = [
@@ -14,5 +15,7 @@ export const UserLayoutRoutes: Routes = [
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
      { path: 'landing',          component: LandingComponent },
-     { path: 'nucleoicons',      component: NucleoiconsComponent }
+     { path: 'nucleoicons',      component: NucleoiconsComponent },
+  { path: 'testfares',      component: TestfaresComponent }
+
 ];

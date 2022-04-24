@@ -17,6 +17,7 @@ import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.comp
 import { TypographyComponent } from 'src/app/pages/typography/typography.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
+import {TestfaresComponent} from "../../pages/testfares/testfares.component";
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,16 +29,16 @@ import { NouisliderModule } from 'ng2-nouislider';
     NgbModule,
     NouisliderModule,
     JwBootstrapSwitchNg2Module
-    
+
   ],
   declarations: [
-   
-    
-   
+    TestfaresComponent
+
+
   ]
   ,entryComponents: [NgbdModalContent]
-  
-  
+
+
 })
 
 export class UserLayoutModule {}
