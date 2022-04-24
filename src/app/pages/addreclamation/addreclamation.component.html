@@ -19,56 +19,89 @@
               <h3 class="mb-0">Add Reclamation</h3>
             </div>
             <div class="table-responsive">
- <form height="150px" width="200px" (ngSubmit)="onUpload()" novalidate enctype="multipart/form-data">
+              
+ <form  [formGroup]="reclamationForm" (ngSubmit)="onUpload()" novalidate enctype="multipart/form-data">
   <div class="col-sm-10" >
     <label for="exampleFormControlTextarea1">Title</label>
-    <input type="text" class="form-control" id="inputtitle" placeholder="title" [(ngModel)]="reclamation.title"  [ngModelOptions]="{standalone: true}">
+    <input type="text" class="form-control" id="inputtitle" 
+    placeholder="title"  formControlName="title" 
+    [(ngModel)]="reclamation.title" 
+    [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"  >
+    <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+      <div *ngIf="f['title'].errors['required']">Title is required</div>
+      <div *ngIf="f['title'].errors['maxlength']">
+        Title must not exceed 50 characters
+    </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control"  rows="3" [(ngModel)]="reclamation.description" [ngModelOptions]="{standalone: true}"></textarea>
+    <textarea class="form-control"  rows="3" [(ngModel)]="reclamation.description" formControlName="description" 
+    [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" ></textarea>
+    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+      <div *ngIf="f['description'].errors['required']">Description is required</div>
+      <div *ngIf="f['description'].errors['maxlength']">
+        Title must not exceed 4000 characters
+    </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Type of reclamation</label>
-  <select class="form-control"   [(ngModel)]="reclamation.type" [ngModelOptions]="{standalone: true}">
+  <select class="form-control"   [(ngModel)]="reclamation.type" formControlName="type" 
+  [ngClass]="{ 'is-invalid': submitted && f['type'].errors }">
     <option>Select Type</option>
     <option value="USER">User</option>
     <option value="TRIP">Trip</option>
     <option value="SOFTWARE">Software</option>
     <option value="OTHER">Other</option>
   </select>
+  <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+    <div *ngIf="f['type'].errors['required']">Type is required</div>
+  </div>
 </div>
 <div class="form-group">
   <label for="exampleFormControlTextarea1">priority</label>
-  <select class="form-control" [(ngModel)]="reclamation.priority" [ngModelOptions]="{standalone: true}">
+  <select class="form-control" [(ngModel)]="reclamation.priority" formControlName="priority"  
+  [ngClass]="{ 'is-invalid': submitted && f['priority'].errors }">
     <option value="">Select Priority </option>
     <option value="NORMAL">Normal</option>
     <option value="IMPORTANT">Important</option>
     <option value="URGENTE">Urgente</option>
   </select>
+  <div *ngIf="submitted && f['priority'].errors" class="invalid-feedback">
+    <div *ngIf="f['priority'].errors['required']">Priority is required</div>
+  </div>
 </div>
 
   <div class="custom-file">
       <input type="file" class="custom-file-input" id="imagen" #imagenInputFile
       (change)="onFileChange($event)" accept="image/png, image/jpeg, image/gif">
-      <label class="custom-file-label" for="imagen">Elige una imagen</label>
+      <label class="custom-file-label" for="imagen">choose an image</label>
   </div>
   <div *ngIf="imagen" class="mt-5">
-      <h5>Vista Previa:</h5>
+      <h5>Preview:</h5>
       <div>
           <img class="image-thumbnail" style="max-width: 100px" [src]="imagenMin">
       </div>
   </div>
   <div class="form-group d-flex justify-content-between my-3">
       
-      <button class="btn btn-outline-danger" [disabled]="!imagen" (click)="reset()"><i class="fas fa-sync-alt"></i> Reset</button>
+      <button class="btn btn-outline-danger float-left" [disabled]="!imagen" (click)="reset()"><i class="fas fa-sync-alt"></i> Reset</button>
   </div>
 
 
 
 <div class="col-12">
-  <button type="submit" class="btn btn-outline-success"  [disabled]="!imagen"><i class="fas fa-upload"></i> Submit form</button>
-</div>
+  <button type="submit" class="btn btn-outline-success float-left"  [disabled]="!imagen"><i class="fas fa-upload"></i> Submit form</button>
+
+<button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-outline-warning float-right"
+      >
+        Reset
+      </button>
+    </div>
 </form>
             </div>
           </div>

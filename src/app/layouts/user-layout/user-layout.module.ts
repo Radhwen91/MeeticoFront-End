@@ -9,12 +9,15 @@ import {  NgbdModalContent } from 'src/app/pages/modal/modal.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
-import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
+
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
-import { DatailFeedbackComponent } from 'src/app/pages/datail-feedback/datail-feedback.component';
+
 import { MatDialogModule } from '@angular/material/dialog';
-import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
+
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DatailFeedbackComponent } from 'src/app/pages/datail-feedback/datail-feedback.component';
+import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
+import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,6 +31,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NouisliderModule,
     JwBootstrapSwitchNg2Module,
     NgxSpinnerModule,
+    ReactiveFormsModule
     
     
   ],
