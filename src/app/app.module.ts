@@ -1,16 +1,37 @@
-import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { TripManagementComponent } from './pages/trip-management/trip-management.component';
+import { AjouterComponent } from './pages/trip-management/ajouter/ajouter.component';
+import { ModifierComponent } from './pages/trip-management/modifier/modifier.component';
+import { UploadFilesComponent } from './pages/trip-management/upload-files/upload-files.component';
+import { AlgorithmedematchingComponent } from './pages/trip-management/algorithmedematching/algorithmedematching.component';
+
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource,MatTableModule } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ImageComponent } from './pages/trip-management/image/image.component';
+import {MatCardModule} from '@angular/material/card';
+
+
+
+
 
 @NgModule({
   imports: [
@@ -21,16 +42,29 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule
+    
     
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserLayoutComponent
+    TripManagementComponent,
+    AjouterComponent,
+    ModifierComponent,
+    UploadFilesComponent,
+    AlgorithmedematchingComponent,
+    ImageComponent
 
+  
   ],
-  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

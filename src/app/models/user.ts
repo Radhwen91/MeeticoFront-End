@@ -6,7 +6,7 @@ export class User {
     userId: Number;
     active: Boolean;
     activityField: ActivityField[];
-    address: String;
+    city: String;
     birthday: Date;
     email: String;
     firstName: String;
@@ -18,4 +18,5 @@ export class User {
     role: Role;
     username: String;
     verificationCode: String;
+    etat:String;
 }

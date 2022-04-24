@@ -11,12 +11,10 @@ import { PublicationManagementComponent } from 'src/app/pages/publication-manage
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
-import { LandingComponent } from 'src/app/pages/landing/landing.component';
-import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
-import { TestComponent } from 'src/app/pages/test/test.component';
-import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
-import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
-import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
+import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.component';
+import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
+import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
+import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -31,8 +29,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
     { path: 'trip-management',           component: TripManagementComponent },
-    { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
-    { path: 'Test',           component: TestComponent },
-    { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
-    { path: 'test',           component: UploadImageComponent},
+    { path: 'trip-management/add',           component: AjouterComponent },
+    { path: 'trip-management/modifier/:id',           component: ModifierComponent },
+    { path: 'trip-management/search',           component: AlgorithmedematchingComponent },
+    { path: 'trip-management/image/:id',           component: ImageComponent },,
+   
 ];
