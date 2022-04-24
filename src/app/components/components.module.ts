@@ -35,7 +35,6 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     NavigationComponent,
     TypographyComponent,
     NucleoiconsComponent,
-    
     NgbdModalComponent,
     NgbdModalContent
   ],
@@ -51,9 +50,8 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     NavigationComponent,
     TypographyComponent,
     NucleoiconsComponent,
-    
     NgbdModalComponent,
-    NgbdModalContent
+    NgbdModalContent,
   ]
 })
 export class ComponentsModule { }

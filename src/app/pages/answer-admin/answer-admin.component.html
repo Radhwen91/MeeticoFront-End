@@ -3,7 +3,7 @@
     <form >
         
         <div class="form-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.answerAdmin" ></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.answerAdmin" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
       </form>
       

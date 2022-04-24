@@ -17,7 +17,7 @@ feedback:Feedback;
 
 addFeedback(){
   this.feedbackservice.addFeedback(this.feedback).subscribe(
-    ()=>this.router.navigateByUrl("/feedback-management"));
+    ()=>this.router.navigateByUrl("/feedback-management-user"));
 
 
 

@@ -1,0 +1,24 @@
+
+
+<h1 mat-dialog-title>Detail Feedback</h1>
+<mat-dialog-content class="mat-typography">
+ <h3>Title of reclamation:</h3>
+ <label>{{data.title}}</label>
+ <h3>Description of reclamation:</h3>
+ <label>{{data.description}}</label>
+ <h3> Type of reclamation:</h3>
+ <h3>Priority of reclamation:</h3>
+ <h3>SendingDate of reclamation:</h3>
+ <h3>Last modification date of reclamation:</h3>
+ <label>{{data.lastModificationDate}}</label>
+ <h3>Status:</h3>
+ 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-success"mat-button [mat-dialog-close]="true" cdkFocusInitial>Success</button>
+  
+</mat-dialog-actions>
+
+

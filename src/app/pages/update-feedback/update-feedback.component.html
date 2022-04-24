@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Update Feedback</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <label>Title</label>
+    <input type="text" class="form-control"  value="{{feedback.title}}"  [(ngModel)]="feedback.title" [ngModelOptions]="{standalone: true}" >
+  </div>
+  <div>
+  
+  <label >Description</label>
+  <textarea class="form-control" rows="3" value="{{feedback.description}}"   [(ngModel)]="feedback.description" [ngModelOptions]="{standalone: true}"></textarea>
+</div>
+<div class="mb-3">
+    <label for="validationCustom01" class="form-label">Reating</label>
+    <ngb-rating [(ngModel)]="feedback.stars" [ngModelOptions]="{standalone: true}"></ngb-rating>  
+    </div>
+ 
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+ 
+  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="updateFeedback()">Submit</button>
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+  
+</mat-dialog-actions>
+

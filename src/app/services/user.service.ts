@@ -14,4 +14,6 @@ export class UserService {
   retrieveAllUsers(): Observable<any> {
     return this.http.get<any>(url + 'retrieveAllUsers', httpOptions);
   }
+
+  
 }

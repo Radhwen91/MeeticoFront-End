@@ -1,5 +1,31 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Router } from '@angular/router';
+
+
+
+
+
+
+
+
+declare interface RouteInfo {
+    path: string;
+    title: string;
+    icon: string;
+    class: string;
+}
+export const ROUTES: RouteInfo[] = [
+    { path: '/', title: 'Home',  icon:'ni-single-02 text-yellow', class: '' },
+    { path: '/reclamation-management', title: 'Reclamations',  icon: 'ni-chart-bar-32 text-info', class: '' },
+    // { path: '/', title: 'Event Management',  icon:'ni-tie-bow text-pink', class: '' },
+    // { path: '/', title: 'Feedback Management',  icon:'ni-laptop text-black', class: '' },
+    // { path: '/', title: 'Publication Management',  icon:'ni-notification-70 text-blue', class: '' },
+    // { path: '/', title: 'Reclamation Management',  icon:'ni-paper-diploma text-orange', class: '' },
+    // { path: '/', title: 'Trip Management',  icon:'ni-square-pin text-green', class: '' }
+];
+
+
 
 @Component({
     selector: 'app-navbar-front',
@@ -9,14 +35,20 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarFrontComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(public location: Location, private element : ElementRef) {
+    public menuItemsFRONT: any[];
+  public isCollapsed = true;
+    constructor(public location: Location, private element : ElementRef,private router: Router) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+
+        this.menuItemsFRONT = ROUTES.filter(menuItem => menuItem);
+        this.router.events.subscribe((event) => {
+          this.isCollapsed = true;
+       });
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

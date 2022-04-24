@@ -19,18 +19,18 @@
   <form class="row g-3 needs-validation">
     
     <label for="validationCustom01" class="form-label">First name</label>
-    <input type="text" class="form-control" id="validationCustom01" name="title" [(ngModel)]="feedback.title">{{feedback.title}}    <div class="valid-feedback">
+    <input type="text" class="form-control" id="validationCustom01" name="title" [(ngModel)]="feedback.title" [ngModelOptions]="{standalone: true}">    <div class="valid-feedback">
       Name
     </div>
   
     <div class="mb-3">
 <label for="exampleFormControlTextarea1" class="form-label"> Description</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="feedback.description"></textarea>{{feedback.description}} 
+<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="feedback.description" [ngModelOptions]="{standalone: true}"></textarea>
 </div>
 
 <div class="mb-3">
 <label for="validationCustom01" class="form-label">Reating</label>
-<ngb-rating [(ngModel)]="feedback.stars">aaaaaaaaaa</ngb-rating>  
+<ngb-rating [(ngModel)]="feedback.stars" [ngModelOptions]="{standalone: true}"></ngb-rating>  
 </div>
  
   <div class="col-12">

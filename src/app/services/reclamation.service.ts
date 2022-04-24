@@ -18,7 +18,12 @@ export class ReclamationService {
 
   constructor(private http : HttpClient) { }
 
-  getAllReclamationByType(): Observable<Reclamation[]> {
+  
+  getAllReclamationAdmin(): Observable<Reclamation[]> {
+    return this.http.get<Reclamation[]>(url + 'getAllReclamation', httpOptions);
+  }
+
+  getAllReclamationByUser(): Observable<Reclamation[]> {
     return this.http.get<Reclamation[]>(url + 'getReclamationByUser', httpOptions);
   }
 
@@ -35,10 +40,10 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
 
   }
 
-  addReclamation(reclamation:Reclamation/*, picture:Picture*/){
+  addReclamation(reclamation:Reclamation,PictureId:number){
          
          
-        return this.http.post<Reclamation>(url+"AddAffectReclamationUser",reclamation);
+        return this.http.post<Reclamation>(url+"AddAffectReclamationUser/"+PictureId,reclamation);
       }
 
   updateReclamation(raclamation:Reclamation){

@@ -18,7 +18,7 @@ export class AnswerAdminComponent implements OnInit {
 
   public updateReclamation(){
     this.service.answerAdmin(this.data).subscribe(
-      ()=>this.router.navigateByUrl("/reclamation-management")
+      ()=>this.router.navigateByUrl("/reclamation-management-admin")
         );
   }
 

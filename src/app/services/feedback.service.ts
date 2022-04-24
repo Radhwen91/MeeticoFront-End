@@ -18,31 +18,30 @@ export class FeedbackService {
 
 
   addFeedback(feedback:Feedback){
-    // const DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm'; 
-    // feedback.sendingDate= moment(new Date(),DATE_TIME_FORMAT );
-    // feedback.lastModificationDate = moment(new Date(),DATE_TIME_FORMAT );
-
-        return this.http.post<Feedback>(url+"/AddAffectFeedbackUsers"/*+us+"/"+iduser*/,feedback);
+  return this.http.post<Feedback>(url+"/AddAffectFeedbackUsers"/*+us+"/"+iduser*/,feedback);
       } 
 
 
 
     getAllfeedbacks(): Observable<Feedback[]> {
-      return this.http.get<Feedback[]>(url + 'getFeedbackByClient', httpOptions);
+    return this.http.get<Feedback[]>(url + 'getFeedbackByClient', httpOptions);
     }
 
 
 
 
     deleteFeedbackById(id:number){
-          return this.http.delete(url+"DeleteFeedback/"+id);
+    return this.http.delete(url+"DeleteFeedback/"+id);
         }
 
       statPercentageFeedbacksByStars(): Observable<any[]>{
-        
-        return this.http.get<any[]>(url + 'Statistique', httpOptions);
+      return this.http.get<any[]>(url + 'Statistique', httpOptions);
       }
-      
+
+      updateReclamation(feedback:Feedback){
+      return this.http.put<Feedback>(url+"/updateFeedback",feedback);
+  }
+
    
   
 }

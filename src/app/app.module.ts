@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { UpdateFeedbackComponent } from './pages/update-feedback/update-feedback.component';
+
 
 @NgModule({
   imports: [
@@ -27,10 +29,9 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserLayoutComponent
-
+    UserLayoutComponent,
   ],
-  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

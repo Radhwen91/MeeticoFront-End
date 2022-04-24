@@ -1,13 +1,7 @@
 
-
-
-
-
-
     <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
           <div class="header-body">
-          
           </div>
         </div>
       </div>
@@ -33,17 +27,11 @@
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Titre</th>
-                        <th scope="col">Description</th>
                         <th scope="col">Type</th>
                         <th scope="col">Priority</th>
-                        <th scope="col">sendingDate</th>
-                        <th scope="col">lastModificationDate</th>
-                        <th scope="col">answerAdmin</th>
-                        <th scope="col">answerDate</th>
                         <th scope="col">status</th>
                         <th scope="col">Users</th>
                         <th scope="col">Action</th>
-
                     </tr>
                   </thead>
                   <tbody *ngFor="let a of listReclamationsPagination " >
@@ -57,17 +45,10 @@
                           </a>
                         </div>
                       </th>
-                      
                         <td>{{a.title}}</td>
-                        <td>{{a.description}}</td>
-                        <td>{{a.Type}}</td>
-                        <td>{{a.Priority}}</td>
-                        <td>{{a.sendingDate}}</td>
-                        <td>{{a.lastModificationDate}}</td>
-                        <td>{{a.answerAdmin}}</td>
-                        <td>{{a.answerDate}}</td>
-                       
-                                    <td>
+                        <td>{{a.type}}</td>
+                        <td>{{a.priority}}</td>
+                      <td>
                         <span class="badge badge-dot mr-4"> 
                           <i [class]="a.status ? 'bg-success' : 'bg-warning'"></i> {{a.status ? 'verifiee' :'Attente'}}
                         </span>
@@ -88,26 +69,20 @@
                           </a>
                         </div>
                       </td>
-                      
                       <td class="text-right">
                         <div ngbDropdown placement="bottom-right">
                           <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="javascript:void(0)" (click)="verifReclamation(a)">Verif</a>
                             <a class="dropdown-item" href="javascript:void(0)" (click)="deleteReclamationById(a.idReclamation)">Delete</a>
                             <a class="dropdown-item" href="javascript:void(0)" (click)="showUpdateReclamation(a)">Modifier</a>
                           </div>
                         </div>
                       </td>
-                 
                   </tr>
-                    
                   </tbody>
                 </table>
-    
-          
                 <div class="col-12" *ngIf="listReclamationsPagination">
                   <mat-paginator [length]="listReclamations.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)"></mat-paginator>
                 </div>
