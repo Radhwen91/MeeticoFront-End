@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Answer Admin</h1>
+<mat-dialog-content class="mat-typography">
+    <form >
+        
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.answerAdmin" ></textarea>
+        </div>
+      </form>
+      
+                 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+  <button type="button" class="btn btn-success"mat-button [mat-dialog-close]="true" (click)="updateReclamation()" cdkFocusInitial>Submit</button>
+  
+</mat-dialog-actions>
