@@ -12,6 +12,7 @@ export class User {
     email: string;
     entrepreneur: User;
     firstName: string;
+    followers: User[];
     gender: Gender;
     lastName: string;
     password: string;

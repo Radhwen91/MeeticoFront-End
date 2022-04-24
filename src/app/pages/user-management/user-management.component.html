@@ -52,29 +52,15 @@
                       <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending' }}
                     </span>
                   </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a class="avatar avatar-sm" data-toggle="tooltip"
-                        data-original-title="Ryan Tompson">
-                        <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg"
-                          class="rounded-circle">
-                      </a>
-                      <a class="avatar avatar-sm" data-toggle="tooltip"
-                        data-original-title="Romina Hadid">
-                        <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg"
-                          class="rounded-circle">
-                      </a>
-                      <a class="avatar avatar-sm" data-toggle="tooltip"
-                        data-original-title="Alexander Smith">
-                        <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg"
-                          class="rounded-circle">
-                      </a>
-                      <a class="avatar avatar-sm" data-toggle="tooltip"
-                        data-original-title="Jessica Doe">
-                        <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg"
-                          class="rounded-circle">
+                  <td *ngIf="user.followers.length > 0">
+                    <div class="avatar-group" *ngFor="let f of user.followers">
+                      <a class="avatar avatar-sm" data-toggle="tooltip">
+                        <img src="{{ f.picture ? f.picture : 'assets/upload/default.jpg' }}" class="rounded-circle">
                       </a>
                     </div>
+                  </td>
+                  <td *ngIf="user.followers.length == 0">
+                    <div class="avatar-group"></div>
                   </td>
                   <td>
                     <div class="d-flex align-items-center">
@@ -89,13 +75,12 @@
                   </td>
                   <td class="text-right">
                     <div ngbDropdown placement="bottom-right">
-                      <a class="btn btn-sm btn-icon-only text-light bg-danger" ngbDropdownToggle
-                        (click)="setActiveUser(user)">
+                      <a class="btn btn-sm btn-icon-only text-light bg-danger" ngbDropdownToggle>
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" (click)="openDialog()">Details</a>
-                        <a class="dropdown-item" (click)="removeUser()">Delete</a>
+                        <a class="dropdown-item" (click)="openDialog(user)">Details</a>
+                        <a class="dropdown-item" (click)="removeUser(user)">Delete</a>
                         <a class="dropdown-item">Something else here</a>
                       </div>
                     </div>
@@ -133,16 +118,4 @@
       </div>
     </div>
   </div>
-
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <p>Hello, {{ name }}!</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-    </div>
-  </ng-template>
+  

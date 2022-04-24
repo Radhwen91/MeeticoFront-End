@@ -36,4 +36,10 @@ export class UserService {
   searchForUsers(input: string): Observable<User[]> {
     return this.http.get<User[]>(url + 'searchForUsers?input=' + input);
   }
+  followUser(followerId: number, userId: number): Observable<void> {
+    return this.http.put<void>(url + 'followUser?followerId=' + followerId + '&userId=' + userId, null);
+  }
+  unfollowUser(followerId: number, userId: number): Observable<void> {
+    return this.http.put<void>(url + 'unfollowUser?followerId=' + followerId + '&userId=' + userId, null);
+  }
 }
