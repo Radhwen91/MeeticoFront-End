@@ -11,13 +11,13 @@ import { PublicationManagementComponent } from 'src/app/pages/publication-manage
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
-import { LandingComponent } from 'src/app/pages/landing/landing.component';
-import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
+
+
 import { TestComponent } from 'src/app/pages/test/test.component';
-import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
-import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+
 import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+
 
 
 export const AdminLayoutRoutes: Routes = [

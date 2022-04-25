@@ -1,17 +1,14 @@
 <h1 mat-dialog-title>Answer Admin</h1>
 <mat-dialog-content class="mat-typography">
     <form >
-        
         <div class="form-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.answerAdmin" [ngModelOptions]="{standalone: true}"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Wright the answer of the reclamation" rows="3"  [(ngModel)]="data.answerAdmin" formControlName="answer" ></textarea>
+          <div div *ngIf="  answerForm.get('answer').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Answer is required</div>
+          <div *ngIf="  answerForm.get('answer').hasError('maxlength')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Answer must not exceed 4000 characters</div>
         </div>
-      </form>
-      
-                 
+      </form>      
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  
   <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
   <button type="button" class="btn btn-success"mat-button [mat-dialog-close]="true" (click)="updateReclamation()" cdkFocusInitial>Submit</button>
-  
 </mat-dialog-actions>

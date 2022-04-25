@@ -36,7 +36,7 @@ export class NavbarFrontComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     public menuItemsFRONT: any[];
-  public isCollapsed = true;
+    public isCollapsed = true;
     constructor(public location: Location, private element : ElementRef,private router: Router) {
         this.sidebarVisible = false;
     }
@@ -44,7 +44,6 @@ export class NavbarFrontComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-
         this.menuItemsFRONT = ROUTES.filter(menuItem => menuItem);
         this.router.events.subscribe((event) => {
           this.isCollapsed = true;
@@ -53,8 +52,8 @@ export class NavbarFrontComponent implements OnInit {
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        // console.log(toggleButton, 'toggle');
+         console.log(html);
+         console.log(toggleButton, 'toggle');
 
         setTimeout(function(){
             toggleButton.classList.add('toggled');
@@ -65,14 +64,14 @@ export class NavbarFrontComponent implements OnInit {
     };
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
+         console.log(html);
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
     sidebarToggle() {
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
+         const toggleButton = this.toggleButton;
+         const body = document.getElementsByTagName('body')[0];
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
         } else {

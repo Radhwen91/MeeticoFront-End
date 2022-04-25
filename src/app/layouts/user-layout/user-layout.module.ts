@@ -43,6 +43,7 @@ import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-fe
     DatailFeedbackComponent,
     UpdateFeedbackComponent,
     
+    
    
   ]
   ,entryComponents: [NgbdModalContent

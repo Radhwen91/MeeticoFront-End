@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -35,7 +35,8 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     ClipboardModule,
     MatDialogModule,
     NgxSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
     
   ],
   declarations: [
