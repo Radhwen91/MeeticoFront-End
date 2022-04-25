@@ -60,7 +60,7 @@
               </div>
               <div class="col-md-6">
                 <!-- post form -->
-                <form method="post" action="">
+                <form  #f="ngForm"  method="post" action="">
 
 
                   <div class="input-group">
@@ -74,14 +74,17 @@
 
 
 
-                    <input   [(ngModel)]="publication.contents" class="form-control" type="text" name="content" placeholder="Make a post...">
+                    <input   [(ngModel)]="publication.contents"   #t="ngModel"  required minlength="3"  class="form-control" type="text" name="content" placeholder="Make a post...">
 
                     <span class="input-group-btn">
-              <button class="btn btn-success" type="submit" name="post"   (click)="addPub();openSnackBar('Post added successfully ','Undo');playSound()"   >Post</button>
+              <button class="btn btn-success" type="submit" name="post"  [disabled]="f.invalid"  (click)="addPub();openSnackBar('Post added successfully ','Undo');playSound()"   >Post</button>
             </span>
 
                   </div>
-
+                  <div class="alert alert-danger"  *ngIf="t.invalid && t.touched">
+                    <div *ngIf="t.errors.required">  Contents is required </div>
+                    <div *ngIf="t.errors.minlength">contents must be at least 3 characters</div>
+                  </div>
                 </form>
 
                 <div>
@@ -171,7 +174,7 @@
 
 <span><a>  <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/126/126473.png"/>        {{listnbrLike[indexOfelement]}}   </a>
 </span>
-                        <span> <a ><img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/126/126504.png"/>    {{listnbrdisike[indexOfelement]}}      </a></span>
+                        <span> <a ><img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/126/126504.png"/>       {{listnbrLike[indexOfelement]}}</a></span>
 
                         <br> <br>
 

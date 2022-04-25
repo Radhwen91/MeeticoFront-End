@@ -76,15 +76,16 @@ export class FrontPublicationComponent implements OnInit {
         this.listPub=res;
         let id: Publication =res.idPublication;
 
+        this.publicationservice.ListComments(1).subscribe(
+
+          res2=>{
+            // this.listCom.push(res2[i]);
+            console.log("liscomenntssss"+this.listCom)
+            //   console.log("liscomenntssss2"+res2)
+
+          } );
         for(let i in this.listPub){
-          this.publicationservice.ListComments(this.listPub[i].idPublication).subscribe(
 
-            res2=>{
-             // this.listCom.push(res2[i]);
-              console.log("liscomenntssss"+this.listCom)
-              //   console.log("liscomenntssss2"+res2)
-
-            } );
 
           this.publicationservice.getNbrLike(this.listPub[i].idPublication).subscribe(
             data=>{

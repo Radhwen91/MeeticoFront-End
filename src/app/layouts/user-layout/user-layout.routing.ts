@@ -29,6 +29,6 @@ export const UserLayoutRoutes: Routes = [
   { path: 'update-publication',           component: UpdatePublicationComponent },
   { path: 'comments-management',           component: CommentsManagementComponent },
   { path: 'chatbot',           component: ChatbotComponent },
-  ,
+
 
 ];
