@@ -15,6 +15,7 @@ export class User {
     followers: User[];
     gender: Gender;
     lastName: string;
+    lastSeen: any;
     password: string;
     phoneNumber: number;
     picture: string;

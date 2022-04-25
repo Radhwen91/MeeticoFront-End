@@ -38,9 +38,9 @@
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+          <a routerLinkActive="active" class="dropdown-item" (click)="changePassword()">
             <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
+            <span>Change Password</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-calendar-grid-58"></i>

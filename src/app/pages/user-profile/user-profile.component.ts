@@ -35,7 +35,7 @@ export class UserProfileComponent implements OnInit {
    this.disabled = false;
   }
   updateProfile() {
-    this.userService.updateProfile(this.user.userId, this.user).subscribe(
+    this.userService.updateProfile(this.user).subscribe(
       user => {
         this.tokenService.saveUser(user);
         window.location.reload();

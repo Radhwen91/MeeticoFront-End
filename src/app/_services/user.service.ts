@@ -18,11 +18,14 @@ export class UserService {
   authenticateUser(credentials: Partial<User>): Observable<UserDetails> {
     return this.http.post<UserDetails>(url + 'authenticateUser', credentials);
   }
-  updateProfile(userId: number, updation: Partial<User>): Observable<User> {
-    return this.http.put<User>(url + 'updateProfile?userId=' + userId, updation);
+  updateProfile(user: Partial<User>): Observable<User> {
+    return this.http.put<User>(url + 'updateProfile', user);
   }
   removeUser(userId: number): Observable<void> {
     return this.http.delete<void>(url + 'removeUser?userId=' + userId);
+  }
+  retrieveUser(userId: number): Observable<User> {
+    return this.http.get<User>(url + 'retrieveUser?userId=' + userId);
   }
   retrieveAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(url + 'retrieveAllUsers');
@@ -35,6 +38,9 @@ export class UserService {
   }
   searchForUsers(input: string): Observable<User[]> {
     return this.http.get<User[]>(url + 'searchForUsers?input=' + input);
+  }
+  updateStatus(userId: number): Observable<void> {
+    return this.http.put<void>(url + 'updateStatus?userId=' + userId, null);
   }
   followUser(followerId: number, userId: number): Observable<void> {
     return this.http.put<void>(url + 'followUser?followerId=' + followerId + '&userId=' + userId, null);

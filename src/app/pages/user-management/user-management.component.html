@@ -37,7 +37,7 @@
                   <th scope="row">
                     <div class="media align-items-center">
                       <a class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                        <img src="{{ user.picture ? user.picture : 'assets/upload/default.jpg' }}">
                       </a>
                       <div class="media-body">
                         <span class="mb-0 text-sm"> {{ user.userId }} </span>
@@ -53,9 +53,9 @@
                     </span>
                   </td>
                   <td *ngIf="user.followers.length > 0">
-                    <div class="avatar-group" *ngFor="let f of user.followers">
+                    <div class="avatar-group" *ngFor="let follower of user.followers">
                       <a class="avatar avatar-sm" data-toggle="tooltip">
-                        <img src="{{ f.picture ? f.picture : 'assets/upload/default.jpg' }}" class="rounded-circle">
+                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}" class="rounded-circle">
                       </a>
                     </div>
                   </td>
