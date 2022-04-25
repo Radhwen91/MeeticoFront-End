@@ -34,6 +34,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -68,6 +69,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     TestfaresComponent,
     FrontPublicationComponent,
     UpdatePublicationComponent,
+    CommentsManagementComponent,
 
   ]
   ,entryComponents: [NgbdModalContent]

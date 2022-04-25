@@ -17,6 +17,7 @@ import { ListCommentsBackComponent } from './pages/publication-management/list-c
 import { PublicationAjoutComponent } from './pages/publication-management/publication-ajout/publication-ajout.component';
 import { FrontPublicationComponent } from './pages/publication-management/front-publication/front-publication.component';
 import { UpdatePublicationComponent } from './pages/publication-management/front-publication/update-publication/update-publication.component';
+import { CommentsManagementComponent } from './pages/comments-management/comments-management.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { UpdatePublicationComponent } from './pages/publication-management/front
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+
 
 
 

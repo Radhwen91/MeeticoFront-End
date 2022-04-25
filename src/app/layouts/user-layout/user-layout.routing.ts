@@ -11,6 +11,7 @@ import {
 import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
+import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
 
 
 
@@ -25,5 +26,6 @@ export const UserLayoutRoutes: Routes = [
   { path: 'testfares',      component: TestfaresComponent },
   { path: 'frontpublication',      component: FrontPublicationComponent },
   { path: 'update-publication',           component: UpdatePublicationComponent },
+  { path: 'comments-management',           component: CommentsManagementComponent },
 
 ];
