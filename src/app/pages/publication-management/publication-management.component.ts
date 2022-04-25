@@ -52,7 +52,7 @@ export class PublicationManagementComponent implements OnInit {
       }
     );
   }
-  displayedColumns = ['delete','contents','date','userr'];
+  displayedColumns = ['delete','contents','date'/*,'userr'*/];
 
   dataSource: MatTableDataSource<Publication>;
   ngAfterViewInit() {
@@ -82,19 +82,7 @@ export class PublicationManagementComponent implements OnInit {
     );
 
   }
-  /*
-  onPageChange(event: PageEvent){
-  const startIndex= +event.pageSize;
-  let endIndex = startIndex + event.pageSize;
-  if(endIndex>this.listPub.length)
-  {
-   endIndex= this.listPub.length;
 
-  }
-  this.pageSlice= this.listPub.slice(startIndex,endIndex)
-
-  }
-  */
 
   PDF(){
     this.publicationservice.Pdf().subscribe(

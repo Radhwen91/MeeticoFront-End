@@ -10,6 +10,8 @@ import {Observable} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import {UpdatePublicationComponent} from './update-publication/update-publication.component';
 import {MAT_SNACK_BAR_DATA, MatSnackBar} from '@angular/material/snack-bar';
+import {ListCommentsBackComponent} from "../list-comments-back/list-comments-back.component";
+import {ListCommentComponent} from "./list-comment/list-comment.component";
 
 @Component({
   selector: 'app-front-publication',
@@ -138,7 +140,18 @@ export class FrontPublicationComponent implements OnInit {
 
 
 
+  ListComments(r:Publication){
+    const dialogRef = this.dialog.open(ListCommentComponent,
+      {data:r}
 
+
+    );
+    console.warn('r',r);
+
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(`Dialog result: ${data}`);
+    });
+  }
 
 
   addPub(){

@@ -48,12 +48,8 @@ import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatb
     NouisliderModule,
     JwBootstrapSwitchNg2Module,
     CommonModule,
-
-
-
-
     ClipboardModule,
-    MatDialogModule,
+
     NgxSpinnerModule,
     MatPaginatorModule,
     MatTableModule,
@@ -72,6 +68,7 @@ import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatb
     UpdatePublicationComponent,
     CommentsManagementComponent,
     ChatbotComponent,
+
 
   ]
   ,entryComponents: [NgbdModalContent]

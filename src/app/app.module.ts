@@ -10,7 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { TestfaresComponent } from './pages/testfares/testfares.component';
 import { UpdatePublicationBackComponent } from './pages/publication-management/update-publication-back/update-publication-back.component';
 import { ListCommentsBackComponent } from './pages/publication-management/list-comments-back/list-comments-back.component';
@@ -19,6 +19,7 @@ import { FrontPublicationComponent } from './pages/publication-management/front-
 import { UpdatePublicationComponent } from './pages/publication-management/front-publication/update-publication/update-publication.component';
 import { CommentsManagementComponent } from './pages/comments-management/comments-management.component';
 import { ChatbotComponent } from './pages/publication-management/chatbot/chatbot.component';
+import { ListCommentComponent } from './pages/publication-management/front-publication/list-comment/list-comment.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ChatbotComponent } from './pages/publication-management/chatbot/chatbot
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    MatDialogModule,
 
   ],
   declarations: [
@@ -36,6 +38,7 @@ import { ChatbotComponent } from './pages/publication-management/chatbot/chatbot
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+    ListCommentComponent,
 
 
 

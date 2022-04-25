@@ -77,10 +77,10 @@
                 <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="userr">
+              <!--ng-container matColumnDef="userr">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> user </mat-header-cell>
                 <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.userr.firstName}} </mat-cell>
-              </ng-container>
+              </ng-container-->
 
 
 
@@ -118,7 +118,7 @@
               contents
             </th>
             <th> Date</th>
-            <th> User</th>
+            <!--th> User</th-->
             <th>Actions</th>
             </thead>
 
@@ -138,7 +138,7 @@
 
                 {{i.contents}}</td>
               <td>  {{i.date}}</td>
-              <td> {{i.userr.firstName}}  {{i.userr.lastName}}</td>
+              <!--td> {{i.userr.firstName}}  {{i.userr.lastName}}</td-->
               <td>        <div ngbDropdown placement="bottom-right">
                 <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                   <i class="fas fa-ellipsis-v"></i>
