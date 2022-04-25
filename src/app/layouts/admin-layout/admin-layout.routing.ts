@@ -17,6 +17,15 @@ import { TestComponent } from 'src/app/pages/test/test.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
+import {
+  UpdatePublicationBackComponent
+} from "../../pages/publication-management/update-publication-back/update-publication-back.component";
+import {
+  ListCommentsBackComponent
+} from "../../pages/publication-management/list-comments-back/list-comments-back.component";
+import {
+  PublicationAjoutComponent
+} from "../../pages/publication-management/publication-ajout/publication-ajout.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -35,4 +44,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Test',           component: TestComponent },
     { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
     { path: 'test',           component: UploadImageComponent},
+  { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
+  { path: 'list-comments-back',           component: ListCommentsBackComponent },
+  { path: 'publication-ajout',           component: PublicationAjoutComponent },
 ];

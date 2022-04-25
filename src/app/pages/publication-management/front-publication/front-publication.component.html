@@ -1,0 +1,330 @@
+
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+
+        </div>
+        <div class="table-responsive">
+          <main class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <!-- profile brief -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4>faresmoalla</h4>
+                    <p>I love to code!</p>
+                  </div>
+                </div>
+                <!-- ./profile brief -->
+
+                <!-- friend requests -->
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4>friend requests</h4>
+
+                  </div>
+                </div>
+                <!-- ./friend requests -->
+              </div>
+              <div class="col-md-6">
+                <!-- post form -->
+                <form method="post" action="">
+
+
+                  <div class="input-group">
+
+
+
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
+            </span>
+
+
+
+
+                    <input   [(ngModel)]="publication.contents" class="form-control" type="text" name="content" placeholder="Make a post...">
+
+                    <span class="input-group-btn">
+              <button class="btn btn-success" type="submit" name="post"   (click)="addPub();openSnackBar('Post added successfully ','Undo');playSound()"   >Post</button>
+            </span>
+
+                  </div>
+
+                </form>
+
+                <div>
+                  <div *ngIf="currentFile" class="progress">
+                    <div
+                      class="progress-bar progress-bar-info progress-bar-striped"
+                      role="progressbar"
+                      attr.aria-valuenow="{{ progress }}"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      [ngStyle]="{ width: progress + '%' }"
+                    >
+                      {{ progress }}%
+                    </div>
+                  </div>
+                  <label class="btn btn-default">
+                    <input type="file" (change)="selectFile($event);upload()" />
+                  </label>
+
+                  <table class="table align-items-center table-flush">
+                    <tbody>
+
+
+
+                    <tr *ngFor="let file of listfile">
+                      <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+                    </tr>
+                    </tbody>
+                  </table>
+
+
+                  <br> <br>
+
+
+
+
+                </div>
+
+
+
+                <div>
+
+
+
+                  <div *ngFor="let i of listPub;let indexOfelement=index;"  >
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+
+ <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
+            </span>
+                        <span>  {{i.userr.firstName}}  {{i.userr.lastName}}  <div >
+
+
+                       </div>   </span>
+
+
+                        <span>            <span>      <h6 >    {{i.date}} </h6></span></span>
+
+
+                      </div>
+
+
+
+                      <div class="panel-footer">
+
+
+
+                        <h2  [hidden]="show"  > <a (click)="ChangeStatus()" > {{i.contents}}    </a>      <h6>
+
+                          <span>            </span>
+
+
+                          <span class="pull-right"><a class="text-danger" (click)="deletePub(i);playSound()">[delete]</a></span></h6>    </h2>
+
+                        <span class="pull-right"><a class="text-danger" (click)="UpdatePublication(i)">[Update]</a></span>
+
+
+                        <div>
+
+                          <!--img width="200" height="200" alt=" " src="http://localhost:8081/File/files/{{i.idPublication}}"  -->
+
+                        </div>
+
+                      </div>
+                      <div class="panel-footer">
+
+<span><a>  <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/126/126473.png"/>        {{listnbrLike[indexOfelement]}}   </a>
+</span>
+                        <span> <a ><img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/126/126504.png"/>       {{listnbrLike[indexOfelement]}}</a></span>
+
+                        <br> <br>
+
+                        <mat-accordion>
+                          <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+
+                                23 Commentaires
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                Show comments
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div class="container">
+
+                              <div class="list-group shadow mb-5">
+
+                                <div *ngFor="let i of listComments" class="list-group-item list-group-item-action p-4">
+                                  <div class="row">
+                                    <div class="col-2 col-lg-1 align-self-lg-center py-3 d-flex align-items-lg-center">
+                                    </div>
+                                    <div class="col-9 col-lg-4 align-self-center mb-3 mb-lg-0">
+                                      <div class="d-flex align-items-center mb-1 mb-lg-3">
+                                        <h2 class="h5 mb-0">{{i.userr}}</h2><img class="avatar avatar-sm avatar-border-white ml-3" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" alt="Jack London">
+                                      </div>
+                                      <span class="badge badge-pill p-2 badge-success-light">{{i.date}}</span><a class="stretched-link"></a>
+                                    </div>
+                                    <div class="col-10 ml-auto col-lg-7">
+                                      <div class="row">
+                                        <div class="col-md-8 py-3">
+                                          <p class="text-sm mb-0">{{i.contents}}</p>
+                                        </div>
+                                        <div class="col-md-4 text-right py-3">
+
+                                        </div><a class="stretched-link" ></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+
+
+                        <div class="input-group">
+                          <input  id="add"  [(ngModel)]="comment.contents" name="contents" type="text"   class="form-control"      >
+                          <span class="input-group-btn">
+
+                      <button  class="btn btn-primary" type="button" (click)="addComment2(i)"   > Comment</button>
+            </span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+
+
+
+
+              <div class="col-md-3">
+                <div class="panel panel-default">
+
+
+
+                  <div class="panel-body">
+                    <h4>
+
+
+
+
+                      <select class="custom-select" (change)="changeLang($event)">
+                        <option value="en" [selected]="lang=='en'">English </option>
+                        <option value="ar" [selected]="lang=='ar'">Arabe </option>
+                        <option value="ar" [selected]="lang=='de'">Deutsch </option>
+                      </select>
+
+
+
+                    </h4>
+                    <ul>
+                      <li>
+                        <a >radhwen</a>
+                        <a>[add]</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4>friends</h4>
+                    <ul>
+                      <li>
+                        <a >zied lahbib</a>
+                        <a class="text-danger" >[unfriend]</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Furniture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </main>
+
+        </div>
+
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+
+          </nav>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="src/assets/pub/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="src/assets/pub/js/script.js"></script>
+</div>

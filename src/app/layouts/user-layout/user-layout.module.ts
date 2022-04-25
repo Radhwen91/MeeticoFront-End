@@ -18,6 +18,22 @@ import { TypographyComponent } from 'src/app/pages/typography/typography.compone
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
 import {TestfaresComponent} from "../../pages/testfares/testfares.component";
+import {
+  FrontPublicationComponent
+} from "../../pages/publication-management/front-publication/front-publication.component";
+import {
+  UpdatePublicationComponent
+} from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
+import {AdminLayoutRoutes} from "../admin-layout/admin-layout.routing";
+import {MatDialogModule} from "@angular/material/dialog";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,12 +44,30 @@ import {TestfaresComponent} from "../../pages/testfares/testfares.component";
     HttpClientModule,
     NgbModule,
     NouisliderModule,
-    JwBootstrapSwitchNg2Module
+    JwBootstrapSwitchNg2Module,
+    CommonModule,
+
+
+
+
+    ClipboardModule,
+    MatDialogModule,
+    NgxSpinnerModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatExpansionModule,
 
   ],
   declarations: [
-    TestfaresComponent
-
+    TestfaresComponent,
+    FrontPublicationComponent,
+    UpdatePublicationComponent,
 
   ]
   ,entryComponents: [NgbdModalContent]

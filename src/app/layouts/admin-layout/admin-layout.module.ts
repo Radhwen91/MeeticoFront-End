@@ -24,6 +24,22 @@ import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/upd
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {PublicationManagementComponent} from "../../pages/publication-management/publication-management.component";
+import {
+  UpdatePublicationBackComponent
+} from "../../pages/publication-management/update-publication-back/update-publication-back.component";
+import {
+  ListCommentsBackComponent
+} from "../../pages/publication-management/list-comments-back/list-comments-back.component";
+import {
+  PublicationAjoutComponent
+} from "../../pages/publication-management/publication-ajout/publication-ajout.component";
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -38,8 +54,16 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ClipboardModule,
     MatDialogModule,
     NgxSpinnerModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+
   ],
   declarations: [
     DashboardComponent,
@@ -55,7 +79,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     UpdateReclamationComponent,
     AnswerAdminComponent,
     UploadImageComponent,
-    TestComponent
+    TestComponent,
+    PublicationManagementComponent,
+    UpdatePublicationBackComponent,
+    ListCommentsBackComponent,
+    PublicationAjoutComponent,
   ],
   exports: [
     RouterModule

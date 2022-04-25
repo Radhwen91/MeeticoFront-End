@@ -12,6 +12,11 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { TestfaresComponent } from './pages/testfares/testfares.component';
+import { UpdatePublicationBackComponent } from './pages/publication-management/update-publication-back/update-publication-back.component';
+import { ListCommentsBackComponent } from './pages/publication-management/list-comments-back/list-comments-back.component';
+import { PublicationAjoutComponent } from './pages/publication-management/publication-ajout/publication-ajout.component';
+import { FrontPublicationComponent } from './pages/publication-management/front-publication/front-publication.component';
+import { UpdatePublicationComponent } from './pages/publication-management/front-publication/update-publication/update-publication.component';
 
 @NgModule({
   imports: [
@@ -29,6 +34,11 @@ import { TestfaresComponent } from './pages/testfares/testfares.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+
+
+
+
+
 
 
   ],

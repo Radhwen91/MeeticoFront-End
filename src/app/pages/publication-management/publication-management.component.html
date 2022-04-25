@@ -1,1 +1,220 @@
-<p>publication-management works!</p>
+
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Publication table</h3>
+        </div>
+        <div class="table-responsive">
+
+
+
+
+          <br>
+
+          <br>
+
+          <app-publication-ajout></app-publication-ajout>
+          <br><br>
+
+          <!--p style="100px" > <input  id="myInput"  type="text" placeholder="search"-->
+
+
+
+          <mat-form-field>
+
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+
+          </mat-form-field>
+
+
+
+
+
+
+          <div class="example-container mat-elevation-z8">
+
+            <mat-table class="table table-striped" [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item" href="javascript:void(0)" (click)="UpdatePublication(row)" >Update</a>
+                      <a class="dropdown-item" href="javascript:void(0)" >Delete</a>
+                      <a class="dropdown-item" href="javascript:void(0)" (click)="ListComments(row)"  >Show Comments</a>
+                    </div>
+                  </div>
+
+                </mat-cell>
+              </ng-container>
+
+              <!-- Progress Column -->
+              <ng-container matColumnDef="contents">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> contents </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.contents}} </mat-cell>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> date </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="userr">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> user </mat-header-cell>
+                <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.userr.firstName}} </mat-cell>
+              </ng-container>
+
+
+
+
+
+
+
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+
+
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+
+
+          </div>
+
+          <button mat-button color="warn" (click)="PDF()"  >PDF PUBLICATION TODAY</button>
+          <hr>
+
+
+
+          <table id="t" class="table align-items-center table-flush">
+            <thead class="thead-light">
+
+            <th>Actions</th>
+            <th>#</th>
+
+            <th>
+              contents
+            </th>
+            <th> Date</th>
+            <th> User</th>
+            <th>Actions</th>
+            </thead>
+
+
+            <tbody  id="myTable">
+
+            <tr *ngFor="let i of listPub">
+              <td>  <button type="button"  class="btn btn-outline-danger" (click)="deletePub(i)" >Delete</button></td>
+
+
+
+              <th scope="row" > {{i.idPublication}}</th>
+              <td>
+
+
+
+
+                {{i.contents}}</td>
+              <td>  {{i.date}}</td>
+              <td> {{i.userr.firstName}}  {{i.userr.lastName}}</td>
+              <td>        <div ngbDropdown placement="bottom-right">
+                <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                  <i class="fas fa-ellipsis-v"></i>
+                </a>
+                <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                  <a class="dropdown-item" href="javascript:void(0)" (click)="UpdatePublication(i)" >Update</a>
+                  <a class="dropdown-item" href="javascript:void(0)" >Delete</a>
+                  <a class="dropdown-item" href="javascript:void(0)" (click)="ListComments(i)"  >Show Comments</a>
+                </div>
+              </div></td>
+            </tr>
+
+
+            </tbody>
+
+            <tbody id="search">
+            </tbody>
+
+
+
+          </table>
+
+        </div>
+
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/622ba6e4a34c2456412aa4aa/1ftt87s0s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>

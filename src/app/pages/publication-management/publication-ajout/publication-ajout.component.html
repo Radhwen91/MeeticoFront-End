@@ -1,0 +1,30 @@
+<div  class="container">
+  <form class="form-horinzontal"  >
+    <div class="form-group">
+
+      <label class="form-label" >Content</label>
+      <!--div class="form-outline">
+        <textarea placeholder="Content" [(ngModel)]="publication.contents"  class="form-control" name="contents" rows="4" ngModel required #contents="ngModel"> </textarea>
+
+      </div>
+
+
+      <div class="alert alert-danger"   *ngIf="contents.invalid && contents.touched">
+      <input  formControlName="object" name="contents" type="text"   class="form-control"    ngModel required #contents="ngModel"  -->
+
+      <input  [(ngModel)]="publication.contents" name="contents" type="text"   class="form-control"      >
+
+
+    </div>
+
+    <!--div class="alert alert-danger"   >
+      contents is a required field
+
+    </div-->
+
+    <button class="btn btn-success" type="button" (click)="addPub();openSnackBar('Post added successfully ','Undo')"   > Save</button>
+
+
+  </form>
+</div>
+
