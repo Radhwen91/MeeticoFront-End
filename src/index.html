@@ -19,8 +19,52 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- -->
+  <script src="assets/assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/assets/js/popper.min.js"></script>
+  <script src="assets/assets/js/bootstrap.min.js"></script>
+  <script src="assets/assets/js/jquery.slimscroll.js"></script>
+  <script src="assets/assets/js/app.js"></script>
+  <script src="assets/assets/js/html5shiv.min.js"></script>
+  <script src="assets/assets/js/respond.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/assets/css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
 </head>
 <body class="mat-typography">
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/622ba6e4a34c2456412aa4aa/1ftt87s0s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+<script type="text/javascript">
+  var vsid = "kc239662d18e8c4";
+  (function() {
+    var vsjs = document.createElement('script'); vsjs.type = 'text/javascript'; vsjs.async = true; vsjs.setAttribute('defer', 'defer');
+    vsjs.src = 'https://www.leadchatbot.com/vsa/chat.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vsjs, s);
+  })();
+</script>
   <app-root></app-root>
 </body>
 </html>

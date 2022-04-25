@@ -12,6 +12,7 @@ import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
+import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatbot.component";
 
 
 
@@ -27,5 +28,7 @@ export const UserLayoutRoutes: Routes = [
   { path: 'frontpublication',      component: FrontPublicationComponent },
   { path: 'update-publication',           component: UpdatePublicationComponent },
   { path: 'comments-management',           component: CommentsManagementComponent },
+  { path: 'chatbot',           component: ChatbotComponent },
+  ,
 
 ];

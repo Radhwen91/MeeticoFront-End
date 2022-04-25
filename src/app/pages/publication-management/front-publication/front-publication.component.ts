@@ -36,6 +36,7 @@ export class FrontPublicationComponent implements OnInit {
   public listCom:Comment[];
   nbrLike : number;
   public listnbrLike:number[];
+  public listnbrdisike:number[];
   lang;
   changeLang(lang){
     localStorage.setItem('lang',lang);
@@ -79,7 +80,7 @@ export class FrontPublicationComponent implements OnInit {
           this.publicationservice.ListComments(this.listPub[i].idPublication).subscribe(
 
             res2=>{
-              this.listCom.push(res2[i]);
+             // this.listCom.push(res2[i]);
               console.log("liscomenntssss"+this.listCom)
               //   console.log("liscomenntssss2"+res2)
 
@@ -93,6 +94,16 @@ export class FrontPublicationComponent implements OnInit {
               // console.log(this.listnbrLike)
 
             }  );
+          this.publicationservice.getNbrDislike(this.listPub[i].idPublication).subscribe(
+            data2=>{
+              //console.log("nbrlikes",data)
+
+              this.listnbrdisike.push(data2);
+              // console.log(this.listnbrLike)
+
+            }  );
+
+
 
         }
 

@@ -35,6 +35,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
+import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatbot.component";
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -70,6 +71,7 @@ import {CommentsManagementComponent} from "../../pages/comments-management/comme
     FrontPublicationComponent,
     UpdatePublicationComponent,
     CommentsManagementComponent,
+    ChatbotComponent,
 
   ]
   ,entryComponents: [NgbdModalContent]

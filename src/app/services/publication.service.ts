@@ -22,6 +22,8 @@ export class PublicationService {
   urladd="/api/publication/add-publication";
   urladdlike="/api/publication/addLike";
   urlLike="/api/publication/nbrLike";
+  urldisLike="/api/publication/nbrDisLike";
+
 //urladdcomment="/api/comment/testaddcomment";
   urladdcomment="/api/comment/add-comment";
   uploadfile="/api//File/upload";
@@ -68,6 +70,12 @@ export class PublicationService {
     return this.http.get(`${this.urlLike}/${id}`)
 
   }
+
+  getNbrDislike(id:number) : Observable<any>{
+    return this.http.get(`${this.urldisLike}/${id}`)
+
+  }
+
   addLike(like:PostLike,id:number) : Observable<PostLike>{
 
     return this.http.put<PostLike>(`${this.urladdlike}/${id}`,like);

@@ -18,6 +18,7 @@ import { PublicationAjoutComponent } from './pages/publication-management/public
 import { FrontPublicationComponent } from './pages/publication-management/front-publication/front-publication.component';
 import { UpdatePublicationComponent } from './pages/publication-management/front-publication/update-publication/update-publication.component';
 import { CommentsManagementComponent } from './pages/comments-management/comments-management.component';
+import { ChatbotComponent } from './pages/publication-management/chatbot/chatbot.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { CommentsManagementComponent } from './pages/comments-management/comment
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+
 
 
 
