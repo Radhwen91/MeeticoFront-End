@@ -1,5 +1,5 @@
 
-
+<mat-dialog-content class="mat-typography">
 
 <div class="container">
 
@@ -23,10 +23,9 @@
         <div class="col-10 ml-auto col-lg-7">
           <div class="row">
             <div class="col-md-8 py-3">
-              <p class="text-sm mb-0">{{i.contents}}</p>
+              <p >{{i.contents}}</p>
             </div>
             <div class="col-md-4 text-right py-3">
-              <p class="text-sm">{{i.date}}</p>
 
             </div><a class="stretched-link" ></a>
           </div>
@@ -38,4 +37,9 @@
 
   </div>
 </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
 
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+
+</mat-dialog-actions>
