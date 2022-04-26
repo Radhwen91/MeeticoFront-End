@@ -59,9 +59,11 @@ export class SidebarComponent implements OnInit {
       top: '200px',
       left: '650px',
     };
-    let dialogRef = this.matDialog.open(SideBarPasswordDialog, dialogConfig);
+    let dialogRef = this.matDialog.open(SidebarPasswordDialog, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
+        let index = +this.dataService.getItem('index');
+        this.dataService.setItem('index', index + 1);
         this.user.password = data.newPassword;
         this.tokenService.saveUser(this.user);
         this.userService.updateProfile(this.user).subscribe();
@@ -71,6 +73,7 @@ export class SidebarComponent implements OnInit {
   signOut() {
     if (this.socialUser) {
       this.userService.updateStatus(this.user.userId).subscribe();
+      this.dataService.removeItem('index');
       this.tokenService.signOut();
     }
     else {
@@ -101,13 +104,15 @@ export class SidebarComponent implements OnInit {
   </mat-dialog-actions>`
 })
 
-export class SideBarPasswordDialog implements OnInit {
+export class SidebarPasswordDialog implements OnInit {
   form: FormGroup;
   newPassword: string;
   confirmPassword: string;
-  constructor(private dialogRef: MatDialogRef<SideBarPasswordDialog>, private formBuilder: FormBuilder) { }
+  constructor(private dataService: DataService, private dialogRef: MatDialogRef<SidebarPasswordDialog>, private formBuilder: FormBuilder) { }
   ngOnInit() {
-    document.getElementById("mat-dialog-0").style.cssText = `background: white`;
+    let index = +this.dataService.getItem('index');
+    if (!index) this.dataService.setItem('index', index = 0);
+    document.getElementById("mat-dialog-" + index).style.cssText = `background: white`;
     this.form = this.formBuilder.group({
       newPassword: this.newPassword,
       confirmPassword: this.confirmPassword

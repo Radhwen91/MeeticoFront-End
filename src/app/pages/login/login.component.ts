@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
   GoogleAuthentication(): void {
     if (this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)) {
       this.dataService.currentStatus.subscribe(login => this.isLoggedin = !login);
-      console.log(this.isLoggedin)
 
     }
   }

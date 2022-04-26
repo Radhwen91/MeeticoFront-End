@@ -5,8 +5,8 @@ import { RouterModule } from "@angular/router";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MaterialModule } from "../material.module";
 import { FooterComponent } from "./footer/footer.component";
-import { NavbarComponent, NavBarPasswordDialog } from "./navbar/navbar.component";
-import { SidebarComponent, SideBarPasswordDialog } from "./sidebar/sidebar.component";
+import { NavbarComponent, NavbarPasswordDialog } from "./navbar/navbar.component";
+import { SidebarComponent, SidebarPasswordDialog } from "./sidebar/sidebar.component";
 
 @NgModule({
   imports: [
@@ -21,8 +21,8 @@ import { SidebarComponent, SideBarPasswordDialog } from "./sidebar/sidebar.compo
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    NavBarPasswordDialog,
-    SideBarPasswordDialog
+    NavbarPasswordDialog,
+    SidebarPasswordDialog
   ],
   exports: [
     FooterComponent,

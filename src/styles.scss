@@ -1,3 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+.ngx-pagination .disabled {
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 3px !important;
+}
+
+.ngx-pagination .current {
+    background: #f5365c !important;
+    border-radius: 50%;
+}
+
+.ngx-pagination a {
+    background: #fff;
+    border-radius: 50% !important;
+    margin: 0 3px;
+}

@@ -22,7 +22,7 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) { }
   ngSubmit(): void {
     this.userService.registerEntrepreneur(this.user).subscribe(
-      DATA => {
+      data => {
         this.router.navigate(['login']);
       }
     );

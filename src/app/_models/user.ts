@@ -10,12 +10,11 @@ export class User {
     address: string;
     birthday: Date;
     email: string;
-    entrepreneur: User;
     firstName: string;
     followers: User[];
     gender: Gender;
     lastName: string;
-    lastSeen: any;
+    lastSeen: Date;
     password: string;
     phoneNumber: number;
     picture: string;

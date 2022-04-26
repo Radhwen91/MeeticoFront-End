@@ -18,7 +18,7 @@ export class UserService {
   authenticateUser(credentials: Partial<User>): Observable<UserDetails> {
     return this.http.post<UserDetails>(url + 'authenticateUser', credentials);
   }
-  updateProfile(user: Partial<User>): Observable<User> {
+  updateProfile(user: User): Observable<User> {
     return this.http.put<User>(url + 'updateProfile', user);
   }
   removeUser(userId: number): Observable<void> {

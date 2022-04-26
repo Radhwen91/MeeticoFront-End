@@ -33,7 +33,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: index }">
                   <th scope="row">
                     <div class="media align-items-center">
                       <a class="avatar rounded-circle mr-3">
@@ -49,13 +49,15 @@
                   </td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending' }}
+                      <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending'
+                      }}
                     </span>
                   </td>
                   <td *ngIf="user.followers.length > 0">
                     <div class="avatar-group" *ngFor="let follower of user.followers">
                       <a class="avatar avatar-sm" data-toggle="tooltip">
-                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}" class="rounded-circle">
+                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}"
+                          class="rounded-circle">
                       </a>
                     </div>
                   </td>
@@ -79,8 +81,8 @@
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
                       <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" (click)="openDialog(user)">Details</a>
                         <a class="dropdown-item" (click)="removeUser(user)">Delete</a>
+                        <a class="dropdown-item" (click)="openDialog(user)">Details</a>
                         <a class="dropdown-item">Something else here</a>
                       </div>
                     </div>
@@ -90,32 +92,11 @@
             </table>
           </div>
           <div class="card-footer bg-transparent py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link bg-danger border-0">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link">3</a></li>
-                <li class="page-item">
-                  <a class="page-link">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ul class="pagination justify-content-end mb-0">
+              <pagination-controls (pageChange)="index = $event" previousLabel="" nextLabel=""></pagination-controls>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  

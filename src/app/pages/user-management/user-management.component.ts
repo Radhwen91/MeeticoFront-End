@@ -1,10 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from 'src/app/_models/user';
-import { TokenService } from 'src/app/_services/token.service';
-import { UserService } from 'src/app/_services/user.service';
-import * as moment from 'moment';
+import { Component, OnInit, Inject } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import * as moment from "moment";
+import { User } from "src/app/_models/user";
+import { DataService } from "src/app/_services/data.service";
+import { TokenService } from "src/app/_services/token.service";
+import { UserService } from "src/app/_services/user.service";
 
 @Component({
   selector: 'app-user-management',
@@ -13,17 +14,18 @@ import * as moment from 'moment';
 })
 
 export class UserManagementComponent implements OnInit {
+  connectedUser: User;
+  index: number = 1;
   users: User[];
   focus: boolean;
-  input: any;
-  connectedUser: User;
+  input: string;
   age: number;
   me: boolean;
   followed: boolean;
-  constructor(private userService: UserService, private dialog: MatDialog, private tokenService: TokenService) { }
+  constructor(private dataService: DataService, private tokenService: TokenService, private userService: UserService, private matDialog: MatDialog) { }
   ngOnInit() {
-    this.userService.retrieveAllUsers().subscribe(users => this.users = users);
     this.connectedUser = this.tokenService.getUser();
+    this.userService.retrieveAllUsers().subscribe(users => this.users = users);
   }
   getAge(date: Date): number {
     return moment().diff(date, 'years');
@@ -48,18 +50,17 @@ export class UserManagementComponent implements OnInit {
       top: '50px',
       left: '50px'
     };
-    let dialogRef = this.dialog.open(UserDetailsDialog, dialogConfig);
+    let dialogRef = this.matDialog.open(UserDetailsDialog, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
+        let index = +this.dataService.getItem('index');
+        this.dataService.setItem('index', index + 1);
         if (data.me) this.me = !this.me;
         if (data.followed) this.followed = !this.followed;
         if (data.clicked) window.location.reload();
       }
     );
   }
-  // retrieveFollower(follower) {
-  //   this.userService.retrieveUser(follower).subscribe();
-  // }
   removeUser(selectedUser) {
     this.userService.removeUser(selectedUser.userId).subscribe(selectedUser => window.location.reload());
   }
@@ -136,16 +137,18 @@ export class UserDetailsDialog implements OnInit {
   me: boolean;
   followed: boolean;
   clicked: boolean;
-  constructor(private dialogRef: MatDialogRef<UserDetailsDialog>, @Inject(MAT_DIALOG_DATA) data, private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(private dataService: DataService, private dialogRef: MatDialogRef<UserDetailsDialog>, @Inject(MAT_DIALOG_DATA) data, private userService: UserService, private formBuilder: FormBuilder) {
     this.connectedUser = data.connectedUser;
     this.selectedUser = data.selectedUser;
     this.age = data.age;
     this.me = data.me;
     this.followed = data.followed;
-   }
-   ngOnInit(): void {
-    document.getElementById("mat-dialog-0").style.cssText = `background: transparent; box-shadow: none; overflow: visible !important;`;
-   }
+  }
+  ngOnInit(): void {
+    let index = +this.dataService.getItem('index');
+    if (!index) this.dataService.setItem('index', index = 0);
+    document.getElementById("mat-dialog-" + index).style.cssText = `background: transparent; box-shadow: none; overflow: visible !important;`;
+  }
   followUser(selectedUser: User): void {
     this.userService.followUser(this.connectedUser.userId, selectedUser.userId).subscribe(
       data => {
