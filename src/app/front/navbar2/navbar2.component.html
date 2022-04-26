@@ -1,0 +1,92 @@
+<mat-toolbar>
+  <div class="nav-content">
+    <div class="right">
+      <div class="logo" routerLink="/home">
+        <img id="logo-img" src="../../../assets/logo.PNG" />
+      </div>
+      <div class="search" (click)="enableSeachBy()">
+        <div class="input-group mb-3">
+          <input
+
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="left">
+      <div class="nav-btn" routerLink="/home">
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+        >home</mat-icon
+        >
+        <span>Home</span>
+      </div>
+
+      <div class="nav-btn"  routerLink="/network">
+        <mat-icon>group</mat-icon>
+        <span>My Network</span>
+      </div>
+      <div class="nav-btn" routerLink="/jobs">
+        <mat-icon>card_travel</mat-icon>
+        <span>Jobs</span>
+      </div>
+
+      <div class="nav-btn" routerLink="/messages">
+        <mat-icon *ngIf="messages > 0" matBadge={{messages}} matBadgeColor="warn">Messaging</mat-icon>
+        <mat-icon *ngIf="messages <= 0">Messaging</mat-icon>
+        <span>Messaging</span>
+      </div>
+
+      <div class="nav-btn" routerLink="/notifications">
+
+        <span>Notifications</span>
+      </div>
+
+
+
+      <div class="nav-btn">
+        <a href="#">Try Premium Free for 1 Month</a>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="dark-background" *ngIf="subNav" (click)="disableSeachBy()">
+  <mat-toolbar class="sub-nav">
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip (click)="activeClicked('all')" >All</mat-chip>
+      <mat-chip  mat-raised-button matTooltip="Search By people" (click)="activeClicked('people')" >People</mat-chip>
+      <mat-chip  mat-raised-button matTooltip="Search By jobs"(click)="activeClicked('job')" >Jobs</mat-chip>
+      <mat-chip  mat-raised-button matTooltip="Search By locations" (click)="activeClicked('loc')" >Location</mat-chip>
+
+    </mat-chip-list>
+  </mat-toolbar>
+</div>
+<div
+  class="dark-background"
+  *ngIf="searchResult"
+  (click)="disableSeachResult()"
+>
+  <!-- <mat-toolbar class="sub-nav">
+    <mat-chip-list aria-label="Fish selection"> -->
+  <mat-card class="search-result-sm">
+
+    <span class="match" *ngIf="!match">Show more</span>
+    <span class="match" *ngIf="match">No Match</span>
+  </mat-card>
+  <!-- </mat-chip-list> -->
+  <!-- </mat-toolbar> -->
+</div>

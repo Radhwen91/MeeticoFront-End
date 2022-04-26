@@ -34,11 +34,11 @@
 
           <mat-form-field>
 
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
 
           </mat-form-field>
 
-
+          <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2989/premium/2989907.png?token=exp=1650964826~hmac=09839d4a1f71d1d7e4f054f41dc9a3d0"/>
 
 
 
@@ -51,16 +51,22 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
                 <mat-cell *matCellDef="let row">
 
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)" (click)="UpdatePublication(row)" >Update</a>
-                      <a class="dropdown-item" href="javascript:void(0)" >Delete</a>
-                      <a class="dropdown-item" href="javascript:void(0)" (click)="ListComments(row)"  >Show Comments</a>
-                    </div>
-                  </div>
+
+
+
+
+                  <a (click)="UpdatePublication(row)"  > <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2356/premium/2356780.png?token=exp=1650965441~hmac=aded0557a43283ae7efbc1672e883b38
+"/></a>
+
+                  <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/1950/premium/1950715.png?token=exp=1650965509~hmac=0a59daf425835bcc39155fce7721d479
+"/></a>
+                  <a> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+
+
+
+
+
+
 
                 </mat-cell>
               </ng-container>
@@ -83,111 +89,30 @@
               </ng-container-->
 
 
-
-
-
-
-
-
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;">
               </mat-row>
             </mat-table>
 
-
-
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
 
 
 
           </div>
 
-          <button mat-button color="warn" (click)="PDF()"  >PDF PUBLICATION TODAY</button>
+
+          <button type="button" class="btn btn-danger" (click)="PDF()"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/446/446991.png"/>Print Publication Today</button>
+
+
           <hr>
 
 
 
-          <table id="t" class="table align-items-center table-flush">
-            <thead class="thead-light">
 
-            <th>Actions</th>
-            <th>#</th>
-
-            <th>
-              contents
-            </th>
-            <th> Date</th>
-            <!--th> User</th-->
-            <th>Actions</th>
-            </thead>
-
-
-            <tbody  id="myTable">
-
-            <tr *ngFor="let i of listPub">
-              <td>  <button type="button"  class="btn btn-outline-danger" (click)="deletePub(i)" >Delete</button></td>
-
-
-
-              <th scope="row" > {{i.idPublication}}</th>
-              <td>
-
-
-
-
-                {{i.contents}}</td>
-              <td>  {{i.date}}</td>
-              <!--td> {{i.userr.firstName}}  {{i.userr.lastName}}</td-->
-              <td>        <div ngbDropdown placement="bottom-right">
-                <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                  <i class="fas fa-ellipsis-v"></i>
-                </a>
-                <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                  <a class="dropdown-item" href="javascript:void(0)" (click)="UpdatePublication(i)" >Update</a>
-                  <a class="dropdown-item" href="javascript:void(0)" >Delete</a>
-                  <a class="dropdown-item" href="javascript:void(0)" (click)="ListComments(i)"  >Show Comments</a>
-                </div>
-              </div></td>
-            </tr>
-
-
-            </tbody>
-
-            <tbody id="search">
-            </tbody>
-
-
-
-          </table>
 
         </div>
 
-        <div class="card-footer py-4">
-          <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+
 
 
       </div>

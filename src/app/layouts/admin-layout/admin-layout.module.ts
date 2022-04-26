@@ -52,7 +52,7 @@ import {
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatDialogModule,
+
     NgxSpinnerModule,
     MatPaginatorModule,
     MatTableModule,

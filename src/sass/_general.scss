@@ -1,0 +1,72 @@
+@import 'variables';
+
+.container {
+    width: 1200px;
+    margin: 80px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eventProfile {
+    display: flex;
+    align-self: baseline;
+    margin-left: 20px;
+}
+
+button {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.overlay {
+    background-color: rgba(#000, 0.7);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    overflow-y: hidden;
+}
+
+.horizontal {
+    position: relative;
+    left: -16px;
+    width: 103.5%;
+    border: none;
+    border-bottom: 2px solid #00000026;
+    margin-bottom: 16px;
+
+    &__form {
+        margin: 0;
+    }
+}
+
+// toggle button in form
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $primary;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $dark-primary;
+}
+
+.mat-checkbox-ripple .mat-ripple-element,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $primary !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 20px !important;
+}
+
+.oppor .mat-chip-list-wrapper .mat-standard-chip, 
+.oppor .mat-chip-list-wrapper input.mat-input-element{
+    background-color: $dark-info;
+    color: $light;
+
+    &:last-child {
+        background-color: $light;
+        color: $dark-info;
+        width: 20px !important;
+    }
+}

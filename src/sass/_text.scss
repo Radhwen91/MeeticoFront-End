@@ -1,0 +1,41 @@
+.text {
+    text-align: justify;
+
+    &--lg {
+        font-size: $font-lg;
+    }
+
+    &--mg {
+        font-size: $font-md;
+    }
+
+    &--sm {
+        font-size: $font-sm;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+
+    &--xs {
+        font-size: $font-xs;
+    }
+
+    &--normal {
+        font-size: $font-normal;
+    }
+
+    &--dark {
+        color: $dark;
+    }
+
+    &--light {
+        color: $light;
+    }
+
+    &--primary {
+        color: $primary;
+    }
+
+    &--info {
+        color: $info;
+    }
+}

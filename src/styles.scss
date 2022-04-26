@@ -3,6 +3,10 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
+@import "sass/main.scss";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "sass/general.scss";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -40,6 +44,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.align {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.colflex
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+}
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

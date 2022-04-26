@@ -1,0 +1,76 @@
+<div  class="container">
+  <form  #f="ngForm" class="form-horinzontal"  >
+    <div class="form-group">
+
+      <label class="form-label" >Add a new Post</label>
+
+      <textarea  cols="40" rows="5" [(ngModel)]="publication.contents" name="contents" type="text"  placeholder="Content"  class="form-control" #t="ngModel"  required minlength="3" ></textarea>
+      <div class="alert alert-danger"  *ngIf="t.invalid && t.touched">
+        <div *ngIf="t.errors.required">  Contents is required </div>
+        <div *ngIf="t.errors.minlength">contents must be at least 3 characters</div>
+      </div>
+
+    </div>
+    <div>
+      <div *ngIf="currentFile" class="progress">
+        <div
+          class="progress-bar progress-bar-info progress-bar-striped"
+          role="progressbar"
+          attr.aria-valuenow="{{ progress }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }"
+        >
+          {{ progress }}%
+        </div>
+      </div>
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event);upload()" />
+      </label>
+
+      <table class="table align-items-center table-flush">
+        <tbody>
+
+
+
+        <tr *ngFor="let file of listfile2">
+          <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+        </tr>
+        </tbody>
+      </table>
+
+
+      <br> <br>
+
+
+
+
+    </div>
+
+
+
+
+    <table class="table align-items-center table-flush">
+      <tbody>
+
+
+
+      <tr *ngFor="let file of listfile2">
+        <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+      </tr>
+      </tbody>
+    </table>
+
+
+
+    <mat-dialog-actions align="end">
+    <button class="btn btn-success" routerLink="/home" mat-button mat-dialog-close  type="button" [disabled]="f.invalid" (click)="addPub();playSound()"   > Save</button>
+
+    <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+    </mat-dialog-actions>
+  </form>
+
+
+
+</div>
+
