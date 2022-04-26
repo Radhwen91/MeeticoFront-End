@@ -16,7 +16,7 @@ export class AnswerAdminComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data); 
-    this.initForm()
+    this.initForm();
   }
 
   public updateReclamation(){
@@ -26,12 +26,12 @@ export class AnswerAdminComponent implements OnInit {
   }
   initForm() {
     this.answerForm = this.formBuilder.group({
-      
-      answer: ['',[ Validators.required,Validators.maxLength(4000)]],
-      
+      answer: ['',[ Validators.required,Validators.maxLength(50)]]
+     
   });
   this.answerForm.valueChanges.subscribe(
     data=>{console.log(this.answerForm)}
   )}
+    
 
 }

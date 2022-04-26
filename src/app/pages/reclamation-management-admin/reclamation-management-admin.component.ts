@@ -5,7 +5,7 @@ import { Reclamation } from 'src/app/models/reclamation';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 import { AnswerAdminComponent } from '../answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from '../detail-reclamation/detail-reclamation.component';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reclamation-management-admin',
@@ -101,7 +101,7 @@ end = 5;
 
             verifReclamation(reclamation:Reclamation){
               if( reclamation.type.toString()=="SOFTWARE"){
-                return this.reclamationService.answerAdmin(reclamation);
+                return this.alertConfirmation(reclamation);
               }else
               return this.showAnswerAdmin(reclamation);
             }
@@ -134,7 +134,23 @@ end = 5;
     
   }
 
-
+  alertConfirmation(reclamation:Reclamation) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This process is irreversible.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, go ahead.',
+      cancelButtonText: 'No, let me think',
+    }).then((result) => {
+      if (result.value) {
+        this.reclamationService.verifBySendingEmail(reclamation);
+        Swal.fire('send Email !', 'Email sended successfully.', 'success');
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', ' Email is still not sent.)', 'error');
+      }
+    });
+  }
 
 
 }

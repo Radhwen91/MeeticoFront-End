@@ -2,9 +2,7 @@
 <mat-dialog-content class="mat-typography">
     <form >
         <div class="form-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Wright the answer of the reclamation" rows="3"  [(ngModel)]="data.answerAdmin" formControlName="answer" ></textarea>
-          <div div *ngIf="  answerForm.get('answer').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Answer is required</div>
-          <div *ngIf="  answerForm.get('answer').hasError('maxlength')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Answer must not exceed 4000 characters</div>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Wright the answer of the reclamation" rows="3"  [(ngModel)]="data.answerAdmin" ></textarea>
         </div>
       </form>      
 </mat-dialog-content>
