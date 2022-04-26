@@ -8,6 +8,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {PostLike} from "../../models/PostLike";
 import {Comment} from "../../models/comment";
+import {
+  ListCommentComponent
+} from "../../pages/publication-management/front-publication/list-comment/list-comment.component";
 
 @Component({
   selector: 'app-list-publication2',
@@ -36,6 +39,22 @@ export class ListPublication2Component implements OnInit {
   public listnbrdisike:number[];
   lang;
   constructor( private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) { }
+
+  ListComments(r:Publication){
+    const dialogRef = this.dialog.open(ListCommentComponent,
+      {data:r}
+
+
+    );
+    console.warn('r',r);
+
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(`Dialog result: ${data}`);
+    });
+  }
+
+
+
   onhover(post) {
     // this.ishover = true;
     // this.ishoverReact = true;
@@ -73,7 +92,7 @@ export class ListPublication2Component implements OnInit {
         console.log(res);
         this.listPub=res;
         let id: Publication =res.idPublication;
-        this.publicationservice.ListComments(1).subscribe(
+    /*    this.publicationservice.ListComments(1).subscribe(
 
           res2=>{
             // this.listCom=res;
@@ -81,7 +100,7 @@ export class ListPublication2Component implements OnInit {
             //   console.log("liscomenntssss2"+res2)
 
           } );
-
+*/
         for(let i in this.listPub){
 
 
@@ -94,10 +113,10 @@ export class ListPublication2Component implements OnInit {
 
             }  );
           this.publicationservice.getNbrDislike(this.listPub[i].idPublication).subscribe(
-            data2=>{
+            data=>{
               //console.log("nbrlikes",data)
 
-              this.listnbrdisike.push(data2);
+              this.listnbrdisike.push(data);
               // console.log(this.listnbrLike)
 
             }  );
