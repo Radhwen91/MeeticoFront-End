@@ -17,7 +17,9 @@ import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.comp
 import { TypographyComponent } from 'src/app/pages/typography/typography.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
+import { AcceuiltripComponent } from 'src/app/pages/trip-management/acceuiltrip/acceuiltrip.component';
 // import { ToastrModule } from 'ngx-toastr';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -27,10 +29,13 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpClientModule,
     NgbModule,
     NouisliderModule,
-    JwBootstrapSwitchNg2Module
+    JwBootstrapSwitchNg2Module,
+    MatPaginatorModule,
+  
     
   ],
   declarations: [
+    AcceuiltripComponent,
    
     
    
