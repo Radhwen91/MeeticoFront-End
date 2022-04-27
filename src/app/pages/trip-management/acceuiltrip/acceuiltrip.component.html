@@ -11,8 +11,8 @@
  <div >
    <p class="zied">List of Trips </p>
  
-
-      <div  class="card-columns">
+<!--
+<div  class="card-columns">
         <div class="card" *ngFor="let t of listoftripsPagination">
           <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
           <div class="card-body">
@@ -26,8 +26,25 @@
           </div>
         </div> 
       </div>
+-->
+      
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4"*ngFor="let t of listoftripsPagination">
+    <div class="card h-100" >
+      <img *ngFor="let f of t.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{t.destination}}</h5>
+        <p class="card-text">start date:{{t.startDate}}</p>
+        <p class="card-text">end date:{{t.endDate}}}</p>
+        <div class="card-body">
+          <a href="#" class="card-link">more detail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         <div class="col-12" *ngIf="listoftripsPagination">
-          <mat-paginator [length]="listoftrips.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)">
+          <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[3, 6, 12, 18]" (page)="paginate($event)">
        
           </mat-paginator>
        

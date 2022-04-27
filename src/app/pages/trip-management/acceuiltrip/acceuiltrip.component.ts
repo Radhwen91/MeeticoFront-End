@@ -14,7 +14,7 @@ export class AcceuiltripComponent implements OnInit {
   listoftrips:Trip[];
   listoftripsPagination :Trip[];
   start=0;
-  end=5;
+  end=6;
   constructor(private tripservice:TripService) { }
 
   ngOnInit(): void {
