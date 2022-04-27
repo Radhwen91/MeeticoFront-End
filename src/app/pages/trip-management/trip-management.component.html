@@ -104,6 +104,9 @@
         </div>
       </div>
     </div>
+    <button id="ajouter" id="ziedpag" style="background-color:#14dc49" routerLink="/trip-management/add">ajouter</button>
+  <button id="ajouter" id="ziedpag" style="background-color: #FA8072;" routerLink="/trip-management/search">search</button>
+  <button id="ajouter" id="ziedpag"  style="background-color: #00CED1"  routerLink="/trip-management/acceuil">acceuil</button>
   </div>
   
    <div class="container-fluid mt--7">
@@ -111,9 +114,7 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <button id="ajouter" routerLink="/trip-management/add">ajouter</button>
-          <button id="ajouter" routerLink="/trip-management/search">search</button>
-          <button id="ajouter" routerLink="/trip-management/acceuil">acceuil</button>
+         
           <div class="card-header border-0">
             <h3 class="mb-0">Trip List</h3>
           </div>
@@ -136,16 +137,8 @@
                         
 
                       <div   class="matrowzied" >
-                        <!--
-                            <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
-                          
-                          <img  alt="Image placeholder" [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}"  >
-                          
-                        </a>
-                        -->
                         <input type="checkbox" id="btnControl"/>
-                        <label class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" id="btnLeft" /></label>
-                        
+                        <label class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" id="btnLeft" /></label>                    
                       </div>
                       
                     </ng-container>
@@ -206,78 +199,7 @@
                   </mat-row>
                 </mat-table>
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-               <!--
-                <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Entrepreneur</th>
-                    <th scope="col">Object</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                
-                    <tbody>
-                  <tr *ngFor="let t of listoftrips">
-                    <th scope="row" >
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{t.destination}}</span>
-                      </div>
-                      <div class="media align-items-center" class="zied"  *ngFor="let f of t.files" >
-                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3" >
-                          
-                          <img  alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" >
-                          <img   alt="Image placeholder" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="zied-top" >
-                        </a>
-                       
-                      </div>
-                    </th>
-                    <td>
-                      {{t.startDate}}
-                    </td>
-                    <td>
-                       {{t.endDate}}
-                     
-                    </td>
-                    <td>
-                      
-                        <div>
-                        <a >
-                          {{t.user.email}}
-                        </a>
-                      </div>
-                      
-                      
-                      
-                    </td>
-                    <td>
-                      {{t.object}}
-                    </td>
-                    <td class="text-right">
-                      <div ngbDropdown placement="bottom-right">
-                        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" [routerLink]="['/trip-management/modifier', t.idTrip ]">modifier</a>
-                          <a class="dropdown-item" (click)="supprimer(t)">supprimer</a>
-                          <a class="dropdown-item" (click)="get(t)">afficher</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-                
-                
-              </table>
-                
-               -->
-                    
-                    
-                
-              
+               
           </div>
         </div>
         
