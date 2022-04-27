@@ -16,5 +16,5 @@ export const UserLayoutRoutes: Routes = [
     { path: 'signup',           component: SignupComponent },
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
-     { path: 'aceui',      component: AcceuiltripComponent }
+     { path: 'homeTrip',      component: AcceuiltripComponent }
 ];
