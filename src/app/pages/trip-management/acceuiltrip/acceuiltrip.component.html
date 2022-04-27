@@ -4,12 +4,15 @@
      font-size: 100px;
      font-weight: bold;
    }
+.card-columns{
+  display: inline-block;
+}
  </style>
  <div >
    <p class="zied">List of Trips </p>
  
 
-      <div class="card-deck">
+      <div  class="card-columns">
         <div class="card" *ngFor="let t of listoftripsPagination">
           <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
           <div class="card-body">
@@ -23,7 +26,7 @@
           </div>
         </div> 
         <div class="col-12" *ngIf="listoftripsPagination">
-          <mat-paginator [length]="listoftrips.length" [pageSize]="4" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)">
+          <mat-paginator [length]="listoftrips.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)">
        
           </mat-paginator>
        
