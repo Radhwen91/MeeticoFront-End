@@ -22,7 +22,59 @@
       </form>
       <button type="submit" class="btn btn-primary" (click)="search()">submit</button>
 </div>
- <!-- Table -->
+<div>
+  <div class="table-responsive">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
+      </mat-form-field>
+    </div>
+    
+    <div class="example-container mat-elevation-z8">
+    
+      <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+        <!-- Name Column -->
+        
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > last Name </mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+            <div class="matrowzied">
+              {{row.lastName}}
+            </div>
+            
+            
+          </mat-cell>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> first Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div > {{row.firstName}}  </div></mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> email </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div >{{row.email}} </div></mat-cell>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> phoneNumber </mat-header-cell>
+          <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.phoneNumber}} </div> </mat-cell>
+        </ng-container>
+         
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+     
+</div>
+ <!-- Table 
  <div class="row">
     <div class="col">
       <div class="card shadow">
@@ -98,3 +150,4 @@
       </div>
     </div>
   </div>
+-->
