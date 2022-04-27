@@ -145,6 +145,7 @@ end = 5;
     }).then((result) => {
       if (result.value) {
         this.reclamationService.verifBySendingEmail(reclamation);
+        console.log(`reclamation ${JSON.stringify(reclamation)}`)
         Swal.fire('send Email !', 'Email sended successfully.', 'success');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', ' Email is still not sent.)', 'error');

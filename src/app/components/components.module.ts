@@ -18,6 +18,7 @@ import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +33,6 @@ import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component
     UserManagementComponent,
     NavbarFrontComponent,
     FooterFrontComponent,
-    NotificationComponent,
     BasicelementsComponent,
     NavigationComponent,
     TypographyComponent,
@@ -47,7 +47,6 @@ import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component
     UserManagementComponent,
     NavbarFrontComponent,
     FooterFrontComponent,
-    NotificationComponent,
     BasicelementsComponent,
     NavigationComponent,
     TypographyComponent,

@@ -59,7 +59,14 @@
                       
                      
                                   <td>
-                                    <ngb-rating >{{feedback.stars}}</ngb-rating>
+                                    <ngb-rating [(rate)]="afeedback.stars">
+                                      <ng-template let-fill="fill" let-index="index">
+                                        <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                                      </ng-template>
+                                    </ngb-rating>
+                                    <hr>
+                                    <pre>Rate: <b>{{afeedback.stars}}</b></pre>
+                                    
                                  </td>
                     <td>
                       <div class="avatar-group">

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Feedback } from 'src/app/models/feedback';
 import { FeedbackService } from 'src/app/services/feedback.service';
 @Component({
@@ -19,7 +18,6 @@ public feedbackForm: FormGroup;
 
   constructor(private feedbackservice :FeedbackService , private router:Router,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
     ) { this.feedback = new Feedback()}
 
   ngOnInit(): void {
@@ -42,9 +40,7 @@ public feedbackForm: FormGroup;
    
     this.feedbackForm.reset();
   }
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  
 addFeedback(){
   this.feedbackservice.addFeedback(this.feedback).subscribe(
     

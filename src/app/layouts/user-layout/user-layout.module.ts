@@ -15,6 +15,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DatailFeedbackComponent } from 'src/app/pages/datail-feedback/datail-feedback.component';
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -28,7 +29,10 @@ import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-fe
     JwBootstrapSwitchNg2Module,
     NgxSpinnerModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+
   ],
+
   declarations: [
     AddreclamationComponent,
     ReclamationManagementComponent,

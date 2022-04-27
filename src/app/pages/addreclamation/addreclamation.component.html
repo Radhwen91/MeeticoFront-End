@@ -24,15 +24,15 @@
   <div class="col-sm-10" >
     <label for="exampleFormControlTextarea1">Title</label>
     <input type="text" class="form-control" id="inputtitle" placeholder="write the title of your reclamation"  formControlName="title" [(ngModel)]="reclamation.title" >
-    <div *ngIf="  reclamationForm.get('title').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Title is required</div>
-    <div *ngIf="  reclamationForm.get('title').hasError('maxlength')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Title must not exceed 50 characters</div>
+    <div *ngIf="  reclamationForm.get('title').hasError('required') && reclamationForm.get('title').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Title is required</div>
+    <div *ngIf="  reclamationForm.get('title').hasError('maxlength') && reclamationForm.get('title').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Title must not exceed 50 characters</div>
     </div>
   
   <div class="col-sm-10">
     <label for="exampleFormControlTextarea1">Description</label>
     <textarea class="form-control" placeholder="write the description of your reclamation" rows="3" [(ngModel)]="reclamation.description" formControlName="description" ></textarea>
-    <div *ngIf="  reclamationForm.get('description').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Description is required</div>
-    <div *ngIf="  reclamationForm.get('description').hasError('maxlength')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Description must not exceed 4000 characters</div>
+    <div *ngIf="  reclamationForm.get('description').hasError('required') && reclamationForm.get('description').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Description is required</div>
+    <div *ngIf="  reclamationForm.get('description').hasError('maxlength') && reclamationForm.get('description').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a>   Description must not exceed 4000 characters</div>
   </div>
   <div class="col-sm-10">
     <label for="exampleFormControlTextarea1">Type of reclamation</label>
@@ -43,7 +43,7 @@
     <option value="SOFTWARE">Software</option>
     <option value="OTHER">Other</option>
   </select>
-  <div *ngIf="  reclamationForm.get('type').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Type of reclamation is required</div>
+  <div *ngIf="  reclamationForm.get('type').hasError('required') && reclamationForm.get('type').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Type of reclamation is required</div>
 </div>
 <div class="col-sm-10">
   <label for="exampleFormControlTextarea1">priority</label>
@@ -53,7 +53,7 @@
     <option value="IMPORTANT">Important</option>
     <option value="URGENTE">Urgente</option>
   </select>
-  <div *ngIf="  reclamationForm.get('priority').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Priority of reclamation is required</div>
+  <div *ngIf="  reclamationForm.get('priority').hasError('required')&& reclamationForm.get('priority').touched" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> Priority of reclamation is required</div>
 </div>
 <div class="col-sm-10">
 <label for="exampleFormControlTextarea1">Phooto</label>

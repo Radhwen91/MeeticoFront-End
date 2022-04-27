@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Feedback } from 'src/app/models/feedback';
 import { FeedbackService } from 'src/app/services/feedback.service';
 
@@ -9,8 +10,25 @@ import { FeedbackService } from 'src/app/services/feedback.service';
 @Component({
   selector: 'app-feedback-management',
   templateUrl: './feedback-management.component.html',
-  styleUrls: ['./feedback-management.component.scss']
+  styleUrls: ['./feedback-management.component.scss'],
+  providers: [NgbRatingConfig],
+  styles: [`
+  .star {
+    font-size: 2rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }
+`]
 })
+
 export class FeedbackManagementComponent implements OnInit {
  listFeedbacks:Feedback[];
 // userid:number;
@@ -20,8 +38,11 @@ feedback:Feedback;
   end= 5;
   listFeedbacksPagination: Feedback[];
   search:string;
-constructor(private feedbackservice:FeedbackService, private router:Router ) {
+  
+constructor(private feedbackservice:FeedbackService, private router:Router,config: NgbRatingConfig ) {
   this.feedback= new Feedback()
+  config.max = 5;
+  config.readonly = true;
  }
  public  deleteFeedbackById(idFeedback:number){
   let res= this.feedbackservice.deleteFeedbackById(idFeedback).subscribe(

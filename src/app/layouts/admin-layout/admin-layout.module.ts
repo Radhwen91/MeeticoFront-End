@@ -14,13 +14,16 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
-import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
+
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
-import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
+
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
+import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+
 
 
 // import { ToastrModule } from 'ngx-toastr';

@@ -7,6 +7,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 
 
+
 const routes: Routes =[
   {
     path: '',

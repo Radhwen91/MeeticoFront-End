@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Picture } from '../models/picture';
+
 import { Reclamation } from '../models/reclamation';
 
 
@@ -55,6 +55,8 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
     return this.http.put<Reclamation>(url+"answerAdmin",reclamation);
   }
   verifBySendingEmail(reclamation:Reclamation){
+    console.log(`reclamation ${JSON.stringify(reclamation)}`)
+    console.log(`reclamation ${reclamation.idReclamation}`)
     return this.http.put<Reclamation>(url+"SendMailReclamation/"+reclamation.idReclamation,reclamation);
   }
   statWatingReclamation(){

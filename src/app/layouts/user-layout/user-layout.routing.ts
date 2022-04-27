@@ -14,14 +14,14 @@ import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.comp
 
 
 export const UserLayoutRoutes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
-    { path: 'reclamation-management',           component: ReclamationManagementComponent },
-    { path: 'feedback-management-user',           component: FeedbackManagementUserComponent },
-    { path: 'feedback-management-user/AddFeedback',component: AddfeedbackComponent},
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signup',           component: SignupComponent },
-     { path: 'landing',          component: LandingComponent },
-     { path: 'nucleoicons',      component: NucleoiconsComponent },
+    { path:  '', redirectTo: 'home', pathMatch: 'full' },
+    { path:  'reclamation-management/addReclamation',   component: AddreclamationComponent },
+    { path:  'reclamation-management',                  component: ReclamationManagementComponent },
+    { path:  'feedback-management-user',                component: FeedbackManagementUserComponent },
+    { path:  'AddFeedback',                             component: AddfeedbackComponent},
+    { path:  'user-profile',                            component: ProfileComponent },
+    { path:  'signup',                                  component: SignupComponent },
+     { path: 'landing',                                 component: LandingComponent },
+     { path: 'nucleoicons',                             component: NucleoiconsComponent },
      
 ];
