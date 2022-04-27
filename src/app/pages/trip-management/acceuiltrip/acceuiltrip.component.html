@@ -7,37 +7,28 @@
  </style>
  <div >
    <p class="zied">List of Trips </p>
-  <div class="row"> 
-    <div class="col-sm-6" *ngFor="let t of listoftripsPagination">
-      <div class="card" style="width: 18rem;">
-        <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{t.destination}}</h5>
-          <p class="card-text">object :{{t.object}}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"> start date:{{t.startDate}}</li>
-          <li class="list-group-item"> end date:{{t.endDate}}</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">more detail</a>
-        </div>
-      </div>
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>  
-      </div>
-    </div>
-    <div class="col-12" *ngIf="listoftripsPagination">
-   <mat-paginator [length]="listoftrips.length" [pageSize]="4" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)">
+ 
 
-   </mat-paginator>
-  </div>
- </div>
+      <div class="card-deck">
+        <div class="card" *ngFor="let t of listoftripsPagination">
+          <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{t.destination}}</h5>
+            <p class="card-text">object :{{t.object}}</p>
+            <p class="card-text">start date:{{t.startDate}}</p>
+            <p class="card-text">end date:{{t.endDate}}}</p>
+            <div class="card-body">
+              <a href="#" class="card-link">more detail</a>
+            </div>
+          </div>
+        </div> 
+        <div class="col-12" *ngIf="listoftripsPagination">
+          <mat-paginator [length]="listoftrips.length" [pageSize]="4" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)">
+       
+          </mat-paginator>
+       
+        </div> 
+      </div>
+
+   
  </div>
