@@ -5,9 +5,9 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 .ngx-pagination .disabled {
-    background: #fff;
+    background: #fff !important;
     border-radius: 50%;
-    margin-right: 3px !important;
+    margin: 0 7px;
 }
 
 .ngx-pagination .current {

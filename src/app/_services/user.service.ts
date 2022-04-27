@@ -24,9 +24,6 @@ export class UserService {
   removeUser(userId: number): Observable<void> {
     return this.http.delete<void>(url + 'removeUser?userId=' + userId);
   }
-  retrieveUser(userId: number): Observable<User> {
-    return this.http.get<User>(url + 'retrieveUser?userId=' + userId);
-  }
   retrieveAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(url + 'retrieveAllUsers');
   }

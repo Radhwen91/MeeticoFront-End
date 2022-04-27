@@ -3,7 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { NgbModalModule, NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CalendarModule, DateAdapter } from "angular-calendar";
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ClipboardModule } from "ngx-clipboard";
@@ -26,7 +26,6 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(AdminLayoutRoutes),
-    NgbModalModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,

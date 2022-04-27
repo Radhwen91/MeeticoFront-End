@@ -37,7 +37,6 @@ export class SidebarComponent implements OnInit {
   isCollapsed = true;
   user: User;
   socialUser: SocialUser;
-  picture: string;
   constructor(private router: Router, private tokenService: TokenService, private socialAuthService: SocialAuthService, private dataService: DataService, private userService: UserService, private matDialog: MatDialog) { }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -47,8 +46,7 @@ export class SidebarComponent implements OnInit {
     this.user = this.tokenService.getUser();
     if (this.user) {
       this.socialUser = this.tokenService.getSocialUser();
-      if (this.socialUser.provider == "FACEBOOK")
-        this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
+      if (this.socialUser.provider == "FACEBOOK") this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
     }
   }
   changePassword() {
@@ -62,8 +60,6 @@ export class SidebarComponent implements OnInit {
     let dialogRef = this.matDialog.open(SidebarPasswordDialog, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        let index = +this.dataService.getItem('index');
-        this.dataService.setItem('index', index + 1);
         this.user.password = data.newPassword;
         this.tokenService.saveUser(this.user);
         this.userService.updateProfile(this.user).subscribe();
@@ -73,12 +69,11 @@ export class SidebarComponent implements OnInit {
   signOut() {
     if (this.socialUser) {
       this.userService.updateStatus(this.user.userId).subscribe();
-      this.dataService.removeItem('index');
       this.tokenService.signOut();
     }
     else {
       this.socialAuthService.signOut();
-      this.dataService.currentStatus.subscribe(isLogged => isLogged = !isLogged);
+      this.dataService.currentStatus.subscribe(loggedIn => loggedIn = !loggedIn);
     }
     this.router.navigate(['login']);
   }
@@ -108,11 +103,9 @@ export class SidebarPasswordDialog implements OnInit {
   form: FormGroup;
   newPassword: string;
   confirmPassword: string;
-  constructor(private dataService: DataService, private dialogRef: MatDialogRef<SidebarPasswordDialog>, private formBuilder: FormBuilder) { }
+  constructor(private dialogRef: MatDialogRef<SidebarPasswordDialog>, private formBuilder: FormBuilder) { }
   ngOnInit() {
-    let index = +this.dataService.getItem('index');
-    if (!index) this.dataService.setItem('index', index = 0);
-    document.getElementById("mat-dialog-" + index).style.cssText = `background: white`;
+    document.getElementById(this.dialogRef.id).style.cssText = `background: white`;
     this.form = this.formBuilder.group({
       newPassword: this.newPassword,
       confirmPassword: this.confirmPassword

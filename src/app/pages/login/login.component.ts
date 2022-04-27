@@ -22,16 +22,13 @@ export class LoginComponent implements OnInit {
   isLoggedin: boolean;
   constructor(private userService: UserService, private tokenService: TokenService, private router: Router, private socialAuthService: SocialAuthService, private dataService: DataService) { }
   ngOnInit(): void {
-    this.dataService.currentStatus.subscribe(isLogged => this.isLoggedin = isLogged);
+    this.dataService.currentStatus.subscribe(loggedIn => this.isLoggedin = loggedIn);
     this.socialAuthService.authState.subscribe(
       user => {
         if (this.isLoggedin) {
           this.tokenService.saveSocialUser(user);
-          if (user.provider == "GOOGLE")
-            this.tokenService.saveToken(user.idToken);
-          else {
-            this.tokenService.saveToken(user.authToken);
-          }
+          if (user.provider == "GOOGLE") this.tokenService.saveToken(user.idToken);
+          else this.tokenService.saveToken(user.authToken);
           this.router.navigate(['dashboard']);
         }
       }
@@ -48,13 +45,12 @@ export class LoginComponent implements OnInit {
   }
   GoogleAuthentication(): void {
     if (this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)) {
-      this.dataService.currentStatus.subscribe(login => this.isLoggedin = !login);
-
+      this.dataService.currentStatus.subscribe(loggedIn => this.isLoggedin = !loggedIn);
     }
   }
   FacebookAuthentication(): void {
     if (this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID)) {
-      this.dataService.currentStatus.subscribe(login => this.isLoggedin = !login);
+      this.dataService.currentStatus.subscribe(loggedIn => this.isLoggedin = !loggedIn);
     }
   }
 }

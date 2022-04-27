@@ -36,9 +36,8 @@ export class NavbarComponent implements OnInit {
   }
   getTitle(): string {
     var title = this.location.prepareExternalUrl(this.location.path());
-    if (title.charAt(0) === '#') {
-      title = title.slice(1);
-    }
+    if (title.charAt(0) === '#') title = title.slice(1);
+    if (title === '/calendar') return 'CALENDAR'
     for (var item = 0; item < this.titles.length; item++) {
       if (this.titles[item].path === title) {
         return this.titles[item].title;
@@ -57,8 +56,6 @@ export class NavbarComponent implements OnInit {
     let dialogRef = this.matDialog.open(NavbarPasswordDialog, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        let index = +this.dataService.getItem('index');
-        this.dataService.setItem('index', index + 1);
         this.user.password = data.newPassword;
         this.tokenService.saveUser(this.user);
         this.userService.updateProfile(this.user).subscribe();
@@ -68,12 +65,11 @@ export class NavbarComponent implements OnInit {
   signOut() {
     if (this.socialUser) {
       this.userService.updateStatus(this.user.userId).subscribe();
-      this.dataService.removeItem('index');
       this.tokenService.signOut();
     }
     else {
       this.socialAuthService.signOut();
-      this.dataService.currentStatus.subscribe(isLogged => isLogged = !isLogged);
+      this.dataService.currentStatus.subscribe(loggedIn => loggedIn = !loggedIn);
     }
     this.router.navigate(['login']);
   }
@@ -103,11 +99,9 @@ export class NavbarPasswordDialog implements OnInit {
   form: FormGroup;
   newPassword: string;
   confirmPassword: string;
-  constructor(private dataService: DataService, private dialogRef: MatDialogRef<NavbarPasswordDialog>, private formBuilder: FormBuilder) { }
+  constructor(private dialogRef: MatDialogRef<NavbarPasswordDialog>, private formBuilder: FormBuilder) { }
   ngOnInit() {
-    let index = +this.dataService.getItem('index');
-    if (!index) this.dataService.setItem('index', index = 0);
-    document.getElementById("mat-dialog-" + index).style.cssText = `background: white`;
+    document.getElementById(this.dialogRef.id).style.cssText = `background: white`;
     this.form = this.formBuilder.group({
       newPassword: this.newPassword,
       confirmPassword: this.confirmPassword
