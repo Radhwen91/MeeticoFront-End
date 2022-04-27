@@ -24,6 +24,21 @@ import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/upd
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource,MatTableModule } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+
+import { MatChipsModule } from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
+import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
+import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.component';
+import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
+import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
+import { UploadFilesComponent } from 'src/app/pages/trip-management/upload-files/upload-files.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -38,7 +53,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ClipboardModule,
     MatDialogModule,
     NgxSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    ReactiveFormsModule,
     
   ],
   declarations: [
@@ -55,7 +75,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     UpdateReclamationComponent,
     AnswerAdminComponent,
     UploadImageComponent,
-    TestComponent
+    TestComponent,
+    TripManagementComponent,
+    ImageComponent,
+    AjouterComponent,
+    AlgorithmedematchingComponent,
+    ModifierComponent,
+    UploadFilesComponent
   ],
   exports: [
     RouterModule
