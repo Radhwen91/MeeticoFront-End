@@ -8,6 +8,12 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
 import { FormBuilder,Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { ViewChild} from '@angular/core';;
+import {MatSort, SortDirection} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -27,6 +33,12 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   trip:Trip;
   public tripForm: FormGroup;
   listofusers:User[];
+  counters = [100, 200, 10];
+  displayedColumns = ['lastName','firstName', 'email', 'phoneNumber', 'option'];
+  dataSource: MatTableDataSource<User>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   
   constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
   ngAfterContentInit(): void {
@@ -39,6 +51,10 @@ export class ModifierComponent implements OnInit,AfterContentInit {
       data => {
         console.log('data',data);
         this.listofusers = data;
+        this.dataSource = new MatTableDataSource(this.listofusers);
+        this.dataSource._renderChangesSubscription;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     );
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
@@ -50,6 +66,11 @@ export class ModifierComponent implements OnInit,AfterContentInit {
     );
   
     
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
   initForm(data) {
     this.tripForm = this.formBuilder.group({/*
@@ -174,7 +195,11 @@ upload() {
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
     data=>{
-      this.listofusers=data
+      this.listofusers=data;
+      this.dataSource = new MatTableDataSource(this.listofusers);
+      this.dataSource._renderChangesSubscription;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }
   ));
   
@@ -182,7 +207,11 @@ affecter(user :any){
 desaffecter(user :any){
   this.tripservice.desaffeteraffectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
     data=>{
-      this.listofusers=data
+      this.listofusers=data;
+      this.dataSource = new MatTableDataSource(this.listofusers);
+      this.dataSource._renderChangesSubscription;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }
   ));
   
