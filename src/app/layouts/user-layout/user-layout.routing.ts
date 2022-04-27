@@ -5,6 +5,8 @@ import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { SignupComponent } from 'src/app/pages/signup/signup.component';
 import { AcceuiltripComponent } from 'src/app/pages/trip-management/acceuiltrip/acceuiltrip.component';
+import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/detailtrip.component';
+
 
 
  
@@ -16,5 +18,6 @@ export const UserLayoutRoutes: Routes = [
     { path: 'signup',           component: SignupComponent },
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
-     { path: 'homeTrip',      component: AcceuiltripComponent }
+     { path: 'homeTrip',      component: AcceuiltripComponent },
+     { path: 'detail/:id',      component: DetailtripComponent },
 ];

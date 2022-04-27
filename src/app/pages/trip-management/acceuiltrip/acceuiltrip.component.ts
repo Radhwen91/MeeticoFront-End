@@ -22,14 +22,8 @@ export class AcceuiltripComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
-        this.listoftripsPagination=this.listoftrips.slice(this.start, this.end)
-       
-   
-        
-        
-        
-        
-        
+        this.listoftripsPagination=this.listoftrips.slice(this.start, this.end)       
+          
       }
     );
   }
