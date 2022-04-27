@@ -76,6 +76,9 @@ export class PublicationManagementComponent implements OnInit {
     this.publicationservice.deletePub(publication.idPublication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
         data=>{
           this.listPub=data
+          this.dataSource=new MatTableDataSource<Publication>(this.listPub)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
 
         }
       )

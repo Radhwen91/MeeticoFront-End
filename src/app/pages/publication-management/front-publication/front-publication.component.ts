@@ -204,7 +204,15 @@ export class FrontPublicationComponent implements OnInit {
       }
     );
   }
+  addDislike(id:number){
+    this.publicationservice.addLike(this.like,id).subscribe(
 
+      data=>{
+        //console.log(res);
+
+      }
+    );
+  }
 
   addComment2(publication:any){
 

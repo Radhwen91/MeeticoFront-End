@@ -43,7 +43,12 @@ export class PublicationAjoutComponent implements OnInit {
 
     });
   }
-
+  playSound(){
+    let audio = new Audio()
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
+  }
 
   addPub(){
     this.publicationservice.addPublication(this.publication).subscribe(()=>this.publicationservice.getPubToday().subscribe(

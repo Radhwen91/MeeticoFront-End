@@ -1,10 +1,11 @@
-<div  class="container">
+<div >
+
   <form  #f="ngForm" class="form-horinzontal"  >
     <div class="form-group">
 
       <label class="form-label" >Add a new Post</label>
 
-      <input   [(ngModel)]="publication.contents" name="contents" type="text"  placeholder="Content"  class="form-control" #t="ngModel"  required minlength="3"    >
+      <textarea   [(ngModel)]="publication.contents" name="contents" type="text"  placeholder="Content"  class="form-control" #t="ngModel"  required minlength="3"    ></textarea>
       <div class="alert alert-danger"  *ngIf="t.invalid && t.touched">
         <div *ngIf="t.errors.required">  Contents is required </div>
         <div *ngIf="t.errors.minlength">contents must be at least 3 characters</div>
@@ -13,9 +14,10 @@
     </div>
 
 
-    <button class="btn btn-success" type="button" [disabled]="f.invalid" (click)="addPub();openSnackBar('Post added successfully ','Undo')"   > Save</button>
+    <button class="btn btn-success" type="button" [disabled]="f.invalid" (click)="addPub();openSnackBar('Post added successfully ','Undo'); playSound()"   > Save</button>
 
 
   </form>
 </div>
 
+<hr>

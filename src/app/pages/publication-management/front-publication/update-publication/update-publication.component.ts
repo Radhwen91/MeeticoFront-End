@@ -19,9 +19,19 @@ export class UpdatePublicationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   public updatePublication(){
     this.publicationservice.updatePublication(this.data).subscribe(
-      ()=>this.router.navigateByUrl("/frontpublication")
+      ()=>this.router.navigateByUrl("/home")
     );
   }
+  playSound(){
+    let audio = new Audio()
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
+  }
+
+
+
 }

@@ -6,61 +6,91 @@
       <p class="username">Fares Moalla</p>
       <p class=" card-small-font--gray">{{i.date}}</p>
     </div>
-<app-option-dropdown></app-option-dropdown>
+
+    <div class="dropdown">
+      <button class="btn2"mat-raised-button [matMenuTriggerFor]="menu"><i class="fas fa-ellipsis-h"></i></button>
+
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item (click)="UpdatePublication(i);">
+          <i class="far fa-bookmark" ></i> Update</button>
+
+        <button mat-menu-item>
+          <i class="far fa-comment-alt"></i> Delete </button>
+        <button mat-menu-item>
+          <i class="fas fa-link"></i> Copy link to post </button>
+        <button mat-menu-item>
+          <i class="far fa-flag"></i> Report this ad </button>
+
+
+      </mat-menu>
+    </div>
 
   </div>
-  <div >
+  <p class="card-text--top"> {{i.contents}}
+  </p>
+
+
+
     <img width="200" height="200" alt=" " src="http://localhost:8081/File/files/{{i.idPublication}}" >
 
-    <p class="card-text--top"> {{i.contents}}
-    </p>
-  </div>
-  <!--div *ngIf="post?.imageUrls.length > 0">
 
-    <img src={{post?.imageUrls[0]}} class="card-img-top" alt="...">
-    <div class="card-footer">
-      <p >Join JTI's flobal internship challenge</p>
-      <div class="card-footer-button">
-        <button type="button" class="btn btn-outline-primary">Learn more</button>
-      </div>
-    </div>
-  </div-->
+
+  <a (click)="addLike2(i,'like')"   (mouseenter)="onhover(i)"  (mouseleave)="onleave(i)" >
+    Like
+  </a>
   <div class="comment-reactions--top">
     <p >
+
                 <span>
-                    <i class="far fa-thumbs-up"></i> .  {{listnbrLike[indexOfelement]}} Likes
+                    <i class="far fa-thumbs-up"></i> {{listnbrLike[indexOfelement]}} Likes
+                </span>
+      <span>
+                    <i class="far fa-thumbs-up"></i>  {{listnbrdisike[indexOfelement]}} Dislikes
                 </span>
       <span >
-                    <i class="far fa-comment-alt"(click)="ListComments(i)"  ></i> <a (click)="ListComments(i)">. Replies</a>
+                    <i class="far fa-comment-alt"(click)="ListComments(i)"  ></i> <a (click)="ListComments(i)">. {{nbrlistCom[indexOfelement]}}Replies</a>
                 </span>
     </p>
   </div>
 
-  <div class="allicons" >
 
-    <!--div class="icons" *ngIf="(publication.onHover || publication.onHoverReact)"  (mouseleave)="onleaveReact(publication)">
-      <img  src="../../../assets/Reactions/like .jpeg" class="icons-react" />
-      <img  src="../../../assets/Reactions/celebrate.jpeg" class="icons-react" />
-      <img  src="../../../assets/Reactions/heart.jpeg" class="icons-react" />
-      <img src="../../../assets/Reactions/inspire.jpeg" class="icons-react" />
-      <img  src="../../../assets/Reactions/curious.jpeg" class="icons-react" />
-    </div>
 
-    <button  type="button" class="likebtn btn btn-light"  (mouseenter)="onhover(publication)"  (mouseleave)="onleave(publication)" >
-      <img *ngIf="publication=='celebrate'" src="../../../assets/Reactions/celebrate.jpeg" class="icons-react" />
-      <img *ngIf="publication=='heart'" src="../../../assets/Reactions/heart.jpeg" class="icons-react" />
-      <img *ngIf="publication=='inspire'" src="../../../assets/Reactions/inspire.jpeg" class="icons-react" />
-      <img *ngIf="publication'curious'" src="../../../assets/Reactions/curious.jpeg" class="icons-react" />
-      <i *ngIf="publication'like'" class="like far fa-thumbs-up ></i>
- </button>
 
-<button type="button" class="btn btn-light" (click)="togglecomment(post)">
-      <i class="far fa-comment-alt"></i> Comment</button>
-    <button type="button" class="btn btn-light">
-      <i class="fas fa-share"></i>Share</button>
-  </div-->
+  <div class="icons2" *ngIf="(i.onHover || i.onHoverReact)"  (mouseleave)="onleaveReact(i)">
+    <img (click)="addLike2(i,'like');onReactionClick(i);addLike(i.idPublication)"  src="../../../assets/Reactions/like.png" class="icons-react" />
+    <img (click)="addLike2(i,'dislike');onReactionClick(i);addDislike(i.idPublication)"  src="../../../assets/Reactions/dislike.png" class="icons-react" />
+    <img (click)="addLike2(i,'heart');onReactionClick(i)"  src="../../../assets/Reactions/heart.jpeg" class="icons-react" />
 
   </div>
 
+
+
+
+
+
+
+<span>
+  <div class="list-group-item borderless2"> <i class="fas fa-user-circle"></i>
+    <input [(ngModel)]="comment.contents" type="text" class="form-control2" placeholder="Add a comment..." aria-label="addcomment"
+           aria-describedby="addon-wrapping">
+    <button  class="buttonadd" (click)="addComment2(i);playSound();openSnackBar('Comment added successfully ','Undo')" >Comment</button></div>
+</span>
+  <!--button type="button" class="btn btn-light">
+    <i class="fas fa-share"></i>Share</button-->
 </div>
+
+
+
+
+
+
+
+
+  //////////////
+
+
+
+
+
+
 <hr><hr>

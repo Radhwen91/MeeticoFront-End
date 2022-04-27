@@ -1,5 +1,4 @@
 
-
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
@@ -14,21 +13,13 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Publication table</h3>
+          <h3 class="mb-0">Publication Managements</h3>
         </div>
         <div class="table-responsive">
 
-
-
-
-          <br>
-
-          <br>
-
           <app-publication-ajout></app-publication-ajout>
-          <br><br>
 
-          <!--p style="100px" > <input  id="myInput"  type="text" placeholder="search"-->
+
 
 
 
@@ -38,8 +29,8 @@
 
           </mat-form-field>
 
-          <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2989/premium/2989907.png?token=exp=1650964826~hmac=09839d4a1f71d1d7e4f054f41dc9a3d0"/>
 
+          <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/482/482631.png"/>
 
 
 
@@ -58,9 +49,10 @@
                   <a (click)="UpdatePublication(row)"  > <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2356/premium/2356780.png?token=exp=1650965441~hmac=aded0557a43283ae7efbc1672e883b38
 "/></a>
 
-                  <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/1950/premium/1950715.png?token=exp=1650965509~hmac=0a59daf425835bcc39155fce7721d479
+                  <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/901/901533.png
 "/></a>
-                  <a> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+
+                  <a (click)="deletePub(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
 
 
 

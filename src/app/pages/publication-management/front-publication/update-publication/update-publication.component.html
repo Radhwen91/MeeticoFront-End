@@ -38,7 +38,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
 
-  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial  (click)="updatePublication()" >Submit</button>
+  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial  (click)="updatePublication();playSound()" >Submit</button>
   <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
 
 </mat-dialog-actions>

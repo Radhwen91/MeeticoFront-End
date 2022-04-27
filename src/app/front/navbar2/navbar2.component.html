@@ -1,3 +1,6 @@
+
+
+
 <mat-toolbar>
   <div class="nav-content">
     <div class="right">
@@ -6,6 +9,7 @@
       </div>
       <div class="search" (click)="enableSeachBy()">
         <div class="input-group mb-3">
+
           <input
 
             type="text"
@@ -30,37 +34,29 @@
       <div class="nav-btn" routerLink="/home">
         <mat-icon aria-hidden="false" aria-label="Example home icon"
                   aria-hidden="false"
-                  aria-label="Example home icon"
-        >home</mat-icon
-        >
+                  aria-label="Example home icon" >home</mat-icon >
         <span>Home</span>
       </div>
 
+
+
       <div class="nav-btn"  routerLink="/network">
         <mat-icon>group</mat-icon>
-        <span>My Network</span>
+        <span> My Trips</span>
       </div>
+
       <div class="nav-btn" routerLink="/jobs">
         <mat-icon>card_travel</mat-icon>
-        <span>Jobs</span>
-      </div>
-
-      <div class="nav-btn" routerLink="/messages">
-        <mat-icon *ngIf="messages > 0" matBadge={{messages}} matBadgeColor="warn">Messaging</mat-icon>
-        <mat-icon *ngIf="messages <= 0">Messaging</mat-icon>
-        <span>Messaging</span>
-      </div>
-
-      <div class="nav-btn" routerLink="/notifications">
-
-        <span>Notifications</span>
+        <span> Events</span>
       </div>
 
 
 
-      <div class="nav-btn">
-        <a href="#">Try Premium Free for 1 Month</a>
-      </div>
+
+
+
+
+
     </div>
   </div>
 </mat-toolbar>

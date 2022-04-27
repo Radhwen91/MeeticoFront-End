@@ -22,6 +22,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ListCommentsFront2Component} from "../../front/list-comments-front2/list-comments-front2.component";
 import {ListPublication2Component} from "../../front/list-publication2/list-publication2.component";
 import {OptionDropdownComponent} from "../../front/option-dropdown/option-dropdown.component";
+import {CommentAddComponent} from "../../front/comment-add/comment-add.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +43,7 @@ import {OptionDropdownComponent} from "../../front/option-dropdown/option-dropdo
     CreatePostComponent,
     ListCommentsFront2Component,
     ListPublication2Component,
-
+    CommentAddComponent,
   ],
   declarations: [
     LoginComponent,
@@ -55,6 +56,7 @@ import {OptionDropdownComponent} from "../../front/option-dropdown/option-dropdo
     ListCommentsFront2Component,
     ListPublication2Component,
     OptionDropdownComponent,
+    CommentAddComponent,
   ]
 })
 export class AuthLayoutModule { }

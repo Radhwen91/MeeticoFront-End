@@ -8,5 +8,8 @@ export class Publication {
   date: Date;
   userr: User;
   files:FileDB[];
-
+  onHover?:boolean;
+  onHoverReact?:boolean;
+  liked?:string;
+  onComment?:boolean;
 }

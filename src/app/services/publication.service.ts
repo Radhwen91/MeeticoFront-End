@@ -20,10 +20,11 @@ export class PublicationService {
   urldelete="/api/publication/supprimer-publication";
   urlpdf="/api/pdf/pdf";
   urladd="/api/publication/add-publication";
+  urladdislike="/api/publication/addDislike";
   urladdlike="/api/publication/addLike";
   urlLike="/api/publication/nbrLike";
   urldisLike="/api/publication/nbrDisLike";
-
+  nbrComments="/api/publication/nbrComments";
 //urladdcomment="/api/comment/testaddcomment";
   urladdcomment="/api/comment/add-comment";
   uploadfile="/api//File/upload";
@@ -34,6 +35,8 @@ export class PublicationService {
   updateurl="/api/publication/update";
   listcomments="/api/comment/ListCommentsByPub";
   deletecomment="/api/comment/DeleteCommentaire";
+
+
   constructor(private http: HttpClient) { }
 
   /*
@@ -75,13 +78,21 @@ export class PublicationService {
     return this.http.get(`${this.urldisLike}/${id}`)
 
   }
+  getNbrComments(id:number) : Observable<any>{
+    return this.http.get(`${this.nbrComments}/${id}`)
 
+  }
   addLike(like:PostLike,id:number) : Observable<PostLike>{
 
     return this.http.put<PostLike>(`${this.urladdlike}/${id}`,like);
 
+  }
+  addDislike(like:PostLike,id:number) : Observable<PostLike>{
+
+    return this.http.put<PostLike>(`${this.urladdislike}/${id}`,like);
 
   }
+
   addPublication(publication:Publication):Observable<Publication>{
 
     return this.http.post<Publication>(this.urladd,publication);

@@ -11,6 +11,9 @@ import {Comment} from "../../models/comment";
 import {
   ListCommentComponent
 } from "../../pages/publication-management/front-publication/list-comment/list-comment.component";
+import {
+  UpdatePublicationComponent
+} from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 
 @Component({
   selector: 'app-list-publication2',
@@ -34,11 +37,24 @@ export class ListPublication2Component implements OnInit {
   comment : Comment= new Comment();
   public listComments:any
   public listCom:Comment[];
+public nbrlistCom:any[]=[];
   nbrLike : number;
   public listnbrLike:number[];
-  public listnbrdisike:number[];
+  public listnbrdisike:number[]=[];
   lang;
   constructor( private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) { }
+  private  snackBar: MatSnackBar
+
+
+  openSnackBar(message,action){
+    let SnackBarRef = this.snackBar.open(message,action,{duration: 2000});
+    SnackBarRef.afterDismissed().subscribe(()=>{
+    });
+    SnackBarRef.onAction().subscribe(()=>{
+
+
+    });
+  }
 
   ListComments(r:Publication){
     const dialogRef = this.dialog.open(ListCommentComponent,
@@ -112,6 +128,17 @@ export class ListPublication2Component implements OnInit {
               // console.log(this.listnbrLike)
 
             }  );
+
+          this.publicationservice.getNbrComments(this.listPub[i].idPublication).subscribe(
+            data=>{
+              //console.log("nbrlikes",data)
+
+              this.nbrlistCom.push(data);
+              // console.log(this.listnbrLike)
+
+            }  );
+
+
           this.publicationservice.getNbrDislike(this.listPub[i].idPublication).subscribe(
             data=>{
               //console.log("nbrlikes",data)
@@ -120,26 +147,85 @@ export class ListPublication2Component implements OnInit {
               // console.log(this.listnbrLike)
 
             }  );
-
-
-
         }
-
-
       });
-
-
     /*
         this.publicationservice.ListComments(1).subscribe(
           res2=>{
             console.log("dataaaa",res2);
             this.listComments=res2;
-          } );
-
-          */
-
+          } );*/
 
 
   }
+  playSound(){
+    let audio = new Audio()
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
+  }
+
+  UpdatePublication(r:Publication){
+    const dialogRef = this.dialog.open(UpdatePublicationComponent,
+      {data:r}
+
+
+    );
+    console.warn('r',r);
+
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(`Dialog result: ${data}`);
+    });
+  }
+  addLike2(post,reaction)
+  {console.log(post.liked);
+    console.log(reaction);
+    if(post.liked=="")
+    {post.likes++;post.liked=reaction;}
+    else if(post.liked!=""&&reaction=="like"  )
+    {post.likes--;post.liked="";}
+    else if(reaction=="like" ||reaction=="inspire" ||reaction=="curious" ||reaction=="heart"||reaction=="celebrate")
+    {
+      post.liked=reaction;
+    }
+  }
+  onReactionClick(post)
+  {
+
+    post.onHover=false;
+    post.onHoverReact=false;
+  }
+
+  addLike(id:number){
+    this.publicationservice.addLike(this.like,id).subscribe(
+
+      data=>{
+        //console.log(res);
+
+      }
+    );
+  }
+
+
+
+  addDislike(id:number){
+    this.publicationservice.addDislike(this.like,id).subscribe(
+
+      data=>{
+        //console.log(res);
+
+      }
+    );
+  }
+  addComment2(publication:any){
+
+    this.publicationservice.addComment2(this.comment,publication.idPublication).subscribe(
+      data=>{
+        this.router.navigate(["/home"])
+      }
+    );
+  }
+
+
 
 }

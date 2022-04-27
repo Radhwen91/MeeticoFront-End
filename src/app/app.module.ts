@@ -27,6 +27,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ListCommentsFront2Component } from './front/list-comments-front2/list-comments-front2.component';
 import { ListPublication2Component } from './front/list-publication2/list-publication2.component';
 import { OptionDropdownComponent } from './front/option-dropdown/option-dropdown.component';
+import { CommentAddComponent } from './front/comment-add/comment-add.component';
 
 
 
@@ -54,6 +55,7 @@ import { OptionDropdownComponent } from './front/option-dropdown/option-dropdown
     AuthLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
+
 
 
 
