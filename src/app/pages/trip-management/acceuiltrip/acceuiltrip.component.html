@@ -8,7 +8,12 @@
   display: inline-block;
 }
  </style>
- <!--carousel-->
+
+
+ <!--lest of trip-->
+ <div >
+   <p class="zied">List of Trips </p>
+    <!--carousel-->
  <div class="section" id="carousel" >
   <div class="container">
       <div class="tim-title">
@@ -30,10 +35,6 @@
       </div>
   </div>
 </div>
-
- <!--lest of trip-->
- <div >
-   <p class="zied">List of Trips </p>
  
 <!--
 <div  class="card-columns">
@@ -68,7 +69,7 @@
   </div>
 </div>
         <div class="col-12" *ngIf="listoftripsPagination">
-          <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[3, 6, 12, 18]" (page)="paginate($event)">
+          <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
        
           </mat-paginator>
        
