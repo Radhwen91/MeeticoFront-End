@@ -44,6 +44,7 @@ export class AjouterComponent implements OnInit {
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       object: ['', [Validators.required, ,Validators.maxLength(50)]],
+      file: [null, Validators.required],
   
   });
   this.tripForm.valueChanges.subscribe(
@@ -73,7 +74,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
             console.log(res)
             this.tripservice.affecterfileauvoyage(this.trip.idTrip,res.id,this.file).subscribe(
               res=>{
-               // this.router.navigate(["/trip-management"])
+               //this.listfile=res;
                this.router.navigate(["/trip-management"])
               }
            

@@ -172,7 +172,7 @@
                   <!-- Color Column -->
                   <ng-container matColumnDef="entrepreneur">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> entrepreneur </mat-header-cell>
-                    <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.user.firstName}} {{row.user.lastName}} </div> </mat-cell>
+                    <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.user.email}} </div> </mat-cell>
                   </ng-container>
                    <!-- Color Column -->
                    <ng-container matColumnDef="object">
@@ -186,7 +186,7 @@
                         <div >
                           <button  class="dropdown-item"  id="ziedpag" style="background-color:#DC143C"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
                           <button  class="dropdown-item"  id="ziedpag"  style="background-color: #FA8072;" (click)="supprimer(row)">supprimer</button><br>
-                          <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="get(row)">afficher</button>
+                          <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="get(row)">PDF</button>
                         </div>
                     
                       

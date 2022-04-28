@@ -82,6 +82,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
       startDate: [data?.startDate, Validators.required],
       endDate: [data?.endDate, Validators.required],
       object: [data?.object, [Validators.required, ,Validators.maxLength(50)]],
+      file: [null, Validators.required],
     })
 }
 get(id:number){
@@ -121,8 +122,8 @@ this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).
               this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
   
                 ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
-                  data=>{
-                    this.listfile=data
+                  res=>{
+                    this.listfile=res
                     this.route.navigate(["/trip-management"])
                   }
                 )
@@ -144,7 +145,7 @@ this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).
     this.selectedFiles = undefined;
   }
 );
-this.route.navigate(["/trip-management"])
+
 }
 selectFile(event) {
   this.selectedFiles = event.target.files;
@@ -168,6 +169,7 @@ upload() {
             console.log(this.router.snapshot.params.id)
             //this.idf=[];
             //this.idf.push(this.id);
+            
             this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
 
               ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
