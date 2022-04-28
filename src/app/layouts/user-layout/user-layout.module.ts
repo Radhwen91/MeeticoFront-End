@@ -23,6 +23,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/detailtrip.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SearchdialogComponent } from 'src/app/pages/trip-management/searchdialog/searchdialog.component';
 
 @NgModule({
   imports: [
@@ -40,12 +42,14 @@ import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/de
     MatInputModule,
     MatCardModule,
     ReactiveFormsModule,
+    MatDialogModule,
   
     
   ],
   declarations: [
     AcceuiltripComponent,
-    DetailtripComponent
+    DetailtripComponent,
+    SearchdialogComponent,
     
    
     

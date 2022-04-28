@@ -14,6 +14,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AcceuiltripComponent } from './pages/trip-management/acceuiltrip/acceuiltrip.component';
 import { ImageComponent } from './pages/trip-management/image/image.component';
 import { DetailtripComponent } from './pages/trip-management/detailtrip/detailtrip.component';
+import { SearchdialogComponent } from './pages/trip-management/searchdialog/searchdialog.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { DetailtripComponent } from './pages/trip-management/detailtrip/detailtr
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+    
     
   
 

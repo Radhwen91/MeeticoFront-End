@@ -1,7 +1,9 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
+import { SearchdialogComponent } from '../searchdialog/searchdialog.component';
 
 
 
@@ -15,7 +17,7 @@ export class AcceuiltripComponent implements OnInit {
   listoftripsPagination :Trip[];
   start=0;
   end=6;
-  constructor(private tripservice:TripService) { }
+  constructor(private tripservice:TripService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.tripservice.getTrips().subscribe(
@@ -36,6 +38,29 @@ export class AcceuiltripComponent implements OnInit {
       endIndex = this.listoftrips.length;
     }
     this.listoftripsPagination = this.listoftrips.slice(startIndex, endIndex);
+  }
+
+
+
+  dialoggg(){
+    const dialogRef = this.dialog.open(SearchdialogComponent, {
+      data: {
+          title: "NWAS NTD"
+      },
+      width: '600px',
+      height: '600px',
+      panelClass: 'epsSelectorPanel'
+  });
+      
+
+  
+    
+  
+
+    dialogRef.afterClosed().subscribe(data => {
+     
+    });
+    
   }
 
 }
