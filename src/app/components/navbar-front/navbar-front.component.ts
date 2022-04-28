@@ -18,11 +18,11 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: '/', title: 'Home',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/reclamation-management', title: 'Reclamations',  icon: 'ni-chart-bar-32 text-info', class: '' },
-    // { path: '/', title: 'Event Management',  icon:'ni-tie-bow text-pink', class: '' },
-    // { path: '/', title: 'Feedback Management',  icon:'ni-laptop text-black', class: '' },
-    // { path: '/', title: 'Publication Management',  icon:'ni-notification-70 text-blue', class: '' },
+     { path: '/', title: 'Events',  icon:'ni-tie-bow text-pink', class: '' },
+     { path: '/', title: 'Feedbacks',  icon:'ni-laptop text-black', class: '' },
+     { path: '/', title: 'Publications',  icon:'ni-notification-70 text-blue', class: '' },
     // { path: '/', title: 'Reclamation Management',  icon:'ni-paper-diploma text-orange', class: '' },
-    // { path: '/', title: 'Trip Management',  icon:'ni-square-pin text-green', class: '' }
+     { path: '/', title: 'Trip ',  icon:'ni-square-pin text-green', class: '' }
 ];
 
 
