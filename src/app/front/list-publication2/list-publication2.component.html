@@ -36,13 +36,11 @@
 
 
 
-    <!--img width="200" height="200" alt=" " src="http://localhost:8081/File/files/{{i.idPublication}}" -->
+    <img width="200" height="200" alt="..."  src="http://localhost:8081/File/files/{{i.idPublication}}" >
 
 
 
-  <a (click)="addLike2(i,'like')"   (mouseenter)="onhover(i)"  (mouseleave)="onleave(i)" >
-    Like
-  </a>
+
   <div class="comment-reactions--top">
     <p >
 
@@ -65,14 +63,18 @@
     <img (click)="addLike2(i,'like');onReactionClick(i);addLike(i.idPublication)"  src="../../../assets/Reactions/like.png" class="icons-react" />
     <img (click)="addLike2(i,'dislike');onReactionClick(i);addDislike(i.idPublication)"  src="../../../assets/Reactions/dislike.png" class="icons-react" />
     <img (click)="addLike2(i,'heart');onReactionClick(i)"  src="../../../assets/Reactions/heart.jpeg" class="icons-react" />
-
+    <img   src="../../../assets/Reactions/inspire.jpeg" class="icons-react" />
+    <img   src="../../../assets/Reactions/curious.jpeg" class="icons-react" />
   </div>
 
 
 
 
 
+  <a (click)="addLike2(i,'like')"   (mouseenter)="onhover(i)"  (mouseleave)="onleave(i)" >
+    <img   src="../../../assets/Reactions/like.png" class="icons-react" /> Like
 
+  </a>
 
 <span>
   <div class="list-group-item borderless2"> <i class="fas fa-user-circle"></i>
@@ -83,18 +85,6 @@
   <!--button type="button" class="btn btn-light">
     <i class="fas fa-share"></i>Share</button-->
 </div>
-
-
-
-
-
-
-
-
-  //////////////
-
-
-
 
 
 

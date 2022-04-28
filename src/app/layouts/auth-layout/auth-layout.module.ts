@@ -60,6 +60,7 @@ import {AlertComponent} from "../../front/alert/alert.component";
     OptionDropdownComponent,
     CommentAddComponent,
     AlertComponent,
+
   ]
 })
 export class AuthLayoutModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PublicationService} from "../../services/publication.service";
 
 @Component({
   selector: 'app-alert',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private publicationservice: PublicationService) { }
+  nbalert : number ;
+  nbralertsban : number;
   ngOnInit(): void {
+    this.publicationservice.getNbrAlerts().subscribe(
+      data=>{
+        this.nbalert=data;
+
+      }  );
+
+    this.publicationservice.getNbrAlertsban().subscribe(
+      data=>{
+        this.nbralertsban=data;
+
+      }  );
+
+
   }
+
+
+
+
 
 }

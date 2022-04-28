@@ -26,6 +26,9 @@ import {
 import {
   PublicationAjoutComponent
 } from "../../pages/publication-management/publication-ajout/publication-ajout.component";
+import {
+  AlertsManagementComponent
+} from "../../pages/publication-management/alerts-management/alerts-management.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -39,6 +42,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'feedback-management',           component: FeedbackManagementComponent },
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
+  { path: 'alert-management',           component: AlertsManagementComponent },
+  ,
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
     { path: 'Test',           component: TestComponent },

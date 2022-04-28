@@ -47,16 +47,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
 
 
-
-
   }
-
-
-/*
-badword(id:String){
-
-
-}*/
 
 
   publication : Publication= new Publication();

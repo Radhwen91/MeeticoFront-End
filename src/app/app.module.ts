@@ -29,6 +29,7 @@ import { ListPublication2Component } from './front/list-publication2/list-public
 import { OptionDropdownComponent } from './front/option-dropdown/option-dropdown.component';
 import { CommentAddComponent } from './front/comment-add/comment-add.component';
 import { AlertComponent } from './front/alert/alert.component';
+import { AlertsManagementComponent } from './pages/publication-management/alerts-management/alerts-management.component';
 
 
 
@@ -56,6 +57,7 @@ import { AlertComponent } from './front/alert/alert.component';
     AuthLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
+
 
 
 

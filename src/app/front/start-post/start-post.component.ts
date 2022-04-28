@@ -20,11 +20,14 @@ export class StartPostComponent implements OnInit {
   }
 
   AddPublication(){
-    const dialogRef = this.dialog.open(CreatePostComponent
+    const dialogRef = this.dialog.open(CreatePostComponent,
+    {
+      data: {
+        title: "Add a new Post"
+      },
 
-
-
-    );
+      panelClass: 'epsSelectorPanel'
+    });
 
 
     dialogRef.afterClosed().subscribe()

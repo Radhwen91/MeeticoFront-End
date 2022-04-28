@@ -36,8 +36,8 @@ export class PublicationService {
   updateurl="/api/publication/update";
   listcomments="/api/comment/ListCommentsByPub";
   deletecomment="/api/comment/DeleteCommentaire";
-
-
+  nbrAlerts="/api/publication/nbralerts";
+  nbrAlertsban="/api/publication/nbralertsban";
   constructor(private http: HttpClient) { }
 
   /*
@@ -46,6 +46,14 @@ export class PublicationService {
 
     }
     */
+  getNbrAlerts() : Observable<any>{
+    return this.http.get(this.nbrAlerts)
+
+  }
+  getNbrAlertsban() : Observable<any>{
+    return this.http.get(this.nbrAlertsban)
+
+  }
   deleteComment(id:number) : any{
     return this.http.delete(`${this.deletecomment}/${id}`)
   }

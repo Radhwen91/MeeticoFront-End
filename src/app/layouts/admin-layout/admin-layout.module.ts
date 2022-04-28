@@ -40,6 +40,9 @@ import {
 import {
   PublicationAjoutComponent
 } from "../../pages/publication-management/publication-ajout/publication-ajout.component";
+import {
+  AlertsManagementComponent
+} from "../../pages/publication-management/alerts-management/alerts-management.component";
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -84,6 +87,7 @@ import {
     UpdatePublicationBackComponent,
     ListCommentsBackComponent,
     PublicationAjoutComponent,
+    AlertsManagementComponent,
   ],
   exports: [
     RouterModule
