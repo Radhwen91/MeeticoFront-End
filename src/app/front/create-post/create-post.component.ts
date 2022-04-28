@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FileDB} from "../../models/fileDB";
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -8,6 +8,8 @@ import {Publication} from "../../models/publication";
 import {Comment} from "../../models/comment";
 import {PostLike} from "../../models/PostLike";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {AlertComponent} from "../alert/alert.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-post',
@@ -25,18 +27,36 @@ export class CreatePostComponent implements OnInit {
   fileInfos: Observable<any>;
   file: FileDB;
   fileById:FileDB[];
+//true : boolean = true;
+  constructor(public dialog: MatDialog,private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router) {
 
-  constructor(private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router) { }
+
+
+  }
   playSound(){
     let audio = new Audio()
     audio.src= "../assets/confirm2.mp3"
     audio.load();
     audio.play();
   }
+
+
+
+
+  etatbadword : string;
   ngOnInit(): void {
+
+
+
+
   }
 
 
+/*
+badword(id:String){
+
+
+}*/
 
 
   publication : Publication= new Publication();
@@ -44,16 +64,44 @@ export class CreatePostComponent implements OnInit {
   like : PostLike= new PostLike();
 
 
-
   addPub(){
+
     this.publicationservice.addPublication(this.publication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
 
         data=>{
           this.listPub=data
           console.log('dataaaaa',data)
+          this.publicationservice.BadWords(this.publication.contents).subscribe(
+
+            data2=>{
+              //console.log(res);
+              this.etatbadword = data2
+
+
+              if(data2===true){
+
+
+                  const dialogRef = this.dialog.open( AlertComponent,
+                   );
+                   dialogRef.afterClosed().subscribe(data => {
+
+                   });
+                let audio = new Audio()
+                audio.src= "../assets/alert.mp3"
+                audio.load();
+                audio.play();
+              }
+
+
+            }
+          );
+
 
 
         }
+
+
+
       )
     );
 

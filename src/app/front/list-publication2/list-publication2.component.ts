@@ -14,6 +14,7 @@ import {
 import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
+import {AlertComponent} from "../alert/alert.component";
 
 @Component({
   selector: 'app-list-publication2',

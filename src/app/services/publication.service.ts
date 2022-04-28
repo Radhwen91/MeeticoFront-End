@@ -25,6 +25,7 @@ export class PublicationService {
   urlLike="/api/publication/nbrLike";
   urldisLike="/api/publication/nbrDisLike";
   nbrComments="/api/publication/nbrComments";
+  badword="/api/publication/badword";
 //urladdcomment="/api/comment/testaddcomment";
   urladdcomment="/api/comment/add-comment";
   uploadfile="/api//File/upload";
@@ -73,7 +74,10 @@ export class PublicationService {
     return this.http.get(`${this.urlLike}/${id}`)
 
   }
+  BadWords(id:String) : Observable<any>{
+    return this.http.get(`${this.badword}/${id}`)
 
+  }
   getNbrDislike(id:number) : Observable<any>{
     return this.http.get(`${this.urldisLike}/${id}`)
 

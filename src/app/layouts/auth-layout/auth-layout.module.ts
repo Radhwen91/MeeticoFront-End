@@ -23,6 +23,7 @@ import {ListCommentsFront2Component} from "../../front/list-comments-front2/list
 import {ListPublication2Component} from "../../front/list-publication2/list-publication2.component";
 import {OptionDropdownComponent} from "../../front/option-dropdown/option-dropdown.component";
 import {CommentAddComponent} from "../../front/comment-add/comment-add.component";
+import {AlertComponent} from "../../front/alert/alert.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -44,6 +45,7 @@ import {CommentAddComponent} from "../../front/comment-add/comment-add.component
     ListCommentsFront2Component,
     ListPublication2Component,
     CommentAddComponent,
+    AlertComponent,
   ],
   declarations: [
     LoginComponent,
@@ -57,6 +59,7 @@ import {CommentAddComponent} from "../../front/comment-add/comment-add.component
     ListPublication2Component,
     OptionDropdownComponent,
     CommentAddComponent,
+    AlertComponent,
   ]
 })
 export class AuthLayoutModule { }
