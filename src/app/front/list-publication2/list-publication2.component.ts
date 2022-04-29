@@ -15,6 +15,7 @@ import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 import {AlertComponent} from "../alert/alert.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-list-publication2',
@@ -43,7 +44,7 @@ public nbrlistCom:any[]=[];
   public listnbrLike:number[];
   public listnbrdisike:number[]=[];
   lang;
-  constructor( private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) { }
+  constructor(private toastr : ToastrService, private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) { }
   private  snackBar: MatSnackBar
 
 
@@ -218,10 +219,13 @@ public nbrlistCom:any[]=[];
       }
     );
   }
+
+
   addComment2(publication:any){
 
     this.publicationservice.addComment2(this.comment,publication.idPublication).subscribe(
       data=>{
+        this.toastr.success('Comment Added Successfully ','Comment Added Successfully');
         this.router.navigate(["/home"])
       }
     );

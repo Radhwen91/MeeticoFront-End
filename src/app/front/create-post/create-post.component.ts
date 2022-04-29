@@ -10,6 +10,7 @@ import {PostLike} from "../../models/PostLike";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 import {AlertComponent} from "../alert/alert.component";
 import {MatDialog} from "@angular/material/dialog";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-post',
@@ -28,11 +29,12 @@ export class CreatePostComponent implements OnInit {
   file: FileDB;
   fileById:FileDB[];
 //true : boolean = true;
-  constructor(public dialog: MatDialog,private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router) {
-
-
+  constructor(private toastr : ToastrService,public dialog: MatDialog,private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router) {
 
   }
+
+
+
   playSound(){
     let audio = new Audio()
     audio.src= "../assets/confirm2.mp3"
@@ -61,11 +63,12 @@ export class CreatePostComponent implements OnInit {
 
         data=>{
           this.listPub=data
+          this.toastr.success('Post Added Successfully ','Post Added Successfully');
           console.log('dataaaaa',data)
           this.publicationservice.BadWords(this.publication.contents).subscribe(
 
             data2=>{
-              //console.log(res);
+
               this.etatbadword = data2
 
 
@@ -81,6 +84,7 @@ export class CreatePostComponent implements OnInit {
                 audio.src= "../assets/alert.mp3"
                 audio.load();
                 audio.play();
+                this.toastr.error('Bad Word detected ','Bad Word detected');
               }
 
 

@@ -24,6 +24,8 @@ import {ListPublication2Component} from "../../front/list-publication2/list-publ
 import {OptionDropdownComponent} from "../../front/option-dropdown/option-dropdown.component";
 import {CommentAddComponent} from "../../front/comment-add/comment-add.component";
 import {AlertComponent} from "../../front/alert/alert.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 @NgModule({
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import {AlertComponent} from "../../front/alert/alert.component";
     MatMenuModule,
     MatDialogModule,
     // NgbModule
+
   ],
   exports: [
     Navbar2Component,
@@ -46,6 +49,7 @@ import {AlertComponent} from "../../front/alert/alert.component";
     ListPublication2Component,
     CommentAddComponent,
     AlertComponent,
+
   ],
   declarations: [
     LoginComponent,

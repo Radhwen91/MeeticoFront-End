@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {UpdatePublicationBackComponent} from './update-publication-back/update-publication-back.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListCommentsBackComponent} from './list-comments-back/list-comments-back.component';
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-publication-management',
   templateUrl: './publication-management.component.html',
@@ -23,8 +24,13 @@ export class PublicationManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private publicationservice: PublicationService,private router: Router,public dialog: MatDialog,private  snackBar: MatSnackBar) { }
+  constructor(private toastr : ToastrService,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog,private  snackBar: MatSnackBar) { }
 
+
+
+  showToatr2(){
+    this.toastr.error('Post deleted Succesfully ','Post deleted Succesfully');
+  }
   openSnackBar(message,action){
 
     let SnackBarRef = this.snackBar.open(message,action,{duration: 2000});

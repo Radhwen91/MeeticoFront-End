@@ -33,10 +33,7 @@ import { AlertsManagementComponent } from './pages/publication-management/alerts
 
 
 
-
-
-
-
+import { ToastrModule} from "ngx-toastr";
 
 @NgModule({
   imports: [
@@ -50,6 +47,8 @@ import { AlertsManagementComponent } from './pages/publication-management/alerts
     MatDialogModule,
     AuthLayoutModule,
     MatMenuModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   declarations: [
     AppComponent,

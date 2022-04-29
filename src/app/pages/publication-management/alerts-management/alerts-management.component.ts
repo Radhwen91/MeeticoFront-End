@@ -5,6 +5,7 @@ import {Publication} from "../../../models/publication";
 import {Alert} from "../../../models/alert";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-alerts-management',
   templateUrl: './alerts-management.component.html',
@@ -14,9 +15,12 @@ export class AlertsManagementComponent implements OnInit {
   public listAlerts:Alert[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private publicationservice: PublicationService) { }
+  constructor(private toastr : ToastrService,private publicationservice: PublicationService) { }
 
 
+  showToatr(){
+    this.toastr.success('Some message ','title');
+  }
   displayedColumns = ['delete','User','lastname'];
 
   dataSource: MatTableDataSource<Alert>;

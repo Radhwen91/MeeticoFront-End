@@ -8,6 +8,7 @@ import {FileDB} from '../../../models/fileDB';
 import {Observable} from 'rxjs';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-publication-ajout',
   templateUrl: './publication-ajout.component.html',
@@ -23,10 +24,14 @@ export class PublicationAjoutComponent implements OnInit {
   message = '';
   fileInfos: Observable<any>;
   file: FileDB;
-  constructor(private  snackBar: MatSnackBar,private publicationservice: PublicationService,private router: Router) { }
+  constructor(private toastr : ToastrService,private  snackBar: MatSnackBar,private publicationservice: PublicationService,private router: Router) { }
 
   ngOnInit(): void {
   }
+  showToatr(){
+    this.toastr.success('Post added Succesfully ','Post added Succesfully');
+  }
+
 
   publication : Publication= new Publication();
   comment : Comment= new Comment();
