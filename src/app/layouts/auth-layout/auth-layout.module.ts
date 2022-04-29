@@ -26,6 +26,8 @@ import {CommentAddComponent} from "../../front/comment-add/comment-add.component
 import {AlertComponent} from "../../front/alert/alert.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {NetworkSideNavComponent} from "../../front/network-side-nav/network-side-nav.component";
+import {MatListModule} from "@angular/material/list";
 @NgModule({
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import {ToastrModule} from "ngx-toastr";
     MatChipsModule,
     MatMenuModule,
     MatDialogModule,
+    MatListModule,
     // NgbModule
 
   ],
@@ -49,6 +52,8 @@ import {ToastrModule} from "ngx-toastr";
     ListPublication2Component,
     CommentAddComponent,
     AlertComponent,
+    NetworkSideNavComponent,
+
 
   ],
   declarations: [
@@ -64,6 +69,7 @@ import {ToastrModule} from "ngx-toastr";
     OptionDropdownComponent,
     CommentAddComponent,
     AlertComponent,
+    NetworkSideNavComponent,
 
   ]
 })

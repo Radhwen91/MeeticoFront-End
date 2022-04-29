@@ -34,6 +34,7 @@ import { AlertsManagementComponent } from './pages/publication-management/alerts
 
 
 import { ToastrModule} from "ngx-toastr";
+import { NetworkSideNavComponent } from './front/network-side-nav/network-side-nav.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { ToastrModule} from "ngx-toastr";
     AuthLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
+
 
 
 

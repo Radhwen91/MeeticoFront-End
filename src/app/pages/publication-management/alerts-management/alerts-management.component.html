@@ -69,3 +69,65 @@
 
 
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1> Banned Users</h1>
+
+          <mat-form-field>
+
+            <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Search">
+
+          </mat-form-field>
+
+
+          <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/482/482631.png"/>
+          <div class="example-container mat-elevation-z8">
+
+            <mat-table class="table table-striped" [dataSource]="dataSource2" matSort>
+
+
+              <!-- Progress Column -->
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> User </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+              </ng-container>
+
+              <!--ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> date </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.BannedDate}} </mat-cell>
+              </ng-container-->
+
+              <ng-container matColumnDef="debloquer">
+
+                          <mat-header-cell *matHeaderCellDef mat-sort-header> debloquer </mat-header-cell>
+
+
+                          <mat-cell *matCellDef="let row"> {{row.debloquer}}
+
+                <a (click)="debloqueruser(row);"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+
+                          </mat-cell>
+              </ng-container>
+
+
+              <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns2;">
+              </mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+
+          </div>

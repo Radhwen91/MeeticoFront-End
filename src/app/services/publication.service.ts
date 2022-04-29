@@ -39,6 +39,8 @@ export class PublicationService {
   nbrAlerts="/api/publication/nbralerts";
   nbrAlertsban="/api/publication/nbralertsban";
   findAlerts="/api/publication/GetAlerts";
+  findBannedusers="/api/publication/getBannedUsers";
+  Deblokuser="/api/publication/autoriserUser";
   deleteAlerts="/api/publication/supprimer-alert";
   constructor(private http: HttpClient) { }
   deleteAlert(id:number) : any{
@@ -49,6 +51,15 @@ export class PublicationService {
 
   }
 
+  bannedUsers() : Observable<any>{
+    return this.http.get<any>(this.findBannedusers);
+
+  }
+
+  debloqueruser(id:number) : any{
+    return this.http.get(`${this.Deblokuser}/${id}`)
+
+  }
 
   /*
     ListComments(id) : Observable<any>{

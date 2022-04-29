@@ -12,6 +12,10 @@ import {UpdatePublicationBackComponent} from './update-publication-back/update-p
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListCommentsBackComponent} from './list-comments-back/list-comments-back.component';
 import {ToastrService} from "ngx-toastr";
+import {Comment} from "../../models/comment";
+import {PostLike} from "../../models/PostLike";
+import {FileDB} from "../../models/fileDB";
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-publication-management',
   templateUrl: './publication-management.component.html',
@@ -78,19 +82,7 @@ export class PublicationManagementComponent implements OnInit {
 
   }
 
-  deletePub(publication:any){
-    this.publicationservice.deletePub(publication.idPublication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
-        data=>{
-          this.listPub=data
-          this.dataSource=new MatTableDataSource<Publication>(this.listPub)
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
 
-        }
-      )
-    );
-
-  }
 
 
   PDF(){
@@ -127,9 +119,60 @@ export class PublicationManagementComponent implements OnInit {
       console.log(`Dialog result: ${data}`);
     });
   }
+  deletePub(publication:any){
+    this.publicationservice.deletePub(publication.idPublication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
+        data=>{
+          this.listPub=data
+          this.dataSource=new MatTableDataSource<Publication>(this.listPub)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+
+        }
+      )
+    );
+
+  }
+  addPub(){
+    this.publicationservice.addPublication(this.publication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
+
+        data=>{
+          this.listPub=data
+          this.dataSource=new MatTableDataSource<Publication>(this.listPub)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+
+
+       //   console.log('dataaaaa',data)
+
+
+        }
+      )
+    );
+
+  }
+  showToatr(){
+    this.toastr.success('Post added Succesfully ','Post added Succesfully');
+  }
 
 
 
+  public listCom:any;
+  listfile:FileDB[];
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+  fileInfos: Observable<any>;
+  file: FileDB;
+  comment : Comment= new Comment();
+  like : PostLike= new PostLike();
+
+  playSound(){
+    let audio = new Audio()
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
+  }
 
 }
 

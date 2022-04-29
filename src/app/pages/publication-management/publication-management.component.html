@@ -15,9 +15,33 @@
         <div class="card-header border-0">
           <h3 class="mb-0">Publication Managements</h3>
         </div>
+        <br>
         <div class="table-responsive">
 
-          <app-publication-ajout></app-publication-ajout>
+          <div >
+
+            <form  #f="ngForm" class="form-horinzontal"  >
+              <div class="form-group">
+
+                <label class="form-label" >Add a new Post</label>
+
+                <textarea   [(ngModel)]="publication.contents" name="contents" type="text"  placeholder="Content"  rows="5" class="form-control" #t="ngModel"  required minlength="3"    ></textarea>
+                <div class="alert alert-danger"  *ngIf="t.invalid && t.touched">
+                  <div *ngIf="t.errors.required">  Contents is required </div>
+                  <div *ngIf="t.errors.minlength">contents must be at least 3 characters</div>
+                </div>
+
+              </div>
+
+
+              <button class="btn btn-success" type="button" [disabled]="f.invalid" (click)="addPub();playSound();showToatr();openSnackBar('Post added successfully ','Undo') "   > Save</button>
+
+
+            </form>
+          </div>
+
+          <hr>
+
 
 
 
@@ -52,7 +76,7 @@
                   <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/901/901533.png
 "/></a>
 
-                  <a (click)="deletePub(row);showToatr2()"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+                  <a (click)="deletePub(row);showToatr2();playSound();openSnackBar('Post deleted successfully ','Undo')"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
 
 
 
