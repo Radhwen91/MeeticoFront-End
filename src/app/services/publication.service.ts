@@ -38,7 +38,17 @@ export class PublicationService {
   deletecomment="/api/comment/DeleteCommentaire";
   nbrAlerts="/api/publication/nbralerts";
   nbrAlertsban="/api/publication/nbralertsban";
+  findAlerts="/api/publication/GetAlerts";
+  deleteAlerts="/api/publication/supprimer-alert";
   constructor(private http: HttpClient) { }
+  deleteAlert(id:number) : any{
+    return this.http.delete(`${this.deleteAlerts}/${id}`)
+  }
+  getAlerts() : Observable<any>{
+    return this.http.get<any>(this.findAlerts);
+
+  }
+
 
   /*
     ListComments(id) : Observable<any>{

@@ -1,1 +1,71 @@
-<p>alerts-management works!</p>
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Alerts Managements</h3>
+        </div>
+        <div class="table-responsive">
+
+
+
+
+
+
+
+          <mat-form-field>
+
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+
+          </mat-form-field>
+
+
+          <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/482/482631.png"/>
+
+
+
+          <div class="example-container mat-elevation-z8">
+
+            <mat-table class="table table-striped" [dataSource]="dataSource" matSort>
+
+
+              <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
+                  <a (click)="deleteAlert(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+
+
+                </mat-cell>
+              </ng-container>
+              <!-- Progress Column -->
+              <ng-container matColumnDef="User">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.utilis.firstName}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="lastname">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.utilis.lastName}} </mat-cell>
+              </ng-container>
+
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+
+          </div>

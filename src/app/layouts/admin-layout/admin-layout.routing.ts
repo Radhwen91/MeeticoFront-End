@@ -43,7 +43,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'publication-management',           component: PublicationManagementComponent },
     { path: 'reclamation-management',           component: ReclamationManagementComponent },
   { path: 'alert-management',           component: AlertsManagementComponent },
-  ,
+
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
     { path: 'Test',           component: TestComponent },
