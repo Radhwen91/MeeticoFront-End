@@ -3,8 +3,7 @@ import { FeedbackService } from './../../services/feedback.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Reclamation } from 'src/app/models/reclamation';
-import { ReclamationService } from 'src/app/services/reclamation.service';
+
 
 @Component({
   selector: 'app-update-feedback',
@@ -13,7 +12,7 @@ import { ReclamationService } from 'src/app/services/reclamation.service';
 })
 export class UpdateFeedbackComponent implements OnInit {
 feedback:Feedback;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Feedback,private service:FeedbackService, private router:Router) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:FeedbackService, private router:Router) { 
 
     this.feedback=data;
     console.warn('datreclamationa',this.feedback)

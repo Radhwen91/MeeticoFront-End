@@ -1,4 +1,7 @@
+import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
+import { DetailFeedbackComponent } from './../detail-feedback/detail-feedback.component';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -39,7 +42,7 @@ feedback:Feedback;
   listFeedbacksPagination: Feedback[];
   search:string;
   
-constructor(private feedbackservice:FeedbackService, private router:Router,config: NgbRatingConfig ) {
+constructor(private feedbackservice:FeedbackService, private router:Router,config: NgbRatingConfig , public dialog: MatDialog) {
   this.feedback= new Feedback()
   config.max = 5;
   config.readonly = true;
@@ -54,8 +57,33 @@ constructor(private feedbackservice:FeedbackService, private router:Router,confi
     );
     
   }
+  showDetail(f:Feedback){
+    const dialogRef = this.dialog.open(DetailFeedbackComponent,
+       {data:f}
+    );
+  
+      dialogRef.afterClosed().subscribe(data => {
+        console.log(`Dialog result: ${data}`);
+      });
+      }
+
+      showupdate(f:Feedback){
+        const dialogRef = this.dialog.open(UpdateFeedbackComponent,
+           {data:f}
+        );
+      
+          dialogRef.afterClosed().subscribe(data => {
+            console.log(`Dialog result: ${data}`);
+          });
+          }
 
 
+
+
+
+
+
+          
   paginate(event: PageEvent) {
     let startIndex = event.pageSize * event.pageIndex;
     this.start = startIndex;

@@ -1,15 +1,33 @@
+import { DetailFeedbackUserComponent } from './../detail-feedback-user/detail-feedback-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback';
 import { FeedbackService } from 'src/app/services/feedback.service';
-import { DatailFeedbackComponent } from '../datail-feedback/datail-feedback.component';
+
 import { MatDialog } from '@angular/material/dialog';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-feedback-management-user',
   templateUrl: './feedback-management-user.component.html',
-  styleUrls: ['./feedback-management-user.component.scss']
+  styleUrls: ['./feedback-management-user.component.scss'],
+  providers: [NgbRatingConfig],
+  styles: [`
+  .star {
+    font-size: 2rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }
+`]
 })
 export class FeedbackManagementUserComponent implements OnInit {
 
@@ -22,8 +40,10 @@ export class FeedbackManagementUserComponent implements OnInit {
     listFeedbacksPagination: Feedback[];
     search:string;
 
-  constructor(private feedbackservice:FeedbackService, private router:Router ,public dialog: MatDialog) {
-    this.feedback= new Feedback()
+  constructor(private feedbackservice:FeedbackService, private router:Router ,public dialog: MatDialog ,config: NgbRatingConfig) {
+    this.feedback= new Feedback();
+    config.max = 5;
+    config.readonly = true;
    }
    public  deleteFeedbackById(idFeedback:number){
     let res= this.feedbackservice.deleteFeedbackById(idFeedback).subscribe(
@@ -49,15 +69,15 @@ export class FeedbackManagementUserComponent implements OnInit {
     }
   
     
-    showDetailfeedback(f:Feedback){
-      console.log(`///////////////////////`);
-      const dialogRef = this.dialog.open(DatailFeedbackComponent,
+    showDetail(f:Feedback){
+      const dialogRef = this.dialog.open(DetailFeedbackUserComponent,
          {data:f}
       );
-      dialogRef.afterClosed().subscribe(data => {
-        console.log(`Dialog result: ${data}`);
-      });
-      }
+    
+        dialogRef.afterClosed().subscribe(data => {
+          console.log(`Dialog result: ${data}`);
+        });
+        }
 
       showUpdateFeedback(f:Feedback){
         console.log(`///////////////////////`);

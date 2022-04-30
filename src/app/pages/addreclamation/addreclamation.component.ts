@@ -1,10 +1,14 @@
+import { PusherService } from './../../services/websocket/pusher.service';
+
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reclamation } from 'src/app/models/reclamation';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImagenServiceService } from 'src/app/services/imagen-service.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Pusher from 'pusher-js';
 @Component({
   selector: 'app-addreclamation',
   templateUrl: './addreclamation.component.html',
@@ -13,7 +17,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 export class AddreclamationComponent implements OnInit {
 reclamation :Reclamation;
 @ViewChild('imagenInputFile', {static: false}) imagenFile: ElementRef;
-
+r :Reclamation[];
   imagen: File;
   imagenMin: File;
   public reclamationForm: FormGroup;
@@ -22,7 +26,8 @@ reclamation :Reclamation;
     private router:Router,
     private imagenService: ImagenServiceService,
     private spinner: NgxSpinnerService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private PusherService:PusherService
     ) { 
 
     this.reclamation = new Reclamation();
@@ -39,6 +44,9 @@ reclamation :Reclamation;
 */
   ngOnInit(): void {
     this.initForm()
+
+    
+
   }
   initForm() {
   this.reclamationForm = this.formBuilder.group({
@@ -90,6 +98,9 @@ this.reclamationForm.valueChanges.subscribe(
     this.imagenMin = null;
     this.imagenFile.nativeElement.value = '';
   }
+
+
+  
 
 
 

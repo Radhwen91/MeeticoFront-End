@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,18 +15,39 @@ import { FeedbackService } from 'src/app/services/feedback.service';
 export class AddfeedbackComponent implements OnInit {
 feedback:Feedback;
 public feedbackForm: FormGroup;
+public users:User[];
 
 
 
-  constructor(private feedbackservice :FeedbackService , private router:Router,
+  constructor(private feedbackservice :FeedbackService ,private userservice:UserService, private router:Router,
     private formBuilder: FormBuilder,
     ) { this.feedback = new Feedback()}
 
+
+
+
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
+    this.getUsers();
+    console.log("+++++++++++++++"+this.users);
+    console.log("+++++++++++++++"+this.feedback.users);
+    
   }
+
   
-  
+  public getUsers(){
+    this.userservice.retrieveAllUsers().subscribe(
+      data => {
+        console.log(data);
+        this.users = data;
+        
+    
+  });
+}
+
+  affectUserToFeedback(){
+    
+  }
 
   initForm() {
     this.feedbackForm = this.formBuilder.group({

@@ -1,3 +1,4 @@
+import { DetailFeedbackUserComponent } from './../../pages/detail-feedback-user/detail-feedback-user.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
@@ -12,10 +13,12 @@ import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclama
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { DatailFeedbackComponent } from 'src/app/pages/datail-feedback/datail-feedback.component';
+
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MentionModule } from 'angular-mentions';
+import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-feedback.component';
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -30,6 +33,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxSpinnerModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MentionModule,
+    
+    
+
 
   ],
 
@@ -38,8 +45,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReclamationManagementComponent,
     FeedbackManagementUserComponent,
     AddfeedbackComponent,
-    DatailFeedbackComponent,
+    DetailFeedbackUserComponent,
     UpdateFeedbackComponent,
+    
   ],
   entryComponents: [NgbdModalContent],
   exports: [

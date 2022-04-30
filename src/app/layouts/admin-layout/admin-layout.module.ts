@@ -1,3 +1,4 @@
+import { DetailFeedbackComponent } from './../../pages/detail-feedback/detail-feedback.component';
 import { TestComponent } from './../../pages/test/test.component';
 import { UploadImageComponent } from './../../pages/upload-image/upload-image.component';
 import { NgModule } from '@angular/core';
@@ -54,7 +55,9 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     UpdateReclamationComponent,
     AnswerAdminComponent,
     UploadImageComponent,
-    TestComponent
+    TestComponent,
+    DetailFeedbackComponent
+  
   ],
   exports: [
     RouterModule

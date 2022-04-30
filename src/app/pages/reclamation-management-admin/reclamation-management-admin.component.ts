@@ -1,3 +1,4 @@
+import { PusherService } from './../../services/websocket/pusher.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
@@ -26,7 +27,7 @@ end = 5;
 
   
 
-  constructor(private reclamationService:ReclamationService ,public dialog: MatDialog) {
+  constructor(private reclamationService:ReclamationService ,public dialog: MatDialog,private pusherService:PusherService) {
     this.reclamation= new Reclamation();
    }
 
@@ -37,8 +38,11 @@ end = 5;
         this.listReclamations = data;
         this.listReclamationsPagination=this.listReclamations.splice(0,5);
       }
+
+     
       
     );
+
 
 
 
@@ -48,6 +52,8 @@ end = 5;
         this.nbrReclamationEnAttente = data;
       }
     );
+
+   // this.pusherService.channel.bind('Notification', (data: any)=>{});
    
   }
 
