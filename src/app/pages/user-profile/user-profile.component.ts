@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -13,12 +14,12 @@ export class UserProfileComponent implements OnInit {
   focus: boolean;
   user: User;
   age: number;
-  address: string[];
+  address: string[] = [];
   disabled = true;
   constructor(private tokenService: TokenService, private userService: UserService) { }
   ngOnInit() {
     this.user = this.tokenService.getUser();
-    this.address = this.tokenService.getUser().address.split(", ", 3);
+    if (this.tokenService.getUser().address) this.address = this.user.address.split(", ", 3);
   }
   uploadPicture(event) {
     let formData = new FormData();
@@ -35,10 +36,12 @@ export class UserProfileComponent implements OnInit {
    this.disabled = false;
   }
   updateProfile() {
+    if (this.address[0] && this.address[1] && this.address[2]) this.user.address = this.address[0] + ", " + this.address[1] + ", " + this.address[2];
     this.userService.updateProfile(this.user).subscribe(
       user => {
         this.tokenService.saveUser(user);
-        window.location.reload();
+        this.disabled = true;
+        this.ngOnInit();
       }
     );
   }

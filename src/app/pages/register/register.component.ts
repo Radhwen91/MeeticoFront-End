@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthService } from "angularx-social-login";
 import { User } from "src/app/_models/user";
+import { DataService } from "src/app/_services/data.service";
 import { UserService } from "src/app/_services/user.service";
 
 @Component({
@@ -19,6 +21,7 @@ export class RegisterComponent {
     phoneNumber: null,
     username: null
   };
+  isLoggedin: boolean;
   constructor(private userService: UserService, private router: Router) { }
   ngSubmit(): void {
     this.userService.registerEntrepreneur(this.user).subscribe(

@@ -33,6 +33,8 @@ export class NavbarComponent implements OnInit {
       if (this.socialUser.provider == "FACEBOOK")
         this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
     }
+    else this.userService.signInStatus(this.user.userId).subscribe();
+
   }
   getTitle(): string {
     var title = this.location.prepareExternalUrl(this.location.path());
@@ -64,7 +66,7 @@ export class NavbarComponent implements OnInit {
   }
   signOut() {
     if (this.socialUser) {
-      this.userService.updateStatus(this.user.userId).subscribe();
+      this.userService.signOutStatus(this.user.userId).subscribe();
       this.tokenService.signOut();
     }
     else {

@@ -1,11 +1,13 @@
-import { Component, OnInit, Inject, Input, Type } from "@angular/core";
+import { Component, OnInit, Inject, Type } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import * as moment from "moment";
+import * as lastSeenAgo from "last-seen-ago";
 import { User } from "src/app/_models/user";
 import { TokenService } from "src/app/_services/token.service";
 import { UserService } from "src/app/_services/user.service";
+import { Attribute } from "src/app/_utils/attribute";
 
 @Component({
   selector: 'app-user-management',
@@ -16,18 +18,58 @@ import { UserService } from "src/app/_services/user.service";
 export class UserManagementComponent implements OnInit {
   withAutofocus = `<button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>`;
   connectedUser: User;
-  index: number = 1;
+  attributes: Attribute[] = [
+    { descendant: false, hidden: false },
+    { descendant: false, hidden: true },
+    { descendant: false, hidden: true },
+    { descendant: false, hidden: true }
+  ];
+  index: number;
+  sortedBy: string[] = ["userId", "name", "lastSeen", "followers"];
+  itemsPerPage: number = 2;
+  currentPage: number = 1;
   users: User[];
+  lastSeens: string[];
+  completions: number[] = [];
   focus: boolean;
   input: string;
   age: number;
   me: boolean;
   followed: boolean;
-  completion
   constructor(private tokenService: TokenService, private userService: UserService, private matDialog: MatDialog, private modalService: NgbModal) { }
-  ngOnInit() {
+  ngOnInit(): void {
     this.connectedUser = this.tokenService.getUser();
-    this.userService.retrieveAllUsers().subscribe(users => this.users = users);
+    for (let i = 0; i < this.attributes.length; i++) {
+      if (!this.attributes[i].hidden) this.index = i;
+    }
+    this.userService.retrieveAllUsers(this.attributes[this.index].descendant, this.sortedBy[this.index]).subscribe(
+      users => {
+        this.users = users;
+        this.lastSeens = [];
+        users.forEach(
+          user => {
+            if (user.userId == this.connectedUser.userId) this.lastSeens.push('active');
+            else {
+              let timestamp = Math.floor(new Date(user.lastSeen.toString().slice(0, 19)).getTime() / 1000);
+              this.lastSeens.push('last seen ' + lastSeenAgo.getLastSeen(timestamp).toString().toLowerCase());
+            }
+          }
+        );
+      }
+    );
+    this.userService.calculateProfileCompletion().subscribe(data => this.completions = data);
+  }
+  updateIcon(iconId: number) {
+    if (this.attributes[iconId].hidden) {
+      this.attributes.forEach(
+        attribute => {
+          attribute.hidden = true;
+        }
+      );
+      this.attributes[iconId].hidden = false;
+    }
+    else this.attributes[iconId].descendant = !this.attributes[iconId].descendant;
+    this.ngOnInit();
   }
   getAge(date: Date): number {
     return moment().diff(date, 'years');
@@ -57,15 +99,33 @@ export class UserManagementComponent implements OnInit {
       data => {
         if (data.me) this.me = !this.me;
         if (data.followed) this.followed = !this.followed;
-        if (data.clicked) window.location.reload();
+        if (data.clicked) {
+          this.me = undefined;
+          this.followed = undefined;
+          this.ngOnInit();
+        }
       }
     );
   }
   removeUser(selectedUser) {
-    this.userService.removeUser(selectedUser.userId).subscribe(selectedUser => window.location.reload());
+    this.userService.removeUser(selectedUser.userId).subscribe(selectedUser => this.ngOnInit());
   }
   searchForUsers(event) {
-    this.userService.searchForUsers(event.target.value).subscribe(users => this.users = users);
+    this.userService.searchForUsers(event.target.value).subscribe(
+      users => {
+        this.users = users;
+        this.lastSeens = [];
+        users.forEach(
+          user => {
+            if (user.userId == this.connectedUser.userId) this.lastSeens.push('active');
+            else {
+              let timestamp = Math.floor(new Date(user.lastSeen.toString().slice(0, 19)).getTime() / 1000);
+              this.lastSeens.push('last seen ' + lastSeenAgo.getLastSeen(timestamp).toString().toLowerCase());
+            }
+          }
+        );
+      }
+    );
   }
   openModal(id: string) {
     this.modalService.open(id);
@@ -231,5 +291,5 @@ export class NgbdModalConfirmAutofocus {
 const MODALS: { [name: string]: Type<any> } = {
   focusFirst: NgbdModalConfirm,
   autofocus: NgbdModalConfirmAutofocus
-  
+
 };

@@ -24,8 +24,8 @@ export class UserService {
   removeUser(userId: number): Observable<void> {
     return this.http.delete<void>(url + 'removeUser?userId=' + userId);
   }
-  retrieveAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(url + 'retrieveAllUsers');
+  retrieveAllUsers(descendant: boolean, sortedBy: string): Observable<User[]> {
+    return this.http.get<User[]>(url + 'retrieveAllUsers?descendant=' + descendant + '&sortedBy=' + sortedBy);
   }
   approvePendingEmployee(verificationCode: number): Observable<User> {
     return this.http.put<User>(url + 'approvePendingEmployee?verificationCode=' + verificationCode, null);
@@ -36,13 +36,19 @@ export class UserService {
   searchForUsers(input: string): Observable<User[]> {
     return this.http.get<User[]>(url + 'searchForUsers?input=' + input);
   }
-  updateStatus(userId: number): Observable<void> {
-    return this.http.put<void>(url + 'updateStatus?userId=' + userId, null);
+  signInStatus(userId: number): Observable<void> {
+    return this.http.put<void>(url + 'signInStatus?userId=' + userId, null);
+  }
+  signOutStatus(userId: number): Observable<void> {
+    return this.http.put<void>(url + 'signOutStatus?userId=' + userId, null);
   }
   followUser(followerId: number, userId: number): Observable<void> {
     return this.http.put<void>(url + 'followUser?followerId=' + followerId + '&userId=' + userId, null);
   }
   unfollowUser(followerId: number, userId: number): Observable<void> {
     return this.http.put<void>(url + 'unfollowUser?followerId=' + followerId + '&userId=' + userId, null);
+  }
+  calculateProfileCompletion(): Observable<number[]> {
+    return this.http.get<number[]>(url + 'calculateProfileCompletion');
   }
 }

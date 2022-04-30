@@ -24,16 +24,16 @@
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">User ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Followers</th>
+                  <th scope="col">User ID<button class="bg-transparent" mat-icon-button matSuffix (click)="updateIcon(0)"><mat-icon [hidden]="attributes[0].hidden ? true : null">{{attributes[0].descendant ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon></button></th>
+                  <th scope="col">Name<button class="bg-transparent" mat-icon-button matSuffix (click)="updateIcon(1)"><mat-icon [hidden]="attributes[1].hidden ? true : null">{{attributes[1].descendant ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon></button></th>
+                  <th scope="col">Status<button class="bg-transparent" mat-icon-button matSuffix (click)="updateIcon(2)"><mat-icon [hidden]="attributes[2].hidden ? true : null"> {{attributes[2].descendant ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon></button></th>
+                  <th scope="col">Followers<button class="bg-transparent" mat-icon-button matSuffix (click)="updateIcon(3)"><mat-icon [hidden]="attributes[3].hidden ? true : null">{{attributes[3].descendant ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon></button></th>
                   <th scope="col">Completion</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: index }">
+                <tr *ngFor="let user of users | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
                   <th scope="row">
                     <div class="media align-items-center">
                       <a class="avatar rounded-circle mr-3">
@@ -45,19 +45,18 @@
                     </div>
                   </th>
                   <td>
-                    {{ user.firstName + ' ' + user.lastName }}
+                    {{ user.userId == connectedUser.userId ? user.firstName + ' ' + user.lastName + ' (You)' : user.firstName + ' ' + user.lastName }}
                   </td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending'
-                      }}
+                      <i [class]="user.userId == connectedUser.userId ? 'bg-success' : 'bg-danger'"></i> {{ lastSeens[itemsPerPage * (currentPage - 1) + i] }}
+                      <!-- <i [class]="user.active ? 'bg-success' : 'bg-warning'"></i> {{ user.active ? 'active' : 'pending' }} -->
                     </span>
                   </td>
                   <td *ngIf="user.followers.length > 0">
-                    <div class="avatar-group" *ngFor="let follower of user.followers">
-                      <a class="avatar avatar-sm" data-toggle="tooltip">
-                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}"
-                          class="rounded-circle">
+                    <div class="avatar-group">
+                      <a class="avatar avatar-sm" data-toggle="tooltip" *ngFor="let follower of user.followers">
+                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}" class="rounded-circle">
                       </a>
                     </div>
                   </td>
@@ -66,12 +65,11 @@
                   </td>
                   <td>
                     <div class="d-flex align-items-center">
-                      <span class="mr-2">60%</span>
+                      <span class="mr-2">{{ completions[itemsPerPage * (currentPage - 1) + i] }} %</span>
                       <div>
                         <div class="progress">
-                          <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                            aria-valuemax="100" style="width: 60%;"></div>
-                        </div>
+                          <div [class]="completions[itemsPerPage * (currentPage - 1) + i] <= 50 ? 'progress-bar bg-danger' : completions[itemsPerPage * (currentPage - 1) + i] >= 80 ? 'progress-bar bg-success' : 'progress-bar bg-warning'" role="progressbar" aria-valuenow="{{ completions[itemsPerPage * (currentPage - 1) + i] }}" aria-valuemin="0" aria-valuemax="100" [style.width.%]="completions[itemsPerPage * (currentPage - 1) + i]"></div>
+                        </div>  
                       </div>
                     </div>
                   </td>
@@ -93,7 +91,7 @@
           </div>
           <div class="card-footer bg-transparent py-4">
             <ul class="pagination justify-content-end mb-0">
-              <pagination-controls (pageChange)="index = $event" previousLabel="" nextLabel=""></pagination-controls>
+              <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
             </ul>
           </div>
         </div>

@@ -29,8 +29,7 @@ export class RequestManagementComponent implements OnInit {
     this.currentRequest = request;
   }
   removeRequest() {
-    this.requestService.deleteRequest(this.currentRequest.requestId).subscribe();
-    window.location.reload();
+    this.requestService.deleteRequest(this.currentRequest.requestId).subscribe(request => this.ngOnInit());
   }
   searchForRequests(event) {
     this.requestService.searchForRequests(event.target.value).subscribe(
