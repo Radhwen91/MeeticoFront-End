@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
         this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
     }
     else this.userService.signInStatus(this.user.userId).subscribe();
-
   }
   getTitle(): string {
     var title = this.location.prepareExternalUrl(this.location.path());

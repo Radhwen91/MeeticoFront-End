@@ -9,6 +9,7 @@ import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    UserLayoutComponent
   ],
   providers: [
     {

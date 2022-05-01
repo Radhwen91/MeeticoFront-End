@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { User } from 'src/app/_models/user';
 import { TokenService } from 'src/app/_services/token.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -21,7 +20,7 @@ export class UserProfileComponent implements OnInit {
     this.user = this.tokenService.getUser();
     if (this.tokenService.getUser().address) this.address = this.user.address.split(", ", 3);
   }
-  uploadPicture(event) {
+  assignPictureToUser(event) {
     let formData = new FormData();
     this.user.picture = event.target.files.item(0);
     formData.append('file', this.user.picture);
@@ -33,7 +32,7 @@ export class UserProfileComponent implements OnInit {
     );
   }
   editProfile() {
-   this.disabled = false;
+    this.disabled = false;
   }
   updateProfile() {
     if (this.address[0] && this.address[1] && this.address[2]) this.user.address = this.address[0] + ", " + this.address[1] + ", " + this.address[2];

@@ -7,7 +7,7 @@ import * as lastSeenAgo from "last-seen-ago";
 import { User } from "src/app/_models/user";
 import { TokenService } from "src/app/_services/token.service";
 import { UserService } from "src/app/_services/user.service";
-import { Attribute } from "src/app/_utils/attribute";
+import { Attribute } from "src/app/_utils/sort";
 
 @Component({
   selector: 'app-user-management',

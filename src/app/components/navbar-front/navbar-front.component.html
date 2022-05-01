@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand" [routerLink]="['/home']">Meetico</a>
+      <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+        (click)="sidebarToggle()">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!isLogin()">
+          <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom"
+            href="https://github.com/Radhwen91/MeeticoFront-End" target="_blank">
+            <i class="fa fa-github"></i>
+            <p class="d-lg-none">GitHub</p>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isHome()">
+          <a class="nav-link" [routerLink]="['/sign-in']"><i class="nc-icon nc-key-25"></i> Login </a>
+        </li>
+        <li class="nav-item" *ngIf="isHome()">
+          <a class="btn btn-danger btn-round" [routerLink]="['/login']">Admin Interface</a>
+        </li>
+        <li class="nav-item" *ngIf="!isHome()">
+          <a [routerLink]="['/register-employees']" *ngIf="!isLogin()" class="nav-link"><i class="nc-icon nc-single-02" style="margin-right: 5px"></i>User Management</a>
+          <a [routerLink]="['/home']" *ngIf="isLogin()" class="nav-link">Back to Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogin() && !isHome()">
+          <div ngbDropdown style="cursor: pointer">
+            <a class="nav-link" ngbDropdownToggle>
+              <div class="media align-items-center">
+                <span class="avatar">
+                  <img src="{{ user.picture ? user.picture : socialUser.photoUrl ? socialUser.photoUrl : 'assets/upload/default.jpg' }}" class="img-circle img-no-padding img-responsive" style="max-width: 40px">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm text-white font-weight-bold">{{ user.firstName ? user.firstName : socialUser.firstName }}</span>
+                </div>
+              </div>
+            </a>
+            <div ngbDropdownMenu class="dropdown-info">
+              <h6 class="text-sm m-2 text-center">Welcome aboard, {{ user.firstName ? user.firstName : socialUser.firstName }}!</h6>
+              <a class="dropdown-item" [routerLink]="['/user-profile']"><i class="nc-icon nc-badge"></i>My Profile</a>
+              <a class="dropdown-item" (click)="changePassword()"><i class="nc-icon nc-settings-gear-65"></i>Change Password</a>
+              <a class="dropdown-item" (click)="signOut()"><i class="nc-icon nc-user-run"></i>Sign Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -16,7 +16,7 @@ import { MapsComponent } from "src/app/pages/maps/maps.component";
 import { RequestManagementComponent } from "src/app/pages/request-management/request-management.component";
 import { TablesComponent } from "src/app/pages/tables/tables.component";
 import { UserManagementComponent, UserDetailsDialog } from "src/app/pages/user-management/user-management.component";
-import { UserProfileComponent } from "src/app/pages/user-profile/user-profile.component";
+import { AdminProfileComponent } from "src/app/pages/admin-profile/admin-profile.component";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 
 @NgModule({
@@ -41,14 +41,12 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
     MapsComponent,
     TablesComponent,
     CalendarComponent,
-    UserProfileComponent,
+    AdminProfileComponent,
     UserManagementComponent,
     UserDetailsDialog,
     RequestManagementComponent
   ],
-  exports : [
-    CalendarComponent
-  ],
+  exports : [CalendarComponent],
   entryComponents: [UserDetailsDialog]
 })
 
