@@ -22,6 +22,7 @@ import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifi
 import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
 import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
 import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
+import { DetailtripbackComponent } from 'src/app/pages/trip-management/detailtripback/detailtripback.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -46,4 +47,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management/search',           component: AlgorithmedematchingComponent },
     { path: 'trip-management/image/:id',           component: ImageComponent },
     { path: 'acceuiltrip',           component: AcceuiltripbackComponent },
+    { path: 'detailback/:id',      component: DetailtripbackComponent },
 ];
