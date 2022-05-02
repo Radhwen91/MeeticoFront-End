@@ -33,6 +33,9 @@ export class UserService {
   assignPictureToUser(userId: number, picture: FormData): Observable<User> {
     return this.http.put<User>(url + 'assignPictureToUser?userId=' + userId, picture);
   }
+  uploadConvertablePDF(PDF: FormData): Observable<string> {
+    return this.http.post<string>(url + 'uploadConvertablePDF', PDF);
+  }
   searchForUsers(input: string): Observable<User[]> {
     return this.http.get<User[]>(url + 'searchForUsers?input=' + input);
   }
@@ -47,6 +50,9 @@ export class UserService {
   }
   unfollowUser(followerId: number, userId: number): Observable<void> {
     return this.http.put<void>(url + 'unfollowUser?followerId=' + followerId + '&userId=' + userId, null);
+  }
+  retrieveUserFollowers(userId: number): Observable<User[]> {
+    return this.http.get<User[]>(url + 'retrieveUserFollowers?userId=' + userId);
   }
   calculateProfileCompletion(): Observable<number[]> {
     return this.http.get<number[]>(url + 'calculateProfileCompletion');

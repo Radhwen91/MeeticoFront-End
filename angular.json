@@ -24,7 +24,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": [
               "chart.js",
-              "tesseract.js"
+              "tesseract.js",
+              "pdfjs-dist"
             ],
             "assets": [
               "src/favicon.ico",

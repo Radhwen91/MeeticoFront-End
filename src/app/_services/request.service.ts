@@ -21,7 +21,7 @@ export class RequestService {
     return this.http.delete<void>(url + 'removeRequest?requestId=' + requestId);
   }
   retrieveAllRequests(userId: number): Observable<Request[]> {
-    return this.http.get<Request[]>(url + 'retrieveAllRequests');
+    return this.http.get<Request[]>(url + 'retrieveAllRequests?userId='+ userId);
   }
   assignSenderToRequest(senderId: number, requestId: number): Observable<Request> {
     return this.http.put<Request>(url + 'assignPictureToRequest?requestId=' + requestId, senderId);

@@ -114,8 +114,8 @@
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
-                                            <li *ngIf="user.followers.length > 0">
-                                                <div class="row" *ngFor="let follower of user.followers">
+                                            <li *ngIf="retrieveUserFollowers(user.userId).length > 0">
+                                                <div class="row" *ngFor="let follower of retrieveUserFollowers(user.userId)">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
                                                         <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>

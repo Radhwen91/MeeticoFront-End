@@ -26,7 +26,7 @@
           <a class="btn btn-danger btn-round" [routerLink]="['/login']">Admin Interface</a>
         </li>
         <li class="nav-item" *ngIf="!isHome()">
-          <a [routerLink]="['/register-employees']" *ngIf="!isLogin()" class="nav-link"><i class="nc-icon nc-single-02" style="margin-right: 5px"></i>User Management</a>
+          <a [routerLink]="['/manage-users']" *ngIf="!isLogin()" class="nav-link"><i class="nc-icon nc-single-02" style="margin-right: 5px"></i>User Management</a>
           <a [routerLink]="['/home']" *ngIf="isLogin()" class="nav-link">Back to Home</a>
         </li>
         <li class="nav-item" *ngIf="!isLogin() && !isHome()">

@@ -5,11 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { UserLayoutRoutes } from './user-layout.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RegisterEmployeesComponent } from 'src/app/pages/register-employees/register-employees.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
 import { HomeComponent } from 'src/app/pages/home/home.component';
+import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { HomeComponent } from 'src/app/pages/home/home.component';
     HomeComponent,
     SignInComponent,
     UserProfileComponent,
-    RegisterEmployeesComponent,
+    UserManagementFrontComponent,
     LandingComponent
   ]
 })
