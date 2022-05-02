@@ -1,0 +1,94 @@
+
+ <style>
+    .zied{
+      font-size: 100px;
+      font-weight: bold;
+    }
+ .card-columns{
+   display: inline-block;
+ }
+ #ziedpag {
+   color: blanchedalmond;
+   border: #FAFAD2;;
+   height: 40px;
+   width: 210px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   border-radius: 20%;
+   font-size: 16px;
+   margin: 10px 50px 20px;
+   
+ }
+  </style>
+ 
+ 
+  <!--lest of trip-->
+  <div >
+   <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="dialoggg()"><i class="fa fa-search"></i>search for matchin</button>
+    <p class="zied">List of Trips </p>
+     <!--carousel-->
+  <div class="section" id="carousel" >
+   <div class="container">
+       <div class="tim-title">
+           <h3></h3>
+       </div>
+       <div class="row">
+           <div class="col-md-8 mr-auto ml-auto">
+               <div class="card page-carousel">
+                   <ngb-carousel >
+                       <ng-template ngbSlide *ngFor="let t of listoftrips">
+                           <img *ngFor="let f of t.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Random first slide">
+                           <div class="carousel-caption">
+                               <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
+                           </div>
+                       </ng-template>
+                   </ngb-carousel>
+               </div>
+           </div>
+       </div>
+   </div>
+ </div>
+  
+ <!--
+ <div  class="card-columns">
+         <div class="card" *ngFor="let t of listoftripsPagination">
+           <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
+           <div class="card-body">
+             <h5 class="card-title">{{t.destination}}</h5>
+             <p class="card-text">object :{{t.object}}</p>
+             <p class="card-text">start date:{{t.startDate}}</p>
+             <p class="card-text">end date:{{t.endDate}}}</p>
+             <div class="card-body">
+               <a href="#" class="card-link">more detail</a>
+             </div>
+           </div>
+         </div> 
+       </div>
+ -->
+       
+ <div class="row row-cols-1 row-cols-md-3">
+   <div class="col mb-4"*ngFor="let t of listoftripsPagination">
+     <div class="card h-100" >
+       <img *ngFor="let f of t.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="card-img-top" alt="...">
+       <div class="card-body">
+         <h5 class="card-title">{{t.destination}}</h5>
+         <p class="card-text">start date:{{t.startDate}}</p>
+         <p class="card-text">end date:{{t.endDate}}}</p>
+         <div class="card-body">
+           <a [routerLink]="['/detail', t.idTrip ]" class="card-link">more detail</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+         <div class="col-12" *ngIf="listoftripsPagination">
+           <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
+        
+           </mat-paginator>
+        
+         </div> 
+       
+ 
+    
+  </div>

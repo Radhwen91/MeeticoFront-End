@@ -56,12 +56,12 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
         
         
         
-        
+        console.log(this.listoftrips)
+        console.log(this.dataSource)
         
       }
     );
-    console.log(this.listoftrips)
-    console.log(this.dataSource)
+  
   }
   supprimer(trip :any){
     this.tripservice.deleteTrip(trip.idTrip).subscribe(()=>this.tripservice.getTrips().subscribe(

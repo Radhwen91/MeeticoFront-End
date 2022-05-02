@@ -15,6 +15,7 @@ import { AcceuiltripComponent } from './pages/trip-management/acceuiltrip/acceui
 import { ImageComponent } from './pages/trip-management/image/image.component';
 import { DetailtripComponent } from './pages/trip-management/detailtrip/detailtrip.component';
 import { SearchdialogComponent } from './pages/trip-management/searchdialog/searchdialog.component';
+import { AcceuiltripbackComponent } from './pages/trip-management/acceuiltripback/acceuiltripback.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { SearchdialogComponent } from './pages/trip-management/searchdialog/sear
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+    
     
     
   

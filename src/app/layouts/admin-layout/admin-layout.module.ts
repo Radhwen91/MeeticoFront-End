@@ -39,6 +39,7 @@ import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.
 import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
 import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
 import { UploadFilesComponent } from 'src/app/pages/trip-management/upload-files/upload-files.component';
+import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -81,7 +82,8 @@ import { UploadFilesComponent } from 'src/app/pages/trip-management/upload-files
     AjouterComponent,
     AlgorithmedematchingComponent,
     ModifierComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    AcceuiltripbackComponent,
   ],
   exports: [
     RouterModule

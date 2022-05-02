@@ -62,7 +62,7 @@
         <label for="example-date-input" class="col-2 col-form-label">Image</label>
       <label class="btn btn-default">
         <input *ngIf="listfile.length>1" type="file" (change)="selectFile($event) "[disabled]="true" formControlName="file" />
-        <input *ngIf="listfile.length==0" type="file" (change)="selectFile($event) " formControlName="file" />
+        <input *ngIf="listfile.length==0" type="file" (change)="selectFile($event);upload() " formControlName="file" />
         <div  *ngIf="listfile.length==0" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
       </label>
     </div>
