@@ -58,23 +58,27 @@ export class CreatePostComponent implements OnInit {
 
 
   addPub(){
-
-    this.publicationservice.addPublication(this.publication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
-
+    this.publicationservice.addPublication(this.publication).subscribe(
         data=>{
-          this.listPub=data
+          console.log(data)
+          this.publication=data
           this.toastr.success('Post Added Successfully ','Post Added Successfully');
-          console.log('dataaaaa',data)
+          console.log("dataaa111",this.publication.idPublication);
+          this.publicationservice.affecter(112,24,this.file).subscribe(
+            data=>{
+
+            }
+
+          );
+
+
+          /////////////////
           this.publicationservice.BadWords(this.publication.contents).subscribe(
-
             data2=>{
-
               this.etatbadword = data2
 
-
+             ///////////////////
               if(data2===true){
-
-
                   const dialogRef = this.dialog.open( AlertComponent,
                    );
                    dialogRef.afterClosed().subscribe(data => {
@@ -86,21 +90,26 @@ export class CreatePostComponent implements OnInit {
                 audio.play();
                 this.toastr.error('Bad Word detected ','Bad Word detected');
               }
+            } );
+              ///////////
 
 
-            }
-          );
 
 
 
         }
 
-
-
-      )
     );
 
   }
+
+
+
+
+
+
+
+
   upload() :FileDB[]{
     this.progress = 0;
     this.currentFile = this.selectedFiles.item(0);
@@ -114,10 +123,8 @@ export class CreatePostComponent implements OnInit {
             data=>{
               this.file=data;
               console.log('file',this.file)
-
-              this.listfile2.push(this.file);
-              console.log('////////',this.listfile2)
-
+             // this.listfile2.push(this.file);
+            //  console.log('////////',this.listfile2)
             }
           );
 

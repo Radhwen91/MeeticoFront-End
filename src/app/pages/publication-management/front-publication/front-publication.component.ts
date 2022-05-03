@@ -166,13 +166,13 @@ export class FrontPublicationComponent implements OnInit {
 
   }
 
-
+/*
   affecterImage(){
     this.publicationservice.affecter(1,2).subscribe(
       res=>{
       });
   }
-
+*/
   /*
   addPub(){
     this.publicationservice.addPublication(this.publication).subscribe(

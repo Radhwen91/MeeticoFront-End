@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NetworkSideNavComponent} from "../../front/network-side-nav/network-side-nav.component";
 import {MatListModule} from "@angular/material/list";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +41,8 @@ import {MatListModule} from "@angular/material/list";
     MatMenuModule,
     MatDialogModule,
     MatListModule,
-    // NgbModule
+    // NgbModule,
+    ScrollingModule
 
   ],
   exports: [

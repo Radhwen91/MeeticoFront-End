@@ -89,8 +89,8 @@ export class PublicationService {
     // return this.http.put<Publication> (`${this.updateurl}/${id}`,publication);
   }
 
-  affecter(id:number,idf:number){
-    return this.http.put<FileDB>("http://localhost:8081/File/affecterimage/"+idf+"/"+id,{responseType:'json'});
+  affecter(id:number,idf:number,file: FileDB): Observable<FileDB>{
+    return this.http.put<FileDB>(this.affecterimage+"/"+idf+"/"+id,file);
   }
   getFile2(id:number):Observable<FileDB>{
     return this.http.get<FileDB>(`${this.getFile}/${id}`);

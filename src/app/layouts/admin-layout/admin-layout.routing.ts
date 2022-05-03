@@ -53,3 +53,4 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'list-comments-back',           component: ListCommentsBackComponent },
   { path: 'publication-ajout',           component: PublicationAjoutComponent },
 ];
+

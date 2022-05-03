@@ -38,7 +38,7 @@ export class ListPublication2Component implements OnInit {
   fileById:FileDB[];
   comment : Comment= new Comment();
   public listComments:any
-  public listCom:Comment[];
+  public listCom:Comment[]=[];
 public nbrlistCom:any[]=[];
   nbrLike : number;
   public listnbrLike:number[];
