@@ -6,14 +6,17 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserManagementComponent } from '../pages/user-management/user-management.component';
-import { FooterFrontComponent } from './footer-front/footer-front.component';
-import { NavbarFrontComponent } from './navbar-front/navbar-front.component';
-import { NotificationComponent } from '../pages/notification/notification.component';
-import { NgbdModalComponent, NgbdModalContent } from '../pages/modal/modal.component';
-import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component';
+
 import { TypographyComponent } from '../pages/typography/typography.component';
 import { BasicelementsComponent } from '../pages/basicelements/basicelements.component';
+import { FooterFrontComponent } from './footer-front/footer-front.component';
+import { NavbarFrontComponent } from './navbar-front/navbar-front.component';
 import { NavigationComponent } from '../pages/navigation/navigation.component';
+import { NgbdModalComponent, NgbdModalContent } from '../pages/modal/modal.component';
+import { NotificationComponent } from '../pages/notification/notification.component';
+import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component';
+
+
 
 
 @NgModule({
@@ -30,7 +33,6 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     UserManagementComponent,
     NavbarFrontComponent,
     FooterFrontComponent,
-    NotificationComponent,
     BasicelementsComponent,
     NavigationComponent,
     TypographyComponent,
@@ -45,13 +47,12 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     UserManagementComponent,
     NavbarFrontComponent,
     FooterFrontComponent,
-    NotificationComponent,
     BasicelementsComponent,
     NavigationComponent,
     TypographyComponent,
     NucleoiconsComponent,
     NgbdModalComponent,
-    NgbdModalContent
+    NgbdModalContent,
   ]
 })
 export class ComponentsModule { }

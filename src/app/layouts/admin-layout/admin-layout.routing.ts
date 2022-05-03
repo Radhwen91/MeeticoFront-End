@@ -9,13 +9,11 @@ import { EventManagementComponent } from 'src/app/pages/event-management/event-m
 import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
 import { PublicationManagementComponent } from 'src/app/pages/publication-management/publication-management.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
-
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
-
-import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { TestComponent } from 'src/app/pages/test/test.component';
-import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
+import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -24,14 +22,14 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'user-management',           component: UserManagementComponent },
-    { path: 'event-management',           component: EventManagementComponent },
-    { path: 'feedback-management',           component: FeedbackManagementComponent },
-    { path: 'publication-management',           component: PublicationManagementComponent },
-    { path: 'reclamation-management',           component: ReclamationManagementComponent },
-    { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
-    { path: 'Test',           component: TestComponent },
-    { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
-    { path: 'test',           component: UploadImageComponent},
+    { path: 'user-management',component: UserManagementComponent },
+    { path: 'event-management',component: EventManagementComponent },
+    { path: 'feedback-management', component: FeedbackManagementComponent },
+    { path: 'publication-management',component: PublicationManagementComponent },
+    { path: 'reclamation-management-admin',component: ReclamationManagementAdminComponent },
+    { path: 'trip-management', component: TripManagementComponent },
+    { path: 'Test',component: TestComponent },
+    { path: 'test',component: UploadImageComponent},
    
-];
+]; 
+

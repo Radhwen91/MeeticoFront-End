@@ -19,8 +19,7 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
+               <br>
               </p>
             </div>
           </div>
@@ -41,8 +40,8 @@
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">type</label>
-                <select class="form-select" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)" >
+                  <label for="exampleFormControlTextarea1">type</label><br>
+                <select class="select-style" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)" >
               
                   <option value="USER" >User</option>
                   <option value="TRIP" >Trip</option>
@@ -53,8 +52,8 @@
                
               </div>
                 <div class="form-group">
-                <label for="exampleFormControlTextarea1">priority</label>
-                <select class="form-select" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)">
+                <label for="exampleFormControlTextarea1">priority</label><br>
+                <select class="select-style" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)">
                  
                   <option value="NORMAL" >Normal</option>
                   <option value="IMPORTANT" >Important</option>
@@ -81,8 +80,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlTextarea1">type</label>
-              <select class="form-select" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByType(type)" >
+                <label for="exampleFormControlTextarea1">type</label><br>
+              <select class="select-style2" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByType(type)" >
                 <option value="USER" >User</option>
                 <option value="TRIP" >Trip</option>
                 <option value="SOFTWARE" >Software</option>
@@ -106,8 +105,8 @@
                   </div>
                 </div>
               </div>
-              <label for="exampleFormControlTextarea1">priority</label>
-              <select class="form-select" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriority(priority)">
+              <label for="exampleFormControlTextarea1">priority</label><br>
+              <select class="select-style3" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriority(priority)">
                 <option value="NORMAL" >Normal</option>
                 <option value="IMPORTANT" >Important</option>
                 <option value="URGENTE" >Urgente</option>
