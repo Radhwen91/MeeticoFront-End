@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
-
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
@@ -12,17 +10,18 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { ViewChild} from '@angular/core';;
-import {MatSort, SortDirection} from '@angular/material/sort';
-import { MatTableDataSource,MatTableModule } from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { MatChipsModule } from '@angular/material/chips';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-
-import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
+import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
+import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
+import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
+import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
+import { TestComponent } from 'src/app/pages/test/test.component';
+import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
+import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -35,12 +34,9 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule
- 
+    MatDialogModule,
+    NgxSpinnerModule,
+    MatPaginatorModule
 
   ],
   declarations: [
@@ -48,7 +44,16 @@ import {MatCardModule} from '@angular/material/card';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    FeedbackManagementComponent,
+    ReclamationManagementComponent,
+    AddfeedbackComponent,
+    AddreclamationComponent,
+    DetailReclamationComponent,
+    UpdateReclamationComponent,
+    AnswerAdminComponent,
+    UploadImageComponent,
+    TestComponent
   ]
 })
 
