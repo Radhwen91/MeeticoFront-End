@@ -9,9 +9,11 @@ export class User {
     activityFields: ActivityField[];
     address: string;
     birthday: Date;
+    createdAt: Date;
     email: string;
     firstName: string;
     followers: User[];
+    following: User[];
     gender: Gender;
     lastName: string;
     lastSeen: Date;

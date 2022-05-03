@@ -57,4 +57,7 @@ export class UserService {
   calculateProfileCompletion(): Observable<number[]> {
     return this.http.get<number[]>(url + 'calculateProfileCompletion');
   }
+  accountStatistics(): Observable<object[]> {
+    return this.http.get<object[]>(url + 'accountStatistics');
+  }
 }

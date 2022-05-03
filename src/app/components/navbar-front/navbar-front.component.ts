@@ -28,12 +28,15 @@ export class NavbarFrontComponent implements OnInit {
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     this.user = this.tokenService.getUser();
-    if (this.user) {
-      this.socialUser = this.tokenService.getSocialUser();
-      if (this.socialUser.provider == "FACEBOOK")
-        this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
+    let location = this.location.prepareExternalUrl(this.location.path());
+    if (location != "/home" && location != "/sign-in") {
+      if (this.user) {
+        this.socialUser = this.tokenService.getSocialUser();
+        if (this.socialUser.provider == "FACEBOOK")
+          this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
+      }
+      else this.userService.signInStatus(this.user.userId).subscribe();
     }
-    else this.userService.signInStatus(this.user.userId).subscribe();
   }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
@@ -48,7 +51,6 @@ export class NavbarFrontComponent implements OnInit {
   };
   sidebarClose() {
     const html = document.getElementsByTagName('html')[0];
-    // console.log(html);
     this.toggleButton.classList.remove('toggled');
     this.sidebarVisible = false;
     html.classList.remove('nav-open');
@@ -108,7 +110,7 @@ export class NavbarFrontComponent implements OnInit {
 @Component({
   selector: 'app-modal-content',
   template: `<div class="modal-header">
-      <button class="btn float-right" style="border-color: transparent; background-color: transparent; color: black; font-size: 24px" (click)="modal.dismiss('Cross click')"><i class="nc-icon nc-simple-remove"></i></button>
+      <button class="btn float-right" style="border-color: transparent; background-color: transparent; color: black; font-size: 24px" (click)="modal.dismiss()"><i class="nc-icon nc-simple-remove"></i></button>
       <h4 class="modal-title" style="margin-left: 50px" id="modal-basic-title">Change Password</h4>
     </div>
     <div class="modal-body">
@@ -128,7 +130,7 @@ export class NavbarFrontComponent implements OnInit {
       </form>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" style="margin-right: 20px; margin-bottom: 10px" (click)="modal.close('Save click')">Save</button>
+      <button class="btn btn-primary" style="margin-right: 20px; margin-bottom: 10px" (click)="modal.close(this.form.value)">Save</button>
     </div>`
 })
 

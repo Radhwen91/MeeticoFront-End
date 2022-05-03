@@ -19,10 +19,8 @@ export class UserProfileComponent implements OnInit {
   constructor(private tokenService: TokenService, private userService: UserService) { }
   ngOnInit() {
     this.user = this.tokenService.getUser();
+    this.user.following = [];
     if (this.tokenService.getUser().address) this.address = this.user.address.split(", ", 3);
-  }
-  retrieveUserFollowers(userId: number) {
-    this.userService.retrieveUserFollowers(userId).subscribe(followers => this.followers = followers);
   }
   assignPictureToUser(event) {
     let formData = new FormData();

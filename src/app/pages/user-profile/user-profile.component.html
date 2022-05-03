@@ -1,156 +1,199 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
-        <div class="filter"></div>
-    </div>
-    <div class="section profile-content">
-        <div class="container">
-            <div class="owner">
-                <label class="avatar">
-                    <input #imageInput id="input-picture" type="file" accept="image/*" (change)="assignPictureToUser($event)">
-                    <img src="{{ user.picture ? user.picture : 'assets/upload/default.jpg'}}" class="img-circle img-no-padding img-responsive">
-                </label>
-                <div class="name">
-                    <h4 class="title"> {{ user.firstName + ' ' + user.lastName }} <br /></h4>
-                </div>
-            </div>
-            <div class="col-md-6 ml-auto mr-auto text-center">
-                <button class="btn btn-outline-default btn-round" (click)="editProfile()"><i class="fa fa-cog"></i> Edit Profile</button>
-            </div>
-            <div class="card-body">
-                <form>
-                  <h6 class="heading-small text-muted mb-4">User information</h6>
-                  <div class="pl-lg-4">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">First name</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="First name" name="firstName" [(ngModel)]="user.firstName">
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Last name</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Last name" name="lastName" [(ngModel)]="user.lastName">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Gender</label>
-                          <select [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" name="gender" [(ngModel)]="user.gender">
-                            <option value="null" hidden>Undefined</option>
-                            <option value="MALE">Male</option>
-                            <option value="FEMALE">Female</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Birthday</label>
-                          <input [attr.disabled]="disabled ? true : null" type="date" class="form-control form-control-alternative" placeholder="Birthday" name="birthday" [(ngModel)]="user.birthday">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Username</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Username" name="username" [(ngModel)]="user.username">
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Email address</label>
-                          <input [attr.disabled]="disabled ? true : null" type="email" class="form-control form-control-alternative" placeholder="Email address" name="email" [(ngModel)]="user.email">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr class="my-4" />
-                  <!-- Address -->
-                  <h6 class="heading-small text-muted mb-4">Contact information</h6>
-                  <div class="pl-lg-4">
-                    <div class="row">
-                      <div class="col-lg-4" style="margin-left: 360px">
-                        <div class="form-group">
-                          <label class="form-control-label">Phone Number</label>
-                          <input [attr.disabled]="disabled ? true : null" type="tel" class="form-control form-control-alternative" placeholder="Phone number" name="phoneBumber" [(ngModel)]="user.phoneNumber">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">Home address</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Home address" name="homeAddress" [(ngModel)]="address[0]">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">City</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="City" name="city" [(ngModel)]="address[1]">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">Country</label>
-                          <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Country" name="country" [(ngModel)]="address[2]">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-center" [hidden]="disabled" >
-                    <a class="btn btn-info" (click)="updateProfile()">Update profile</a>
-                  </div>
-                </form>
-              </div>
-            <br/>
-            <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                    <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="Followers">
-                            <ng-template ngbTabContent >
-                                <div class="row following" id="follows">
-                                    <div class="col-md-6 ml-auto mr-auto">
-                                        <ul class="list-unstyled follows">
-                                            <li *ngIf="retrieveUserFollowers(user.userId).length > 0">
-                                                <div class="row" *ngFor="let follower of retrieveUserFollowers(user.userId)">
-                                                    <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                    <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>{{ follower.firstName + ' ' + follower.lastName }}<br/><small>Musical Producer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                          <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked="">
-                                                            <span class="form-check-sign"></span>
-                                                          </label>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                </div>
-                                            </li>
-                                            <li *ngIf="user.followers.length == 0">
-                                                <h3 class="text-muted">None follow you yet :(</h3>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="Following">
-                            <ng-template ngbTabContent>
-                                <h3 class="text-muted">Not following anyone yet :(</h3>
-                                <br>
-                                <button class="btn btn-success btn-round">Find artists</button>
-                            </ng-template>
-                        </ngb-tab>
-                    </ngb-tabset>
-                </div>
-            </div>
+  <div class="page-header page-header-xs" data-parallax="true"
+    style="background-image: url('./assets/img/fabio-mangione.jpg');">
+    <div class="filter"></div>
+  </div>
+  <div class="section profile-content">
+    <div class="container">
+      <div class="owner">
+        <label class="avatar">
+          <input #imageInput id="input-picture" type="file" accept="image/*" (change)="assignPictureToUser($event)">
+          <img src="{{ user.picture ? user.picture : 'assets/upload/default.jpg'}}"
+            class="img-circle img-no-padding img-responsive">
+        </label>
+        <div class="name">
+          <h4 class="title"> {{ user.firstName + ' ' + user.lastName }} <br /></h4>
         </div>
+      </div>
+      <div class="col-md-6 ml-auto mr-auto text-center">
+        <button class="btn btn-outline-default btn-round" (click)="editProfile()"><i class="fa fa-cog"></i> Edit
+          Profile</button>
+      </div>
+      <div class="card-body">
+        <form>
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">First name</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="First name" name="firstName"
+                    [(ngModel)]="user.firstName">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Last name</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="Last name" name="lastName"
+                    [(ngModel)]="user.lastName">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Gender</label>
+                  <select [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" name="gender" [(ngModel)]="user.gender">
+                    <option value="null" hidden>Undefined</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Birthday</label>
+                  <input [attr.disabled]="disabled ? true : null" type="date"
+                    class="form-control form-control-alternative" placeholder="Birthday" name="birthday"
+                    [(ngModel)]="user.birthday">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Username</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="Username" name="username"
+                    [(ngModel)]="user.username">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Email address</label>
+                  <input [attr.disabled]="disabled ? true : null" type="email"
+                    class="form-control form-control-alternative" placeholder="Email address" name="email"
+                    [(ngModel)]="user.email">
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- Address -->
+          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-4" style="margin-left: 360px">
+                <div class="form-group">
+                  <label class="form-control-label">Phone Number</label>
+                  <input [attr.disabled]="disabled ? true : null" type="tel"
+                    class="form-control form-control-alternative" placeholder="Phone number" name="phoneBumber"
+                    [(ngModel)]="user.phoneNumber">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Home address</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="Home address" name="homeAddress"
+                    [(ngModel)]="address[0]">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">City</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="City" name="city"
+                    [(ngModel)]="address[1]">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Country</label>
+                  <input [attr.disabled]="disabled ? true : null" type="text"
+                    class="form-control form-control-alternative" placeholder="Country" name="country"
+                    [(ngModel)]="address[2]">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center" [hidden]="disabled">
+            <a class="btn btn-info" (click)="updateProfile()">Update profile</a>
+          </div>
+        </form>
+      </div>
+      <br />
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ngb-tabset [justify]="'center'">
+            <ngb-tab title="Followers">
+              <ng-template ngbTabContent>
+                <div class="row following" id="follows">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <ul class="list-unstyled follows">
+                      <li *ngIf="user.followers.length > 0">
+                        <div class="row" *ngFor="let follower of user.followers">
+                          <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                            <img src="{{ follower.picture ? follower.picture : 'assets/upload/default.jpg' }}"
+                              alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                          </div>
+                          <div class="col-md-7 col-sm-4 ml-auto">
+                            <h6>{{ follower.firstName + ' ' + follower.lastName }}<br /><small>Musical Producer</small>
+                            </h6>
+                          </div>
+                          <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="" checked="">
+                                <span class="form-check-sign"></span>
+                              </label>
+                            </div>
+                          </div>
+                          <hr />
+                        </div>
+                      </li>
+                      <li *ngIf="user.followers.length == 0">
+                        <h3 class="text-muted">None follow you yet :(</h3>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Following">
+              <ng-template ngbTabContent *ngIf="user.following.length == 0">
+                <h3 class="text-muted">Not following anyone yet :(</h3>
+                <br>
+                <button class="btn btn-success btn-round">Find users</button>
+              </ng-template>
+              <!-- <li *ngIf="user.followers.length > 0">
+                <div class="row" *ngFor="let followed of user.following">
+                  <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                    <img src="{{ followed.picture ? followed.picture : 'assets/upload/default.jpg' }}"
+                      alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                  </div>
+                  <div class="col-md-7 col-sm-4 ml-auto">
+                    <h6>{{ followed.firstName + ' ' + followed.lastName }}<br /><small>Musical Producer</small></h6>
+                  </div>
+                  <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked="">
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </li> -->
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
     </div>
-</div>
+  </div>

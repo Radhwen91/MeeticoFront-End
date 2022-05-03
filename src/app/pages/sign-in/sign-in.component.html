@@ -32,8 +32,8 @@
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="Password" type="password" [(ngModel)]="credentials.password" [type]="hidePassword ? 'password' : 'text'" name="password">
-                                <button class="bg-white" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-                                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <button class="bg-white text-muted" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                                    <mat-icon style="font-size: large">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                                   </button>
                             </div>
                             <button class="btn btn-danger btn-block btn-round" (click)="ngSubmit()">Login</button>

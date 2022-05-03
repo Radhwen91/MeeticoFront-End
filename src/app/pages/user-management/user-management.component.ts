@@ -127,12 +127,17 @@ export class UserManagementComponent implements OnInit {
       }
     );
   }
-  openModal(id: string) {
-    this.modalService.open(id);
+  openModal(selectedUser: User) {
+    let modalRef = this.modalService.open(NgbdModalConfirm);
+    modalRef.result.then(
+      clicked => {
+        if (clicked) {
+          this.removeUser(selectedUser);
+        }
+      }
+    );
   }
-  open(name: string) {
-    this.modalService.open(MODALS[name]);
-  }
+
 }
 
 @Component({
@@ -250,46 +255,18 @@ export class UserDetailsDialog implements OnInit {
     <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <p><strong>Are you sure you want to delete <span class="text-primary">"John Doe"</span> profile?</strong></p>
+    <p><strong>Are you sure you want to delete this profile?</strong></p>
     <p>All information associated to this user profile will be permanently deleted.
     <span class="text-danger">This operation can not be undone.</span>
     </p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close(!this.clicked)">Ok</button>
   </div>
   `
 })
 export class NgbdModalConfirm {
+  clicked = false;
   constructor(public modal: NgbActiveModal) { }
 }
-
-@Component({
-  selector: 'ngbd-modal-confirm-autofocus',
-  template: `
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-title">Profile deletion</h4>
-    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <p><strong>Are you sure you want to delete <span class="text-primary">"John Doe"</span> profile?</strong></p>
-    <p>All information associated to this user profile will be permanently deleted.
-    <span class="text-danger">This operation can not be undone.</span>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
-  </div>
-  `
-})
-export class NgbdModalConfirmAutofocus {
-  constructor(public modal: NgbActiveModal) { }
-}
-
-const MODALS: { [name: string]: Type<any> } = {
-  focusFirst: NgbdModalConfirm,
-  autofocus: NgbdModalConfirmAutofocus
-
-};

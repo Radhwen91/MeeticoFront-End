@@ -1,10 +1,11 @@
 Front-End
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/scss/paper-kit.scss",
-              "src/assets/css/demo.css",
-              "src/assets/css/nucleo-icons.css",
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "src/assets/scss/paper-kit.scss",
+            "src/assets/css/demo.css",
+            "src/assets/css/nucleo-icons.css",
             "src/assets/css/montserrat.css",
-              "src/assets/css/font-awesome.min.css"
+            "src/assets/css/font-awesome.min.css",
+            "src/assets/css/material-icons.css",
 
 Back-End 
             "src/styles.scss",
