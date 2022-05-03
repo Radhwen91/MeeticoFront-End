@@ -18,4 +18,5 @@ export class User {
     role: Role;
     username: String;
     verificationCode: String;
+    
 }

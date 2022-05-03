@@ -30,14 +30,17 @@
               "src/assets"
             ],
             "styles": [
+              
               "src/styles.scss",
               "src/assets/scss/argon.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
               "src/assets/css/demo.css",
               "src/assets/css/nucleo-icons.css",
+
               "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/ngx-toastr/toastr.css"
+
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
@@ -46,15 +49,7 @@
           },
           "configurations": {
             "production": {
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": false
-                },
-                "fonts": true
-              },
-              "outputHashing": "all",
+              "optimization":false,
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
@@ -73,7 +68,15 @@
               "sourceMap": true,
               "namedChunks": true,
               "buildOptimizer": false,
-              "optimization": false
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": false,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
+              "outputHashing": "all"
             }
           }
         },
@@ -107,8 +110,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css",
-              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [

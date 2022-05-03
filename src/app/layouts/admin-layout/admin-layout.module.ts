@@ -1,3 +1,4 @@
+
 import { DetailFeedbackComponent } from './../../pages/detail-feedback/detail-feedback.component';
 import { TestComponent } from './../../pages/test/test.component';
 import { UploadImageComponent } from './../../pages/upload-image/upload-image.component';
@@ -15,7 +16,6 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
-
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -23,7 +23,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
-import { NotifierModule } from 'angular-notifier';
+
+
 
 
 
@@ -31,7 +32,6 @@ import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   imports: [
-    NotifierModule,
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
@@ -43,6 +43,7 @@ import { NotifierModule } from 'angular-notifier';
     MatPaginatorModule,
     ReactiveFormsModule,
     
+
   ],
   declarations: [
     DashboardComponent,
@@ -63,6 +64,7 @@ import { NotifierModule } from 'angular-notifier';
   ],
   exports: [
     RouterModule
+
   ]
 })
 

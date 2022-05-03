@@ -47,7 +47,8 @@ const routes: Routes =[
    {
     path: '**',
     redirectTo: 'dashboard'
-  }
+  },
+  
 ];
 
 @NgModule({
@@ -57,6 +58,7 @@ const routes: Routes =[
     RouterModule.forRoot(routes)
   ],
   exports: [
+    
   ],
 })
 export class AppRoutingModule { }
