@@ -1,6 +1,5 @@
+import { NotificationService } from './../../services/notification.service';
 import { PusherService } from './../../services/websocket/pusher.service';
-
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reclamation } from 'src/app/models/reclamation';
@@ -27,7 +26,8 @@ r :Reclamation[];
     private imagenService: ImagenServiceService,
     private spinner: NgxSpinnerService,
     private formBuilder: FormBuilder,
-    private PusherService:PusherService
+    private PusherService:PusherService,
+    private notificationservice:NotificationService
     ) { 
 
     this.reclamation = new Reclamation();
@@ -60,7 +60,6 @@ this.reclamationForm.valueChanges.subscribe(
 )}
   
 
-
   onFileChange(event) {
     this.imagen = event.target.files[0];
     const fr = new FileReader();
@@ -71,19 +70,24 @@ this.reclamationForm.valueChanges.subscribe(
   }
 
   onUpload(): void {
-   
     if (this.reclamationForm.valid) {
     this.spinner.show();
     this.imagenService.upload(this.imagen).subscribe(
       data => {
+
+        console.log(`data entrante :${data} et reclamation entrante${this.reclamation}`)
         this.service.addReclamation(this.reclamation,data).subscribe(
           ()=>this.router.navigateByUrl("/reclamation-management")
+          
             );
+            this.notificationservice.showSuccess("Reclamation has been sent","Success")
+
       },
       err => {
         alert(err.error.mensaje);
         this.spinner.hide();
         this.reset();
+        this.notificationservice.showError("Reclamation is not send","Error");
       }
     );
     }
@@ -98,10 +102,4 @@ this.reclamationForm.valueChanges.subscribe(
     this.imagenMin = null;
     this.imagenFile.nativeElement.value = '';
   }
-
-
-  
-
-
-
 }

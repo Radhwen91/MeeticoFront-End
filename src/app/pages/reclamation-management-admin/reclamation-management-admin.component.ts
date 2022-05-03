@@ -38,9 +38,6 @@ end = 5;
         this.listReclamations = data;
         this.listReclamationsPagination=this.listReclamations.splice(0,5);
       }
-
-     
-      
     );
 
 

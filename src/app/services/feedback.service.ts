@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Feedback } from '../models/feedback';
+import { Trip } from '../models/trip';
 //import * as moment from 'moment';
 
 
@@ -18,7 +19,7 @@ export class FeedbackService {
 
 
   addFeedback(feedback:Feedback){
-  return this.http.post<Feedback>(url+"/AddAffectFeedbackUsers"/*+us+"/"+iduser*/,feedback);
+  return this.http.post<Feedback>(url+"AddAffectFeedbackUsers"/*+us+"/"+iduser*/,feedback);
       } 
 
 
@@ -38,9 +39,13 @@ export class FeedbackService {
       return this.http.get<any[]>(url + 'Statistique', httpOptions);
       }
 
-      updateReclamation(feedback:Feedback){
-      return this.http.put<Feedback>(url+"/updateFeedback",feedback);
+      updateFeedback(feedback:Feedback){
+      return this.http.put<Feedback>(url+"updateFeedback",feedback);
   }
+
+  getAllTrips(): Observable<Trip[]> {
+    return this.http.get<Trip[]>("http://localhost:8081/Trip/get-trip", httpOptions);
+    }
 
    
   

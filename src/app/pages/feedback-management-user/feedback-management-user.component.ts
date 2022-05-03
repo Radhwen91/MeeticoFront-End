@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { DetailFeedbackUserComponent } from './../detail-feedback-user/detail-feedback-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { Component, OnInit } from '@angular/core';
@@ -40,18 +41,28 @@ export class FeedbackManagementUserComponent implements OnInit {
     listFeedbacksPagination: Feedback[];
     search:string;
 
-  constructor(private feedbackservice:FeedbackService, private router:Router ,public dialog: MatDialog ,config: NgbRatingConfig) {
+  constructor(private feedbackservice:FeedbackService,
+     private router:Router ,
+     public dialog: MatDialog ,
+     config: NgbRatingConfig,
+     private notificationservice:NotificationService) {
     this.feedback= new Feedback();
     config.max = 5;
     config.readonly = true;
    }
    public  deleteFeedbackById(idFeedback:number){
     let res= this.feedbackservice.deleteFeedbackById(idFeedback).subscribe(
-      ()=>this.feedbackservice.getAllfeedbacks().subscribe(
+      data=>{
+      this.feedbackservice.getAllfeedbacks().subscribe(
         data => {
           console.log(data);
           this.listFeedbacks= data;
         })
+        this.notificationservice.showSuccess("Feedback has been removed","Success")
+      },
+      error=>{
+        this.notificationservice.showError("Feedback is not deleted","Error")
+      }
       );
       
     }

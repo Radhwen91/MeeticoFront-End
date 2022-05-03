@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Feedback } from './../../models/feedback';
 import { FeedbackService } from './../../services/feedback.service';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class UpdateFeedbackComponent implements OnInit {
 feedback:Feedback;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:FeedbackService, private router:Router) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private service:FeedbackService,
+  private router:Router,
+  private notificationservice:NotificationService) { 
 
     this.feedback=data;
     console.warn('datreclamationa',this.feedback)
@@ -24,8 +28,14 @@ feedback:Feedback;
 
 
   public updateFeedback(){
-    this.service.updateReclamation(this.data).subscribe(
-      ()=>this.router.navigateByUrl("/feedback-management-user")
+    this.service.updateFeedback(this.data).subscribe(
+      data=>{
+        this.router.navigateByUrl("/feedback-management-user")
+        this.notificationservice.showSuccess("Feedback has been modified successfully","Success")
+      },error=>{
+        this.notificationservice.showError("Feedback is not edited","Error")
+      }
+      
         );
   }
 

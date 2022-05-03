@@ -40,10 +40,8 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
 
   }
 
-  addReclamation(reclamation:Reclamation, PictureId:number){
-         
-         
-        return this.http.post<Reclamation>(url+"AddAffectReclamationUser/"+PictureId,reclamation);
+  addReclamation(reclamation:Reclamation, id:number){
+        return this.http.post<Reclamation>(url+"AddAffectReclamationUser/"+id,reclamation);
       }
 
   updateReclamation(raclamation:Reclamation){

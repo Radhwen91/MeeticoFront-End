@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { PageEvent } from "@angular/material/paginator";
@@ -26,7 +27,9 @@ start = 0;
 end = 5;
 
   
-  constructor(private reclamationService:ReclamationService, public dialog: MatDialog) {
+  constructor(private reclamationService:ReclamationService,
+     public dialog: MatDialog,
+     private notificationservice:NotificationService) {
     this.reclamation= new Reclamation();
    }
 
@@ -59,8 +62,15 @@ end = 5;
         data => {
           console.log(data);
           this.listReclamations = data;
+          this.notificationservice.showSuccess("Reclamation has been removed","Success")
         })
+        ,
+        error=>{
+          this.notificationservice.showError(" Reclamation is not deleted","Error")
+        }
       );
+      
+
     }
    
     public retriveReclamation(idReclamation:number){
@@ -95,15 +105,7 @@ end = 5;
         });
         }
 
-    showAnswerAdmin(r:Reclamation){
-          const dialogRef = this.dialog.open(AnswerAdminComponent,
-             {data:r}
-          );
-        
-            dialogRef.afterClosed().subscribe(data => {
-              console.log(`Dialog result: ${data}`);
-            });
-            }
+   
   
 
 }

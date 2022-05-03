@@ -16,5 +16,9 @@ export class PusherService {
     });
     this.channel = this.pusher.subscribe('Notification');
     // console.log(`this.channel ${this.channel}`)
+    
    }
+
+  
+
 }

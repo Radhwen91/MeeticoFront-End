@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Picture } from '../models/picture';
@@ -12,7 +12,7 @@ export class ImagenServiceService {
   getfiledetail="http://localhost:8081/cloudinary/getPicture"
  
   constructor(private httpClient: HttpClient) { }
-
+  
    
 
   public  upload(imagen: File): Observable<any> {
@@ -27,9 +27,22 @@ export class ImagenServiceService {
   }
 
 
-  getFilesdetail(id:number): Observable<Picture> {
-    return this.httpClient.get<Picture>(`${this.getfiledetail}/${id}`);
+  getFilesdetail(id:number): Observable<any> {
+    let username='zied'
+    let password='ziedpidev'
+ 
+    // let httpParams = new HttpParams().set('answer', username).set('question', password);
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+   
+    return this.httpClient.get<any>(`${this.getfiledetail}/${id}`,{headers:headers});
 
   
 }
+
+// getFactoriesByOwner(owner_id: string) {
+//   let httpParams = new HttpParams()
+//     .set('owner_id', owner_id)
+//   console.log(httpParams.toString());
+//   return this.httpClient.get(this.urlFactory + "factories/", { params: httpParams, responseType: 'json' });
+// }
 }

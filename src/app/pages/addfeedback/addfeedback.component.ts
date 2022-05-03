@@ -1,3 +1,5 @@
+import { Trip } from './../../models/trip';
+import { NotificationService } from './../../services/notification.service';
 import { User } from './../../models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,11 +18,15 @@ export class AddfeedbackComponent implements OnInit {
 feedback:Feedback;
 public feedbackForm: FormGroup;
 public users:User[];
+public trips:Trip[];
+public trip:Trip;
 
-
-
-  constructor(private feedbackservice :FeedbackService ,private userservice:UserService, private router:Router,
+  constructor(
+    private feedbackservice :FeedbackService ,
+    private userservice:UserService,
+     private router:Router,
     private formBuilder: FormBuilder,
+    private notificationservice:NotificationService
     ) { this.feedback = new Feedback()}
 
 
@@ -29,12 +35,22 @@ public users:User[];
   ngOnInit(): void {
     this.initForm();
     this.getUsers();
+    this.getTrips();
     console.log("+++++++++++++++"+this.users);
     console.log("+++++++++++++++"+this.feedback.users);
-    
+    console.log("+++++++++trips++++++"+this.trips);
   }
 
-  
+  public getTrips(){
+
+    this.feedbackservice.getAllTrips().subscribe(
+      data => {
+        console.log(data);
+        this.trips = data;
+        console.log("+++++++++data trip++++++"+data);
+      });
+  }
+
   public getUsers(){
     this.userservice.retrieveAllUsers().subscribe(
       data => {
@@ -45,9 +61,6 @@ public users:User[];
   });
 }
 
-  affectUserToFeedback(){
-    
-  }
 
   initForm() {
     this.feedbackForm = this.formBuilder.group({
@@ -66,8 +79,13 @@ public users:User[];
   
 addFeedback(){
   this.feedbackservice.addFeedback(this.feedback).subscribe(
+    data=>{
+      this.router.navigateByUrl("/feedback-management-user")
+      this.notificationservice.showSuccess("Feedback has been sent","Success")}
+    ,error=>{
+      this.notificationservice.showError("Feedback is not send","Error")
+    }
     
-    ()=>this.router.navigateByUrl("/feedback-management-user")
   );
   
 }

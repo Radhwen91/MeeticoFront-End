@@ -18,12 +18,12 @@ import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/f
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
-
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+import { NotifierModule } from 'angular-notifier';
 
 
 
@@ -31,6 +31,7 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
 
 @NgModule({
   imports: [
+    NotifierModule,
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
@@ -40,7 +41,7 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     MatDialogModule,
     NgxSpinnerModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   declarations: [
@@ -56,7 +57,8 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     AnswerAdminComponent,
     UploadImageComponent,
     TestComponent,
-    DetailFeedbackComponent
+    DetailFeedbackComponent,
+    
   
   ],
   exports: [
