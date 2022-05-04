@@ -64,7 +64,7 @@ export class CreatePostComponent implements OnInit {
           this.publication=data
           this.toastr.success('Post Added Successfully ','Post Added Successfully');
           console.log("dataaa111",this.publication.idPublication);
-          this.publicationservice.affecter(112,24,this.file).subscribe(
+          this.publicationservice.affecter(this.publication.idPublication,this.file.id,this.file).subscribe(
             data=>{
 
             }
