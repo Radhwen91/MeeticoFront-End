@@ -12,7 +12,9 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^13.3.5",
+
+    "@angular/animations": "^13.3.1",
+
     "@angular/cdk": "^13.3.1",
     "@angular/common": "^13.3.1",
     "@angular/compiler": "^13.3.1",
@@ -27,6 +29,7 @@
     "@ng-bootstrap/ng-bootstrap": "12.0.1",
     "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "^2.11.4",
+    "angular-mentions": "^1.4.0",
     "bootstrap": "4.6.1",
     "chart.js": "2.9.4",
     "clipboard": "2.0.10",
@@ -39,12 +42,13 @@
     "ngx-swiper-wrapper": "^10.0.0",
     "ngx-toastr": "^14.2.2",
     "nouislider": "15.5.1",
+    "pusher-js": "^7.0.4",
     "rxjs": "^7.5.5",
+    "sweetalert2": "^11.4.9",
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.3.1",
-    "@angular/cli": "^13.3.1",
     "@angular/compiler-cli": "^13.3.1",
     "@angular/language-service": "13.3.1",
     "@types/jasmine": "~3.10.3",

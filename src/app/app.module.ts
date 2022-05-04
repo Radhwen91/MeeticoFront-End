@@ -1,15 +1,22 @@
-import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import {RouterModule, Routes} from '@angular/router';
+
+import { RouterModule } from '@angular/router';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { TestfaresComponent } from './pages/testfares/testfares.component';
 import { UpdatePublicationBackComponent } from './pages/publication-management/update-publication-back/update-publication-back.component';
@@ -36,6 +43,18 @@ import { AlertsManagementComponent } from './pages/publication-management/alerts
 import { ToastrModule} from "ngx-toastr";
 import { NetworkSideNavComponent } from './front/network-side-nav/network-side-nav.component';
 
+
+
+import { ToastrModule } from 'ngx-toastr';
+
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+
+
+
+
+
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -45,16 +64,24 @@ import { NetworkSideNavComponent } from './front/network-side-nav/network-side-n
     NgbModule,
     RouterModule,
     AppRoutingModule,
+
     MatDialogModule,
     AuthLayoutModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+  
+
+    ToastrModule.forRoot()
+    
+    
+    
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+
     UserLayoutComponent,
     ListCommentComponent,
 
@@ -79,8 +106,12 @@ import { NetworkSideNavComponent } from './front/network-side-nav/network-side-n
 
 
 
+
+    UserLayoutComponent,
+
+
   ],
-  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

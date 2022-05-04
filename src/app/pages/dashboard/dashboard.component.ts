@@ -1,6 +1,6 @@
-import { FeedbackService } from 'src/app/services/feedback.service';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { FeedbackService } from 'src/app/services/feedback.service';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 
 // core components
@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
   type="OTHER";
   constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
   ngOnInit() {
+  
     this.reclamationService.statWatingReclamation().subscribe(
       data => {
         console.log(data);
@@ -42,6 +43,7 @@ export class DashboardComponent implements OnInit {
     //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
     // ];
     this.data = this.datasets;
+  
 
 
     var chartOrders = document.getElementById('chart-orders');
@@ -73,8 +75,11 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log(data);
         this.datasets = data;
+       
       }
     );
+    
+      
   }
 
   public StatPercentageOfReclamationByPriorityOrByType(priority,type){
@@ -103,6 +108,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

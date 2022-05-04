@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 
 
+import { Routes } from '@angular/router';
+
+
 import {FrontComponent} from "../../front/front.component";
 import {CreatePostComponent} from "../../front/create-post/create-post.component";
 

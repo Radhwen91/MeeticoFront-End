@@ -1,0 +1,111 @@
+
+
+
+
+
+
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+        
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <!-- Table -->
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Reclamations table</h3>
+            </div>
+            <input class="form-control" placeholder="Search" type="text" [(ngModel)]="search">
+            <div class="table-responsive">
+              <button type="button" class="btn btn-outline-success" [routerLink]="['/AddFeedback']">Add Feedback</button>
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Titre</th>
+                     
+                      <th scope="col">sendingDate</th>
+                      
+                      <th scope="col">stars</th>
+                      <th scope="col">Users</th>
+                     
+                      <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let afeedback of listFeedbacksPagination">
+                  
+                  <tr *ngIf="search==afeedback.title || search==null"  >
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg" (click)="showDetail(afeedback)">
+                        </a>
+                       
+                      </div>
+                    </th>
+                    
+                      <td>{{afeedback.title}}</td>
+                  
+                      <td>{{afeedback.sendingDate}}</td>
+                    
+                      
+                     
+                      <td>
+                        <ngb-rating [(rate)]="afeedback.stars">
+                          <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                          </ng-template>
+                        </ngb-rating>
+                        <hr>
+                        <pre>Rate: <b>{{afeedback.stars}}</b></pre>
+                        
+                     </td>
+                    <td>
+                      <div class="avatar-group">
+                        <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                        </a>
+                        <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                        </a>
+                        <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                        </a>
+                        <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                        </a>
+                      </div>
+                    </td>
+                    
+                    <td class="text-right">
+                      <div ngbDropdown placement="bottom-right">
+                        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" href="javascript:void(0)" (click)="deleteFeedbackById(afeedback.idFeedback)">Delete</a>
+                          <a class="dropdown-item" href="javascript:void(0)" (click)="showUpdateFeedback(afeedback)">Edit</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="col-12" *ngIf="listFeedbacksPagination">
+                <mat-paginator [length]="listFeedbacks.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" (page)="paginate($event)"></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+  
+  
+  

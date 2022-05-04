@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Picture } from '../models/picture';
+
 import { Reclamation } from '../models/reclamation';
 
 
@@ -18,7 +18,12 @@ export class ReclamationService {
 
   constructor(private http : HttpClient) { }
 
-  getAllReclamationByType(): Observable<Reclamation[]> {
+  
+  getAllReclamationAdmin(): Observable<Reclamation[]> {
+    return this.http.get<Reclamation[]>(url + 'getAllReclamation', httpOptions);
+  }
+
+  getAllReclamationByUser(): Observable<Reclamation[]> {
     return this.http.get<Reclamation[]>(url + 'getReclamationByUser', httpOptions);
   }
 
@@ -35,10 +40,8 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
 
   }
 
-  addReclamation(reclamation:Reclamation/*, picture:Picture*/){
-         
-         
-        return this.http.post<Reclamation>(url+"AddAffectReclamationUser",reclamation);
+  addReclamation(reclamation:Reclamation, id:number){
+        return this.http.post<Reclamation>(url+"AddAffectReclamationUser/"+id,reclamation);
       }
 
   updateReclamation(raclamation:Reclamation){
@@ -50,6 +53,8 @@ return this.http.get<Reclamation>(url+"retrieveReclamation/"+id,httpOptions)
     return this.http.put<Reclamation>(url+"answerAdmin",reclamation);
   }
   verifBySendingEmail(reclamation:Reclamation){
+    console.log(`reclamation ${JSON.stringify(reclamation)}`)
+    console.log(`reclamation ${reclamation.idReclamation}`)
     return this.http.put<Reclamation>(url+"SendMailReclamation/"+reclamation.idReclamation,reclamation);
   }
   statWatingReclamation(){

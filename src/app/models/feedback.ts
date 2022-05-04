@@ -1,3 +1,4 @@
+import { User } from './user';
 export class Feedback {
     idFeedback : number;
     title : string;
@@ -5,4 +6,5 @@ export class Feedback {
     sendingDate : Date;
     lastModificationDate : Date;
     stars : number;
+    users: User[];
     }
