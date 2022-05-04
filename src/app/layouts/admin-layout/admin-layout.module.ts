@@ -20,9 +20,31 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {PublicationManagementComponent} from "../../pages/publication-management/publication-management.component";
+import {
+  UpdatePublicationBackComponent
+} from "../../pages/publication-management/update-publication-back/update-publication-back.component";
+import {
+  ListCommentsBackComponent
+} from "../../pages/publication-management/list-comments-back/list-comments-back.component";
+import {
+  PublicationAjoutComponent
+} from "../../pages/publication-management/publication-ajout/publication-ajout.component";
+import {
+  AlertsManagementComponent
+} from "../../pages/publication-management/alerts-management/alerts-management.component";
+=======
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+
 
 
 
@@ -38,11 +60,22 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatDialogModule,
+
     NgxSpinnerModule,
     MatPaginatorModule,
+
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+
     ReactiveFormsModule,
     
+
 
   ],
   declarations: [
@@ -58,9 +91,17 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     AnswerAdminComponent,
     UploadImageComponent,
     TestComponent,
+
+    PublicationManagementComponent,
+    UpdatePublicationBackComponent,
+    ListCommentsBackComponent,
+    PublicationAjoutComponent,
+    AlertsManagementComponent,
+
     DetailFeedbackComponent,
     
   
+
   ],
   exports: [
     RouterModule

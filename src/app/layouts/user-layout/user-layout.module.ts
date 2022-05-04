@@ -9,10 +9,33 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContent } from 'src/app/pages/modal/modal.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
+
+import {TestfaresComponent} from "../../pages/testfares/testfares.component";
+import {
+  FrontPublicationComponent
+} from "../../pages/publication-management/front-publication/front-publication.component";
+import {
+  UpdatePublicationComponent
+} from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
+import {AdminLayoutRoutes} from "../admin-layout/admin-layout.routing";
+import {MatDialogModule} from "@angular/material/dialog";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
+import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatbot.component";
+// import { ToastrModule } from 'ngx-toastr';
+
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
@@ -30,6 +53,21 @@ import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-fe
     MatDialogModule,
     NouisliderModule,
     JwBootstrapSwitchNg2Module,
+
+    CommonModule,
+    ClipboardModule,
+
+    NgxSpinnerModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+
     NgxSpinnerModule,
     ReactiveFormsModule,
     MatPaginatorModule,
@@ -38,9 +76,23 @@ import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-fe
     
 
 
+
   ],
 
   declarations: [
+
+    TestfaresComponent,
+    FrontPublicationComponent,
+    UpdatePublicationComponent,
+    CommentsManagementComponent,
+    ChatbotComponent,
+
+
+  ]
+  ,entryComponents: [NgbdModalContent]
+
+
+
     AddreclamationComponent,
     ReclamationManagementComponent,
     FeedbackManagementUserComponent,
@@ -53,6 +105,7 @@ import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-fe
   exports: [
     RouterModule
   ]
+
 })
 
 export class UserLayoutModule {}

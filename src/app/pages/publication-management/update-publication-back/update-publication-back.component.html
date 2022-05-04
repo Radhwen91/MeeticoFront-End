@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Update Publication</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <label>Contents</label>
+    <input type="text" class="form-control"  value="{{publication.contents}}"  [(ngModel)]="publication.contents"  >
+  </div>
+  <!--div>
+
+    <label >Description</label>
+    <textarea class="form-control" rows="3" value="{{reclamation.description}}"   [(ngModel)]="reclamation.description" ></textarea>
+  </div>
+  <div>
+    <label>Type of reclamation</label>
+    <select  value="{{reclamation.type}}"  [(ngModel)]="reclamation.type" >
+      <option value="">Select type </option>
+      <option value="USER">User</option>
+      <option value="TRIP">Trip</option>
+      <option value="SOFTWARE">Software</option>
+      <option value="OTHER">Other</option>
+    </select>
+
+  </div>
+
+  <div>
+    <label>priority</label>
+    <select value="{{reclamation.priority}}" [(ngModel)]="reclamation.priority" >
+      <option value="">Select Priority </option>
+      <option value="NORMAL">Normal</option>
+      <option value="IMPORTANT">Important</option>
+      <option value="URGENTE">Urgente</option>
+    </select>
+
+  </div>
+  <div >
+    <label >upload file </label>
+    <input type="file"/>
+  </div-->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+
+  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial  (click)="updatePublication()" >Submit</button>
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+
+</mat-dialog-actions>
