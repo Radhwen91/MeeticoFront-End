@@ -5,6 +5,7 @@
     <input type="text" class="form-control"  value="{{reclamation.title}}"  [(ngModel)]="reclamation.title"  >
   </div>
   <div>
+  
   <label >Description</label>
   <textarea class="form-control" rows="3" value="{{reclamation.description}}"   [(ngModel)]="reclamation.description" ></textarea>
 </div>
@@ -17,7 +18,9 @@
     <option value="SOFTWARE">Software</option>
     <option value="OTHER">Other</option>
   </select>
+  
 </div>
+
 <div>
   <label>priority</label>
   <select value="{{reclamation.priority}}" [(ngModel)]="reclamation.priority" >
@@ -26,6 +29,7 @@
     <option value="IMPORTANT">Important</option>
     <option value="URGENTE">Urgente</option>
   </select>
+  
 </div>
 <div >
   <label >upload file </label>
@@ -33,6 +37,8 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+ 
   <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="updateReclamation()">Submit</button>
   <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+  
 </mat-dialog-actions>

@@ -1,4 +1,3 @@
-import { NotificationService } from './../../services/notification.service';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,10 +13,7 @@ export class UpdateReclamationComponent implements OnInit {
 
   reclamation:Reclamation;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Reclamation,
-  private service:ReclamationService,
-   private router:Router,
-   private notificationservice:NotificationService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Reclamation,private service:ReclamationService, private router:Router) {
  this.reclamation=data;
 console.warn('datreclamationa',this.reclamation)
    }
@@ -30,13 +26,7 @@ console.warn('datreclamationa',this.reclamation)
 
   public updateReclamation(){
     this.service.updateReclamation(this.data).subscribe(
-      data=>{
-        this.router.navigateByUrl("/reclamation-management")
-        this.notificationservice.showSuccess("Reclamation has been modified successfully","Success")
-      },error=>{
-        this.notificationservice.showError("Reclamation is not edited","Error")
-      }
-      
+      ()=>this.router.navigateByUrl("/reclamation-management")
         );
   }
 

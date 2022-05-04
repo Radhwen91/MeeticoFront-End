@@ -29,26 +29,22 @@ export class UploadImageComponent implements OnInit {
     };
     fr.readAsDataURL(this.imagen);
   }
-  a:Number;
+
   onUpload(): void {
-    
     this.spinner.show();
     this.imagenService.upload(this.imagen).subscribe(
       data => {
-         this.a=data;
-       
+      
         this.router.navigate(['/reclamation-management/addReclamation']);
       },
       err => {
         alert(err.error.mensaje);
         this.spinner.hide();
         this.reset();
-        console.log("err "+this.a);
       }
     );
     
   }
-  
 
   reset(): void {
     this.imagen = null;

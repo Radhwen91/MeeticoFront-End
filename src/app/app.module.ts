@@ -12,12 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { ToastrModule } from 'ngx-toastr';
-
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-
 
 
 
@@ -32,7 +27,6 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
     
     
     
@@ -41,11 +35,11 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    UserLayoutComponent
 
-    UserLayoutComponent,
-
+  
   ],
-  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}} ],
+  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
