@@ -113,7 +113,7 @@ public nbrlistCom:any[]=[];
     this.publicationservice.getPubToday().subscribe(
 
       res=>{
-        console.log(res);
+        //console.log(res);
         this.listPub=res;
         let id: Publication =res.idPublication;
     /*    this.publicationservice.ListComments(1).subscribe(
