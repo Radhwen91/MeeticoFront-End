@@ -179,10 +179,10 @@ public nbrlistCom:any[]=[];
 
 
     );
-    console.warn('r',r);
+   // console.warn('r',r);
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log(`Dialog result: ${data}`);
+     // console.log(`Dialog result: ${data}`);
     });
   }
   addLike2(post,reaction)
