@@ -27,7 +27,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'feedback-management', component: FeedbackManagementComponent },
     { path: 'publication-management',component: PublicationManagementComponent },
     { path: 'reclamation-management-admin',component: ReclamationManagementAdminComponent },
-    { path: 'trip-management', component: TripManagementComponent },
+    
     { path: 'Test',component: TestComponent },
     { path: 'test',component: UploadImageComponent},
    
