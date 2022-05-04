@@ -1,9 +1,9 @@
 
 
+<cdk-virtual-scroll-viewport itemSize="100" class="containerr">
 
 
-
-<div class="card card__post" *ngFor="let i of listPub;let indexOfelement=index;">
+<div id="aa" class="card card__post" *cdkVirtualFor="let i of listPub;let indexOfelement=index;">
   <div class="card-img">
     <img src="../../../assets/avatar4.png" class="card-img-logo" alt="logo company"/>
     <div class="card-head">
@@ -89,3 +89,4 @@
 
 
 <hr><hr>
+</cdk-virtual-scroll-viewport>

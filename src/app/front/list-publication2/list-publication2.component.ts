@@ -44,7 +44,13 @@ public nbrlistCom:any[]=[];
   public listnbrLike:number[];
   public listnbrdisike:number[]=[];
   lang;
-  constructor(private toastr : ToastrService, private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) { }
+
+  constructor(private toastr : ToastrService, private route : ActivatedRoute,private publicationservice: PublicationService,private router: Router,public dialog: MatDialog) {
+
+
+
+
+  }
   private  snackBar: MatSnackBar
 
 
