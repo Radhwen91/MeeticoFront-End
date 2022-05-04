@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+
 import { ToastrModule } from 'ngx-toastr';
 
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
