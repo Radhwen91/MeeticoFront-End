@@ -14,13 +14,27 @@ import { NucleoiconsComponent } from '../pages/nucleoicons/nucleoicons.component
 import { TypographyComponent } from '../pages/typography/typography.component';
 import { BasicelementsComponent } from '../pages/basicelements/basicelements.component';
 import { NavigationComponent } from '../pages/navigation/navigation.component';
-
+import { AppRoutingModule } from '../app.routing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
+    
+
     CommonModule,
     RouterModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    
+    
     
   ],
   declarations: [
@@ -37,9 +51,16 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     NucleoiconsComponent,
     
     NgbdModalComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    
+    
+
+    
+
   ],
   exports: [
+  
+
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
@@ -53,7 +74,12 @@ import { NavigationComponent } from '../pages/navigation/navigation.component';
     NucleoiconsComponent,
     
     NgbdModalComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    MatFormFieldModule,
+    MatInputModule,
+    
+
+
   ]
 })
 export class ComponentsModule { }

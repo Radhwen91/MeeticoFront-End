@@ -13,5 +13,4 @@ describe('ReclamationService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  
 });

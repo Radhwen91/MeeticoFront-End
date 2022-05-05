@@ -17,6 +17,9 @@ import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.comp
 import { TypographyComponent } from 'src/app/pages/typography/typography.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
+import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
+import { CardComponent } from 'src/app/pages/event-management/card/card.component';
+import { CardUserComponent } from 'src/app/pages/card-user/card-user.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -27,11 +30,15 @@ import { NouisliderModule } from 'ng2-nouislider';
     HttpClientModule,
     NgbModule,
     NouisliderModule,
-    JwBootstrapSwitchNg2Module
+    JwBootstrapSwitchNg2Module,
+
+    
     
   ],
   declarations: [
-   
+    ShowEventComponent,
+   CardUserComponent,
+
     
    
   ]

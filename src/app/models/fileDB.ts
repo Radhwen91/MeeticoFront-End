@@ -1,9 +1,10 @@
-import { Trip } from "./trip";
+import { Eventt } from "./Eventt";
+
 export class FileDB {
     id:number;
     name:String;
     type:String;
     data:Int32Array[];
-    trip :Trip;
+    event :Eventt;
 }
     

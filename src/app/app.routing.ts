@@ -7,8 +7,6 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 
 
-
-
 const routes: Routes =[
   {
     path: '',
@@ -48,8 +46,7 @@ const routes: Routes =[
    {
     path: '**',
     redirectTo: 'dashboard'
-  },
-  
+  }
 ];
 
 @NgModule({
@@ -59,7 +56,6 @@ const routes: Routes =[
     RouterModule.forRoot(routes)
   ],
   exports: [
-    
   ],
 })
 export class AppRoutingModule { }

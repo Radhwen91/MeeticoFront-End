@@ -1,7 +1,7 @@
+import { FeedbackService } from 'src/app/services/feedback.service';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
-import { TripService } from 'src/app/services/tripservices/trip.service';
+import { ReclamationService } from 'src/app/services/reclamation.service';
 
 // core components
 import {
@@ -23,17 +23,25 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
-  listoftrips:DestionationVisitorsCount[];
-  meilleurDestination:any;
-  constructor(private tripservice:TripService) { }
-
+  pecentageTypePriority: Number;
+  pecentageType: Number;
+  pecentagePriority: Number;
+  nbrReclamationEnAttente:Number;
+  priority ="NORMAL";
+  type="OTHER";
+  constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
   ngOnInit() {
-  
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
+    this.reclamationService.statWatingReclamation().subscribe(
+      data => {
+        console.log(data);
+        this.nbrReclamationEnAttente = data;
+      }
+    );
+    // this.datasets = [
+    //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
+    //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
+    // ];
+    this.data = this.datasets;
 
 
     var chartOrders = document.getElementById('chart-orders');
@@ -54,23 +62,47 @@ export class DashboardComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
-    this.tripservice.getDestionationVisitCount().subscribe(
+    this.StatPercentageOfReclamationByPriorityOrByType(this.priority,this.type);
+    this.StatPercentageOfReclamationByType(this.type);
+    this.StatPercentageOfReclamationByPriority(this.priority);
+
+
+
+
+    this.feedbackservice.statPercentageFeedbacksByStars().subscribe(
       data => {
-        console.log('data',data);
-        this.listoftrips = data;
-       
+        console.log(data);
+        this.datasets = data;
       }
     );
-     this.tripservice.getmeiulleurdestination().subscribe(
-       data=>{
-         console.log(data)
-         this.meilleurDestination=data
-       }
-     )
-      
   }
 
-
+  public StatPercentageOfReclamationByPriorityOrByType(priority,type){
+   
+    this.reclamationService.statReclamationByTypeAndPriority(priority,type).subscribe(
+      data => {
+        console.log(data);
+        this.pecentageTypePriority = data;
+      }
+    );
+    
+  }
+  public StatPercentageOfReclamationByType(type){
+    this.reclamationService.statReclamationByType(type).subscribe(
+      data => {
+        console.log(data);
+        this.pecentageType = data;
+      }
+    );
+  }
+  public StatPercentageOfReclamationByPriority(priority){
+    this.reclamationService.statReclamationByPriority(priority).subscribe(
+      data => {
+        console.log(data);
+        this.pecentagePriority = data;
+      }
+    );
+  }
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

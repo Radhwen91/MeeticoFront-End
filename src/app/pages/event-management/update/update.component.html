@@ -1,0 +1,79 @@
+
+
+<style type="text/css">
+    #desaffecter { color: rgb(238, 6, 6);
+                background-color: rgb(52, 114, 207);
+                border-radius: 30%;
+                font-weight: bold; }  
+   #affecter { color: rgb(38, 241, 19);
+                background-color: rgb(52, 114, 207);
+                border-radius: 30%;
+                font-weight: bold;  }  
+     
+  </style>
+
+<h2 mat-dialog-title>Update Event</h2>
+<div style="margin: 15px;">
+
+    <form >
+      <mat-dialog-content class="mat-typography">
+
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Title</label>
+            <div class="col-10">
+              <input class="form-control" name="title" [ngModelOptions]="{standalone: true}"  [(ngModel)]="data.title" type="text"  placeholder="Enter title">
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Description</label>
+            <div class="col-10">
+              <input class="form-control" name="title" [ngModelOptions]="{standalone: true}"  [(ngModel)]="data.description " type="textarea"  placeholder="Enter Description">
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label for="example-search-input"  class="col-2 col-form-label">Location</label>
+            <div class="col-10">
+                <input class="form-control" name="title" [ngModelOptions]="{standalone: true}"  [(ngModel)]="data.location" type="text"  placeholder="Enter Location">
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Capacity</label>
+            <div class="col-10">
+                <input class="form-control" name="title"  [ngModelOptions]="{standalone: true}" [(ngModel)]="data.capacity" type="text"  placeholder="capacity">
+            </div>
+        </div>
+    
+    
+        <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label"> Date Event</label>
+            <div class="col-10">
+              <input class="form-control" type="date" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.dateEvent"  >
+              
+            </div>
+         </div>
+    
+         <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label">Image</label>
+          <label class="btn btn-default">
+            <input type="file"[ngModelOptions]="{standalone: true}" [(ngModel)]="data.img"/>
+          </label>
+        </div>
+      </mat-dialog-content>
+
+    </form>
+    
+    <mat-dialog-actions align="end">
+    <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="UpdateEvent()">Submit</button>
+    <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+
+  </mat-dialog-actions>
+    </div>
+
+
+
+
+
+
