@@ -38,7 +38,7 @@
                <div class="card page-carousel">
                    <ngb-carousel >
                        <ng-template ngbSlide *ngFor="let t of listoftrips">
-                           <img *ngFor="let f of t.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Random first slide">
+                           <img *ngFor="let f of t.files" src="http://localhost:8081/File/files/{{f.id}}" alt="Random first slide">
                            <div class="carousel-caption">
                                <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
                            </div>
@@ -53,7 +53,7 @@
  <!--
  <div  class="card-columns">
          <div class="card" *ngFor="let t of listoftripsPagination">
-           <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" alt="Card image cap">
+           <img *ngFor="let f of t.files" class="card-img-top" src="http://localhost:8081/File/files/{{f.id}}" alt="Card image cap">
            <div class="card-body">
              <h5 class="card-title">{{t.destination}}</h5>
              <p class="card-text">object :{{t.object}}</p>
@@ -70,7 +70,7 @@
  <div class="row row-cols-1 row-cols-md-3">
    <div class="col mb-4"*ngFor="let t of listoftripsPagination">
      <div class="card h-100" >
-       <img *ngFor="let f of t.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" class="card-img-top" alt="...">
+       <img *ngFor="let f of t.files" src="http://localhost:8081/File/files/{{f.id}}" class="card-img-top" alt="...">
        <div class="card-body">
          <h5 class="card-title">{{t.destination}}</h5>
          <p class="card-text">start date:{{t.startDate}}</p>

@@ -20,14 +20,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { ViewChild} from '@angular/core';;
-import {MatSort, SortDirection} from '@angular/material/sort';
-import { MatTableDataSource,MatTableModule } from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-
-import { MatChipsModule } from '@angular/material/chips';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
@@ -37,8 +29,6 @@ import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifi
 import { UploadFilesComponent } from 'src/app/pages/trip-management/upload-files/upload-files.component';
 import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
 import { DetailtripbackComponent } from 'src/app/pages/trip-management/detailtripback/detailtripback.component';
-import { SearchdialogComponent } from 'src/app/pages/trip-management/searchdialog/searchdialog.component';
-
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -58,7 +48,6 @@ import {
 import {
   AlertsManagementComponent
 } from "../../pages/publication-management/alerts-management/alerts-management.component";
-
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';

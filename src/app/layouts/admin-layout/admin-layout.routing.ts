@@ -33,16 +33,17 @@ import {
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
 import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
 import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
+import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'user-management',           component: UserManagementComponent },
+    { path: 'dashboard',               component: DashboardComponent },
+    { path: 'user-profile',            component: UserProfileComponent },
+    { path: 'tables',                 component: TablesComponent },
+    { path: 'icons',                  component: IconsComponent },
+    { path: 'maps',                   component: MapsComponent },
+    { path: 'user-management',        component: UserManagementComponent },
     { path: 'event-management',           component: EventManagementComponent },
     { path: 'feedback-management',           component: FeedbackManagementComponent },
  //   { path: 'reclamation-management',           component: ReclamationManagementComponent },

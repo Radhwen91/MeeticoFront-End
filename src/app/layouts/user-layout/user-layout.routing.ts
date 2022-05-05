@@ -1,3 +1,4 @@
+import { HomeTripComponent } from './../../pages/home-trip/home-trip.component';
 import { FeedbackManagementUserComponent } from './../../pages/feedback-management-user/feedback-management-user.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
@@ -30,6 +31,7 @@ export const UserLayoutRoutes: Routes = [
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
      { path: 'homeTrip',      component: AcceuiltripComponent },
+     { path: 'homelistTrip',      component: HomeTripComponent },
      { path: 'detail/:id',      component: DetailtripComponent },
   { path: 'testfares',      component: TestfaresComponent },
   { path: 'frontpublication',      component: FrontPublicationComponent },
@@ -45,6 +47,8 @@ export const UserLayoutRoutes: Routes = [
     { path:  'signup',                                  component: SignupComponent },
      { path: 'landing',                                 component: LandingComponent },
      { path: 'nucleoicons',                             component: NucleoiconsComponent },
+     
+
      
 
 

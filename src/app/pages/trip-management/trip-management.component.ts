@@ -80,7 +80,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
     );
   }
   getimageurl(id:Number):String{
-    var url="http://localhost:8089/SpringMVC/File/files/"+id;
+    var url="http://localhost:8081/File/files/"+id;
     window.open(url, "height=300,width=400");
       return url;
   }
@@ -100,7 +100,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
                   
                   if (this.counters[0] + this.counters[1] + this.counters[2] > 500) {
                     clearInterval();
-                    this.imageSource="http://localhost:8089/SpringMVC/File/files/"+f.id;
+                    this.imageSource="http://localhost:8081/File/files/"+f.id;
                   }
                 }, 3000);
               });
@@ -122,7 +122,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
           
           if (this.counters[0] + this.counters[1] + this.counters[2] > 500) {
             clearInterval();
-            this.imageSource="http://localhost:8089/SpringMVC/File/files/"+f.id;
+            this.imageSource="http://localhost:8081/File/files/"+f.id;
           }
         }, 3000);
       });

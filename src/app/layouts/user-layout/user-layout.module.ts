@@ -18,23 +18,19 @@ import {
 import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
-import {AdminLayoutRoutes} from "../admin-layout/admin-layout.routing";
-import {MatTableModule} from "@angular/material/table";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+
+
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
 import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatbot.component";
 // import { ToastrModule } from 'ngx-toastr';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/detailtrip.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { SearchdialogComponent } from 'src/app/pages/trip-management/searchdialog/searchdialog.component';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
@@ -44,8 +40,8 @@ import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-manageme
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MentionModule } from 'angular-mentions';
-import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-feedback.component';
 import {ClipboardModule} from "ngx-clipboard";
+import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -99,6 +95,7 @@ import {ClipboardModule} from "ngx-clipboard";
     AddfeedbackComponent,
     DetailFeedbackUserComponent,
     UpdateFeedbackComponent,
+    HomeTripComponent,
 
   ]
   ,entryComponents: [NgbdModalContent],

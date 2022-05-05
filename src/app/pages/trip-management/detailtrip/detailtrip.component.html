@@ -37,7 +37,7 @@
         <mat-card-subtitle ><div class="zied">{{trip.object}}</div></mat-card-subtitle>
         <mat-card-title ><div class="zied">ENTRPRENEUR</div></mat-card-title>
         <mat-card-subtitle ><div class="zied">{{trip.user.email}}</div></mat-card-subtitle>
-        <img *ngFor="let f of trip.files" src="http://localhost:8089/SpringMVC/File/files/{{f.id}}" height="500px" width="100%">
+        <img *ngFor="let f of trip.files" src="http://localhost:8081/File/files/{{f.id}}" height="500px" width="100%">
         <mat-card-actions *ngFor="let f of trip.files">
             <button class="btn" (click)="getimageurl(f.id)" style="width:100%"><i class="fa fa-download"></i> Download</button>
         </mat-card-actions>

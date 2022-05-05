@@ -57,7 +57,7 @@ export class DetailtripComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   getimageurl(id:Number):String{
-    var url="http://localhost:8089/SpringMVC/File/files/"+id;
+    var url="http://localhost:8081/File/files/"+id;
     window.open(url, "height=300,width=400");
       return url;
   }
