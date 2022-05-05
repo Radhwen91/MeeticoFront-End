@@ -1,0 +1,82 @@
+<div style="margin: 15px;">
+    <form [formGroup]="alghForm">
+        <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Destination</label>
+        <div class="col-10">
+          <input class="form-control" type="text"   formControlName="destination">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">city</label>
+        <div class="col-10">
+          <input class="form-control" type="search" formControlName="city">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
+        <div class="col-10">
+          <input class="form-control" type="date"   formControlName="startDate">
+        </div>
+      </div>
+
+      </form>
+      <button type="submit" class="btn btn-primary" (click)="search()">submit</button>
+</div>
+<div>
+  <div class="table-responsive">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
+      </mat-form-field>
+    </div>
+    
+    <div class="example-container mat-elevation-z8">
+    
+      <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+        <!-- Name Column -->
+        
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > last Name </mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+            <div class="matrowzied">
+              {{row.lastName}}
+            </div>
+            
+            
+          </mat-cell>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> first Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div > {{row.firstName}}  </div></mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> email </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div >{{row.email}} </div></mat-cell>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> phoneNumber </mat-header-cell>
+          <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.phoneNumber}} </div> </mat-cell>
+        </ng-container>
+         
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+     
+</div>
+ </div>
+<mat-dialog-actions align="end">
+
+    <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
+  
+  </mat-dialog-actions>

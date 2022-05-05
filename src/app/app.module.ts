@@ -16,6 +16,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { AcceuiltripComponent } from './pages/trip-management/acceuiltrip/acceuiltrip.component';
+import { ImageComponent } from './pages/trip-management/image/image.component';
+import { DetailtripComponent } from './pages/trip-management/detailtrip/detailtrip.component';
+import { SearchdialogComponent } from './pages/trip-management/searchdialog/searchdialog.component';
+import { AcceuiltripbackComponent } from './pages/trip-management/acceuiltripback/acceuiltripback.component';
+import { DetailtripbackComponent } from './pages/trip-management/detailtripback/detailtripback.component';
+
+
 import { TestfaresComponent } from './pages/testfares/testfares.component';
 import { UpdatePublicationBackComponent } from './pages/publication-management/update-publication-back/update-publication-back.component';
 import { ListCommentsBackComponent } from './pages/publication-management/list-comments-back/list-comments-back.component';
@@ -52,6 +61,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -61,50 +71,20 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     NgbModule,
     RouterModule,
     AppRoutingModule,
-
     MatDialogModule,
     AuthLayoutModule,
     MatMenuModule,
     BrowserAnimationsModule,
-
-
     ToastrModule.forRoot()
-
-
-
-
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-
     UserLayoutComponent,
     ListCommentComponent,
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    UserLayoutComponent,
 
 
   ],
