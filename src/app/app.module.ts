@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {RouterModule, Routes} from '@angular/router';
 
-import { RouterModule } from '@angular/router';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -17,7 +16,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { TestfaresComponent } from './pages/testfares/testfares.component';
 import { UpdatePublicationBackComponent } from './pages/publication-management/update-publication-back/update-publication-back.component';
 import { ListCommentsBackComponent } from './pages/publication-management/list-comments-back/list-comments-back.component';
@@ -45,7 +43,6 @@ import { NetworkSideNavComponent } from './front/network-side-nav/network-side-n
 
 
 
-import { ToastrModule } from 'ngx-toastr';
 
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 
@@ -69,12 +66,12 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     AuthLayoutModule,
     MatMenuModule,
     BrowserAnimationsModule,
-  
+
 
     ToastrModule.forRoot()
-    
-    
-    
+
+
+
 
   ],
   declarations: [

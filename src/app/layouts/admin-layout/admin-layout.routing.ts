@@ -25,6 +25,8 @@ import {
 } from "../../pages/publication-management/alerts-management/alerts-management.component";
 
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
+import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
 
 
 
@@ -38,11 +40,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-management',           component: UserManagementComponent },
     { path: 'event-management',           component: EventManagementComponent },
     { path: 'feedback-management',           component: FeedbackManagementComponent },
-    
-    { path: 'reclamation-management',           component: ReclamationManagementComponent },
+
+ //   { path: 'reclamation-management',           component: ReclamationManagementComponent },
   { path: 'alert-management',           component: AlertsManagementComponent },
 
-    { path: 'trip-management',           component: TripManagementComponent },
+   // { path: 'trip-management',           component: TripManagementComponent },
     { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
     { path: 'Test',           component: TestComponent },
     { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
@@ -50,16 +52,16 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
   { path: 'list-comments-back',           component: ListCommentsBackComponent },
   { path: 'publication-ajout',           component: PublicationAjoutComponent },
+  { path: 'user-management',component: UserManagementComponent },
+  { path: 'event-management',component: EventManagementComponent },
+  { path: 'feedback-management', component: FeedbackManagementComponent },
+  { path: 'publication-management',component: PublicationManagementComponent },
+  { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
+
+  { path: 'test',component: UploadImageComponent},
 ];
 
-    { path: 'user-management',component: UserManagementComponent },
-    { path: 'event-management',component: EventManagementComponent },
-    { path: 'feedback-management', component: FeedbackManagementComponent },
-    { path: 'publication-management',component: PublicationManagementComponent },
-    { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
-    { path: 'Test',component: TestComponent },
-    { path: 'test',component: UploadImageComponent},
-   
-]; 
+
+
 
 

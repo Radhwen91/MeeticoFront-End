@@ -5,36 +5,36 @@
     <input type="text" class="form-control"  value="{{data.title}}"  [(ngModel)]="feedback.title" [ngModelOptions]="{standalone: true}" >
   </div>
   <div>
-  
+
   <label >Description</label>
   <textarea class="form-control" rows="3" value="{{feedback.description}}"   [(ngModel)]="feedback.description" [ngModelOptions]="{standalone: true}"></textarea>
 </div>
 <div class="container d-flex justify-content-center mt-100">
   <div class="row">
-      
+
           <div class="card">
               <div class="card-body text-center"> <span class="myratings">{{feedback.stars}}</span>
-               
+
                   <h4 class="mt-1">Rating</h4>
-                  
+
                   <fieldset class="rating" >
-                    <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="feedback.stars" /><label class="full" for="star5" title="Awesome - 5 stars"></label> 
+                    <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="feedback.stars" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
                      <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="feedback.stars" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
                       <input type="radio" id="star3" name="rating" value="3"  [(ngModel)]="feedback.stars"  /><label class="full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2"  [(ngModel)]="feedback.stars" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>  
-                        <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="feedback.stars"  /><label class="full" for="star1" title="Sucks big time - 1 star"></label> 
+                        <input type="radio" id="star2" name="rating" value="2"  [(ngModel)]="feedback.stars" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="feedback.stars"  /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
                         </fieldset>
               </div>
           </div>
       </div>
   </div>
- 
+
 
 </mat-dialog-content>
-<mat-dialog-actions align="end">
- 
-  <button type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="updateFeedback()">Submit</button>
+<!--mat-dialog-actions align="end">
+
+  <button-- type="button" mat-button [mat-dialog-close]="true" class="btn btn-success" cdkFocusInitial (click)="updateFeedback()">Submit</button>
   <button type="button" mat-button mat-dialog-close class="btn btn-danger">Close</button>
-  
-</mat-dialog-actions>
+
+</mat-dialog-actions-->
 

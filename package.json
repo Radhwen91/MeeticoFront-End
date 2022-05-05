@@ -12,9 +12,7 @@
   },
   "private": true,
   "dependencies": {
-
-    "@angular/animations": "^13.3.1",
-
+    "@angular/animations": "^13.3.6",
     "@angular/cdk": "^13.3.1",
     "@angular/common": "^13.3.1",
     "@angular/compiler": "^13.3.1",
@@ -40,7 +38,7 @@
     "ngx-clipboard": "15.0.1",
     "ngx-spinner": "^13.1.1",
     "ngx-swiper-wrapper": "^10.0.0",
-    "ngx-toastr": "^14.2.2",
+    "ngx-toastr": "^14.3.0",
     "nouislider": "15.5.1",
     "pusher-js": "^7.0.4",
     "rxjs": "^7.5.5",

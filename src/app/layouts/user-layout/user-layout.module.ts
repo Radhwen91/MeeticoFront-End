@@ -18,9 +18,6 @@ import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 import {AdminLayoutRoutes} from "../admin-layout/admin-layout.routing";
-import {MatDialogModule} from "@angular/material/dialog";
-import {NgxSpinnerModule} from "ngx-spinner";
-import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -42,6 +39,7 @@ import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-fe
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MentionModule } from 'angular-mentions';
 import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-feedback.component';
+import {ClipboardModule} from "ngx-clipboard";
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -72,8 +70,8 @@ import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-fe
     ReactiveFormsModule,
     MatPaginatorModule,
     MentionModule,
-    
-    
+
+
 
 
 
@@ -86,25 +84,17 @@ import { DetailFeedbackComponent } from 'src/app/pages/detail-feedback/detail-fe
     UpdatePublicationComponent,
     CommentsManagementComponent,
     ChatbotComponent,
-
-
-  ]
-  ,entryComponents: [NgbdModalContent]
-
-
-
     AddreclamationComponent,
     ReclamationManagementComponent,
     FeedbackManagementUserComponent,
     AddfeedbackComponent,
     DetailFeedbackUserComponent,
     UpdateFeedbackComponent,
-    
-  ],
-  entryComponents: [NgbdModalContent],
-  exports: [
-    RouterModule
+
   ]
+  ,entryComponents: [NgbdModalContent]
+
+
 
 })
 

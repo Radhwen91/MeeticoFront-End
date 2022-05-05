@@ -1,7 +1,7 @@
 import { NotificationService } from './../../services/notification.service';
 import { PusherService } from 'src/app/services/websocket/pusher.service';
 import { Component, OnInit} from '@angular/core';
-import { NotifierService } from 'angular-notifier';
+//import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-admin-layout',
@@ -11,7 +11,7 @@ import { NotifierService } from 'angular-notifier';
 export class AdminLayoutComponent implements OnInit {
 message:String;
 user:String;
-private readonly notifier: NotifierService;
+//private readonly notifier: NotifierService;
 
 constructor(private pusherService: PusherService,private notificationservice:NotificationService) { }
 

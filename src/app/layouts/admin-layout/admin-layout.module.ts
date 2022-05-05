@@ -40,7 +40,7 @@ import {
 import {
   AlertsManagementComponent
 } from "../../pages/publication-management/alerts-management/alerts-management.component";
-=======
+
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
@@ -74,7 +74,7 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     MatExpansionModule,
 
     ReactiveFormsModule,
-    
+
 
 
   ],
@@ -99,8 +99,8 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     AlertsManagementComponent,
 
     DetailFeedbackComponent,
-    
-  
+
+
 
   ],
   exports: [
