@@ -1,0 +1,29 @@
+
+
+<h1 mat-dialog-title>Detail Feedback</h1>
+<mat-dialog-content class="mat-typography">
+  <h3>Title :</h3>
+ <label>{{data.title}}</label>
+ <h3>Description: </h3>
+ <label>{{data.description}}</label>
+ <h3>Sending Date: </h3>
+ <label>{{data.sendingDate}}</label>
+ <h3>Last Modification Date: </h3>
+ <label>{{data.lastModificationDate}}</label>
+ <h3>Rating:</h3>
+ <ngb-rating [(rate)]="data.stars">
+  <ng-template let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+  </ng-template>
+</ngb-rating>
+<hr>
+<pre>Rate: <b>{{data.stars}}</b></pre>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Back</button>
+ 
+  
+</mat-dialog-actions>
+
+

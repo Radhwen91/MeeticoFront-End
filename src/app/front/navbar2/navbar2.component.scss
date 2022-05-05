@@ -1,0 +1,153 @@
+@import "../../../sass/variables.scss";
+mat-toolbar {
+  color: #e1e9ee;
+  background-color: #283e4a;
+  font-weight: 200;
+  position: fixed;
+  top: 0;
+  font-size: small;
+  z-index: 100;
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  padding: 0 5px;
+  outline: 0;
+  &:hover {
+    color: $light;
+    cursor: pointer;
+  }
+
+  align-self: flex-start;
+  margin: 0 2%;
+}
+
+#me {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+}
+// img {
+//   border-radius: 50%;
+//   height: 50px;
+// }
+#profile-img {
+  border-radius: 50%;
+  height: 30px;
+}
+#logo-img {
+  border-radius: 5px;
+  // height: 55px;
+  height: 35px;
+  align-self: center;
+}
+.right {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
+  bottom: 5px;
+}
+.logo {
+  border-radius: 0;
+  outline: 0 !important;
+  cursor: pointer;
+}
+.search {
+  // align-self: center;
+  position: relative;
+  bottom: 6px;
+  padding: 5px;
+}
+input {
+  background-color: #e1e9ee;
+}
+
+.mediv {
+  border-radius: 50%;
+  height: 30px;
+  width: 30%;
+}
+.nav-content {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  // padding: 10px;
+  padding: 20px 0 10px;
+}
+.left {
+  height: 100%;
+  display: flex;
+  align-self: flex-end;
+  width: 60%;
+}
+i,
+mat-icon {
+  align-self: center;
+  height: 30%;
+  margin-bottom: 3px;
+}
+a {
+  color: #dccea4;
+}
+.sub-nav {
+  background-color: white;
+  width: 40%;
+  height: 7%;
+  border-radius: 5px;
+  position: fixed;
+  top: 9%;
+  left: 8.6%;
+}
+mat-chip {
+  border: 1.5px solid #485d69;
+  color: #485d69;
+  background-color: white;
+  cursor: pointer;
+}
+.dark-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 50;
+  background-color: #80808080;
+  top: 0;
+  left: 0;
+}
+.search-result-sm {
+  width: 60%;
+  top: 9%;
+  left: 8.6%;
+}
+.match {
+  display: block;
+  margin: 0 auto;
+  color: #0073b1;
+  font-weight: 500;
+}
+
+span {
+  outline: 0 !important;
+  padding-top: 5px;
+}
+
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -7px;
+}
+.mat-badge-medium .mat-badge-content {
+  height: 18px;
+  line-height: 10px;
+}
+
+.active{
+  color: $light;
+  font-weight: bold;
+  border-bottom: 1px solid $light;
+}

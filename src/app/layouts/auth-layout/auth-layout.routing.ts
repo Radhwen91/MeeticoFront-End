@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from '../../pages/login/login.component';
-import { RegisterComponent } from '../../pages/register/register.component';
+
+
+
+
+import {FrontComponent} from "../../front/front.component";
+import {CreatePostComponent} from "../../front/create-post/create-post.component";
 
 export const AuthLayoutRoutes: Routes = [
-    { path: 'login',          component: LoginComponent },
-    { path: 'register',       component: RegisterComponent }
+
+  { path: 'home',       component: FrontComponent },
+  { path: 'post/add', component: CreatePostComponent }
 ];

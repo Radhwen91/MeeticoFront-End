@@ -1,3 +1,4 @@
+
 import { User } from "./user";
 import { FileDB } from "./fileDB";
 
@@ -11,5 +12,6 @@ export class Trip {
     user:User;
    
     files:FileDB[];
+
     
 }

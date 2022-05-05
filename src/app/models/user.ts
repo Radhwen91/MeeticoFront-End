@@ -1,8 +1,11 @@
-import { ActivityField } from "./activity-field";
-import { Gender } from "./gender";
-import { Occupation } from "./occupation";
-import { Role } from "./role";
+import {ActivityField} from "./activity-field";
+import {Gender} from "./gender";
+import {Occupation} from "./occupation";
+import {Role} from "./role";
+
 export class User {
+
+
     userId: Number;
     active: Boolean;
     activityField: ActivityField[];
@@ -18,4 +21,6 @@ export class User {
     role: Role;
     username: String;
     verificationCode: String;
+
 }
+

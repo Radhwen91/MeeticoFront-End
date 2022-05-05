@@ -3,6 +3,7 @@
     <div class="header-body">
       <!-- Card stats -->
       <div class="row">
+
         <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
@@ -23,31 +24,31 @@
       <!-- Card stats -->
       <div class="row">
    
+
         <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body" >
-              <div class="row" >
+            <div class="card-body">
+              <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0" > Percentage of all Wating Reclamations</h5>
                   <br>
                   <span class="h2 font-weight-bold mb-0">{{nbrReclamationEnAttente}}%</span>
                 </div>
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="fas fa-users"></i>
+                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
                   </div>
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
+               <br>
               </p>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6"  >
+        <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body" >
+            <div class="card-body">
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0" > Percentage of Wating Reclamations</h5>
@@ -61,8 +62,8 @@
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">type</label>
-                <select class="form-select" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)" >
+                  <label for="exampleFormControlTextarea1">type</label><br>
+                <select class="select-style" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)" >
               
                   <option value="USER" >User</option>
                   <option value="TRIP" >Trip</option>
@@ -73,8 +74,8 @@
                
               </div>
                 <div class="form-group">
-                <label for="exampleFormControlTextarea1">priority</label>
-                <select class="form-select" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)">
+                <label for="exampleFormControlTextarea1">priority</label><br>
+                <select class="select-style" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriorityOrByType(priority,type)">
                  
                   <option value="NORMAL" >Normal</option>
                   <option value="IMPORTANT" >Important</option>
@@ -83,11 +84,10 @@
                
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
-              <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
               <div class="row">
@@ -96,24 +96,23 @@
                   <span class="h2 font-weight-bold mb-0">{{pecentageType}}%</span>
                 </div>
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                    <i class="fas fa-chart-bar"></i>
+                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlTextarea1">type</label>
-              <select class="form-select" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByType(type)" >
+                <label for="exampleFormControlTextarea1">type</label><br>
+              <select class="select-style2" aria-label="Disabled select example"  [(ngModel)]="type" (click)="StatPercentageOfReclamationByType(type)" >
                 <option value="USER" >User</option>
                 <option value="TRIP" >Trip</option>
                 <option value="SOFTWARE" >Software</option>
                 <option value="OTHER" >Other</option>
               </select>
               </div>
-             
             </div>
           </div>
-        </div> 
+        </div>
         <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
@@ -128,8 +127,8 @@
                   </div>
                 </div>
               </div>
-              <label for="exampleFormControlTextarea1">priority</label>
-              <select class="form-select" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriority(priority)">
+              <label for="exampleFormControlTextarea1">priority</label><br>
+              <select class="select-style3" aria-label="Disabled select example" [(ngModel)]="priority" (click)="StatPercentageOfReclamationByPriority(priority)">
                 <option value="NORMAL" >Normal</option>
                 <option value="IMPORTANT" >Important</option>
                 <option value="URGENTE" >Urgente</option>
@@ -143,8 +142,6 @@
     </div>
   </div>
 
-
-  <!--                       ++++++++++++++++++++++++++++++++++++++++++++           -->
 <div class="container-fluid mt--7">
   <div class="row">
     <div class="col-xl-8 mb-5 mb-xl-0">
@@ -163,6 +160,7 @@
                     <span class="d-md-none">M</span>
                   </a>
                 </li>
+               
               </ul>
             </div>
           </div>
@@ -176,11 +174,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
     <div class="col-xl-4">
       <div class="card shadow">
         <div class="card-header bg-transparent">
@@ -218,8 +211,10 @@
           <table class="table align-items-center table-flush" >
             <thead class="thead-light">
               <tr>
+
                 <th scope="col">destination</th>
                 <th scope="col">visit number</th>
+
 
               </tr>
             </thead>

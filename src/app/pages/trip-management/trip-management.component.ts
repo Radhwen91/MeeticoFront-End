@@ -130,4 +130,5 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
 return this.imageSource;
     }
     */
+
 }

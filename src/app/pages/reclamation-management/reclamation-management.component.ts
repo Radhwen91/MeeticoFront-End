@@ -1,11 +1,13 @@
-import { AnswerAdminComponent } from './../answer-admin/answer-admin.component';
-import { UpdateReclamationComponent } from './../update-reclamation/update-reclamation.component';
-import { Reclamation } from './../../models/reclamation';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material/paginator';
-import { ReclamationService } from 'src/app/services/reclamation.service';
-import { DetailReclamationComponent } from '../detail-reclamation/detail-reclamation.component';
+import { NotificationService } from './../../services/notification.service';
+import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { PageEvent } from "@angular/material/paginator";
+import { Reclamation } from "src/app/models/reclamation";
+import { ReclamationService } from "src/app/services/reclamation.service";
+import { AnswerAdminComponent } from "../answer-admin/answer-admin.component";
+import { DetailReclamationComponent } from "../detail-reclamation/detail-reclamation.component";
+import { UpdateReclamationComponent } from "../update-reclamation/update-reclamation.component";
+
 
 @Component({
   selector: 'app-reclamation-management',
@@ -25,26 +27,20 @@ start = 0;
 end = 5;
 
   
-  constructor(private reclamationService:ReclamationService,public dialog: MatDialog) {
+  constructor(private reclamationService:ReclamationService,
+     public dialog: MatDialog,
+     private notificationservice:NotificationService) {
     this.reclamation= new Reclamation();
    }
 
    ngOnInit(): void {
-    this.reclamationService.getAllReclamationByType().subscribe(
+    this.reclamationService.getAllReclamationByUser().subscribe(
       data => {
         console.log(data);
         this.listReclamations = data;
         this.listReclamationsPagination=this.listReclamations.splice(0,5);
       }
     );
-
-    this.reclamationService.statWatingReclamation().subscribe(
-      data => {
-        console.log(data);
-        this.nbrReclamationEnAttente = data;
-      }
-    );
-   
   }
 
    paginate(event: PageEvent) {
@@ -60,14 +56,21 @@ end = 5;
 
 
 
-  public  deleteReclamationById(idReclamation:number){
+    public  deleteReclamationById(idReclamation:number){
     let res= this.reclamationService.deleteReclamartionById(idReclamation).subscribe(
-      ()=>this.reclamationService.getAllReclamationByType().subscribe(
+      ()=>this.reclamationService.getAllReclamationByUser().subscribe(
         data => {
           console.log(data);
           this.listReclamations = data;
+          this.notificationservice.showSuccess("Reclamation has been removed","Success")
         })
+        ,
+        error=>{
+          this.notificationservice.showError(" Reclamation is not deleted","Error")
+        }
       );
+      
+
     }
    
     public retriveReclamation(idReclamation:number){
@@ -102,58 +105,11 @@ end = 5;
         });
         }
 
-        showAnswerAdmin(r:Reclamation){
-          const dialogRef = this.dialog.open(AnswerAdminComponent,
-             {data:r}
-          );
-        
-            dialogRef.afterClosed().subscribe(data => {
-              console.log(`Dialog result: ${data}`);
-            });
-            }
-    
-
-            verifReclamation(reclamation:Reclamation){
-              if( reclamation.type.toString()=="SOFTWARE"){
-                return this.reclamationService.answerAdmin(reclamation);
-              }else
-              return this.showAnswerAdmin(reclamation);
-            }
-    
-
-
-  public StatPercentageOfReclamationByPriorityOrByType(priority:String,type:String){
-    if(type="" && priority!=null ){
-      this.reclamationService.statReclamationByPriority(priority).subscribe(
-        data => {
-          console.log(data);
-          this.pecentage = data;
-        }
-      );
-    }else
-    if(priority="" && type!=null  ){
-      this.reclamationService.statReclamationByType(type).subscribe(
-        data => {
-          console.log(data);
-          this.pecentage = data;
-        }
-      );
-    }else
-    this.reclamationService.statReclamationByTypeAndPriority(priority,type).subscribe(
-      data => {
-        console.log(data);
-        this.pecentage = data;
-      }
-    );
-    
-  }
-
-
-
+   
+  
 
 }
 
-function YourDialog(YourDialog: any, arg1: { data: { name: string; }; }) {
-  throw new Error('Function not implemented.');
-}
+
+
 

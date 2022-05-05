@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
@@ -8,14 +7,8 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { EventManagementComponent } from 'src/app/pages/event-management/event-management.component';
 import { FeedbackManagementComponent } from 'src/app/pages/feedback-management/feedback-management.component';
 import { PublicationManagementComponent } from 'src/app/pages/publication-management/publication-management.component';
-import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
-import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
 import { UserManagementComponent } from 'src/app/pages/user-management/user-management.component';
-import { LandingComponent } from 'src/app/pages/landing/landing.component';
-import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
 import { TestComponent } from 'src/app/pages/test/test.component';
-import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
-import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { UploadImageComponent } from 'src/app/pages/upload-image/upload-image.component';
 import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.component';
 import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
@@ -23,6 +16,24 @@ import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/alg
 import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
 import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
 import { DetailtripbackComponent } from 'src/app/pages/trip-management/detailtripback/detailtripback.component';
+
+import {
+  UpdatePublicationBackComponent
+} from "../../pages/publication-management/update-publication-back/update-publication-back.component";
+import {
+  ListCommentsBackComponent
+} from "../../pages/publication-management/list-comments-back/list-comments-back.component";
+import {
+  PublicationAjoutComponent
+} from "../../pages/publication-management/publication-ajout/publication-ajout.component";
+import {
+  AlertsManagementComponent
+} from "../../pages/publication-management/alerts-management/alerts-management.component";
+
+import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
+import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
+
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -34,9 +45,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-management',           component: UserManagementComponent },
     { path: 'event-management',           component: EventManagementComponent },
     { path: 'feedback-management',           component: FeedbackManagementComponent },
-    { path: 'publication-management',           component: PublicationManagementComponent },
-    { path: 'reclamation-management',           component: ReclamationManagementComponent },
-    { path: 'trip-management',           component: TripManagementComponent },
+ //   { path: 'reclamation-management',           component: ReclamationManagementComponent },
+  { path: 'alert-management',           component: AlertsManagementComponent },
+   // { path: 'trip-management',           component: TripManagementComponent },
     { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
     { path: 'Test',           component: TestComponent },
     { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
@@ -48,4 +59,18 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management/image/:id',           component: ImageComponent },
     { path: 'acceuiltrip',           component: AcceuiltripbackComponent },
     { path: 'detailback/:id',      component: DetailtripbackComponent },
+  { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
+  { path: 'list-comments-back',           component: ListCommentsBackComponent },
+  { path: 'publication-ajout',           component: PublicationAjoutComponent },
+  { path: 'user-management',component: UserManagementComponent },
+  { path: 'event-management',component: EventManagementComponent },
+  { path: 'feedback-management', component: FeedbackManagementComponent },
+  { path: 'publication-management',component: PublicationManagementComponent },
+  { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
+  { path: 'test',component: UploadImageComponent},
 ];
+
+
+
+
+
