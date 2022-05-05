@@ -18,6 +18,7 @@ import { SearchdialogComponent } from './pages/trip-management/searchdialog/sear
 import { AcceuiltripbackComponent } from './pages/trip-management/acceuiltripback/acceuiltripback.component';
 import { DetailtripbackComponent } from './pages/trip-management/detailtripback/detailtripback.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -34,6 +35,7 @@ import { DetailtripbackComponent } from './pages/trip-management/detailtripback/
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+
     
    
     
