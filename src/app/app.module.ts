@@ -6,16 +6,17 @@ import {RouterModule} from '@angular/router';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import {  PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ListCommentComponent } from './pages/publication-management/front-publication/list-comment/list-comment.component';
-import {AuthLayoutModule} from "./layouts/auth-layout/auth-layout.module";
+
 import {MatMenuModule} from "@angular/material/menu";
 import { ToastrModule} from "ngx-toastr";
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { HomeTripComponent } from './pages/home-trip/home-trip.component';
+import { PubLayoutModule } from './layouts/pub-layout/pub-layout.module';
+
 
 
 
@@ -34,7 +35,7 @@ import { HomeTripComponent } from './pages/home-trip/home-trip.component';
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
-    AuthLayoutModule,
+    PubLayoutModule,
     MatMenuModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
@@ -42,7 +43,7 @@ import { HomeTripComponent } from './pages/home-trip/home-trip.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent,
+    PubLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
     
