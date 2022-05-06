@@ -18,6 +18,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { HomeTripComponent } from './pages/home-trip/home-trip.component';
 import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   imports: [
@@ -39,8 +40,13 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+   PubLayoutComponent,
     ListCommentComponent
   ],
+  /*
+schemas: [
+  CUSTOM_ELEMENTS_SCHEMA
+],*/
   providers: [  {
     provide: 'SocialAuthServiceConfig',
     useValue: {
