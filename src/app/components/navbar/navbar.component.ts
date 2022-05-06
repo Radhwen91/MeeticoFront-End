@@ -38,7 +38,8 @@ export class NavbarComponent implements OnInit {
   getTitle(): string {
     var title = this.location.prepareExternalUrl(this.location.path());
     if (title.charAt(0) === '#') title = title.slice(1);
-    if (title === '/calendar') return 'CALENDAR'
+    if (title === '/verification') return 'Verification';
+    if (title === '/calendar') return 'Calendar';
     for (var item = 0; item < this.titles.length; item++) {
       if (this.titles[item].path === title) {
         return this.titles[item].title;
@@ -57,9 +58,11 @@ export class NavbarComponent implements OnInit {
     let dialogRef = this.matDialog.open(NavbarPasswordDialog, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        this.user.password = data.newPassword;
-        this.tokenService.saveUser(this.user);
-        this.userService.updateProfile(this.user).subscribe();
+        if (data) {
+          this.user.password = data.newPassword;
+          this.tokenService.saveUser(this.user);
+          this.userService.updateProfile(this.user).subscribe();
+        }
       }
     );
   }
@@ -91,8 +94,8 @@ export class NavbarComponent implements OnInit {
       <br/>  
   </mat-dialog-content>
   <mat-dialog-actions>
-      <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
-      <button class="mat-raised-button" style="margin-left: 25%;" (click)="close()">Close</button>
+  <button mat-button class="mat-raised-button mat-primary" (click)="dialogRef.close(this.form.value)">Save</button>
+      <button mat-button class="mat-raised-button" style="margin-left: 25%;" (click)="dialogRef.close()">Close</button>
   </mat-dialog-actions>`
 })
 
@@ -100,18 +103,12 @@ export class NavbarPasswordDialog implements OnInit {
   form: FormGroup;
   newPassword: string;
   confirmPassword: string;
-  constructor(private dialogRef: MatDialogRef<NavbarPasswordDialog>, private formBuilder: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<NavbarPasswordDialog>, private formBuilder: FormBuilder) { }
   ngOnInit() {
     document.getElementById(this.dialogRef.id).style.cssText = `background: white`;
     this.form = this.formBuilder.group({
       newPassword: this.newPassword,
       confirmPassword: this.confirmPassword
     });
-  }
-  save() {
-    this.dialogRef.close(this.form.value);
-  }
-  close() {
-    this.dialogRef.close();
   }
 }

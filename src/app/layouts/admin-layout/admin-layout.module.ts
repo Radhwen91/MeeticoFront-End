@@ -18,6 +18,7 @@ import { TablesComponent } from "src/app/pages/tables/tables.component";
 import { UserManagementComponent, UserDetailsDialog } from "src/app/pages/user-management/user-management.component";
 import { AdminProfileComponent } from "src/app/pages/admin-profile/admin-profile.component";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
+import { VerificationComponent } from "src/app/pages/verification/verification.component";
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
     AdminProfileComponent,
     UserManagementComponent,
     UserDetailsDialog,
-    RequestManagementComponent
+    RequestManagementComponent,
+    VerificationComponent
   ],
   exports : [CalendarComponent],
   entryComponents: [UserDetailsDialog]

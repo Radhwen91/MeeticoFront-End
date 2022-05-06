@@ -38,7 +38,8 @@ export class SignInComponent implements OnInit {
         userDetails => {
           this.tokenService.saveToken(userDetails.accessToken);
           this.tokenService.saveUser(userDetails.user);
-          this.router.navigate(['user-profile']);
+          if (userDetails.user.active) this.router.navigate(['manage-users']);
+          else this.router.navigate(['verify']);
         }
       );
     }

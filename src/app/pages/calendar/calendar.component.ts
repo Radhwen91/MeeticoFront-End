@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -6,30 +6,32 @@ import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, Cal
 
 const colors: any = {
   red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
+    primary: '#f44336'
   },
   blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
+    primary: '#2986cc'
   },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
+  orange: {
+    primary: '#ce7e00'
   },
+  green: {
+    primary: '#8fce00'
+  }
 };
 
 @Component({
-  selector: 'mwl-demo-component',
+  selector: 'admin-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
 
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
+
+  ngOnInit(): void { }
 
   closed = false;
-  
+
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -68,7 +70,7 @@ export class CalendarComponent {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
       title: 'A 3 day event',
-      color: colors.red,
+      color: colors.orange,
       actions: this.actions,
       allDay: true,
       resizable: {
@@ -80,21 +82,21 @@ export class CalendarComponent {
     {
       start: startOfDay(new Date()),
       title: 'An event with no end date',
-      color: colors.yellow,
+      color: colors.green,
       actions: this.actions,
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
-      color: colors.blue,
+      color: colors.red,
       allDay: true,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
       title: 'A draggable and resizable event',
-      color: colors.yellow,
+      color: colors.blue,
       actions: this.actions,
       resizable: {
         beforeStart: true,

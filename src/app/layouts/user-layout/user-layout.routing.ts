@@ -8,9 +8,11 @@ import { SignInComponent } from "src/app/pages/sign-in/sign-in.component";
 import { TypographyComponent } from "src/app/pages/typography/typography.component";
 import { UserManagementFrontComponent } from "src/app/pages/user-management-front/user-management-front.component";
 import { UserProfileComponent } from "src/app/pages/user-profile/user-profile.component";
+import { VerificationFrontComponent } from "src/app/pages/verification-front/verification-front.component";
 
 export const UserLayoutRoutes: Routes = [
     { path: 'home',     component: HomeComponent},
+    { path: 'verify',           component: VerificationFrontComponent },
     { path: 'sign-in',           component: SignInComponent },
     { path: 'user-profile',     component: UserProfileComponent },
     { path: 'manage-users',      component: UserManagementFrontComponent },

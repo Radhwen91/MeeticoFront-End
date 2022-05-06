@@ -27,18 +27,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-
-    this.data = this.datasets[0];
-
     parseOptions(Chart, chartOptions());
 
     this.userService.accountStatistics().subscribe(statistics => {
 
-      var chartSales = document.getElementById('chart-sales'); //Exemple 1
+      var chartSales = document.getElementById('chart-users'); //Exemple 1
       this.salesChart = new Chart(chartSales, {
         type: 'bar',
         options: chartExample1.options,
@@ -56,7 +49,6 @@ export class DashboardComponent implements OnInit {
             label: "Active Users ",
             data: statistics[1],
           }]
-        
       }});
 
       var chartOrders = document.getElementById('chart-gender'); //Exemple 2
@@ -66,7 +58,6 @@ export class DashboardComponent implements OnInit {
           labels: ["Male", "Female"],
           datasets: [
             {
-              label: "Users",
               backgroundColor: ["#3e95cd", "#c45850"],
               data: [statistics[2], statistics[3]]
             }
@@ -76,11 +67,6 @@ export class DashboardComponent implements OnInit {
       
     });
 
-  }
-
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
   }
 
 }

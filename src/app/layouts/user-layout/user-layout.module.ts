@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLayoutRoutes } from './user-layout.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,13 +10,18 @@ import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.co
 import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
 import { HomeComponent } from 'src/app/pages/home/home.component';
 import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
+import { VerificationFrontComponent } from 'src/app/pages/verification-front/verification-front.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(UserLayoutRoutes),
-    FormsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(UserLayoutRoutes),
+    HttpClientModule,
+    NgxPaginationModule,
     MaterialModule,
     NgbModule
   ],
@@ -25,7 +30,8 @@ import { UserManagementFrontComponent } from 'src/app/pages/user-management-fron
     SignInComponent,
     UserProfileComponent,
     UserManagementFrontComponent,
-    LandingComponent
+    LandingComponent,
+    VerificationFrontComponent
   ]
 })
 

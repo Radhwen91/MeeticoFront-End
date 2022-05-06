@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
       userDetails => {
         this.tokenService.saveToken(userDetails.accessToken);
         this.tokenService.saveUser(userDetails.user);
-        this.router.navigate(['dashboard']);
+        if (userDetails.user.active) this.router.navigate(['dashboard']);
+        else this.router.navigate(['verification']);
       }
     );
   }

@@ -107,6 +107,16 @@ export class UserManagementComponent implements OnInit {
       }
     );
   }
+  openModal(selectedUser: User) {
+    let modalRef = this.modalService.open(NgbdModalConfirm);
+    modalRef.result.then(
+      clicked => {
+        if (clicked) {
+          this.removeUser(selectedUser);
+        }
+      }
+    );
+  }
   removeUser(selectedUser) {
     this.userService.removeUser(selectedUser.userId).subscribe(selectedUser => this.ngOnInit());
   }
@@ -127,17 +137,6 @@ export class UserManagementComponent implements OnInit {
       }
     );
   }
-  openModal(selectedUser: User) {
-    let modalRef = this.modalService.open(NgbdModalConfirm);
-    modalRef.result.then(
-      clicked => {
-        if (clicked) {
-          this.removeUser(selectedUser);
-        }
-      }
-    );
-  }
-
 }
 
 @Component({
@@ -252,7 +251,7 @@ export class UserDetailsDialog implements OnInit {
   template: `
   <div class="modal-header">
     <h4 class="modal-title" id="modal-title">Profile deletion</h4>
-    <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
+    <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.close()"></button>
   </div>
   <div class="modal-body">
     <p><strong>Are you sure you want to delete this profile?</strong></p>
@@ -261,8 +260,8 @@ export class UserDetailsDialog implements OnInit {
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
     <button type="button" class="btn btn-danger" (click)="modal.close(!this.clicked)">Ok</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cancel</button>
   </div>
   `
 })

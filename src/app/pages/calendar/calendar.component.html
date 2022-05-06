@@ -67,8 +67,7 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Primary color</th>
-            <th>Secondary color</th>
+            <th>Color</th>
             <th>Starts at</th>
             <th>Ends at</th>
             <th>Remove</th>
@@ -82,9 +81,6 @@
             </td>
             <td>
               <input type="color" [(ngModel)]="event.color.primary" (change)="refresh.next()" />
-            </td>
-            <td>
-              <input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()" />
             </td>
             <td>
               <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"

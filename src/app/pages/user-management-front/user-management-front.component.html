@@ -1,34 +1,41 @@
 <div class="wrapper">
-  <div class="page-header page-header-xs" data-parallax="true"
+  <div class="page-header page-header-xs" data-parallax="null"
     style="background-image: url('./assets/img/soroush-karimi.jpg');">
     <div class="filter"></div>
   </div>
   <div class="section profile-content">
     <div class="container">
-      <div class="col-md-6 ml-auto mr-auto text-center">
+      <div class="owner">
+        <label class="avatar"></label>
+      </div>
+      <div class="col-md-6 ml-auto mr-auto text-center" style="display: flex;">
         <input class="btn btn-outline-default btn-round" style="max-width: 40ex" type="file"
-          accept="application/pdf, image/*" (change)="readFile($event)">
+          accept="application/pdf, image/*" (change)="readFile($event)"> OR ELSE <div
+          [style]="disabled ? 'pointer-events: none; cursor: default' : ''" class="col-4 text-right">
+          <a class="btn btn-sm btn-primary" [style]="disabled ? 'background-color: grey; border-color: grey' : ''"
+            (click)="editProfile()">Custom Fields</a>
+        </div>
       </div>
       <div class="card-body">
         <form>
-          <p class="text-center">{{ parsedText }}</p>
-          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <p class="text-center">{{ waitingText }}</p>
+          <h6 class="heading-small text-muted mb-4">Account Request</h6>
           <div class="pl-lg-4">
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">First name</label>
-                  <input [attr.disabled]="disabled ? true : null" type="text"
-                    class="form-control form-control-alternative" placeholder="First name" name="firstName"
-                    [(ngModel)]="user.firstName">
+                  <label class="form-control-label">First Name</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="First Name" name="firstName"
+                    [(ngModel)]="request.firstName">
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Last name</label>
-                  <input [attr.disabled]="disabled ? true : null" type="text"
-                    class="form-control form-control-alternative" placeholder="Last name" name="lastName"
-                    [(ngModel)]="user.lastName">
+                  <label class="form-control-label">Last Name</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Last Name" name="lastName"
+                    [(ngModel)]="request.lastName">
                 </div>
               </div>
             </div>
@@ -36,41 +43,44 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Gender</label>
-                  <select [attr.disabled]="disabled ? true : null" type="text"
-                    class="form-control form-control-alternative" name="gender" [(ngModel)]="user.gender">
-                    <option value="null" hidden>Undefined</option>
+                  <select [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" name="gender" [(ngModel)]="request.gender">
+                    <option value="false" hidden>Undefined</option>
                     <option value="MALE">Male</option>
                     <option value="FEMALE">Female</option>
                   </select>
                 </div>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 ml-auto mr-auto">
                 <div class="form-group">
-                  <label class="form-control-label">Phone Number</label>
-                  <input [attr.disabled]="disabled ? true : null" type="number"
-                    class="form-control form-control-alternative" placeholder="phoneNumber" name="phoneNumber"
-                    [(ngModel)]="user.phoneNumber">
+                  <label class="form-control-label">National Identity Card</label>
+                  <input [attr.disabled]="disabled ? null : false" type="number"
+                    class="form-control form-control-alternative" placeholder="National Identity Card" name="nic"
+                    [(ngModel)]="request.nic">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Email address</label>
-                  <input [attr.disabled]="disabled ? true : null" type="email"
-                    class="form-control form-control-alternative" placeholder="Email address" name="email"
-                    [(ngModel)]="user.email">
+                  <label class="form-control-label">Email Address</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Email Address" name="email"
+                    [(ngModel)]="request.email">
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Password</label>
-                  <input [attr.disabled]="disabled ? true : null" type="text"
-                    class="form-control form-control-alternative" placeholder="Password" name="password"
-                    [(ngModel)]="user.password">
+                  <label class="form-control-label">Phone Number</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Phone Number" name="phoneNumber"
+                    [(ngModel)]="request.phoneNumber">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="text-center" [hidden]="!disabled">
+            <a class="btn btn-danger ml-auto mr-auto" (click)="createRequest()">Create Request</a>
           </div>
           <hr class="my-4" />
         </form>
@@ -82,7 +92,7 @@
           <div class="col">
             <div class="card shadow">
               <div class="card-header border-0">
-                <h3 class="mb-0">Card tables</h3>
+                <h3 class="mb-0">Requests List</h3>
               </div>
               <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -91,13 +101,12 @@
                       <th scope="col">Request ID</th>
                       <th scope="col">Name</th>
                       <th scope="col">Gender</th>
-                      <th scope="col">Phone Number</th>
                       <th scope="col">Email Address</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let request of requests">
+                    <tr *ngFor="let request of requests | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
                       <th scope="row">
                         <div class="media align-items-center">
                           <div class="media-body">
@@ -106,7 +115,7 @@
                         </div>
                       </th>
                       <td>
-                        {{ request.firstName + ' ' + request.lastName }} 
+                        {{ request.firstName + ' ' + request.lastName }}
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">
@@ -114,30 +123,18 @@
                         </span>
                       </td>
                       <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2"> {{ request.phoneNumber }} </span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
-                                aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
                         <span class="badge badge-dot mr-4">
                           <i class="bg-warning"></i> {{ request.email }}
                         </span>
                       </td>
                       <td>
-                      <td class="text-right">
-                        <div ngbDropdown placement="bottom-right">
-                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item">Action</a>
-                            <a class="dropdown-item">Another action</a>
-                            <a class="dropdown-item">Something else here</a>
-                          </div>
-                        </div>
+                      <td>
+                        <button class="btn-sm bg-transparent" style="border: transparent; color: orangered" (click)="openRemoveModal(request)">
+                          <span class="material-icons">delete</span> 
+                        </button>
+                        <button class="btn-sm bg-transparent" style="border: transparent; color: turquoise" (click)="openUpdateDialog(request)">
+                          <span class="material-icons">update</span> 
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -146,25 +143,7 @@
               <div class="card-footer py-4">
                 <nav aria-label="...">
                   <ul class="pagination mb-0 float-right">
-                    <li class="page-item disabled">
-                      <a class="page-link" tabindex="-1">
-                        <i class="fas fa-angle-left"></i>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link">
-                        <i class="fas fa-angle-right"></i>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
+                    <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
                   </ul>
                 </nav>
               </div>
@@ -174,4 +153,3 @@
       </div>
     </div>
   </div>
-  

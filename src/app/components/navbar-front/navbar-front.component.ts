@@ -88,10 +88,12 @@ export class NavbarFrontComponent implements OnInit {
   }
   changePassword() {
     const modalRef = this.modalService.open(NavbarFrontPasswordDialog);
-    modalRef.result.then((data) => {
-      this.user.password = data.newPassword;
-      this.tokenService.saveUser(this.user);
-      this.userService.updateProfile(this.user).subscribe();
+    modalRef.result.then(response => {
+      if (response) {
+        this.user.password = response.newPassword;
+        this.tokenService.saveUser(this.user);
+        this.userService.updateProfile(this.user).subscribe();
+      }
     });
   }
   signOut() {
@@ -110,7 +112,7 @@ export class NavbarFrontComponent implements OnInit {
 @Component({
   selector: 'app-modal-content',
   template: `<div class="modal-header">
-      <button class="btn float-right" style="border-color: transparent; background-color: transparent; color: black; font-size: 24px" (click)="modal.dismiss()"><i class="nc-icon nc-simple-remove"></i></button>
+      <button class="btn float-right" style="border-color: transparent; background-color: transparent; color: black; font-size: 24px" (click)="modal.close()"><i class="nc-icon nc-simple-remove"></i></button>
       <h4 class="modal-title" style="margin-left: 50px" id="modal-basic-title">Change Password</h4>
     </div>
     <div class="modal-body">

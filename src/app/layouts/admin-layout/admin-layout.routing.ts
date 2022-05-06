@@ -12,6 +12,7 @@ import { PublicationManagementComponent } from "src/app/pages/publication-manage
 import { ReclamationManagementComponent } from "src/app/pages/reclamation-management/reclamation-management.component";
 import { TripManagementComponent } from "src/app/pages/trip-management/trip-management.component";
 import { RequestManagementComponent } from "src/app/pages/request-management/request-management.component";
+import { VerificationComponent } from "src/app/pages/verification/verification.component";
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
@@ -19,6 +20,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'calendar',           component: CalendarComponent },
+    { path: 'verification',       component: VerificationComponent },
     { path: 'admin-profile',   component: AdminProfileComponent },
     { path: 'user-management',           component: UserManagementComponent },
     { path: 'event-management',           component: EventManagementComponent },

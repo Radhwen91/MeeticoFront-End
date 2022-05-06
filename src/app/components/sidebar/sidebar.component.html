@@ -7,7 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/meetico.png" class="navbar-brand-img" alt="...">
+      <img src="./assets/img/brand/meetico.png" class="navbar-brand-img">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -34,19 +34,19 @@
           <div class=" dropdown-header noti-title">
             <h6 class="text-overflow m-0">Welcome aboard, {{ user.firstName ? user.firstName : socialUser.firstName }}!</h6>
           </div>
-          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item">
+          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item" *ngIf="!getTitle()">
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item">
+          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item" *ngIf="!getTitle()">
             <i class="ni ni-calendar-grid-58"></i>
             <span>Activity</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item">
+          <!-- <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item" *ngIf="!getTitle()">
             <i class="ni ni-support-16"></i>
             <span>Support</span>
-          </a>
-          <a routerLinkActive="active" class="dropdown-item" (click)="changePassword()">
+          </a> -->
+          <a routerLinkActive="active" class="dropdown-item" (click)="changePassword()" *ngIf="!getTitle()">
             <i class="ni ni-settings-gear-65"></i>
             <span>Change Password</span>
           </a>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
+      <form class="mt-4 mb-3 d-md-none" *ngIf="!getTitle()">
         <div class="input-group input-group-rounded input-group-merge">
           <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
           <div class="input-group-prepend">
@@ -88,7 +88,7 @@
         </div>
       </form>
       <!-- Navigation -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" *ngIf="!getTitle()">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
               <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
                   <i class="ni {{menuItem.icon}}"></i>

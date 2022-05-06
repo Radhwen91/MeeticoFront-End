@@ -33,11 +33,13 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/argon.scss",
-              "src/assets/css/open-sans.css",
-              "src/assets/css/material-icons.css",
-              "src/assets/vendor/nucleo/css/nucleo.css",
-              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/scss/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css",
+              "src/assets/css/montserrat.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/material-icons.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",

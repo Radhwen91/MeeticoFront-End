@@ -99,23 +99,7 @@
           <div class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-              <h2 class="text-white mb-0">Sales value</h2>
-            </div>
-            <div class="col">
-              <ul class="nav nav-pills justify-content-end">
-                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[0];updateOptions()">
-                  <a class="nav-link py-2 px-3" [ngClass]="{'active':clicked===true}" data-toggle="tab" (click)="clicked=true;clicked1=false">
-                    <span class="d-none d-md-block">Month</span>
-                    <span class="d-md-none">M</span>
-                  </a>
-                </li>
-                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[1];updateOptions()">
-                  <a class="nav-link py-2 px-3" [ngClass]="{'active':clicked1===true}" data-toggle="tab" (click)="clicked=false;clicked1=true">
-                    <span class="d-none d-md-block">Week</span>
-                    <span class="d-md-none">W</span>
-                  </a>
-                </li>
-              </ul>
+              <h2 class="text-white mb-0">List Of Users</h2>
             </div>
           </div>
         </div>
@@ -123,7 +107,7 @@
           <!-- Chart -->
           <div class="chart">
             <!-- Chart wrapper -->
-            <canvas id="chart-sales" class="chart-canvas"></canvas>
+            <canvas id="chart-users" class="chart-canvas"></canvas>
           </div>
         </div>
       </div>
@@ -147,7 +131,7 @@
       </div>
     </div>
   </div>
-  <div class="row mt-5">
+  <!-- <div class="row mt-5">
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card shadow">
         <div class="card-header border-0">
@@ -162,7 +146,7 @@
         </div>
         <div class="table-responsive">
           <!-- Projects table -->
-          <table class="table align-items-center table-flush">
+          <!-- <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
                 <th scope="col">Page name</th>
@@ -261,7 +245,7 @@
         </div>
         <div class="table-responsive">
           <!-- Projects table -->
-          <table class="table align-items-center table-flush">
+          <!-- <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
                 <th scope="col">Referral</th>
@@ -365,5 +349,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

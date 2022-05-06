@@ -11,6 +11,9 @@ import { NgbdModalComponent, NgbdModalContent } from "../pages/modal/modal.compo
 import { NavigationComponent } from "../pages/navigation/navigation.component";
 import { NotificationComponent } from "../pages/notification/notification.component";
 import { TypographyComponent } from "../pages/typography/typography.component";
+import { UpdateRequestDialog } from "../pages/user-management-front/user-management-front.component";
+import { NgbdModalFrontVerification } from "../pages/verification-front/verification-front.component";
+import { NgbdModalVerification } from "../pages/verification/verification.component";
 import { FooterFrontComponent } from "./footer-front/footer-front.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarFrontComponent, NavbarFrontPasswordDialog } from "./navbar-front/navbar-front.component";
@@ -42,7 +45,10 @@ import { SidebarComponent, SidebarPasswordDialog } from "./sidebar/sidebar.compo
     TypographyComponent,
     NgbdModalComponent,
     NgbdModalContent,
-    NavbarFrontPasswordDialog
+    NavbarFrontPasswordDialog,
+    NgbdModalVerification,
+    NgbdModalFrontVerification,
+    UpdateRequestDialog
   ],
   exports: [
     FooterComponent,
@@ -56,11 +62,16 @@ import { SidebarComponent, SidebarPasswordDialog } from "./sidebar/sidebar.compo
     TypographyComponent,
     NgbdModalComponent,
     NgbdModalContent,
-    NavbarPasswordDialog
+    NavbarPasswordDialog,
+    NgbdModalVerification,
+    NgbdModalFrontVerification,
+    UpdateRequestDialog
   ],
   entryComponents: [
     NgbdModalContent,
-    NavbarFrontPasswordDialog
+    NavbarFrontPasswordDialog,
+    NgbdModalVerification,
+    NgbdModalFrontVerification
   ]
 })
 

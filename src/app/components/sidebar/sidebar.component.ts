@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
@@ -33,11 +34,15 @@ export const ROUTES: RouteInfo[] = [
 })
 
 export class SidebarComponent implements OnInit {
+  location: Location;
+  titles: any[];
   menuItems: any[];
   isCollapsed = true;
   user: User;
   socialUser: SocialUser;
-  constructor(private router: Router, private tokenService: TokenService, private socialAuthService: SocialAuthService, private dataService: DataService, private userService: UserService, private matDialog: MatDialog) { }
+  constructor(location: Location, private router: Router, private tokenService: TokenService, private socialAuthService: SocialAuthService, private dataService: DataService, private userService: UserService, private matDialog: MatDialog) {
+    this.location = location;
+  }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
@@ -49,6 +54,10 @@ export class SidebarComponent implements OnInit {
       if (this.socialUser.provider == "FACEBOOK") this.socialUser.photoUrl = this.socialUser.response.picture.data.url;
     }
     else this.userService.signInStatus(this.user.userId).subscribe();
+  }
+  getTitle(): boolean {
+    var title = this.location.prepareExternalUrl(this.location.path());
+    if (title === '/verification') return true;
   }
   changePassword() {
     let dialogConfig = new MatDialogConfig();
@@ -95,8 +104,8 @@ export class SidebarComponent implements OnInit {
       <br/>
   </mat-dialog-content>
   <mat-dialog-actions>
-      <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
-      <button class="mat-raised-button" style="margin-left: 25%;" (click)="close()">Close</button>
+      <button class="mat-raised-button mat-primary" (click)="dialogRef.close(this.form.value)">Save</button>
+      <button class="mat-raised-button" style="margin-left: 25%;" (click)="dialogRef.close()">Close</button>
   </mat-dialog-actions>`
 })
 
@@ -104,18 +113,12 @@ export class SidebarPasswordDialog implements OnInit {
   form: FormGroup;
   newPassword: string;
   confirmPassword: string;
-  constructor(private dialogRef: MatDialogRef<SidebarPasswordDialog>, private formBuilder: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<SidebarPasswordDialog>, private formBuilder: FormBuilder) { }
   ngOnInit() {
     document.getElementById(this.dialogRef.id).style.cssText = `background: white`;
     this.form = this.formBuilder.group({
       newPassword: this.newPassword,
       confirmPassword: this.confirmPassword
     });
-  }
-  save() {
-    this.dialogRef.close(this.form.value);
-  }
-  close() {
-    this.dialogRef.close();
   }
 }
