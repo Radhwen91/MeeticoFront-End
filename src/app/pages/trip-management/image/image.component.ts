@@ -11,6 +11,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import { User } from 'src/app/models/user';
+import {FileTrip} from "../../../models/FileTrip";
 
 @Component({
   selector: 'app-image',
@@ -20,7 +21,7 @@ import { User } from 'src/app/models/user';
 export class ImageComponent implements OnInit {
 
   id:Number;
-  file:FileDB;
+  file:FileTrip;
   trip: Trip;
   users :User[];
   counters = [100, 200, 10];
@@ -57,14 +58,14 @@ export class ImageComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   getimageurl(id:Number):String{
-    var url="http://localhost:8081/File/files/"+id;
+    var url="http://localhost:8081/FileTrip/files/"+id;
     window.open(url, "height=300,width=400");
       return url;
   }
 
-  
 
-    
-  
+
+
+
 
   }

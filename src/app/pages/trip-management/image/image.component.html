@@ -10,9 +10,9 @@
 }
 .zied {
         overflow: auto;
-        
-        
-        
+
+
+
 }
 
 /* Darker background on mouse-over */
@@ -21,13 +21,13 @@
 }
 .center{
     width: 50%;
-    
+
 }
 .matrowzied {
         overflow: auto;
-        
-        
-        
+
+
+
 }
 
 </style>
@@ -37,7 +37,7 @@
         <mat-card-subtitle ><div class="zied">{{trip.object}}</div></mat-card-subtitle>
         <mat-card-title ><div class="zied">ENTRPRENEUR</div></mat-card-title>
         <mat-card-subtitle ><div class="zied">{{trip.user.email}}</div></mat-card-subtitle>
-        <img  src="http://localhost:8081/File/files/{{id}}" height="500px" width="100%">
+        <img  src="http://localhost:8081/FileTrip/files/{{id}}" height="500px" width="100%">
         <mat-card-actions>
             <button class="btn" (click)="getimageurl(id)" style="width:100%"><i class="fa fa-download"></i> Download</button>
         </mat-card-actions>
@@ -49,19 +49,19 @@
               <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
             </mat-form-field>
           </div>
-          
+
           <div class="example-container mat-elevation-z8">
-          
+
             <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
               <!-- Name Column -->
               <ng-container matColumnDef="lastName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
-                <mat-cell *matCellDef="let row" > 
+                <mat-cell *matCellDef="let row" >
                   <div class="matrowzied">
                     {{row.lastName}}
                   </div>
-                  
-                  
+
+
                 </mat-cell>
               </ng-container>
               <!-- ID Column -->
@@ -71,11 +71,11 @@
                   <div class="matrowzied">
                     {{row.firstName}}
                   </div>
-                  
-                  
+
+
                 </mat-cell>
               </ng-container>
-          
+
               <!-- Progress Column -->
               <ng-container matColumnDef="email">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
@@ -86,9 +86,9 @@
               </mat-row>
             </mat-table>
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-           
+
       </div>
 </div>
 
-  
- 
+
+
