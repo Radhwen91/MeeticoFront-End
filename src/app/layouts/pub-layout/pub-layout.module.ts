@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthLayoutRoutes } from './auth-layout.routing';
+import { PubLayoutRoutes } from './pub-layout.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
@@ -32,7 +32,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(AuthLayoutRoutes),
+    RouterModule.forChild(PubLayoutRoutes),
     FormsModule,
     MatToolbarModule,
     MatIconModule,
@@ -75,4 +75,4 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 
   ]
 })
-export class AuthLayoutModule { }
+export class PubLayoutModule { }

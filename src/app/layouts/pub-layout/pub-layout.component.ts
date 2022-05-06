@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth-layout',
-  templateUrl: './auth-layout.component.html',
-  styleUrls: ['./auth-layout.component.scss']
+  selector: 'app-pub-layout',
+  templateUrl: './pub-layout.component.html',
+  styleUrls: ['./pub-layout.component.scss']
 })
-export class AuthLayoutComponent implements OnInit, OnDestroy {
+export class PubLayoutComponent implements OnInit, OnDestroy {
 
 
   constructor(private router: Router) { }
