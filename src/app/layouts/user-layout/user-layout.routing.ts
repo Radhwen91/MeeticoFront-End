@@ -25,31 +25,21 @@ import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.comp
 
 export const UserLayoutRoutes: Routes = [
 
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signup',           component: SignupComponent },
+     { path: '', redirectTo: 'home', pathMatch: 'full' },
+     { path: 'user-profile',     component: ProfileComponent },
+     { path: 'signup',           component: SignupComponent },
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
      { path: 'homeTrip',      component: AcceuiltripComponent },
      { path: 'homelistTrip',      component: HomeTripComponent },
      { path: 'detail/:id',      component: DetailtripComponent },
-  { path: 'testfares',      component: TestfaresComponent },
-  { path: 'frontpublication',      component: FrontPublicationComponent },
-  { path: 'update-publication',           component: UpdatePublicationComponent },
-  { path: 'comments-management',           component: CommentsManagementComponent },
-  { path: 'chatbot',           component: ChatbotComponent },
-    { path:  '', redirectTo: 'home', pathMatch: 'full' },
-    { path:  'reclamation-management/addReclamation',   component: AddreclamationComponent },
-    { path:  'reclamation-management',                  component: ReclamationManagementComponent },
-    { path:  'feedback-management-user',                component: FeedbackManagementUserComponent },
-    { path:  'AddFeedback',                             component: AddfeedbackComponent},
-    { path:  'user-profile',                            component: ProfileComponent },
-    { path:  'signup',                                  component: SignupComponent },
-     { path: 'landing',                                 component: LandingComponent },
-     { path: 'nucleoicons',                             component: NucleoiconsComponent },
-     
-
-     
-
-
+     { path: 'testfares',      component: TestfaresComponent },
+     { path: 'frontpublication',      component: FrontPublicationComponent },
+     { path: 'update-publication',           component: UpdatePublicationComponent },
+     { path: 'comments-management',           component: CommentsManagementComponent },
+     { path: 'chatbot',           component: ChatbotComponent },
+     { path: 'reclamation-management/addReclamation',   component: AddreclamationComponent },
+     { path: 'reclamation-management',                  component: ReclamationManagementComponent },
+     { path: 'feedback-management-user',                component: FeedbackManagementUserComponent },
+     { path: 'AddFeedback',                             component: AddfeedbackComponent},
 ];

@@ -16,7 +16,6 @@ import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/alg
 import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
 import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
 import { DetailtripbackComponent } from 'src/app/pages/trip-management/detailtripback/detailtripback.component';
-
 import {
   UpdatePublicationBackComponent
 } from "../../pages/publication-management/update-publication-back/update-publication-back.component";
@@ -46,13 +45,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-management',        component: UserManagementComponent },
     { path: 'event-management',           component: EventManagementComponent },
     { path: 'feedback-management',           component: FeedbackManagementComponent },
- //   { path: 'reclamation-management',           component: ReclamationManagementComponent },
-  { path: 'alert-management',           component: AlertsManagementComponent },
-   // { path: 'trip-management',           component: TripManagementComponent },
+    { path: 'alert-management',           component: AlertsManagementComponent },
     { path: 'reclamation-management/addReclamation',           component: AddreclamationComponent },
     { path: 'Test',           component: TestComponent },
     { path: 'feedback-management/AddFeedback',           component: AddfeedbackComponent},
-    { path: 'test',           component: UploadImageComponent},
     { path: 'trip-management',           component: TripManagementComponent },
     { path: 'trip-management/add',           component: AjouterComponent },
     { path: 'trip-management/modifier/:id',           component: ModifierComponent },
@@ -60,15 +56,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management/image/:id',           component: ImageComponent },
     { path: 'acceuiltrip',           component: AcceuiltripbackComponent },
     { path: 'detailback/:id',      component: DetailtripbackComponent },
-  { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
-  { path: 'list-comments-back',           component: ListCommentsBackComponent },
-  { path: 'publication-ajout',           component: PublicationAjoutComponent },
-  { path: 'user-management',component: UserManagementComponent },
-  { path: 'event-management',component: EventManagementComponent },
-  { path: 'feedback-management', component: FeedbackManagementComponent },
-  { path: 'publication-management',component: PublicationManagementComponent },
-  { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
-  { path: 'test',component: UploadImageComponent},
+    { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
+    { path: 'list-comments-back',           component: ListCommentsBackComponent },
+    { path: 'publication-ajout',           component: PublicationAjoutComponent },
+    { path: 'publication-management',component: PublicationManagementComponent },
+    { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
+    { path: 'test',component: UploadImageComponent},
 ];
 
 
