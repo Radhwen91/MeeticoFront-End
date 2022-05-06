@@ -34,6 +34,10 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
 import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
 import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
+import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-event.component';
+import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
+import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
+import { ChatComponent } from 'src/app/chat/chat.component';
 
 
 
@@ -68,7 +72,14 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'feedback-management', component: FeedbackManagementComponent },
   { path: 'publication-management',component: PublicationManagementComponent },
   { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
+  
+  
   { path: 'test',component: UploadImageComponent},
+  { path: 'event-management',           component: EventManagementComponent },
+  { path: 'event-management/addevent',           component: AddEventComponent },
+  { path: 'event-management/edit/:id',           component: UpdateComponent },
+  { path: 'event-management/showusers/:id',           component: ShowUComponent },
+  { path: 'chat',           component: ChatComponent },
 ];
 
 

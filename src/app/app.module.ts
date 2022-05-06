@@ -16,6 +16,9 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ToastrModule} from "ngx-toastr";
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { HomeTripComponent } from './pages/home-trip/home-trip.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -37,6 +40,10 @@ import { HomeTripComponent } from './pages/home-trip/home-trip.component';
     AuthLayoutModule,
     MatMenuModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    NgbModule,
+
     ToastrModule.forRoot()
   ],
   declarations: [
@@ -45,6 +52,8 @@ import { HomeTripComponent } from './pages/home-trip/home-trip.component';
     AuthLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
+    ChatComponent
+
     
     
 

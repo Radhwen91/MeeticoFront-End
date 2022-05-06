@@ -1,0 +1,39 @@
+
+<form>
+
+    <input class="form-control" type="text" placeholder="message" id="kj" name="input" [(ngModel)]="input" >
+    <button class="btn btn-success" (click)="sendMessage()">Send</button>
+        
+
+    <input class="form-control" type="text" placeholder="privatemessage" id="pm" name="input" [(ngModel)]="inputp" >
+    <button class="btn btn-success" (click)="sendPrivate()">Send</button>
+    </form>
+    <span 
+                                    id="notifications"
+                                    style="
+                                    color: white;
+                                    background-color: red;
+                                    padding-left: 15px;
+                                    padding-right: 15px;">
+                                    {{notificationCount}}
+                            </span>
+                            
+    <div class="content" >
+        
+        <div *ngFor="let ms of msg">
+         <span>
+             <p class="badge badge-primary">
+              {{username}} 
+             </p>
+         </span>   
+         
+        
+         {{ms}} 
+             
+        </div>
+      </div>
+
+
+
+
+      
