@@ -10,6 +10,8 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
+import {User} from "../../models/user";
+import {PublicationService} from "../../services/publication.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -29,9 +31,25 @@ export class DashboardComponent implements OnInit {
   nbrReclamationEnAttente:Number;
   priority ="NORMAL";
   type="OTHER";
-  constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
+  bestuser : User;
+  nbrpubbestuser: number;
+  constructor(private publicationservice: PublicationService,private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
   ngOnInit() {
-  
+
+    this.publicationservice.bestUser().subscribe(
+      data => {
+
+        this.bestuser = data;
+      }
+    );
+    this.publicationservice.nbrpubbestuser().subscribe(
+      data => {
+
+        this.nbrpubbestuser = data;
+      }
+    );
+
+
     this.reclamationService.statWatingReclamation().subscribe(
       data => {
         console.log(data);
@@ -43,7 +61,7 @@ export class DashboardComponent implements OnInit {
     //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
     // ];
     this.data = this.datasets;
-  
+
 
 
     var chartOrders = document.getElementById('chart-orders');
@@ -75,22 +93,22 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log(data);
         this.datasets = data;
-       
+
       }
     );
-    
-      
+
+
   }
 
   public StatPercentageOfReclamationByPriorityOrByType(priority,type){
-   
+
     this.reclamationService.statReclamationByTypeAndPriority(priority,type).subscribe(
       data => {
         console.log(data);
         this.pecentageTypePriority = data;
       }
     );
-    
+
   }
   public StatPercentageOfReclamationByType(type){
     this.reclamationService.statReclamationByType(type).subscribe(

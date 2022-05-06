@@ -1,5 +1,5 @@
 import {Publication} from './publication';
-
+import {Trip} from './trip';
 
 export class FileDB {
   id:number;

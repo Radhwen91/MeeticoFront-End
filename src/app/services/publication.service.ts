@@ -26,6 +26,8 @@ export class PublicationService {
   urldisLike="/api/publication/nbrDisLike";
   nbrComments="/api/publication/nbrComments";
   badword="/api/publication/badword";
+  ownedUser="/api/publication/PublicationOwner";
+
 //urladdcomment="/api/comment/testaddcomment";
   urladdcomment="/api/comment/add-comment";
   uploadfile="/api//File/upload";
@@ -42,6 +44,8 @@ export class PublicationService {
   findBannedusers="/api/publication/getBannedUsers";
   Deblokuser="/api/publication/autoriserUser";
   deleteAlerts="/api/publication/supprimer-alert";
+  bestutilis="/api/publication/bestUser";
+  nbrpubbestutilis="/api/publication/MeilleurUser";
   constructor(private http: HttpClient) { }
   deleteAlert(id:number) : any{
     return this.http.delete(`${this.deleteAlerts}/${id}`)
@@ -107,6 +111,22 @@ export class PublicationService {
     return this.http.get(`${this.badword}/${id}`)
 
   }
+  bestUser() : Observable<any>{
+    return this.http.get(`${this.bestutilis}`)
+
+  }
+
+  nbrpubbestuser() : Observable<any>{
+    return this.http.get(`${this.nbrpubbestutilis}`)
+
+  }
+
+  PublicationOwner(id:number) : Observable<any>{
+    return this.http.get(`${this.ownedUser}/${id}`)
+
+  }
+
+
   getNbrDislike(id:number) : Observable<any>{
     return this.http.get(`${this.urldisLike}/${id}`)
 
