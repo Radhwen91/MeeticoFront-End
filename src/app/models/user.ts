@@ -1,26 +1,29 @@
-import {ActivityField} from "./activity-field";
-import {Gender} from "./gender";
-import {Occupation} from "./occupation";
-import {Role} from "./role";
+import { ActivityField } from "./activity-field";
+import { Profession } from "./profession";
+
+enum Gender { MALE, FEMALE }
+enum Role { ADMIN, EMPLOYEE, ENTREPRENEUR }
 
 export class User {
-
-
-    userId: Number;
-    active: Boolean;
-    activityField: ActivityField[];
-    address: String;
+    active: boolean;
+    activityFields: ActivityField[];
+    address: string;
     birthday: Date;
-    email: String;
-    firstName: String;
+    createdAt: Date;
+    email: string;
+    firstName: string;
+    followers: User[];
+    following: User[];
     gender: Gender;
-    lastName: String;
-    occupation: Occupation[];
-    phoneNumber: Number;
-    picturePath: String;
+    lastName: string;
+    lastSeen: Date;
+    password: string;
+    phoneNumber: number;
+    picture: string;
+    professions: Profession[];
+    requests: Request[];
     role: Role;
-    username: String;
-    verificationCode: String;
-
+    userId: number;
+    username: string;
+    verificationCode: string;
 }
-

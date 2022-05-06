@@ -3,8 +3,6 @@ import { FeedbackManagementUserComponent } from './../../pages/feedback-manageme
 import { Routes, RouterModule } from '@angular/router';
 import { NucleoiconsComponent } from 'src/app/pages/nucleoicons/nucleoicons.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
-import { ProfileComponent } from 'src/app/pages/profile/profile.component';
-import { SignupComponent } from 'src/app/pages/signup/signup.component';
 import { AcceuiltripComponent } from 'src/app/pages/trip-management/acceuiltrip/acceuiltrip.component';
 import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/detailtrip.component';
 import {TestfaresComponent} from "../../pages/testfares/testfares.component";
@@ -19,6 +17,8 @@ import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatb
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
+import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 
 
 
@@ -26,8 +26,8 @@ import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.comp
 export const UserLayoutRoutes: Routes = [
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signup',           component: SignupComponent },
+    { path: 'user-profile',     component: UserProfileComponent },
+    { path: 'signup',           component: SignInComponent },
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
      { path: 'homeTrip',      component: AcceuiltripComponent },
@@ -43,8 +43,6 @@ export const UserLayoutRoutes: Routes = [
     { path:  'reclamation-management',                  component: ReclamationManagementComponent },
     { path:  'feedback-management-user',                component: FeedbackManagementUserComponent },
     { path:  'AddFeedback',                             component: AddfeedbackComponent},
-    { path:  'user-profile',                            component: ProfileComponent },
-    { path:  'signup',                                  component: SignupComponent },
      { path: 'landing',                                 component: LandingComponent },
      { path: 'nucleoicons',                             component: NucleoiconsComponent },
      

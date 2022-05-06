@@ -34,6 +34,11 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
 import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
 import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
+import { AdminProfileComponent } from 'src/app/pages/admin-profile/admin-profile.component';
+import { CalendarComponent } from 'src/app/pages/calendar/calendar.component';
+import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
+import { RequestManagementComponent } from 'src/app/pages/request-management/request-management.component';
+import { VerificationComponent } from 'src/app/pages/verification/verification.component';
 
 
 
@@ -69,6 +74,11 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'publication-management',component: PublicationManagementComponent },
   { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
   { path: 'test',component: UploadImageComponent},
+  { path: 'calendar',           component: CalendarComponent },
+  { path: 'verification',       component: VerificationComponent },
+  { path: 'admin-profile',   component: AdminProfileComponent },
+  { path: 'reclamation-management',           component: ReclamationManagementComponent },
+  { path: 'request-management',           component: RequestManagementComponent }
 ];
 
 

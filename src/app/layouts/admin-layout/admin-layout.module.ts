@@ -51,6 +51,15 @@ import {
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+import { AdminProfileComponent } from 'src/app/pages/admin-profile/admin-profile.component';
+import { CalendarComponent } from 'src/app/pages/calendar/calendar.component';
+import { RequestManagementComponent } from 'src/app/pages/request-management/request-management.component';
+import { UserManagementComponent, UserDetailsDialog } from 'src/app/pages/user-management/user-management.component';
+import { VerificationComponent } from 'src/app/pages/verification/verification.component';
+import { MaterialModule } from 'src/app/material.module';
+import { NgxPaginationModule } from "ngx-pagination";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 
@@ -63,6 +72,14 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    NgbModule,
+    ClipboardModule,
+    NgxPaginationModule,
+    MaterialModule,
     FormsModule,
     HttpClientModule,
     NgbModule,
@@ -72,19 +89,14 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     MatCardModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-
-   
-
-
-
-
+    NgxPaginationModule,
+    MaterialModule
   ],
   declarations: [
     DashboardComponent,
@@ -113,11 +125,18 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     PublicationAjoutComponent,
     AlertsManagementComponent,
     DetailFeedbackComponent,
+    CalendarComponent,
+    AdminProfileComponent,
+    UserDetailsDialog,
+    RequestManagementComponent,
+    VerificationComponent,
+    UserManagementComponent
   ],
   exports: [
+    CalendarComponent,
     RouterModule
-
-  ]
+  ],
+  entryComponents: [UserDetailsDialog]
 })
 
 export class AdminLayoutModule {}

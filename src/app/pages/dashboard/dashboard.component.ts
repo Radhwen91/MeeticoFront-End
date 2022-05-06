@@ -12,6 +12,7 @@ import {
 } from "../../variables/charts";
 import { TripService } from 'src/app/services/tripservices/trip.service';
 import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
   type="OTHER";
   listoftrips:DestionationVisitorsCount[];
   meilleurDestination:any;
-  constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService,private tripservice:TripService) {}
+  constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService,private tripservice:TripService,private userService: UserService) {}
   ngOnInit() {
   
     this.reclamationService.statWatingReclamation().subscribe(
@@ -96,6 +97,43 @@ export class DashboardComponent implements OnInit {
       }
     );
     
+    this.userService.accountStatistics().subscribe(statistics => {
+
+      var chartSales = document.getElementById('chart-users'); //Exemple 1
+      this.salesChart = new Chart(chartSales, {
+        type: 'bar',
+        options: chartExample1.options,
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            backgroundColor: 'rgba(255, 99, 132, 0.8)',
+            borderColor: 'rgba(255, 99, 132, 0.8)',
+            label: "Total Users ",
+            data: statistics[0],
+          },
+          {
+            backgroundColor: 'rgba(46, 204, 113, 0.8)',
+            borderColor: 'rgba(46, 204, 113, 1)',
+            label: "Active Users ",
+            data: statistics[1],
+          }]
+      }});
+
+      var chartOrders = document.getElementById('chart-gender'); //Exemple 2
+      new Chart(chartOrders, {
+        type: 'doughnut',
+        data: {
+          labels: ["Male", "Female"],
+          datasets: [
+            {
+              backgroundColor: ["#3e95cd", "#c45850"],
+              data: [statistics[2], statistics[3]]
+            }
+          ]
+        }
+      });
+      
+    });
       
   }
 

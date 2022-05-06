@@ -1,4 +1,4 @@
 export class ActivityField {
-	activityFieldId: Number;
-	activityField: String;
+    activityFieldId: number;
+    activityField: string;
 }
