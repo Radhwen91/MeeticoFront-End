@@ -1,10 +1,17 @@
+
+import { Trip } from "./trip";
 import {Publication} from './publication';
-import {Trip} from './trip';
+
+
+
 
 export class FileDB {
-  id:number;
-  name:String;
-  type:String;
-  data:Int32Array[];
-  publication :Publication;
+    id:number;
+    name:String;
+    type:String;
+    data:Int32Array[];
+    trip :Trip;
+   publication :Publication;
 }
+
+

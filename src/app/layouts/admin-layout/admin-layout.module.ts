@@ -20,7 +20,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateReclamationComponent } from 'src/app/pages/update-reclamation/update-reclamation.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatCardModule} from '@angular/material/card';
+import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
+import { ImageComponent } from 'src/app/pages/trip-management/image/image.component';
+import { AjouterComponent } from 'src/app/pages/trip-management/ajouter/ajouter.component';
+import { AlgorithmedematchingComponent } from 'src/app/pages/trip-management/algorithmedematching/algorithmedematching.component';
+import { ModifierComponent } from 'src/app/pages/trip-management/modifier/modifier.component';
+import { UploadFilesComponent } from 'src/app/pages/trip-management/upload-files/upload-files.component';
+import { AcceuiltripbackComponent } from 'src/app/pages/trip-management/acceuiltripback/acceuiltripback.component';
+import { DetailtripbackComponent } from 'src/app/pages/trip-management/detailtripback/detailtripback.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -40,7 +48,6 @@ import {
 import {
   AlertsManagementComponent
 } from "../../pages/publication-management/alerts-management/alerts-management.component";
-
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
@@ -60,10 +67,10 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-
     NgxSpinnerModule,
     MatPaginatorModule,
-
+    MatCardModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
@@ -73,7 +80,8 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     MatSnackBarModule,
     MatExpansionModule,
 
-    ReactiveFormsModule,
+   
+
 
 
 
@@ -91,17 +99,20 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     AnswerAdminComponent,
     UploadImageComponent,
     TestComponent,
-
+    TripManagementComponent,
+    ImageComponent,
+    AjouterComponent,
+    AlgorithmedematchingComponent,
+    ModifierComponent,
+    UploadFilesComponent,
+    AcceuiltripbackComponent,
+    DetailtripbackComponent,
     PublicationManagementComponent,
     UpdatePublicationBackComponent,
     ListCommentsBackComponent,
     PublicationAjoutComponent,
     AlertsManagementComponent,
-
     DetailFeedbackComponent,
-
-
-
   ],
   exports: [
     RouterModule

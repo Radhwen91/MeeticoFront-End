@@ -10,8 +10,13 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
+
 import {User} from "../../models/user";
 import {PublicationService} from "../../services/publication.service";
+
+import { TripService } from 'src/app/services/tripservices/trip.service';
+import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -31,9 +36,14 @@ export class DashboardComponent implements OnInit {
   nbrReclamationEnAttente:Number;
   priority ="NORMAL";
   type="OTHER";
+
   bestuser : User;
   nbrpubbestuser: number;
-  constructor(private publicationservice: PublicationService,private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
+  constructor(private tripservice:TripService,private publicationservice: PublicationService,private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
+
+  listoftrips:DestionationVisitorsCount[];
+  meilleurDestination:any;
+
   ngOnInit() {
 
     this.publicationservice.bestUser().subscribe(
@@ -56,6 +66,19 @@ export class DashboardComponent implements OnInit {
         this.nbrReclamationEnAttente = data;
       }
     );
+    this.tripservice.getDestionationVisitCount().subscribe(
+      data => {
+        console.log('data',data);
+        this.listoftrips = data;
+
+      }
+    );
+     this.tripservice.getmeiulleurdestination().subscribe(
+       data=>{
+         console.log(data)
+         this.meilleurDestination=data
+       }
+     )
     // this.datasets = [
     //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
     //   [0, 20, 5, 25, 10, 30, 15, 40, 40]

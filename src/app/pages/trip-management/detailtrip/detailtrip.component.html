@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.zied {
+        overflow: auto;
+        
+        
+        
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.center{
+    width: 50%;
+    
+}
+.matrowzied {
+        overflow: auto;
+        
+        
+        
+}
+
+</style>
+<div style="width: 1000px;">
+    <mat-card class="center" >
+        <mat-card-title ><div class="zied">{{trip.destination}}</div></mat-card-title>
+        <mat-card-subtitle ><div class="zied">{{trip.object}}</div></mat-card-subtitle>
+        <mat-card-title ><div class="zied">ENTRPRENEUR</div></mat-card-title>
+        <mat-card-subtitle ><div class="zied">{{trip.user.email}}</div></mat-card-subtitle>
+        <img *ngFor="let f of trip.files" src="http://localhost:8081/File/files/{{f.id}}" height="500px" width="100%">
+        <mat-card-actions *ngFor="let f of trip.files">
+            <button class="btn" (click)="getimageurl(f.id)" style="width:100%"><i class="fa fa-download"></i> Download</button>
+        </mat-card-actions>
+      </mat-card>
+      <div>
+        <div class="table-responsive">
+          <div class="example-header">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
+            </mat-form-field>
+          </div>
+          
+          <div class="example-container mat-elevation-z8">
+          
+            <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+              <!-- Name Column -->
+              <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let row" > 
+                  <div class="matrowzied">
+                    {{row.lastName}}
+                  </div>
+                  
+                  
+                </mat-cell>
+              </ng-container>
+              <!-- ID Column -->
+              <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header > First Name </mat-header-cell>
+                <mat-cell *matCellDef="let row" >
+                  <div class="matrowzied">
+                    {{row.firstName}}
+                  </div>
+                  
+                  
+                </mat-cell>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                <mat-cell *matCellDef="let row"  > <div > {{row.email}}  </div></mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+           
+      </div>
+</div>
+
+  
+ 

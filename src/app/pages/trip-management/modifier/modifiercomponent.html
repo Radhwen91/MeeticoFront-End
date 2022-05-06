@@ -1,0 +1,234 @@
+<style type="text/css">
+  #desaffecter { color: rgb(238, 6, 6);
+              background-color: rgb(52, 114, 207);
+              border-radius: 30%;
+              font-weight: bold;
+               border: #FAFAD2;;
+               height: 40px;
+                width: 110px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                border-radius: 20%;
+                font-size: 16px;
+                margin: 10px 50px 20px; }  
+ #affecter { color: rgb(38, 241, 19);
+              background-color: rgb(52, 114, 207);
+              border-radius: 30%;
+              font-weight: bold;
+              border: #FAFAD2;;
+              height: 40px;
+              width: 110px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              border-radius: 20%;
+              font-size: 16px;
+              margin: 10px 50px 20px;  }  
+   
+</style>
+<div style="margin: 15px;" *ngIf="trip">
+    <form [formGroup]="tripForm" >
+        <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Destination</label>
+        <div class="col-10">
+          <input class="form-control" type="text" id="example-text-input"  formControlName="destination">
+          <div *ngIf="  tripForm.get('destination').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">object</label>
+        <div class="col-10">
+          <input class="form-control" type="search" id="example-search-input" formControlName="object">
+          <div *ngIf="  tripForm.get('object').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+          <div *ngIf="  tripForm.get('object').hasError('maxlength')" style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>object must at maiximum 50 character</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
+        <div class="col-10">
+          <input class="form-control" type="date" id="example-date-input" formControlName="startDate">
+          <div *ngIf="  tripForm.get('startDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">End Date</label>
+        <div class="col-10">
+          <input class="form-control" type="date" value="2011-08-19" id="example-date-input" formControlName="endDate">
+          <div *ngIf="  tripForm.get('endDate').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Image</label>
+      <label class="btn btn-default">
+        <input *ngIf="listfile.length>1" type="file" (change)="selectFile($event) "[disabled]="true" formControlName="file" />
+        <input *ngIf="listfile.length==0" type="file" (change)="selectFile($event);upload() " formControlName="file" />
+        <div  *ngIf="listfile.length==0" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+      </label>
+    </div>
+      </form>
+      <div class="card-header">Image</div>
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">name</th>
+          <th scope="col">image</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of listfile">
+          <th scope="row" >
+            <div class="media align-items-center">
+              <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                <img alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+              </a>
+              <div class="media-body">
+                <span class="mb-0 text-sm">{{ file.name }}</span>
+              </div>
+            </div>
+          </th>
+          <td class="text-right">
+            <div ngbDropdown placement="bottom-right">
+              <button (click)="supprimer(file.id)">supprimer</button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <button  type="submit" class="btn btn-primary" (click)="modifier()" [disabled]="tripForm.invalid" >submit</button>
+      
+</div>
+
+<!--table with search-->
+<div>
+  <div class="table-responsive">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search" >
+      </mat-form-field>
+    </div>
+    
+    <div class="example-container mat-elevation-z8">
+    
+      <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+        <!-- Name Column -->
+        
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > last Name </mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+            <div class="matrowzied">
+              {{row.lastName}}
+            </div>
+            
+            
+          </mat-cell>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> first Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div > {{row.firstName}}  </div></mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> email </mat-header-cell>
+          <mat-cell *matCellDef="let row"  > <div >{{row.email}} </div></mat-cell>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> phoneNumber </mat-header-cell>
+          <mat-cell *matCellDef="let row"  ><div class="matrowzied"> {{row.phoneNumber}} </div> </mat-cell>
+        </ng-container>
+         
+        <!-- Color Column -->
+        <ng-container matColumnDef="option" >
+          <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="text-right " >
+            <div *ngIf="row.etat !== 'En Voyage'">
+                   
+                  
+              <button id="affecter" (click)="affecter(row)" >{{row.etat}}</button>
+            
+            </div>
+            <div *ngIf="row.etat !== 'disponible'">
+             
+            
+              <button  id="desaffecter" (click)="desaffecter(row)" >{{row.etat}}</button>
+            
+            </div>
+          
+            
+            
+           </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+     
+</div>
+  <!-- Table 
+<div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">User List</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Last Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let u of listofusers">
+                <th scope="row" >
+                  <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{u.lastName}}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>
+                  {{u.firstName}}
+                </td>
+                <td>
+                   {{u.email}}
+                 
+                </td>
+                <td>
+                  <div>
+                    <a >
+                      {{u.phoneNumber}}
+                    </a>
+                  </div>
+                  
+                </td>
+                <td class="text-right">
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+-->

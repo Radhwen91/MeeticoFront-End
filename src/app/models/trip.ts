@@ -1,10 +1,17 @@
 
+import { User } from "./user";
+import { FileDB } from "./fileDB";
 
 export class Trip {
     idTrip: Number;
-    destination:String;
+    destination: String;
     startDate: Date;
     endDate: Date;
-    object:String;
+    object: String;
+    users:User[];
+    user:User;
+   
+    files:FileDB[];
+
     
 }
