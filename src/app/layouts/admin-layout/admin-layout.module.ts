@@ -51,11 +51,6 @@ import {
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
-import { EventManagementComponent } from 'src/app/pages/event-management/event-management.component';
-import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-event.component';
-import { CardComponent } from 'src/app/pages/event-management/card/card.component';
-import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
-import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
 
 
 
@@ -84,7 +79,6 @@ import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.com
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-    CommonModule,
 
    
 
@@ -119,16 +113,9 @@ import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.com
     PublicationAjoutComponent,
     AlertsManagementComponent,
     DetailFeedbackComponent,
-    EventManagementComponent,
-    AddEventComponent,
-    UpdateComponent,
-    CardComponent,
-    ShowUComponent,
-    UploadFilesComponent,
   ],
   exports: [
-    RouterModule ,
-   
+    RouterModule
 
   ]
 })
