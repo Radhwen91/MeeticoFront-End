@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 
 const routes: Routes =[
   {
@@ -41,17 +40,7 @@ const routes: Routes =[
         loadChildren: () => import('src/app/layouts/user-layout/user-layout.module').then(m => m.UserLayoutModule)
       }
     ]
-  }, {
-    path: '',
-    component: PubLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/layouts/pub-layout/pub-layout.module').then(m => m.PubLayoutModule)
-      }
-    ]
   },
-
    {
     path: '**',
     redirectTo: 'dashboard'
