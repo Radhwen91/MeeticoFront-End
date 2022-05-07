@@ -48,6 +48,7 @@
     "ngx-toastr": "^14.3.0",
     "nouislider": "15.5.1",
     "pdfjs-dist": "^2.5.207",
+    "process": "^0.11.10",
     "pusher-js": "^7.0.4",
     "rxjs": "^7.5.5",
     "sweetalert2": "^11.4.9",

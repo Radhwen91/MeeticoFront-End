@@ -27,7 +27,7 @@ export const UserLayoutRoutes: Routes = [
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'user-profile',     component: UserProfileComponent },
-    { path: 'signup',           component: SignInComponent },
+    { path: 'sign-in',           component: SignInComponent },
      { path: 'landing',          component: LandingComponent },
      { path: 'nucleoicons',      component: NucleoiconsComponent },
      { path: 'homeTrip',      component: AcceuiltripComponent },
@@ -38,7 +38,6 @@ export const UserLayoutRoutes: Routes = [
   { path: 'update-publication',           component: UpdatePublicationComponent },
   { path: 'comments-management',           component: CommentsManagementComponent },
   { path: 'chatbot',           component: ChatbotComponent },
-    { path:  '', redirectTo: 'home', pathMatch: 'full' },
     { path:  'reclamation-management/addReclamation',   component: AddreclamationComponent },
     { path:  'reclamation-management',                  component: ReclamationManagementComponent },
     { path:  'feedback-management-user',                component: FeedbackManagementUserComponent },

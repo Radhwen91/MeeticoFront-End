@@ -85,15 +85,9 @@ export class DashboardComponent implements OnInit {
     this.StatPercentageOfReclamationByPriorityOrByType(this.priority,this.type);
     this.StatPercentageOfReclamationByType(this.type);
     this.StatPercentageOfReclamationByPriority(this.priority);
-
-
-
-
     this.feedbackservice.statPercentageFeedbacksByStars().subscribe(
       data => {
-        console.log(data);
         this.datasets = data;
-       
       }
     );
     

@@ -86,7 +86,7 @@ export class SidebarComponent implements OnInit {
     if (this.socialUser) {
       this.userService.signOutStatus(this.user.userId).subscribe();
       this.tokenService.signOut();
-    }
+    } 
     else {
       this.socialAuthService.signOut();
       this.dataService.currentStatus.subscribe(loggedIn => loggedIn = !loggedIn);
