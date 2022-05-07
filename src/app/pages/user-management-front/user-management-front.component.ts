@@ -10,6 +10,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NavbarPasswordDialog } from 'src/app/components/navbar/navbar.component';
+import { TextItem } from 'pdfjs-dist/types/src/display/api';
 
 @Component({
   selector: 'app-user-management-front',
@@ -48,7 +49,7 @@ export class UserManagementFrontComponent {
           for (let i = 1; i <= res._pdfInfo.numPages; i++) {
             res.getPage(i).then(async res => {
               const textContent = await res.getTextContent();
-              countPromises.push(textContent.items.map((s) => s.str).join(''));
+              countPromises.push(textContent.items.map((s : TextItem) => s.str).join(''));
               const pageContents = await Promise.all(countPromises);
               let parsedText = pageContents.join('').slice();
               this.request.nic = +parsedText.slice(parsedText.indexOf("National Identity Card : ") + 25, parsedText.indexOf("First Name :") - 1);

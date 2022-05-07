@@ -39,13 +39,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
-
 import { CardUserComponent } from 'src/app/pages/card-user/card-user.component';
 import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
-
-import { MentionModule } from 'angular-mentions';
 import { ClipboardModule } from "ngx-clipboard";
 import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
 import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';

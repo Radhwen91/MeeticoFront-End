@@ -102,7 +102,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MatSnackBarModule,
     MatExpansionModule,
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
     MaterialModule
 
   ],

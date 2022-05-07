@@ -46,7 +46,7 @@ export const UserLayoutRoutes: Routes = [
      { path: 'feedback-management-user',                component: FeedbackManagementUserComponent },
      { path: 'AddFeedback',                             component: AddfeedbackComponent},
      { path: 'showevent',      component: ShowEventComponent },
-     { path: 'chat',      component: ChatComponent }
+     { path: 'chat',      component: ChatComponent },
      { path: 'landing',                                 component: LandingComponent },
      { path: 'nucleoicons',                             component: NucleoiconsComponent },
 
