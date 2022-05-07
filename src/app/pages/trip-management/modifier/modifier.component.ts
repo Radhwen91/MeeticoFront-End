@@ -149,16 +149,6 @@ event => {
         
         
       }
-<<<<<<< Updated upstream
-    },
-    err => {
-      this.progress = 0;
-      this.message = 'Could not upload the file!';
-      this.currentFile = undefined;
-    });
-
-=======
-    );
     //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
   
   
@@ -170,7 +160,7 @@ err => {
   this.currentFile = undefined;
 });
 this.selectedFiles = undefined;
->>>>>>> Stashed changes
+
 }
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(

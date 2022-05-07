@@ -61,41 +61,11 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   data=>{
     console.log(data)
     this.trip=data;
-<<<<<<< Updated upstream
-    this.toastr.success('Trip Added Successfully ','Trip Added Successfully');
-    let audio = new Audio()
-    audio.src= "../assets/confirm2.mp3"
-    audio.load();
-    audio.play();
-    this.progress = 0;
-  this.currentFile = this.selectedFiles.item(0);
-  this.tripservice.upload(this.currentFile).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        this.message = event.body.message;
-        this.tripservice.getFilesdetail(event.body).subscribe(
-          res=>{
-            this.file=res;
-            console.log(this.trip)
-            console.log(res)
-            this.tripservice.affecterfileauvoyage(this.trip.idTrip,res.id,this.file).subscribe(
-              res=>{
-               //this.listfile=res;
-               this.router.navigate(["/trip-management"])
-              }
-
-          );
-          }
-        );
-
-=======
     this.tripservice.affecterfileauvoyage(this.trip.idTrip,this.file.id,this.trip).subscribe(
       res=>{
        //this.listfile=res;
        this.router.navigate(["/Annonce"])
->>>>>>> Stashed changes
+
       }
    
   );

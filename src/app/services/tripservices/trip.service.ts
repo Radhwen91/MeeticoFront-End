@@ -100,13 +100,10 @@ export class TripService {
     getFilesdetail(id:number): Observable<FileTrip> {
       return this.http.get<FileTrip>(`${this.getfiledetail}/${id}`);
     }
-<<<<<<< Updated upstream
-    affecterfileauvoyage(id:Number,idf:number,file :FileTrip):Observable<FileTrip>{
-      return this.http.put<FileTrip>("/api/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
-=======
+
     affecterfileauvoyage(id:Number,idf:number,trip :Trip):Observable<Trip>{
       return this.http.put<Trip>("http://localhost:8081/Trip/affecter-fileToTrip/"+id+"/"+idf,trip);
->>>>>>> Stashed changes
+
     }
     deletefile(id:Number): any{
       return this.http.delete(`${this.deletefiles}/${id}`);
