@@ -1,56 +1,84 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href ="/homelistTrip" >Home</a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
-                
+            <a class="navbar-brand" href="">Home</a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse"
+                data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation" (click)="sidebarToggle()">
+
             </button>
         </div>
         <div class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
+                        href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fab fa-twitter"></i>
                         <p class="d-lg-none">Twitter</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
+                        href="https://www.facebook.com/CreativeTim" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
+                        href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
                         <i class="fab fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom"
+                        href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
                         <i class="fab fa-github"></i>
                         <p class="d-lg-none">GitHub</p>
                     </a>
                 </li>
-                
-    
-        <li *ngFor="let menuItem of menuItemsFRONT" class="{{menuItem.class}} nav-item">
-            <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
-                <i class="ni {{menuItem.icon}}"></i>
-                {{menuItem.title}}
-            </a>
-        </li>
-    
-                
+                <li *ngFor="let menuItem of menuItemsFRONT" class="{{menuItem.class}} nav-item">
+                    <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+                        <i class="ni {{menuItem.icon}}"></i>
+                        {{menuItem.title}}
+                    </a>
+                </li>
                 <li class="nav-item" *ngIf="isHome()">
-                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
+                    <a class="nav-link" [routerLink]="['/sign-in']"><i class="nc-icon nc-key-25"></i> Login </a>
+                </li>
+                <li class="nav-item" *ngIf="isHome()">
+                    <a class="btn btn-danger btn-round" [routerLink]="['/login']">Admin Interface</a>
                 </li>
                 <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
-                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+                    <a [routerLink]="['/manage-users']" *ngIf="!isLogin()" class="nav-link"><i
+                            class="nc-icon nc-single-02" style="margin-right: 5px"></i>User Management</a>
+                    <a [routerLink]="['/home']" *ngIf="isLogin()" class="nav-link">Back to Home</a>
                 </li>
-                <li class="nav-item" *ngIf="isDocumentation()">
-                    <a href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">Have an issue</a>
+                <li class="nav-item" *ngIf="!isLogin() && !isHome()">
+                    <div ngbDropdown style="cursor: pointer">
+                        <a class="nav-link" ngbDropdownToggle>
+                            <div class="media align-items-center">
+                                <span class="avatar">
+                                    <img src="{{ user.picture ? user.picture : socialUser.photoUrl ? socialUser.photoUrl : 'assets/upload/default.jpg' }}"
+                                        class="img-circle img-no-padding img-responsive" style="max-width: 40px">
+                                </span>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm text-white font-weight-bold">{{ user.firstName ?
+                                        user.firstName : socialUser.firstName }}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div ngbDropdownMenu class="dropdown-info">
+                            <h6 class="text-sm m-2 text-center">Welcome aboard, {{ user.firstName ? user.firstName :
+                                socialUser.firstName }}!</h6>
+                            <a class="dropdown-item" [routerLink]="['/user-profile']"><i class="nc-icon nc-badge"></i>My
+                                Profile</a>
+                            <a class="dropdown-item" (click)="changePassword()"><i
+                                    class="nc-icon nc-settings-gear-65"></i>Change Password</a>
+                            <a class="dropdown-item" (click)="signOut()"><i class="nc-icon nc-user-run"></i>Sign Out</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -11,7 +11,7 @@ import { AcceuiltripComponent } from 'src/app/pages/trip-management/acceuiltrip/
 import { NgbdModalContent } from 'src/app/pages/modal/modal.component';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NouisliderModule } from 'ng2-nouislider';
-import {TestfaresComponent} from "../../pages/testfares/testfares.component";
+import { TestfaresComponent } from "../../pages/testfares/testfares.component";
 import {
   FrontPublicationComponent
 } from "../../pages/publication-management/front-publication/front-publication.component";
@@ -20,16 +20,16 @@ import {
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 import { MentionModule } from 'angular-mentions';
 
-import {MatButtonModule} from "@angular/material/button";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {CommentsManagementComponent} from "../../pages/comments-management/comments-management.component";
-import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatbot.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { CommentsManagementComponent } from "../../pages/comments-management/comments-management.component";
+import { ChatbotComponent } from "../../pages/publication-management/chatbot/chatbot.component";
 // import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { DetailtripComponent } from 'src/app/pages/trip-management/detailtrip/detailtrip.component';
 import { SearchdialogComponent } from 'src/app/pages/trip-management/searchdialog/searchdialog.component';
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
@@ -39,10 +39,20 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {ClipboardModule} from "ngx-clipboard";
-import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
+
+
+
 import { CardUserComponent } from 'src/app/pages/card-user/card-user.component';
 import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
+
+import { MentionModule } from 'angular-mentions';
+import { ClipboardModule } from "ngx-clipboard";
+import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
+import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
+import { MaterialModule } from 'src/app/material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
+
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -65,12 +75,16 @@ import { ShowEventComponent } from 'src/app/pages/show-event/show-event.componen
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MentionModule
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MentionModule,
+    MaterialModule,
+    NgxPaginationModule,
 
   ],
 
   declarations: [
-
     AcceuiltripComponent,
     DetailtripComponent,
     SearchdialogComponent,
@@ -78,6 +92,7 @@ import { ShowEventComponent } from 'src/app/pages/show-event/show-event.componen
     FrontPublicationComponent,
     UpdatePublicationComponent,
     CommentsManagementComponent,
+    UserManagementFrontComponent,
     ChatbotComponent,
     AddreclamationComponent,
     ReclamationManagementComponent,
@@ -88,15 +103,15 @@ import { ShowEventComponent } from 'src/app/pages/show-event/show-event.componen
     HomeTripComponent,
     ShowEventComponent,
    CardUserComponent,
+    SignInComponent
+
   ]
-  ,entryComponents: [NgbdModalContent],
-  exports: [
+  , entryComponents:
+    [NgbdModalContent]
+  , exports: [
     RouterModule
     
   ]
-
-
-
 })
 
-export class UserLayoutModule {}
+export class UserLayoutModule { }

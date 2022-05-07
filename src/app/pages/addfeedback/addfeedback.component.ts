@@ -52,7 +52,7 @@ public trip:Trip;
   }
 
   public getUsers(){
-    this.userservice.retrieveAllUsers().subscribe(
+    this.userservice.retrieveAllUsers(false, "userId").subscribe(
       data => {
         console.log(data);
         this.users = data;

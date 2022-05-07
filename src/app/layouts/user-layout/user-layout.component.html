@@ -29,21 +29,15 @@
           <div class="container">
               <div class="row">
                   <div class="col-lg-6 col-md-12">
-                      <h2 class="title" style="font-size:30px ;">Adresse</h2><br/>
-                      <p class="description" style="font-size:30px ;">
-                        1, 2 rue André Ampère - 2083 - Pôle Technologique - El Ghazala. 
+                      <h2 class="title">Nucleo Icons</h2><br/>
+                      <p class="description">
+                          Now UI Kit comes with 100 custom icons made by our friends from NucleoApp. The official package contains over 2.100 thin icons which are looking great in combination with Now UI Kit Make sure you check all of them and use those that you like the most.
                       </p><br/>
-                     
-                      <h2 class="title" style="font-size:30px ;">Email</h2><br/>
-                      <<p class="description" style="font-size:30px ;">
-                        <a>meetico@gmail.com</a>
-                      </p><br/>
-                      <h2 class="title" style="font-size:30px ;">Téléphone</h2><br/>
-                      <p class="description" style="font-size:30px ;">
-                        T (216) 52 943 945 
-                      </p><br/> 
+                      <a [routerLink]="['/nucleoicons']" class="btn btn-danger btn-round">View Demo Icons</a>
+                      <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-danger btn-round" target="_blank">View All Icons</a>
                   </div>
-                  <div class="col-lg-6 col-md-12" >
+
+                  <div class="col-lg-6 col-md-12">
                       <div class="icons-container">
                           <i class="nc-icon nc-time-alarm"></i>
                           <i class="nc-icon nc-atom"></i>
@@ -65,6 +59,37 @@
               </div>
           </div>
       </div>
+      <div class="section section-dark">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 ml-auto mr-auto text-center">
+                      <h2 class="title">Completed with examples</h2>
+                      <p class="description">The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go. More importantly, looking at them will give you a picture of what you can built with this powerful kit.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+     
+      <div class="section section-dark">
+          <div class="container">
+              <div class="row example-page">
+                  <div class="col-md-6 text-center" routerLinkActive="active">
+                      <a [routerLink]="['/landing']">
+                          <img src="./assets/img/examples/landing-page.JPG" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
+                          <a [routerLink]="['/landing']" class="btn btn-outline-neutral btn-round">Landing Page</a>
+                      </a>
+                  </div>
+
+                  <div class="col-md-6 text-center" routerLinkActive="active">
+                      <a [routerLink]="['/user-profile']">
+                          <img src="./assets/img/examples/profile-page.JPG" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
+                          <a [routerLink]="['/user-profile']" class="btn btn-outline-neutral btn-round">Profile Page</a>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+     
   </div>
 
 <app-footer-front></app-footer-front>

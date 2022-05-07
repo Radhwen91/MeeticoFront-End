@@ -1,14 +1,16 @@
-import { Status } from "./status";
 import { User } from "./user";
+
+enum Status { UNSENT, DELIVERED, SEEN, APPROVED }
+
 export class Request {
-	requestId: Number;
-	converted: Boolean;
-	email: String;
-	firstName: String;
-	gender: String;
-	lastName: String;
-	nic: String;
-	sender: User;
+	email: string;
+	firstName: string;
+	gender: string;
+	lastName: string;
+	nic: number;
+	phoneNumber: number;
+	requestId: number;
 	sendTime: Date;
+	sender: User;
 	status: Status;
 }

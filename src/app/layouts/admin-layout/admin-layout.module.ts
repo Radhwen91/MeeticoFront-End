@@ -56,7 +56,17 @@ import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-
 import { CardComponent } from 'src/app/pages/event-management/card/card.component';
 import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
 import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminProfileComponent } from 'src/app/pages/admin-profile/admin-profile.component';
+import { CalendarComponent } from 'src/app/pages/calendar/calendar.component';
+import { RequestManagementComponent } from 'src/app/pages/request-management/request-management.component';
+import { UserManagementComponent, UserDetailsDialog } from 'src/app/pages/user-management/user-management.component';
+import { VerificationComponent } from 'src/app/pages/verification/verification.component';
+import { MaterialModule } from 'src/app/material.module';
+import { NgxPaginationModule } from "ngx-pagination";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+
 
 
 
@@ -68,6 +78,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    NgbModule,
+    ClipboardModule,
+    NgxPaginationModule,
+    MaterialModule,
     FormsModule,
     HttpClientModule,
     NgbModule,
@@ -77,20 +95,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatCardModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-  
     CommonModule,
-
     NgxPaginationModule
-
-
-
+    MaterialModule
 
   ],
   declarations: [
@@ -125,13 +138,19 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CardComponent,
     ShowUComponent,
     UploadFilesComponent,
-    
+    CalendarComponent,
+    AdminProfileComponent,
+    UserDetailsDialog,
+    RequestManagementComponent,
+    VerificationComponent,
+    UserManagementComponent
   ],
   exports: [
-    RouterModule,
-    
+    CalendarComponent,
+    RouterModule
+  ],
+  entryComponents: [UserDetailsDialog]
 
-  ]
 })
 
 export class AdminLayoutModule {}
