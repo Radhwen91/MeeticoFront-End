@@ -263,7 +263,9 @@ export class ListPublication2Component implements OnInit {
         window.location.reload();
       }
 
+
     );
+
   }
 
 

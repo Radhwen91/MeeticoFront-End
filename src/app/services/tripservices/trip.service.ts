@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FileDB } from 'src/app/models/fileDB';
 import { User } from 'src/app/models/user';
 import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
+import {FileTrip} from "../../models/FileTrip";
 
 
 
@@ -15,29 +16,33 @@ const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json
 })
 export class TripService {
 
-  tripsUrl="http://localhost:8081/Trip/get-trip";
-  usersUrl="http://localhost:8081/user/retrieveAllUsers"
-  addtripsUrl="http://localhost:8081/Trip/ajouttrip";
-  deletetripsUrl="http://localhost:8081/Trip/delete-trip";
-  gettripsUrl="http://localhost:8081/Trip/get-trip";
-  updatetripsUrl="http://localhost:8081/Trip/update-trip";
-  pdfbytrip="http://localhost:8081/Trip/trip-to-pdf";
-  uploadfile="http://localhost:8081/File/upload";
-  uploadfilef="http://localhost:8081/File/uploadf";
-  getfile="http://localhost:8081/File/filesdevoyage";
-  affecterfile="http://localhost:8081/Trip/affecter-fileToTrip";
-  affecterusertrip="http://localhost:8081/Trip/affecter-utilisateur";
-  algmatching="http://localhost:8081/Trip/get-utilisateur-by-matching";
-  getfiledetail="http://localhost:8081/File/filesdetail";
-  deletefiles="http://localhost:8081/File/delete-file";
-  stat="http://localhost:8081/Trip/get-DestionationVisitorsCount";
-  sattm="http://localhost:8081/Trip/meilleur-destination";
-  gettripbyfile="http://localhost:8081/File/filebytrip"
+  tripsUrl="/api/Trip/get-trip";
+  usersUrl="/api/user/retrieveAllUsers"
+  addtripsUrl="/api/Trip/ajouttrip";
+  deletetripsUrl="/api/Trip/delete-trip";
+  gettripsUrl="/api/Trip/get-trip";
+  updatetripsUrl="/api/Trip/update-trip";
+  pdfbytrip="/api/Trip/trip-to-pdf";
+  uploadfile="/api/FileTrip/upload";
+  uploadfilef="/api/FileTrip/uploadf";
+  getfile="/api/FileTrip/filesdevoyage";
+  affecterfile="/api/Trip/affecter-fileToTrip";
+  affecterusertrip="/api/Trip/affecter-utilisateur";
+  algmatching="/api/Trip/get-utilisateur-by-matching";
+  getfiledetail="/api/FileTrip/filesdetail";
+  deletefiles="/api/FileTrip/delete-file";
+  stat="/api/Trip/get-DestionationVisitorsCount";
+  sattm="/api/Trip/meilleur-destination";
+  gettripbyfile="/api/FileTrip/filebytrip";
+  gettripbydestinationurl="/api/SpringMVC/Trip/get-trip-by-destination";
   constructor(private http : HttpClient) { }
-  
+
   getTrips() : Observable<Trip[]> {
     return this.http.get<Trip[]>(this.tripsUrl);
     }
+  gettripbydestination(destination:String) : Observable<Trip[]> {
+    return this.http.get<Trip[]>(`${this.gettripbydestinationurl}/${destination}`);
+  }
     getTripbyFile(id:number) : Observable<Trip> {
       return this.http.get<Trip>(`${this.gettripbyfile}/${id}`);
       }
@@ -51,7 +56,7 @@ export class TripService {
       return this.http.get<User[]>(this.usersUrl);
       }
       getUserssbymatching(destination:String,startdate:Date,city:String) : Observable<User[]> {
-        return this.http.get<User[]>("http://localhost:8081/Trip/get-utilisateur-by-matching/"+destination+"/"+startdate
+        return this.http.get<User[]>("/api/Trip/get-utilisateur-by-matching/"+destination+"/"+startdate
         +"/"+city);
         }
   ajoutTrip(trip :Trip,id:number): Observable<Trip>{
@@ -62,7 +67,7 @@ export class TripService {
   }
   getTrip(id:number): Observable<Trip>{
     return this.http.get<Trip>(`${this.gettripsUrl}/${id}`);
-  
+
   }
   updateTrip(id:number,trip :Trip): Observable<Trip>{
     return this.http.put<Trip>(`${this.updatetripsUrl}/${id}`,trip);
@@ -77,8 +82,8 @@ export class TripService {
         reportProgress: true,
         responseType: 'json'
       });
-     
-      return this.http.request(req);   
+
+      return this.http.request(req);
     }
       /*
       upload(file: File): Observable<number> {
@@ -89,23 +94,23 @@ export class TripService {
         return a;
       }*/
 
-    getFiles(id:Number): Observable<FileDB[]> {
-      return this.http.get<FileDB[]>(`${this.getfile}/${id}`);
+    getFiles(id:Number): Observable<FileTrip[]> {
+      return this.http.get<FileTrip[]>(`${this.getfile}/${id}`);
     }
-    getFilesdetail(id:number): Observable<FileDB> {
-      return this.http.get<FileDB>(`${this.getfiledetail}/${id}`);
+    getFilesdetail(id:number): Observable<FileTrip> {
+      return this.http.get<FileTrip>(`${this.getfiledetail}/${id}`);
     }
-    affecterfileauvoyage(id:Number,idf:number,file :FileDB):Observable<FileDB>{
-      return this.http.put<FileDB>("http://localhost:8081/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
+    affecterfileauvoyage(id:Number,idf:number,file :FileTrip):Observable<FileTrip>{
+      return this.http.put<FileTrip>("/api/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
     }
     deletefile(id:Number): any{
       return this.http.delete(`${this.deletefiles}/${id}`);
     }
     affectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
-      return this.http.put<Trip>("http://localhost:8081/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
+      return this.http.put<Trip>("/api/Trip/affecter-utilisateur/"+id+"/"+idu,trip);
     }
     desaffeteraffectusertrip(id:number,idu :number,trip :Trip): Observable<Trip>{
-      return this.http.put<Trip>("http://localhost:8081/Trip/delete-user-from-trip/"+id+"/"+idu,trip);
+      return this.http.put<Trip>("/api/Trip/delete-user-from-trip/"+id+"/"+idu,trip);
     }
-    
+
 }

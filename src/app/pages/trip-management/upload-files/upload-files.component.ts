@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FileDB } from 'src/app/models/fileDB';
 import { TripService } from 'src/app/services/tripservices/trip.service';
+import {FileTrip} from "../../../models/FileTrip";
 
 @Component({
   selector: 'app-upload-files',
@@ -17,8 +18,8 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   progress = 0;
   message = '';
   fileInfos: Observable<any>;
-  listfile: FileDB[];
-  file: FileDB;
+  listfile: FileTrip[];
+  file: FileTrip;
   id:number;
   idf:number[];
   constructor(private tripservice:TripService,private router:ActivatedRoute) { }
@@ -32,8 +33,8 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   }
 
   ngOnInit(): void {
-  
-    
+
+
   }
 
   selectFile(event) {
@@ -49,7 +50,7 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
           this.id=event.body;
-          
+
           this.tripservice.getFilesdetail(this.id).subscribe(
             data=>{
               this.file=data;
@@ -66,13 +67,13 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
                   }
                 )
               )
-              
-              
+
+
             }
           );
           //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
-        
-        
+
+
         }
       },
       err => {
@@ -93,5 +94,5 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
   }
   );
 }
-  
+
 }

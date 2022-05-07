@@ -7,6 +7,8 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
 
 import { Observable } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import {FileTrip} from "../../../models/FileTrip";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -16,21 +18,21 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 export class AjouterComponent implements OnInit {
 
   public tripForm: FormGroup;
-  listfile:FileDB[];
+  listfile:FileTrip[];
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
   trip:Trip;
   fileInfos: Observable<any>;
-  file: FileDB;
+  file: FileTrip;
   id:number;
-  constructor(private tripservice:TripService,private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private toastr : ToastrService,private tripservice:TripService,private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.initForm()
     this.listfile=[];
-    
+
   }
   initForm() {/*
     this.tripForm = new FormGroup({
@@ -45,7 +47,7 @@ export class AjouterComponent implements OnInit {
       endDate: ['', Validators.required],
       object: ['', [Validators.required, ,Validators.maxLength(50)]],
       file: [null, Validators.required],
-  
+
   });
   this.tripForm.valueChanges.subscribe(
     data=>{console.log(this.tripForm)}
@@ -59,6 +61,11 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   data=>{
     console.log(data)
     this.trip=data;
+    this.toastr.success('Trip Added Successfully ','Trip Added Successfully');
+    let audio = new Audio()
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
     this.progress = 0;
   this.currentFile = this.selectedFiles.item(0);
   this.tripservice.upload(this.currentFile).subscribe(
@@ -77,7 +84,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
                //this.listfile=res;
                this.router.navigate(["/trip-management"])
               }
-           
+
           );
           }
         );
@@ -96,7 +103,7 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
 selectFile(event) {
   this.selectedFiles = event.target.files;
 }
-upload() :FileDB{
+upload() :FileTrip{
   this.progress = 0;
   this.currentFile = this.selectedFiles.item(0);
   this.tripservice.upload(this.currentFile).subscribe(
@@ -109,10 +116,10 @@ upload() :FileDB{
           data=>{
             this.file=data;
             console.log('file',this.file)
-         
-            this.listfile.push(this.file);   
-            console.log(this.listfile)           
-            
+
+            this.listfile.push(this.file);
+            console.log(this.listfile)
+
           }
         );
 
@@ -127,8 +134,8 @@ upload() :FileDB{
   return this.file;
 }
 
-supprimer(file :FileDB){
-  
+supprimer(file :FileTrip){
+
   this.listfile.splice(this.listfile.indexOf(file),1)
 }
 
