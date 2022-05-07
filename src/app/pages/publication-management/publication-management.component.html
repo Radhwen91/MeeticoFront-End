@@ -32,7 +32,52 @@
                 </div>
 
               </div>
+              <div>
+                <div *ngIf="currentFile" class="progress">
+                  <div
+                    class="progress-bar progress-bar-info progress-bar-striped"
+                    role="progressbar"
+                    attr.aria-valuenow="{{ progress }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }"
+                  >
+                    {{ progress }}%
+                  </div>
+                </div>
+                <label class="btn btn-default">
+                  <input type="file" (change)="selectFile($event);upload()" />
+                </label>
 
+                <table class="table align-items-center table-flush">
+                  <tbody>
+
+
+
+                  <tr *ngFor="let file of listfile2">
+                    <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+                  </tr>
+                  </tbody>
+                </table>
+
+
+                <br> <br>
+
+              </div>
+
+
+
+
+              <table class="table align-items-center table-flush">
+                <tbody>
+
+
+
+                <tr *ngFor="let file of listfile2">
+                  <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
+                </tr>
+                </tbody>
+              </table>
 
               <button class="btn btn-success" type="button" [disabled]="f.invalid" (click)="addPub();playSound();showToatr();openSnackBar('Post added successfully ','Undo') "   > Save</button>
 
@@ -76,7 +121,7 @@
                   <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/901/901533.png
 "/></a>
 
-                  <a (click)="deletePub(row);showToatr2();playSound();openSnackBar('Post deleted successfully ','Undo')"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+                  <a (click)="deletePub(row);showToatr2();playSound();deletePub(row);openSnackBar('Post deleted successfully ','Undo')"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
 
 
 
@@ -87,10 +132,39 @@
                 </mat-cell>
               </ng-container>
 
+
+
+              <ng-container matColumnDef="..">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+
+
+
+                <mat-cell *matCellDef="let row">
+
+                  <div  *ngFor="let f of row.files">
+                    <div   class="matrowzied" >
+                      <input type="checkbox" id="btnControl"/>
+                      <label class="btn" for="btnControl"><img  src="http://localhost:8081/File/files/{{f.id}}" id="btnLeft" /></label>
+                    </div>
+
+
+                  </div>
+
+                </mat-cell>
+
+              </ng-container>
               <!-- Progress Column -->
               <ng-container matColumnDef="contents">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> contents </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.contents}} </mat-cell>
+
+
+
+                <mat-cell *matCellDef="let row"> {{row.contents}}
+
+
+
+                </mat-cell>
+
               </ng-container>
 
               <!-- Name Column -->
@@ -99,10 +173,10 @@
                 <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
               </ng-container>
 
-              <!--ng-container matColumnDef="userr">
+              <ng-container matColumnDef="userr">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> user </mat-header-cell>
-                <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.userr.firstName}} </mat-cell>
-              </ng-container-->
+                <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.userr.firstName}} {{row.userr.lastName}} </mat-cell>
+              </ng-container>
 
 
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

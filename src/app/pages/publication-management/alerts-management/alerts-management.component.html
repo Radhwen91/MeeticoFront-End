@@ -82,7 +82,7 @@
 
 
 
-<h1> Banned Users</h1>
+          <h1> Banned Users</h1>
 
           <mat-form-field>
 
@@ -110,14 +110,14 @@
 
               <ng-container matColumnDef="debloquer">
 
-                          <mat-header-cell *matHeaderCellDef mat-sort-header> debloquer </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> debloquer </mat-header-cell>
 
 
-                          <mat-cell *matCellDef="let row"> {{row.debloquer}}
+                <mat-cell *matCellDef="let row"> {{row.debloquer}}
 
-                <a (click)="debloqueruser(row);"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
+                  <a (click)="debloqueruser(row);"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"/></a>
 
-                          </mat-cell>
+                </mat-cell>
               </ng-container>
 
 

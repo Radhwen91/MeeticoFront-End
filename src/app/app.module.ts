@@ -24,21 +24,22 @@ import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    NgbModule,
-    RouterModule,
-    AppRoutingModule,
-    MatDialogModule,
-    AuthLayoutModule,
-    MatMenuModule,
-    SocialLoginModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        ComponentsModule,
+        NgbModule,
+        RouterModule,
+        AppRoutingModule,
+        MatDialogModule,
+        AuthLayoutModule,
+        MatMenuModule,
+        SocialLoginModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        PubLayoutModule
+    ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
@@ -47,10 +48,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ListCommentComponent,
     ChatComponent,
     PubLayoutComponent,
- 
+
 
   ],
-  providers: [ 
+  providers: [
      {
     provide: 'SocialAuthServiceConfig',
     useValue: {

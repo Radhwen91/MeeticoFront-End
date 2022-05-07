@@ -59,45 +59,45 @@ export class CreatePostComponent implements OnInit {
 
   addPub(){
     this.publicationservice.addPublication(this.publication).subscribe(
-        data=>{
-          console.log(data)
-          this.publication=data
-          this.toastr.success('Post Added Successfully ','Post Added Successfully');
-          console.log("dataaa111",this.publication.idPublication);
-          this.publicationservice.affecter(this.publication.idPublication,this.file.id,this.file).subscribe(
-            data=>{
+      data=>{
+        console.log(data)
+        this.publication=data
+        this.toastr.success('Post Added Successfully ','Post Added Successfully');
+        console.log("dataaa111",this.publication.idPublication);
+        this.publicationservice.affecter(this.publication.idPublication,this.file.id,this.file).subscribe(
+          data=>{
 
+          }
+
+        );
+
+
+        /////////////////
+        this.publicationservice.BadWords(this.publication.contents).subscribe(
+          data2=>{
+            this.etatbadword = data2
+
+            ///////////////////
+            if(data2===true){
+              const dialogRef = this.dialog.open( AlertComponent,
+              );
+              dialogRef.afterClosed().subscribe(data => {
+
+              });
+              let audio = new Audio()
+              audio.src= "../assets/alert.mp3"
+              audio.load();
+              audio.play();
+              this.toastr.error('Bad Word detected ','Bad Word detected');
             }
-
-          );
-
-
-          /////////////////
-          this.publicationservice.BadWords(this.publication.contents).subscribe(
-            data2=>{
-              this.etatbadword = data2
-
-             ///////////////////
-              if(data2===true){
-                  const dialogRef = this.dialog.open( AlertComponent,
-                   );
-                   dialogRef.afterClosed().subscribe(data => {
-
-                   });
-                let audio = new Audio()
-                audio.src= "../assets/alert.mp3"
-                audio.load();
-                audio.play();
-                this.toastr.error('Bad Word detected ','Bad Word detected');
-              }
-            } );
-              ///////////
+          } );
+        ///////////
 
 
 
 
 
-        }
+      }
 
     );
 
@@ -123,8 +123,8 @@ export class CreatePostComponent implements OnInit {
             data=>{
               this.file=data;
               console.log('file',this.file)
-             // this.listfile2.push(this.file);
-            //  console.log('////////',this.listfile2)
+              // this.listfile2.push(this.file);
+              //  console.log('////////',this.listfile2)
             }
           );
 

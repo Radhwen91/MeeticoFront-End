@@ -39,9 +39,12 @@ export class ListPublication2Component implements OnInit {
   comment : Comment= new Comment();
   public listComments:any
   public listCom:Comment[]=[];
-public nbrlistCom:any[]=[];
+  public nbrlistCom:any[]=[];
   nbrLike : number;
   public listnbrLike:number[];
+  public listowneduser:number[]=[];
+
+
   public listnbrdisike:number[]=[];
   lang;
 
@@ -51,7 +54,21 @@ public nbrlistCom:any[]=[];
 
 
   }
+
   private  snackBar: MatSnackBar
+
+  ownedornot : number;
+  OwnedUser(){
+
+    ///////////
+
+
+
+
+
+  }
+
+
 
 
   openSnackBar(message,action){
@@ -116,18 +133,28 @@ public nbrlistCom:any[]=[];
         //console.log(res);
         this.listPub=res;
         let id: Publication =res.idPublication;
-    /*    this.publicationservice.ListComments(1).subscribe(
 
-          res2=>{
-            // this.listCom=res;
-            console.log("liscomenntssss"+this.listCom)
-            //   console.log("liscomenntssss2"+res2)
 
-          } );
-*/
+        /*    this.publicationservice.ListComments(1).subscribe(
+
+              res2=>{
+                // this.listCom=res;
+                console.log("liscomenntssss"+this.listCom)
+                //   console.log("liscomenntssss2"+res2)
+
+              } );
+    */
         for(let i in this.listPub){
 
 
+          this.publicationservice.PublicationOwner(this.listPub[i].idPublication).subscribe(
+            data2=>{
+              // this.ownedornot = data2
+              this.listowneduser.push(data2);
+              console.log('aaaaaaa',data2);
+              ///////////////////
+
+            } );
           this.publicationservice.getNbrLike(this.listPub[i].idPublication).subscribe(
             data=>{
               //console.log("nbrlikes",data)
@@ -179,10 +206,10 @@ public nbrlistCom:any[]=[];
 
 
     );
-   // console.warn('r',r);
+    // console.warn('r',r);
 
     dialogRef.afterClosed().subscribe(data => {
-     // console.log(`Dialog result: ${data}`);
+      // console.log(`Dialog result: ${data}`);
     });
   }
   addLike2(post,reaction)
@@ -209,7 +236,7 @@ public nbrlistCom:any[]=[];
 
       data=>{
         //console.log(res);
-
+        window.location.reload();
       }
     );
   }
@@ -221,7 +248,7 @@ public nbrlistCom:any[]=[];
 
       data=>{
         //console.log(res);
-
+        window.location.reload();
       }
     );
   }
@@ -233,7 +260,9 @@ public nbrlistCom:any[]=[];
       data=>{
         this.toastr.success('Comment Added Successfully ','Comment Added Successfully');
         this.router.navigate(["/home"])
+        window.location.reload();
       }
+
     );
   }
 
