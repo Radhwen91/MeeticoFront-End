@@ -34,11 +34,16 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
 import {AddreclamationComponent} from "../../pages/addreclamation/addreclamation.component";
 import {AddfeedbackComponent} from "../../pages/addfeedback/addfeedback.component";
 import { TripManagementComponent } from 'src/app/pages/trip-management/trip-management.component';
+import { ChatComponent } from 'src/app/chat/chat.component';
+import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
+import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-event.component';
+import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
 import { AdminProfileComponent } from 'src/app/pages/admin-profile/admin-profile.component';
 import { CalendarComponent } from 'src/app/pages/calendar/calendar.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { RequestManagementComponent } from 'src/app/pages/request-management/request-management.component';
 import { VerificationComponent } from 'src/app/pages/verification/verification.component';
+
 
 
 
@@ -65,20 +70,27 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'trip-management/image/:id',           component: ImageComponent },
     { path: 'acceuiltrip',           component: AcceuiltripbackComponent },
     { path: 'detailback/:id',      component: DetailtripbackComponent },
-  { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
-  { path: 'list-comments-back',           component: ListCommentsBackComponent },
-  { path: 'publication-ajout',           component: PublicationAjoutComponent },
+
+    { path: 'update-publication-back',           component: UpdatePublicationBackComponent },
+    { path: 'list-comments-back',           component: ListCommentsBackComponent },
+    { path: 'publication-ajout',           component: PublicationAjoutComponent },
+    { path: 'publication-management',component: PublicationManagementComponent },
+    { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
+ 
+    { path: 'event-management/addevent',           component: AddEventComponent },
+    { path: 'event-management/edit/:id',           component: UpdateComponent },
+    { path: 'event-management/showusers/:id',           component: ShowUComponent },
+    { path: 'chat',           component: ChatComponent },
+
   { path: 'user-management',component: UserManagementComponent },
   { path: 'event-management',component: EventManagementComponent },
   { path: 'feedback-management', component: FeedbackManagementComponent },
-  { path: 'publication-management',component: PublicationManagementComponent },
-  { path: 'reclamation-management-admin', component: ReclamationManagementAdminComponent },
-  { path: 'test',component: UploadImageComponent},
+  
   { path: 'calendar',           component: CalendarComponent },
   { path: 'verification',       component: VerificationComponent },
   { path: 'admin-profile',   component: AdminProfileComponent },
-  { path: 'reclamation-management',           component: ReclamationManagementComponent },
   { path: 'request-management',           component: RequestManagementComponent }
+
 ];
 
 

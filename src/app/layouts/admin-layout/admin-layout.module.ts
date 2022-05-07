@@ -36,6 +36,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {PublicationManagementComponent} from "../../pages/publication-management/publication-management.component";
+
 import {
   UpdatePublicationBackComponent
 } from "../../pages/publication-management/update-publication-back/update-publication-back.component";
@@ -51,6 +52,10 @@ import {
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
+import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-event.component';
+import { CardComponent } from 'src/app/pages/event-management/card/card.component';
+import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
+import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
 import { AdminProfileComponent } from 'src/app/pages/admin-profile/admin-profile.component';
 import { CalendarComponent } from 'src/app/pages/calendar/calendar.component';
 import { RequestManagementComponent } from 'src/app/pages/request-management/request-management.component';
@@ -60,6 +65,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { NgxPaginationModule } from "ngx-pagination";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 
 
 
@@ -95,8 +101,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-    NgxPaginationModule,
+    CommonModule,
+    NgxPaginationModule
     MaterialModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -125,6 +133,11 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     PublicationAjoutComponent,
     AlertsManagementComponent,
     DetailFeedbackComponent,
+    AddEventComponent,
+    UpdateComponent,
+    CardComponent,
+    ShowUComponent,
+    UploadFilesComponent,
     CalendarComponent,
     AdminProfileComponent,
     UserDetailsDialog,
@@ -137,6 +150,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     RouterModule
   ],
   entryComponents: [UserDetailsDialog]
+
 })
 
 export class AdminLayoutModule {}

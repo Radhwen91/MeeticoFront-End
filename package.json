@@ -27,7 +27,11 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "^2.11.4",
+
+    "@stomp/stompjs": "^6.1.2",
+
     "angular-calendar": "^0.29.0",
+
     "angular-mentions": "^1.4.0",
     "angularx-social-login": "^4.1.0",
     "bootstrap": "4.6.1",
@@ -51,6 +55,7 @@
     "process": "^0.11.10",
     "pusher-js": "^7.0.4",
     "rxjs": "^7.5.5",
+    "sockjs-client": "^1.6.0",
     "sweetalert2": "^11.4.9",
     "tesseract.js": "^2.1.5",
     "zone.js": "~0.11.5"

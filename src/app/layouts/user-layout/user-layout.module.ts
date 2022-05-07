@@ -18,7 +18,7 @@ import {
 import {
   UpdatePublicationComponent
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
-
+import { MentionModule } from 'angular-mentions';
 
 import { MatButtonModule } from "@angular/material/button";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
@@ -39,6 +39,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FeedbackManagementUserComponent } from 'src/app/pages/feedback-management-user/feedback-management-user.component';
 import { UpdateFeedbackComponent } from 'src/app/pages/update-feedback/update-feedback.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+
+
+import { CardUserComponent } from 'src/app/pages/card-user/card-user.component';
+import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
+
 import { MentionModule } from 'angular-mentions';
 import { ClipboardModule } from "ngx-clipboard";
 import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
@@ -46,6 +52,7 @@ import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
 import { MaterialModule } from 'src/app/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
+
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -59,15 +66,12 @@ import { UserManagementFrontComponent } from 'src/app/pages/user-management-fron
     JwBootstrapSwitchNg2Module,
     MatCardModule,
     ReactiveFormsModule,
-    CommonModule,
     ClipboardModule,
     NgxSpinnerModule,
     MatPaginatorModule,
     MatTableModule,
-    MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
@@ -77,6 +81,7 @@ import { UserManagementFrontComponent } from 'src/app/pages/user-management-fron
     MentionModule,
     MaterialModule,
     NgxPaginationModule,
+
   ],
 
   declarations: [
@@ -96,12 +101,16 @@ import { UserManagementFrontComponent } from 'src/app/pages/user-management-fron
     DetailFeedbackUserComponent,
     UpdateFeedbackComponent,
     HomeTripComponent,
+    ShowEventComponent,
+   CardUserComponent,
     SignInComponent
+
   ]
   , entryComponents:
     [NgbdModalContent]
   , exports: [
     RouterModule
+    
   ]
 })
 

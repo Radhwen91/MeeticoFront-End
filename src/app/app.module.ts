@@ -15,11 +15,14 @@ import {AuthLayoutModule} from "./layouts/auth-layout/auth-layout.module";
 import {MatMenuModule} from "@angular/material/menu";
 import { ToastrModule} from "ngx-toastr";
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { PubLayoutModule } from './layouts/pub-layout/pub-layout.module';
+import { ChatComponent } from './chat/chat.component';
 import { HomeTripComponent } from './pages/home-trip/home-trip.component';
 import { GoogleLoginProvider, FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -41,8 +44,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     AdminLayoutComponent,
     AuthLayoutComponent,
     UserLayoutComponent,
+    ListCommentComponent,
+    ChatComponent
    PubLayoutComponent,
-    ListCommentComponent
+ 
+
   ],
   providers: [ 
      {

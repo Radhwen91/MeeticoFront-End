@@ -1,1 +1,28 @@
-<p>event-management works!</p>
+ 
+      <div class="header-body">
+
+        <button type="button" class="btn btn-outline-success"(click)="addEventDialog()" style="height: 60px; width: 100px;">Add New Event</button>
+
+      </div>
+    
+  <!-- Page content -->
+ 
+  <div class="row">
+    <div class="col-sm-6" *ngFor="let e of listeven | paginate: { itemsPerPage: 4, currentPage: p } ;  let i = index   ">
+     
+      
+     <app-card  [eventt]="e"  [identifiant]="e.idEvent" (notifdelete)="deleteEvent($event)"   (notifstat)="statEventt($event)"></app-card>
+
+
+
+    
+    
+    </div>
+     <div class="pagination-container" >
+       
+    
+  </div>
+</div>
+    
+
+

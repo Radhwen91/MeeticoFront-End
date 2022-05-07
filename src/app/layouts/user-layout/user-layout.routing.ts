@@ -17,8 +17,11 @@ import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatb
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
+import { ChatComponent } from 'src/app/chat/chat.component';
 import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
+
 
 
 
@@ -33,20 +36,19 @@ export const UserLayoutRoutes: Routes = [
      { path: 'homeTrip',      component: AcceuiltripComponent },
      { path: 'homelistTrip',      component: HomeTripComponent },
      { path: 'detail/:id',      component: DetailtripComponent },
-  { path: 'testfares',      component: TestfaresComponent },
-  { path: 'frontpublication',      component: FrontPublicationComponent },
-  { path: 'update-publication',           component: UpdatePublicationComponent },
-  { path: 'comments-management',           component: CommentsManagementComponent },
-  { path: 'chatbot',           component: ChatbotComponent },
-    { path:  'reclamation-management/addReclamation',   component: AddreclamationComponent },
-    { path:  'reclamation-management',                  component: ReclamationManagementComponent },
-    { path:  'feedback-management-user',                component: FeedbackManagementUserComponent },
-    { path:  'AddFeedback',                             component: AddfeedbackComponent},
+     { path: 'testfares',      component: TestfaresComponent },
+     { path: 'frontpublication',      component: FrontPublicationComponent },
+     { path: 'update-publication',           component: UpdatePublicationComponent },
+     { path: 'comments-management',           component: CommentsManagementComponent },
+     { path: 'chatbot',           component: ChatbotComponent },
+     { path: 'reclamation-management/addReclamation',   component: AddreclamationComponent },
+     { path: 'reclamation-management',                  component: ReclamationManagementComponent },
+     { path: 'feedback-management-user',                component: FeedbackManagementUserComponent },
+     { path: 'AddFeedback',                             component: AddfeedbackComponent},
+     { path: 'showevent',      component: ShowEventComponent },
+     { path: 'chat',      component: ChatComponent }
      { path: 'landing',                                 component: LandingComponent },
      { path: 'nucleoicons',                             component: NucleoiconsComponent },
-     
-
-     
 
 
 ];
