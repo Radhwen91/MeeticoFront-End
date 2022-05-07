@@ -154,7 +154,7 @@ upload() {
       this.message = 'Could not upload the file!';
       this.currentFile = undefined;
     });
-  ;
+
 }
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
