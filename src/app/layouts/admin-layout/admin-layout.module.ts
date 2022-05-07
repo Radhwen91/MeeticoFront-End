@@ -72,7 +72,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 
- import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   imports: [
@@ -104,7 +104,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CommonModule,
     NgxPaginationModule,
     MaterialModule,
-    ToastrModule
+    
 
   ],
   declarations: [
