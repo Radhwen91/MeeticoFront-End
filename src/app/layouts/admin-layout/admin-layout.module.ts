@@ -36,6 +36,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {PublicationManagementComponent} from "../../pages/publication-management/publication-management.component";
+
 import {
   UpdatePublicationBackComponent
 } from "../../pages/publication-management/update-publication-back/update-publication-back.component";
@@ -51,7 +52,11 @@ import {
 import { AnswerAdminComponent } from 'src/app/pages/answer-admin/answer-admin.component';
 import { DetailReclamationComponent } from 'src/app/pages/detail-reclamation/detail-reclamation.component';
 import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-management-admin/reclamation-management-admin.component';
-
+import { AddEventComponent } from 'src/app/pages/event-management/add-event/add-event.component';
+import { CardComponent } from 'src/app/pages/event-management/card/card.component';
+import { ShowUComponent } from 'src/app/pages/event-management/show-u/show-u.component';
+import { UpdateComponent } from 'src/app/pages/event-management/update/update.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -79,8 +84,10 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
+  
+    CommonModule,
 
-   
+    NgxPaginationModule
 
 
 
@@ -113,9 +120,16 @@ import { ReclamationManagementAdminComponent } from 'src/app/pages/reclamation-m
     PublicationAjoutComponent,
     AlertsManagementComponent,
     DetailFeedbackComponent,
+    AddEventComponent,
+    UpdateComponent,
+    CardComponent,
+    ShowUComponent,
+    UploadFilesComponent,
+    
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    
 
   ]
 })

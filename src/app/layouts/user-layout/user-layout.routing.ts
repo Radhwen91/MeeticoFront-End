@@ -19,6 +19,8 @@ import {ChatbotComponent} from "../../pages/publication-management/chatbot/chatb
 import { AddreclamationComponent } from 'src/app/pages/addreclamation/addreclamation.component';
 import { ReclamationManagementComponent } from 'src/app/pages/reclamation-management/reclamation-management.component';
 import { AddfeedbackComponent } from 'src/app/pages/addfeedback/addfeedback.component';
+import { ShowEventComponent } from 'src/app/pages/show-event/show-event.component';
+import { ChatComponent } from 'src/app/chat/chat.component';
 
 
 
@@ -42,4 +44,9 @@ export const UserLayoutRoutes: Routes = [
      { path: 'reclamation-management',                  component: ReclamationManagementComponent },
      { path: 'feedback-management-user',                component: FeedbackManagementUserComponent },
      { path: 'AddFeedback',                             component: AddfeedbackComponent},
+
+
+     { path: 'showevent',      component: ShowEventComponent },
+     { path: 'chat',      component: ChatComponent }
+
 ];

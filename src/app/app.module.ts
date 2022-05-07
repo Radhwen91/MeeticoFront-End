@@ -16,6 +16,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ToastrModule} from "ngx-toastr";
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { PubLayoutModule } from './layouts/pub-layout/pub-layout.module';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -46,7 +47,8 @@ import { PubLayoutModule } from './layouts/pub-layout/pub-layout.module';
     PubLayoutComponent,
     UserLayoutComponent,
     ListCommentComponent,
-    
+    ChatComponent
+
     
 
 

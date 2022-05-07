@@ -1,0 +1,53 @@
+<br>
+<br>
+    <div class="card"  style="width: 22rem; ">
+      <div >
+        
+      <span *ngIf="events.image.content">
+        <img  [src]="convert(events.image.content)" height="300px"  class="card-img-top"  alt="Image placeholder">
+      </span>
+    </div>
+      <div class="card-body">
+
+        <h3 class="card-title">Title:  {{eventt.title}}   </h3>
+        <p class="card-text">{{eventt.description}} </p>
+
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar"  attr.aria-valuenow="{{stat}}"  [style.width]="stat+'%'" aria-valuemin="0" aria-valuemax="100">{{stat}}</div>
+        </div>
+        <p class="card-text">Capacity: {{eventt.capacity}} </p>
+
+        <p class="card-text">Date: {{eventt.dateEvent | date:'yyyy-MM-dd'}} </p>
+
+
+
+
+        <p><p class="card-text"><small class="text-muted">
+          <a (click)="showDetail(eventt)"  class="btn btn-primary">Update</a>   </small>
+        </p>
+        <p class="card-text"><small class="text-muted">
+          <a (click)="deleteEvent()"  class="btn btn-primary">Delete</a> </small>
+        </p>
+        <p class="card-text"><small class="text-muted">
+          <a [routerLink]=" ['showusers',eventt.idEvent]"  class="btn btn-primary">Get user</a>  </small>
+        </p>
+      
+      
+        
+
+
+
+          
+
+
+
+
+        </div>
+
+      
+      
+     
+</div>
+
+      
+  
