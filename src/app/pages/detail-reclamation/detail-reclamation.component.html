@@ -1,26 +1,26 @@
 
 <h1 mat-dialog-title>Detail reclamation</h1>
 <mat-dialog-content class="mat-typography">
- <h3 style="color:blue">Title of reclamation:</h3>
+ <h3>Title of reclamation:</h3>
  <label>{{data.title}}</label>
- <h3 style="color:blue">Description of reclamation:</h3>
+ <h3>Description of reclamation:</h3>
  <label>{{data.description}}</label>
- <h3 style="color:blue">Picture of reclamation:</h3>
+ <h3>Picture of reclamation:</h3>
  <img  [src]=picture.pictureUrl>
- <h3 style="color:blue"> Type of reclamation:</h3>
+ <h3> Type of reclamation:</h3>
  <label>{{data.type}}</label>
- <h3 style="color:blue">Priority of reclamation:</h3>
+ <h3>Priority of reclamation:</h3>
  <label>{{data.priority}}</label>
- <h3 style="color:blue">SendingDate of reclamation:</h3>
+ <h3>SendingDate of reclamation:</h3>
  <label>{{data.sendingdate}}</label>
- <h3 style="color:blue">Last modification date of reclamation:</h3>
+ <h3>Last modification date of reclamation:</h3>
  <label>{{data.lastModificationDate}}</label>
- <h3 style="color:blue">Status:</h3>
+ <h3>Status:</h3>
  <label>{{data.status}}</label>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   
-  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Back</button>
-  
+  <button type="button" mat-button mat-dialog-close class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-success"mat-button [mat-dialog-close]="true" cdkFocusInitial>Success</button>
   
 </mat-dialog-actions>

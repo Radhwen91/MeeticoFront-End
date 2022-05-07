@@ -19,36 +19,36 @@
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
-            <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
+            <span id="avatar" class="avatar avatar-sm rounded-circle">
+              <img src="{{ user.picture ? user.picture : socialUser.photoUrl ? socialUser.photoUrl : 'assets/upload/default.jpg' }}">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+              <span class="mb-0 text-sm text-dark font-weight-bold">{{ user.firstName ? user.firstName : socialUser.firstName }}</span>
             </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome!</h6>
+            <h6 class="text-overflow m-0 text-center" >Welcome aboard, {{ user.firstName ? user.firstName : socialUser.firstName }}!</h6>
           </div>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+          <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item" *ngIf="getTitle() != 'Verification'">
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+          <a routerLinkActive="active" [routerLink]="['/calendar']" class="dropdown-item" *ngIf="getTitle() != 'Verification'">
             <i class="ni ni-calendar-grid-58"></i>
             <span>Activity</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+          <!-- <a routerLinkActive="active" [routerLink]="['/admin-profile']" class="dropdown-item" *ngIf="getTitle() != 'Verification'">
             <i class="ni ni-support-16"></i>
             <span>Support</span>
+          </a> -->
+          <a routerLinkActive="active" class="dropdown-item" (click)="changePassword()">
+            <i class="ni ni-settings-gear-65"></i>
+            <span>Change Password</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a class="dropdown-item" (click)="signOut()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>

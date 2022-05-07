@@ -12,7 +12,7 @@
       <p class=" card-small-font--gray">{{i.date}}</p>
     </div>
 
-    <div   class="dropdown">
+    <div class="dropdown">
       <button class="btn2"mat-raised-button [matMenuTriggerFor]="menu"><i class="fas fa-ellipsis-h"></i></button>
 
       <mat-menu #menu="matMenu" >
@@ -35,11 +35,8 @@
   </p>
 
 
-<div *ngFor="let f of i.files">
-  <img width="200" height="200" alt="..."  src="http://localhost:8081/File/files/{{f.id}}" >
 
-
-</div>
+    <img width="200" height="200" alt="..."  src="http://localhost:8081/File/files/{{i.idPublication}}" >
 
 
 

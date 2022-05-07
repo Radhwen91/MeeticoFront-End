@@ -23,7 +23,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": [
-              "chart.js"
+              "chart.js",
+              "pdfjs-dist",
+              "tesseract.js"
             ],
             "assets": [
               "src/favicon.ico",
@@ -74,14 +76,7 @@
               "sourceMap": true,
               "namedChunks": true,
               "buildOptimizer": false,
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": true
-                },
-                "fonts": true
-              },
+              "optimization": false,
               "outputHashing": "all"
             }
           }

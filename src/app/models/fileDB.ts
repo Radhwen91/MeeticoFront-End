@@ -1,10 +1,6 @@
 
 import { Trip } from "./trip";
 import {Publication} from './publication';
-
-
-
-
 export class FileDB {
     id:number;
     name:String;
@@ -13,5 +9,5 @@ export class FileDB {
     trip :Trip;
    publication :Publication;
 }
-
+    
 

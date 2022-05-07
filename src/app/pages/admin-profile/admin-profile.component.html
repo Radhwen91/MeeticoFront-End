@@ -1,0 +1,114 @@
+<div class="header pb-8 pt-lg-8">
+  <span class="mask bg-gradient-danger opacity-8"></span>
+</div>
+<div class="container-fluid mt--9" style="margin-left: 25ex;">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+            <label class="card-profile-image" style="margin-bottom: 10ex; margin-left: 15ex;">
+              <input #imageInput id="input-picture" type="file" accept="image/*" (change)="uploadPicture($event)">
+              <img src="{{ user.picture ? user.picture : 'assets/upload/default.jpg'}}" class="rounded-circle">
+            </label>
+          </div>
+          <div [hidden]="!disabled" class="col-4 text-right">
+            <a class="btn btn-sm btn-primary" (click)="editProfile()">Edit profile</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">First name</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="First name" name="firstName" [(ngModel)]="user.firstName">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Last name</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Last name" name="lastName" [(ngModel)]="user.lastName">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Gender</label>
+                    <select [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" name="gender" [(ngModel)]="user.gender">
+                      <option value="null" hidden>Undefined</option>
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Birthday</label>
+                    <input [attr.disabled]="disabled ? true : null" type="date" class="form-control form-control-alternative" placeholder="Birthday" name="birthday" [(ngModel)]="user.birthday">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Username</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Username" name="username" [(ngModel)]="user.username">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Email address</label>
+                    <input [attr.disabled]="disabled ? true : null" type="email" class="form-control form-control-alternative" placeholder="Email address" name="email" [(ngModel)]="user.email">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4" style="margin-left: 245px;">
+                  <div class="form-group">
+                    <label class="form-control-label">Phone Number</label>
+                    <input [attr.disabled]="disabled ? true : null" type="tel" class="form-control form-control-alternative" placeholder="Phone number" name="phoneBumber" [(ngModel)]="user.phoneNumber">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Home address</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Home address" name="homeAddress" [(ngModel)]="address[0]">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">City</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="City" name="city" [(ngModel)]="address[1]">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Country</label>
+                    <input [attr.disabled]="disabled ? true : null" type="text" class="form-control form-control-alternative" placeholder="Country" name="country" [(ngModel)]="address[2]">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center" [hidden]="disabled" >
+              <a class="btn btn-info" (click)="updateProfile()">Update profile</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

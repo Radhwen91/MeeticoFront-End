@@ -42,9 +42,6 @@ export class ListPublication2Component implements OnInit {
 public nbrlistCom:any[]=[];
   nbrLike : number;
   public listnbrLike:number[];
-  public listowneduser:number[]=[];
-
-
   public listnbrdisike:number[]=[];
   lang;
 
@@ -54,21 +51,7 @@ public nbrlistCom:any[]=[];
 
 
   }
-
   private  snackBar: MatSnackBar
-
-  ownedornot : number;
-  OwnedUser(){
-
-    ///////////
-
-
-
-
-
-  }
-
-
 
 
   openSnackBar(message,action){
@@ -133,8 +116,6 @@ public nbrlistCom:any[]=[];
         //console.log(res);
         this.listPub=res;
         let id: Publication =res.idPublication;
-
-
     /*    this.publicationservice.ListComments(1).subscribe(
 
           res2=>{
@@ -147,14 +128,6 @@ public nbrlistCom:any[]=[];
         for(let i in this.listPub){
 
 
-          this.publicationservice.PublicationOwner(this.listPub[i].idPublication).subscribe(
-            data2=>{
-             // this.ownedornot = data2
-              this.listowneduser.push(data2);
-              console.log('aaaaaaa',data2);
-              ///////////////////
-
-            } );
           this.publicationservice.getNbrLike(this.listPub[i].idPublication).subscribe(
             data=>{
               //console.log("nbrlikes",data)
