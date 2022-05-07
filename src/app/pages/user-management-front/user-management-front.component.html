@@ -1,0 +1,155 @@
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="null"
+    style="background-image: url('./assets/img/soroush-karimi.jpg');">
+    <div class="filter"></div>
+  </div>
+  <div class="section profile-content">
+    <div class="container">
+      <div class="owner">
+        <label class="avatar"></label>
+      </div>
+      <div class="col-md-6 ml-auto mr-auto text-center" style="display: flex;">
+        <input class="btn btn-outline-default btn-round" style="max-width: 40ex" type="file"
+          accept="application/pdf, image/*" (change)="readFile($event)"> OR ELSE <div
+          [style]="disabled ? 'pointer-events: none; cursor: default' : ''" class="col-4 text-right">
+          <a class="btn btn-sm btn-primary" [style]="disabled ? 'background-color: grey; border-color: grey' : ''"
+            (click)="editProfile()">Custom Fields</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <form>
+          <p class="text-center">{{ waitingText }}</p>
+          <h6 class="heading-small text-muted mb-4">Account Request</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">First Name</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="First Name" name="firstName"
+                    [(ngModel)]="request.firstName">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Last Name</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Last Name" name="lastName"
+                    [(ngModel)]="request.lastName">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Gender</label>
+                  <select [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" name="gender" [(ngModel)]="request.gender">
+                    <option value="false" hidden>Undefined</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6 ml-auto mr-auto">
+                <div class="form-group">
+                  <label class="form-control-label">National Identity Card</label>
+                  <input [attr.disabled]="disabled ? null : false" type="number"
+                    class="form-control form-control-alternative" placeholder="National Identity Card" name="nic"
+                    [(ngModel)]="request.nic">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Email Address</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Email Address" name="email"
+                    [(ngModel)]="request.email">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Phone Number</label>
+                  <input [attr.disabled]="disabled ? null : false" type="text"
+                    class="form-control form-control-alternative" placeholder="Phone Number" name="phoneNumber"
+                    [(ngModel)]="request.phoneNumber">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center" [hidden]="!disabled">
+            <a class="btn btn-danger ml-auto mr-auto" (click)="createRequest()">Create Request</a>
+          </div>
+          <hr class="my-4" />
+        </form>
+      </div>
+      <br />
+      <div class="container-fluid mt--7">
+        <!-- Table -->
+        <div class="row">
+          <div class="col">
+            <div class="card shadow">
+              <div class="card-header border-0">
+                <h3 class="mb-0">Requests List</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Request ID</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Gender</th>
+                      <th scope="col">Email Address</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let request of requests | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <div class="media-body">
+                            <span class="mb-0 text-sm"> {{ request.requestId }} </span>
+                          </div>
+                        </div>
+                      </th>
+                      <td>
+                        {{ request.firstName + ' ' + request.lastName }}
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-warning"></i> {{ request.gender }}
+                        </span>
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-warning"></i> {{ request.email }}
+                        </span>
+                      </td>
+                      <td>
+                      <td>
+                        <button class="btn-sm bg-transparent" style="border: transparent; color: orangered" (click)="openRemoveModal(request)">
+                          <span class="material-icons">delete</span> 
+                        </button>
+                        <button class="btn-sm bg-transparent" style="border: transparent; color: turquoise" (click)="openUpdateDialog(request)">
+                          <span class="material-icons">update</span> 
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer py-4">
+                <nav aria-label="...">
+                  <ul class="pagination mb-0 float-right">
+                    <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

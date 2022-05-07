@@ -42,6 +42,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MentionModule } from 'angular-mentions';
 import {ClipboardModule} from "ngx-clipboard";
 import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
+import { SignInComponent } from 'src/app/pages/sign-in/sign-in.component';
+import { MaterialModule } from 'src/app/material.module';
+import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination.module';
+import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
@@ -71,16 +75,11 @@ import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
     ReactiveFormsModule,
     MatPaginatorModule,
     MentionModule,
-
-
-
-
-
-
+    MaterialModule,
+    NgxPaginationModule,
   ],
 
   declarations: [
-
     AcceuiltripComponent,
     DetailtripComponent,
     SearchdialogComponent,
@@ -88,6 +87,7 @@ import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
     FrontPublicationComponent,
     UpdatePublicationComponent,
     CommentsManagementComponent,
+    UserManagementFrontComponent,
     ChatbotComponent,
     AddreclamationComponent,
     ReclamationManagementComponent,
@@ -96,10 +96,11 @@ import { HomeTripComponent } from 'src/app/pages/home-trip/home-trip.component';
     DetailFeedbackUserComponent,
     UpdateFeedbackComponent,
     HomeTripComponent,
-
+    SignInComponent
   ]
-  ,entryComponents: [NgbdModalContent],
-  exports: [
+  ,entryComponents:
+  [NgbdModalContent]
+  ,exports: [
     RouterModule
   ]
 

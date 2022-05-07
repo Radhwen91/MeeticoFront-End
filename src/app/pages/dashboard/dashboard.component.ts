@@ -10,13 +10,9 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
-
-import {User} from "../../models/user";
-import {PublicationService} from "../../services/publication.service";
-
 import { TripService } from 'src/app/services/tripservices/trip.service';
 import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
-
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,30 +32,11 @@ export class DashboardComponent implements OnInit {
   nbrReclamationEnAttente:Number;
   priority ="NORMAL";
   type="OTHER";
-
-  bestuser : User;
-  nbrpubbestuser: number;
-  constructor(private tripservice:TripService,private publicationservice: PublicationService,private reclamationService:ReclamationService,private feedbackservice:FeedbackService) {}
-
   listoftrips:DestionationVisitorsCount[];
   meilleurDestination:any;
-
+  constructor(private reclamationService:ReclamationService,private feedbackservice:FeedbackService,private tripservice:TripService,private userService: UserService) {}
   ngOnInit() {
-
-    this.publicationservice.bestUser().subscribe(
-      data => {
-
-        this.bestuser = data;
-      }
-    );
-    this.publicationservice.nbrpubbestuser().subscribe(
-      data => {
-
-        this.nbrpubbestuser = data;
-      }
-    );
-
-
+  
     this.reclamationService.statWatingReclamation().subscribe(
       data => {
         console.log(data);
@@ -70,7 +47,7 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
-
+       
       }
     );
      this.tripservice.getmeiulleurdestination().subscribe(
@@ -84,7 +61,7 @@ export class DashboardComponent implements OnInit {
     //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
     // ];
     this.data = this.datasets;
-
+  
 
 
     var chartOrders = document.getElementById('chart-orders');
@@ -116,22 +93,59 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log(data);
         this.datasets = data;
-
+       
       }
     );
+    
+    this.userService.accountStatistics().subscribe(statistics => {
 
+      var chartSales = document.getElementById('chart-users'); //Exemple 1
+      this.salesChart = new Chart(chartSales, {
+        type: 'bar',
+        options: chartExample1.options,
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            backgroundColor: 'rgba(255, 99, 132, 0.8)',
+            borderColor: 'rgba(255, 99, 132, 0.8)',
+            label: "Total Users ",
+            data: statistics[0],
+          },
+          {
+            backgroundColor: 'rgba(46, 204, 113, 0.8)',
+            borderColor: 'rgba(46, 204, 113, 1)',
+            label: "Active Users ",
+            data: statistics[1],
+          }]
+      }});
 
+      var chartOrders = document.getElementById('chart-gender'); //Exemple 2
+      new Chart(chartOrders, {
+        type: 'doughnut',
+        data: {
+          labels: ["Male", "Female"],
+          datasets: [
+            {
+              backgroundColor: ["#3e95cd", "#c45850"],
+              data: [statistics[2], statistics[3]]
+            }
+          ]
+        }
+      });
+      
+    });
+      
   }
 
   public StatPercentageOfReclamationByPriorityOrByType(priority,type){
-
+   
     this.reclamationService.statReclamationByTypeAndPriority(priority,type).subscribe(
       data => {
         console.log(data);
         this.pecentageTypePriority = data;
       }
     );
-
+    
   }
   public StatPercentageOfReclamationByType(type){
     this.reclamationService.statReclamationByType(type).subscribe(

@@ -13,7 +13,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
-import {Navbar2Component} from "../../front/navbar2/navbar2.component";
 import {Card2Component} from "../../front/card2/card2.component";
 import {StartPostComponent} from "../../front/start-post/start-post.component";
 import {CreatePostComponent} from "../../front/create-post/create-post.component";
@@ -29,6 +28,7 @@ import {ToastrModule} from "ngx-toastr";
 import {NetworkSideNavComponent} from "../../front/network-side-nav/network-side-nav.component";
 import {MatListModule} from "@angular/material/list";
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { Navbar2Component } from '../../front/navbar2/navbar2.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -42,8 +42,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatDialogModule,
     MatListModule,
     // NgbModule,
-    ScrollingModule
-
+    ScrollingModule,
   ],
   exports: [
     Navbar2Component,
@@ -54,13 +53,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ListPublication2Component,
     CommentAddComponent,
     AlertComponent,
-    NetworkSideNavComponent,
-
-
+    NetworkSideNavComponent
   ],
   declarations: [
-    LoginComponent,
-    RegisterComponent,
     FrontComponent,
     Navbar2Component,
     Card2Component,

@@ -3,10 +3,9 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-
-
+import { PubLayoutComponent } from './layouts/pub-layout/pub-layout.component';
 
 const routes: Routes =[
   {
@@ -25,11 +24,11 @@ const routes: Routes =[
     ]
   }, {
     path: '',
-    component: PubLayoutComponent,
+    component: AuthLayoutComponent,
     children: [
       {
         path: '',
-        loadChildren: () => import('src/app/layouts/pub-layout/pub-layout.module').then(m => m.PubLayoutModule)
+        loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
       }
     ]
   },
@@ -40,6 +39,15 @@ const routes: Routes =[
       {
         path: '',
         loadChildren: () => import('src/app/layouts/user-layout/user-layout.module').then(m => m.UserLayoutModule)
+      }
+    ]
+  }, {
+    path: '',
+    component: PubLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/layouts/pub-layout/pub-layout.module').then(m => m.PubLayoutModule)
       }
     ]
   },
