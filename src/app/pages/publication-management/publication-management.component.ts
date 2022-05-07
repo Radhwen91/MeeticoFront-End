@@ -197,9 +197,11 @@ export class PublicationManagementComponent implements OnInit {
               audio.load();
               audio.play();
              this.toastr.error('Bad Word detected ','Bad Word detected');
+
             }
           } );
         ///////////
+        //window.location.reload();
       }
 
     );
