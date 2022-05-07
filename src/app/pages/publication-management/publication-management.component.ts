@@ -135,7 +135,7 @@ export class PublicationManagementComponent implements OnInit {
     console.warn('r',r);
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log(`Dialog result: ${data}`);
+      // console.log(Dialog result: ${data});
     });
   }
 
@@ -148,7 +148,7 @@ export class PublicationManagementComponent implements OnInit {
     console.warn('r',r);
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log(`Dialog result: ${data}`);
+      // console.log(Dialog result: ${data});
     });
   }
   deletePub(publication:any){
@@ -237,4 +237,3 @@ export class PublicationManagementComponent implements OnInit {
   }
 
 }
-

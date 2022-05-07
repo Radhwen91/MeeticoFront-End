@@ -24,6 +24,7 @@ public notification(){
     this.message=data[0].Message;
     this.user=data[0].FirstName;
     this.notificationservice.showInfo(this.message, this.user)
+    
   });
 }
 }
