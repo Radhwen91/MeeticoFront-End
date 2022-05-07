@@ -209,7 +209,7 @@ public nbrlistCom:any[]=[];
 
       data=>{
         //console.log(res);
-
+        window.location.reload();
       }
     );
   }
@@ -221,7 +221,7 @@ public nbrlistCom:any[]=[];
 
       data=>{
         //console.log(res);
-
+        window.location.reload();
       }
     );
   }
@@ -233,8 +233,10 @@ public nbrlistCom:any[]=[];
       data=>{
         this.toastr.success('Comment Added Successfully ','Comment Added Successfully');
         this.router.navigate(["/home"])
+        window.location.reload();
       }
-    );
+
+      );
   }
 
 

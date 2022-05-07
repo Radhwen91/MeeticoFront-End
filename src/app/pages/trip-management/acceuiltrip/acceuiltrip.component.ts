@@ -15,6 +15,7 @@ import { SearchdialogComponent } from '../searchdialog/searchdialog.component';
 export class AcceuiltripComponent implements OnInit {
   listoftrips:Trip[];
   listoftripsPagination :Trip[];
+  listoftripsearch:Trip[]
   start=0;
   end=6;
   constructor(private tripservice:TripService,public dialog: MatDialog) { }
@@ -24,10 +25,19 @@ export class AcceuiltripComponent implements OnInit {
       data => {
         console.log('data',data);
         this.listoftrips = data;
-        this.listoftripsPagination=this.listoftrips.slice(this.start, this.end)       
-          
+        this.listoftripsPagination=this.listoftrips.slice(this.start, this.end)
+
       }
     );
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.toUpperCase(); // Datasource defaults to lowercase matches
+    this.tripservice.gettripbydestination(filterValue).subscribe(
+      data=>{
+        this.listoftripsearch=data;
+        this.listoftripsPagination=this.listoftripsearch.slice(this.start, this.end)
+      }
+    )
   }
   paginate(event: PageEvent) {
     let startIndex = event.pageSize * event.pageIndex;
@@ -51,16 +61,16 @@ export class AcceuiltripComponent implements OnInit {
       height: '600px',
       panelClass: 'epsSelectorPanel'
   });
-      
 
-  
-    
-  
+
+
+
+
 
     dialogRef.afterClosed().subscribe(data => {
-     
+
     });
-    
+
   }
 
 }

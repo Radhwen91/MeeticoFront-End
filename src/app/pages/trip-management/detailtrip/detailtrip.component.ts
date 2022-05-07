@@ -10,6 +10,7 @@ import { Trip } from 'src/app/models/trip';
 import { User } from 'src/app/models/user';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 import { ActivatedRoute } from '@angular/router';
+import {FileTrip} from "../../../models/FileTrip";
 
 @Component({
   selector: 'app-detailtrip',
@@ -19,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailtripComponent implements OnInit {
 
   id:Number;
-  file:FileDB;
+  file:FileTrip;
   trip: Trip;
   users :User[];
   counters = [100, 200, 10];
@@ -57,13 +58,13 @@ export class DetailtripComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   getimageurl(id:Number):String{
-    var url="http://localhost:8081/File/files/"+id;
+    var url="http://localhost:8081/FileTrip/files/"+id;
     window.open(url, "height=300,width=400");
       return url;
   }
 
-  
 
-    
-  
+
+
+
 }

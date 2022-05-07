@@ -14,6 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
+import {FileTrip} from "../../../models/FileTrip";
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -26,8 +27,8 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   progress = 0;
   message = '';
   fileInfos: Observable<any>;
-  listfile: FileDB[];
-  file: FileDB;
+  listfile: FileTrip[];
+  file: FileTrip;
   id:number;
   idf:number[];
   trip:Trip;
@@ -39,14 +40,14 @@ export class ModifierComponent implements OnInit,AfterContentInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
+
   constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
   ngAfterContentInit(): void {
     this.get(this.router.snapshot.params.id)
   }
 
   ngOnInit(): void {
-    
+
     this.tripservice.getUserss().subscribe(
       data => {
         console.log('data',data);
@@ -61,11 +62,11 @@ export class ModifierComponent implements OnInit,AfterContentInit {
       data => {
         console.log('data',data);
         this.listfile = data;
-        
+
       }
     );
-  
-    
+
+
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -88,7 +89,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
 get(id:number){
   this.tripservice.getTrip(id ).subscribe(
     data => {
-      
+
       this.trip = data;
     this.initForm(data)
 
@@ -101,10 +102,10 @@ modifier(){
 this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).subscribe(
   data=>{
     this.route.navigate(["/trip-management"])
-    
+
       });
-   
-  
+
+
 
 
 }
@@ -121,7 +122,7 @@ upload() {
       } else if (event instanceof HttpResponse) {
         this.message = event.body.message;
         this.id=event.body;
-        
+
         this.tripservice.getFilesdetail(this.id).subscribe(
           data=>{
             this.file=data;
@@ -130,7 +131,7 @@ upload() {
             console.log(this.router.snapshot.params.id)
             //this.idf=[];
             //this.idf.push(this.id);
-            
+
             this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
 
               ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
@@ -139,13 +140,13 @@ upload() {
                 }
               )
             )
-            
-            
+
+
           }
         );
         //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
-      
-      
+
+
       }
     },
     err => {
@@ -153,7 +154,7 @@ upload() {
       this.message = 'Could not upload the file!';
       this.currentFile = undefined;
     });
-  ;
+
 }
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
@@ -165,7 +166,7 @@ affecter(user :any){
       this.dataSource.sort = this.sort;
     }
   ));
-  
+
 }
 desaffecter(user :any){
   this.tripservice.desaffeteraffectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
@@ -177,7 +178,7 @@ desaffecter(user :any){
       this.dataSource.sort = this.sort;
     }
   ));
-  
+
 }
 supprimer(files :Number){
   this.tripservice.deletefile(files).subscribe(
