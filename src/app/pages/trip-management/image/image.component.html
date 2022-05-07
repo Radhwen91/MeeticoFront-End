@@ -37,7 +37,7 @@
         <mat-card-subtitle ><div class="zied">{{trip.object}}</div></mat-card-subtitle>
         <mat-card-title ><div class="zied">ENTRPRENEUR</div></mat-card-title>
         <mat-card-subtitle ><div class="zied">{{trip.user.email}}</div></mat-card-subtitle>
-        <img  src="http://localhost:8081/FileTrip/files/{{id}}" height="500px" width="100%">
+        <img  src="http://localhost:8081/FileTrip/files/{{trip.files.id}}" height="500px" width="100%">
         <mat-card-actions>
             <button class="btn" (click)="getimageurl(id)" style="width:100%"><i class="fa fa-download"></i> Download</button>
         </mat-card-actions>

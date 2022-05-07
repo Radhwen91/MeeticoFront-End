@@ -9,6 +9,5 @@ export class FileTrip {
   name:String;
   type:String;
   data:Int32Array[];
-  trip :Trip;
-  publication :Publication;
+ 
 }

@@ -27,7 +27,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   progress = 0;
   message = '';
   fileInfos: Observable<any>;
-  listfile: FileTrip[];
+  listfiles: FileTrip[];
   file: FileTrip;
   id:number;
   idf:number[];
@@ -61,7 +61,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
       data => {
         console.log('data',data);
-        this.listfile = data;
+        this.listfiles = data;
 
       }
     );
@@ -99,55 +99,57 @@ get(id:number){
 
 modifier(){
 
-this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).subscribe(
-  data=>{
-    this.route.navigate(["/trip-management"])
-
-      });
-
-
-
-
-}
+  this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).subscribe(
+    data=>{
+       console.log(data)
+      this.trip=data;
+      this.tripservice.affecterfileauvoyage(this.trip.idTrip,this.file.id,this.trip).subscribe(
+        res=>{
+         //this.listfile=res;
+         this.route.navigate(["/Annonce"])
+        }
+     
+    );
+    }
+  );
+  }
 selectFile(event) {
   this.selectedFiles = event.target.files;
 }
 upload() {
   this.progress = 0;
-  this.currentFile = this.selectedFiles.item(0);
- this.tripservice.upload(this.currentFile).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        this.message = event.body.message;
-        this.id=event.body;
+this.currentFile = this.selectedFiles.item(0);
+this.tripservice.upload(this.currentFile).subscribe(
+event => {
+  if (event.type === HttpEventType.UploadProgress) {
+    this.progress = Math.round(100 * event.loaded / event.total);
+  } else if (event instanceof HttpResponse) {
+    this.message = event.body.message;
+    this.id=event.body;
+    
+    this.tripservice.getFilesdetail(this.id).subscribe(
+      data=>{
+        this.file=data;
+        console.log(this.id)
+        console.log('file',this.file)
+        console.log(this.router.snapshot.params.id)
+        //this.idf=[];
+        //this.idf.push(this.id);
+        
+        this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.trip).subscribe(
 
-        this.tripservice.getFilesdetail(this.id).subscribe(
-          data=>{
-            this.file=data;
-            console.log(this.id)
-            console.log('file',this.file)
-            console.log(this.router.snapshot.params.id)
-            //this.idf=[];
-            //this.idf.push(this.id);
-
-            this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
-
-              ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
-                data=>{
-                  this.listfile=data
-                }
-              )
-            )
-
-
-          }
-        );
-        //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
-
-
+          ()=>this.tripservice.getFilesdetail(this.router.snapshot.params.id).subscribe(
+            res=>{
+              this.file=res
+                  this.listfiles.push(this.file);
+               
+            }
+          )
+        )
+        
+        
       }
+<<<<<<< Updated upstream
     },
     err => {
       this.progress = 0;
@@ -155,6 +157,20 @@ upload() {
       this.currentFile = undefined;
     });
 
+=======
+    );
+    //this.fileInfos = this.tripservice.getFiles(this.router.snapshot.params.id);
+  
+  
+  }
+},
+err => {
+  this.progress = 0;
+  this.message = 'Could not upload the file!';
+  this.currentFile = undefined;
+});
+this.selectedFiles = undefined;
+>>>>>>> Stashed changes
 }
 affecter(user :any){
   this.tripservice.affectusertrip(this.router.snapshot.params.id,user.userId,this.tripForm.value).subscribe(()=>this.tripservice.getUserss().subscribe(
@@ -185,7 +201,7 @@ supprimer(files :Number){
     data=>{
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
       data=>{
-      this.listfile=data
+      this.listfiles=data
     }
   )
 }

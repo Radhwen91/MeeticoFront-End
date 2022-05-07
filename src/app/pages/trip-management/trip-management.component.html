@@ -138,12 +138,12 @@
                   <ng-container matColumnDef="image">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> image </mat-header-cell>
                     <mat-cell *matCellDef="let row" >
-                      <ng-container  *ngFor="let f of row.files" >
+                      <ng-container  >
 
 
                       <div   class="matrowzied" >
                         <input type="checkbox" id="btnControl"/>
-                        <label class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8081/FileTrip/files/{{f.id}}" id="btnLeft" /></label>
+                        <label class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', f.id ]" src="http://localhost:8081/FileTrip/files/{{row.files.id}}" id="btnLeft" /></label>
                       </div>
 
                     </ng-container>

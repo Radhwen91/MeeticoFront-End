@@ -56,11 +56,12 @@ export class AjouterComponent implements OnInit {
 
 //get f() { return this.tripForm.; }
 ajouter(){
-console.log(this.tripForm.value);
+  console.log(this.tripForm.value);
 this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
   data=>{
     console.log(data)
     this.trip=data;
+<<<<<<< Updated upstream
     this.toastr.success('Trip Added Successfully ','Trip Added Successfully');
     let audio = new Audio()
     audio.src= "../assets/confirm2.mp3"
@@ -89,17 +90,18 @@ this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
           }
         );
 
+=======
+    this.tripservice.affecterfileauvoyage(this.trip.idTrip,this.file.id,this.trip).subscribe(
+      res=>{
+       //this.listfile=res;
+       this.router.navigate(["/Annonce"])
+>>>>>>> Stashed changes
       }
-    },
-    err => {
-      this.progress = 0;
-      this.message = 'Could not upload the file!';
-      this.currentFile = undefined;
-    });
-  this.selectedFiles = undefined;
+   
+  );
  }
 );
-}
+  }
 selectFile(event) {
   this.selectedFiles = event.target.files;
 }
@@ -116,10 +118,8 @@ upload() :FileTrip{
           data=>{
             this.file=data;
             console.log('file',this.file)
-
-            this.listfile.push(this.file);
-            console.log(this.listfile)
-
+                   
+            
           }
         );
 
