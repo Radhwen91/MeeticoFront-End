@@ -34,7 +34,7 @@ export class TripService {
   stat="/api/Trip/get-DestionationVisitorsCount";
   sattm="/api/Trip/meilleur-destination";
   gettripbyfile="/api/FileTrip/filebytrip";
-  gettripbydestinationurl="/api/SpringMVC/Trip/get-trip-by-destination";
+  gettripbydestinationurl="/api/Trip/get-trip-by-destination";
   constructor(private http : HttpClient) { }
 
   getTrips() : Observable<Trip[]> {

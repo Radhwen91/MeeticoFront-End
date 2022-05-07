@@ -15,6 +15,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import {FileTrip} from "../../../models/FileTrip";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ajouter-trip',
@@ -41,7 +42,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private tripservice:TripService,private router:ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
+  constructor(private toastr : ToastrService,private tripservice:TripService,private router:ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
   ngAfterContentInit(): void {
     this.get(this.router.snapshot.params.id)
   }
@@ -101,6 +102,12 @@ modifier(){
 
 this.tripservice.updateTrip(this.router.snapshot.params.id,this.tripForm.value).subscribe(
   data=>{
+    this.toastr.success('Trip modified Successfully ','Trip Added Successfully');
+    let audio = new Audio()
+    audio.src= "../assets/alert.mp3"
+    audio.src= "../assets/confirm2.mp3"
+    audio.load();
+    audio.play();
     this.route.navigate(["/trip-management"])
 
       });
