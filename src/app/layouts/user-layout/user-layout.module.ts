@@ -48,7 +48,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UserManagementFrontComponent } from 'src/app/pages/user-management-front/user-management-front.component';
 
-// import { ToastrModule } from 'ngx-toastr';
+ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
     CommonModule,
@@ -76,6 +76,8 @@ import { UserManagementFrontComponent } from 'src/app/pages/user-management-fron
     MentionModule,
     MaterialModule,
     NgxPaginationModule,
+    ToastrModule
+
 
   ],
 
