@@ -1,8 +1,9 @@
 
  <style>
    .zied{
-     font-size: 60px;
+     font-size: 40px;
      font-weight: bold;
+     color: rgb(35, 31, 86);
    }
 .card-columns{
   display: inline-block;
@@ -22,14 +23,13 @@
 }
  </style>
 
-
+<button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="dialoggg()"><i class="fa fa-search"></i>search for matching</button>
  <!--lest of trip-->
  <div >
-  <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="dialoggg()"><i class="fa fa-search"></i>search for matchin</button>
-   <p class="zied">List of Trips </p>
+  
     <!--carousel-->
- <div style="padding:40px ;">
-  <div class="section" id="carousel" >
+
+<div class="section" id="carousel" >
     <div class="container">
         <div class="tim-title">
             <h3></h3>
@@ -39,7 +39,7 @@
                 <div class="card page-carousel">
                     <ngb-carousel >
                         <ng-template ngbSlide *ngFor="let t of listoftrips">
-                            <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" alt="Random first slide">
+                            <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" alt="Random first slide" >
                             <div class="carousel-caption">
                                 <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
                             </div>
@@ -50,7 +50,7 @@
         </div>
     </div>
   </div>
-  </div>
+
  
 <!--
 <div  class="card-columns">
