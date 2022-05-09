@@ -1,20 +1,22 @@
-<div class="section" id="carousel" >
-    <div class="container">
-        <div class="tim-title">
-            <h3></h3>
-        </div>
-        <div class="row">
-            <div class="col-md-8 mr-auto ml-auto">
-                <div class="card page-carousel">
-                    <ngb-carousel >
-                        <ng-template ngbSlide *ngFor="let t of listoftrips">
-                            <img *ngIf="t.files!!=null" [routerLink]="['/trip-management/homeTrip' ]" src="http://localhost:8081/File/files/{{ t.files.id}}" alt="Random first slide">
-                            <div class="carousel-caption">
-                                <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
-                            </div>
-                        </ng-template>
-                    </ngb-carousel>
+<div style="padding: 40px;">
+    <div class="section" id="carousel" >
+        <div class="container">
+            <div class="tim-title">
+                <h3></h3>
+            </div>
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <div class="card page-carousel">
+                        <ngb-carousel >
+                            <ng-template ngbSlide *ngFor="let t of listoftrips">
+                                <img *ngIf="t.files!!=null" [routerLink]="['/trip-management/homeTrip' ]" src="http://localhost:8081/FileTrip/files/{{ t.files.id}}" alt="Random first slide">
+                                <div class="carousel-caption">
+                                    <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
+                                </div>
+                            </ng-template>
+                        </ngb-carousel>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+</div>

@@ -28,28 +28,30 @@
   <button  class="dropdown-item" id="ziedpag" style="background-color: #00CED1" (click)="dialoggg()"><i class="fa fa-search"></i>search for matchin</button>
    <p class="zied">List of Trips </p>
     <!--carousel-->
- <div class="section" id="carousel" >
-  <div class="container">
-      <div class="tim-title">
-          <h3></h3>
-      </div>
-      <div class="row">
-          <div class="col-md-8 mr-auto ml-auto">
-              <div class="card page-carousel">
-                  <ngb-carousel >
-                      <ng-template ngbSlide *ngFor="let t of listoftrips">
-                          <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" alt="Random first slide">
-                          <div class="carousel-caption">
-                              <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
-                          </div>
-                      </ng-template>
-                  </ngb-carousel>
-              </div>
-          </div>
-      </div>
+ <div style="padding:40px ;">
+  <div class="section" id="carousel" >
+    <div class="container">
+        <div class="tim-title">
+            <h3></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto">
+                <div class="card page-carousel">
+                    <ngb-carousel >
+                        <ng-template ngbSlide *ngFor="let t of listoftrips">
+                            <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" alt="Random first slide">
+                            <div class="carousel-caption">
+                                <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-
+  </div>
+ 
 <!--
 <div  class="card-columns">
         <div class="card" *ngFor="let t of listoftripsPagination">
@@ -65,34 +67,36 @@
           </div>
         </div>
       </div>
--->
-   <div class="example-header" style="margin-left: 50px">
-     <mat-form-field>
-       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search by destination" >
-     </mat-form-field>
-   </div>
-<div class="row row-cols-1 row-cols-md-3">
-  <div class="col mb-4"*ngFor="let t of listoftripsPagination">
-    <div class="card h-100" >
-      <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title" style="font-weight: bold;font-size: 50px;">{{t.destination}}</h5>
-        <p class="card-text" style="color: rgb(63, 108, 108);">start date:{{t.startDate}}</p>
-        <p class="card-text" style="color: red;">end date:{{t.endDate}}</p>
-        <div class="card-body">
-          <a [routerLink]="['/detail', t.idTrip ]" class="card-link">more detail</a>
-        </div>
-      </div>
-    </div>
+--><div style="padding:40px ;">
+  <div class="example-header" style="margin-left: 50px">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="search by destination" >
+    </mat-form-field>
   </div>
+<div class="row row-cols-1 row-cols-md-3">
+ <div class="col mb-4"*ngFor="let t of listoftripsPagination">
+   <div class="card h-100" >
+     <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title" style="font-weight: bold;font-size: 50px;">{{t.destination}}</h5>
+       <p class="card-text" style="color: rgb(63, 108, 108);">start date:{{t.startDate}}</p>
+       <p class="card-text" style="color: red;">end date:{{t.endDate}}</p>
+       <div class="card-body">
+         <a [routerLink]="['/detail', t.idTrip ]" class="card-link">more detail</a>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
-        <div class="col-12" *ngIf="listoftripsPagination">
-          <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
+       <div class="col-12" *ngIf="listoftripsPagination">
+         <mat-paginator [length]="listoftrips.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
 
-          </mat-paginator>
+         </mat-paginator>
 
-        </div>
+       </div>
 
 
+</div>
+   
 
  </div>
