@@ -32,10 +32,10 @@
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Image</label>
-      <label class="btn btn-default">
-        <input type="file" (change)="selectFile($event)" formControlName="file" />
-        <div  *ngIf="listfile.length!==0" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
-      </label>
+        <label class="btn btn-default">
+          <input type="file" (change)="selectFile($event);upload()" formControlName="file" />
+          <div  *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </label>
     </div>
    </form>
       <button type="submit" class="btn btn-primary" (click)="ajouter()" [disabled]="tripForm.invalid" >submit</button>

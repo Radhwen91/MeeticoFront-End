@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { FileDB } from 'src/app/models/fileDB';
 import { User } from 'src/app/models/user';
 import { DestionationVisitorsCount } from 'src/app/models/destionationVisitorsCount';
-import {FileTrip} from "../../models/FileTrip";
+import {FileDBTrip} from "../../models/FileDBTrip";
 
 
 
@@ -94,14 +94,14 @@ export class TripService {
         return a;
       }*/
 
-    getFiles(id:Number): Observable<FileTrip[]> {
-      return this.http.get<FileTrip[]>(`${this.getfile}/${id}`);
+    getFiles(id:Number): Observable<FileDBTrip> {
+      return this.http.get<FileDBTrip>(`${this.getfile}/${id}`);
     }
-    getFilesdetail(id:number): Observable<FileTrip> {
-      return this.http.get<FileTrip>(`${this.getfiledetail}/${id}`);
+    getFilesdetail(id:number): Observable<FileDBTrip> {
+      return this.http.get<FileDBTrip>(`${this.getfiledetail}/${id}`);
     }
-    affecterfileauvoyage(id:Number,idf:number,file :FileTrip):Observable<FileTrip>{
-      return this.http.put<FileTrip>("/api/Trip/affecter-fileToTrip/"+id+"/"+idf,file);
+    affecterfileauvoyage(id:Number,idf:number,trip :Trip):Observable<Trip>{
+      return this.http.put<Trip>("/api/Trip/affecter-fileToTrip/"+id+"/"+idf,trip);
     }
     deletefile(id:Number): any{
       return this.http.delete(`${this.deletefiles}/${id}`);

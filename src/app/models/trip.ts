@@ -1,6 +1,7 @@
 
 import { User } from "./user";
 import { FileDB } from "./fileDB";
+import { FileDBTrip } from "./FileDBTrip";
 
 export class Trip {
     idTrip: Number;
@@ -11,7 +12,7 @@ export class Trip {
     users:User[];
     user:User;
    
-    files:FileDB[];
+    files:FileDBTrip;
 
     
 }

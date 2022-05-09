@@ -38,7 +38,7 @@
                <div class="card page-carousel">
                    <ngb-carousel >
                        <ng-template ngbSlide *ngFor="let t of listoftrips">
-                           <img *ngFor="let f of t.files" src="http://localhost:8081/FileTrip/files/{{f.id}}" alt="Random first slide">
+                           <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" alt="Random first slide">
                            <div class="carousel-caption">
                                <p style="font-weight: bold; font-size: xx-large;">{{t.destination}}</p>
                            </div>
@@ -74,7 +74,7 @@
  <div class="row row-cols-1 row-cols-md-3">
    <div class="col mb-4"*ngFor="let t of listoftripsPagination">
      <div class="card h-100" >
-       <img *ngFor="let f of t.files" src="http://localhost:8081/FileTrip/files/{{f.id}}" class="card-img-top" alt="...">
+       <img *ngIf="t.files!!=null" src="http://localhost:8081/FileTrip/files/{{t.files.id}}" class="card-img-top" alt="...">
        <div class="card-body">
          <h5 class="card-title" style="font-weight: bold;font-size: 50px;">{{t.destination}}</h5>
          <p class="card-text" style="color: rgb(63, 108, 108);">start date:{{t.startDate}}</p>

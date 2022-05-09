@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
-import {FileTrip} from "../../models/FileTrip";
+import {FileDBTrip} from "../../models/FileDBTrip";
 @Component({
   selector: 'app-trip-management',
   templateUrl: './trip-management.component.html',
@@ -18,7 +18,7 @@ import {FileTrip} from "../../models/FileTrip";
 export class TripManagementComponent implements OnInit, AfterViewInit {
 
   listoftrips:Trip[];
-  fileById:FileTrip[];
+  fileById:FileDBTrip[];
   imageSource:String;
   counters = [100, 200, 10];
   meilleurDestination:any;

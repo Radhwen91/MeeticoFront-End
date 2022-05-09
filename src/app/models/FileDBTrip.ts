@@ -4,11 +4,10 @@ import {Publication} from './publication';
 
 
 
-export class FileTrip {
+export class FileDBTrip {
   id:number;
   name:String;
   type:String;
   data:Int32Array[];
-  trip :Trip;
-  publication :Publication;
+
 }

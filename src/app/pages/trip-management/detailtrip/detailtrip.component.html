@@ -31,13 +31,17 @@
 }
 
 </style>
-<div style="width: 1000px;">
+<div style="padding: 40px; ">
     <mat-card class="center" >
         <mat-card-title ><div class="zied">{{trip.destination}}</div></mat-card-title>
         <mat-card-subtitle ><div class="zied">{{trip.object}}</div></mat-card-subtitle>
         <mat-card-title ><div class="zied">ENTRPRENEUR</div></mat-card-title>
         <mat-card-subtitle ><div class="zied">{{trip.user.email}}</div></mat-card-subtitle>
-        <img *ngFor="let f of trip.files" (click)="getimageurl(f.id)" src="http://localhost:8081/FileTrip/files/{{f.id}}" height="500px" width="100%">
+        <mat-card-title ><div class="zied">start date</div></mat-card-title>
+        <mat-card-subtitle ><div class="zied">{{trip.startDate}}</div></mat-card-subtitle>
+        <mat-card-title ><div class="zied">end date</div></mat-card-title>
+        <mat-card-subtitle ><div class="zied">{{trip.endDate}}</div></mat-card-subtitle>
+        <img (click)="getimageurl(trip.files.id)" src="http://localhost:8081/FileTrip/files/{{trip.files.id}}" height="500px" width="100%">
 
       </mat-card>
       <div>

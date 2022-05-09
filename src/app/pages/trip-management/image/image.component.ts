@@ -11,7 +11,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import { User } from 'src/app/models/user';
-import {FileTrip} from "../../../models/FileTrip";
+import {FileDBTrip} from "../../../models/FileDBTrip";
 
 @Component({
   selector: 'app-image',
@@ -21,7 +21,7 @@ import {FileTrip} from "../../../models/FileTrip";
 export class ImageComponent implements OnInit {
 
   id:Number;
-  file:FileTrip;
+  file:FileDBTrip;
   trip: Trip;
   users :User[];
   counters = [100, 200, 10];

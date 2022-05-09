@@ -60,11 +60,11 @@
       </div>
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">Image</label>
-      <label class="btn btn-default">
-        <input *ngIf="listfile.length>1" type="file" (change)="selectFile($event) "[disabled]="true" formControlName="file" />
-        <input *ngIf="listfile.length==0" type="file" (change)="selectFile($event);upload() " formControlName="file" />
-        <div  *ngIf="listfile.length==0" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
-      </label>
+        <label class="btn btn-default">
+            
+          <input  type="file" (change)="selectFile($event);upload() " formControlName="file" />
+          <div  *ngIf="listfiles.length==0" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </label>
     </div>
       </form>
       <div class="card-header">Image</div>
@@ -77,9 +77,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let file of listfile">
+        <tr *ngFor="let file of listfiles">
           <th scope="row" >
-            <div class="media align-items-center">
+            <div class="media align-items-center" *ngIf="file!!=null">
               <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                 <img alt="Image placeholder" src="http://localhost:8081/FileTrip/files/{{file.id}}">
               </a>
@@ -90,7 +90,7 @@
           </th>
           <td class="text-right">
             <div ngbDropdown placement="bottom-right">
-              <button (click)="supprimer(file.id)">supprimer</button>
+              <button *ngIf="file!!=null" (click)="supprimer(file)">supprimer</button>
 
             </div>
           </td>

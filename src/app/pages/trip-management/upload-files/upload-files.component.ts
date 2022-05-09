@@ -3,8 +3,9 @@ import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FileDB } from 'src/app/models/fileDB';
+import { Trip } from 'src/app/models/trip';
 import { TripService } from 'src/app/services/tripservices/trip.service';
-import {FileTrip} from "../../../models/FileTrip";
+import {FileDBTrip} from "../../../models/FileDBTrip";
 
 @Component({
   selector: 'app-upload-files',
@@ -15,11 +16,12 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
 
   selectedFiles: FileList;
   currentFile: File;
+  trip:Trip;
   progress = 0;
   message = '';
   fileInfos: Observable<any>;
-  listfile: FileTrip[];
-  file: FileTrip;
+  listfile: FileDBTrip[];
+  file: FileDBTrip;
   id:number;
   idf:number[];
   constructor(private tripservice:TripService,private router:ActivatedRoute) { }
@@ -27,7 +29,7 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
     this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
       data => {
         console.log('data',data);
-        this.listfile = data;
+        this.file = data;
       }
     );
   }
@@ -51,19 +53,20 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
           this.message = event.body.message;
           this.id=event.body;
 
-          this.tripservice.getFilesdetail(this.id).subscribe(
+          this.tripservice.getTripbyFile(this.id).subscribe(
             data=>{
-              this.file=data;
+              this.trip=data;
               console.log(this.id)
               console.log('file',this.file)
               console.log(this.router.snapshot.params.id)
               //this.idf=[];
               //this.idf.push(this.id);
-              this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.file).subscribe(
+              
+              this.tripservice.affecterfileauvoyage(this.router.snapshot.params.id,this.id,this.trip).subscribe(
 
                 ()=>this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
                   data=>{
-                    this.listfile=data
+                    this.file=data
                   }
                 )
               )
@@ -88,7 +91,7 @@ export class UploadFilesComponent implements OnInit,AfterContentInit {
       data=>{
       this.tripservice.getFiles(this.router.snapshot.params.id).subscribe(
         data=>{
-        this.listfile=data
+        this.file=data
       }
     )
   }

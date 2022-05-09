@@ -10,7 +10,7 @@ import { Trip } from 'src/app/models/trip';
 import { User } from 'src/app/models/user';
 import { TripService } from 'src/app/services/tripservices/trip.service';
 import { ActivatedRoute } from '@angular/router';
-import {FileTrip} from "../../../models/FileTrip";
+import {FileDBTrip} from "../../../models/FileDBTrip";
 
 @Component({
   selector: 'app-detailtrip',
@@ -20,7 +20,7 @@ import {FileTrip} from "../../../models/FileTrip";
 export class DetailtripComponent implements OnInit {
 
   id:Number;
-  file:FileTrip;
+  file:FileDBTrip;
   trip: Trip;
   users :User[];
   counters = [100, 200, 10];

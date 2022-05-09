@@ -7,7 +7,7 @@ import { TripService } from 'src/app/services/tripservices/trip.service';
 
 import { Observable } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import {FileTrip} from "../../../models/FileTrip";
+import {FileDBTrip} from "../../../models/FileDBTrip";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -18,14 +18,14 @@ import {ToastrService} from "ngx-toastr";
 export class AjouterComponent implements OnInit {
 
   public tripForm: FormGroup;
-  listfile:FileTrip[];
+  listfile:FileDBTrip[];
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
   trip:Trip;
   fileInfos: Observable<any>;
-  file: FileTrip;
+  file: FileDBTrip;
   id:number;
   constructor(private toastr : ToastrService,private tripservice:TripService,private router:Router,private formBuilder: FormBuilder) { }
 
@@ -56,54 +56,27 @@ export class AjouterComponent implements OnInit {
 
 //get f() { return this.tripForm.; }
 ajouter(){
-console.log(this.tripForm.value);
-this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
-  data=>{
-    console.log(data)
-    this.trip=data;
-    this.toastr.success('Trip Added Successfully ','Trip Added Successfully');
-    let audio = new Audio()
-    audio.src= "../assets/confirm2.mp3"
-    audio.load();
-    audio.play();
-    this.progress = 0;
-  this.currentFile = this.selectedFiles.item(0);
-  this.tripservice.upload(this.currentFile).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        this.message = event.body.message;
-        this.tripservice.getFilesdetail(event.body).subscribe(
-          res=>{
-            this.file=res;
-            console.log(this.trip)
-            console.log(res)
-            this.tripservice.affecterfileauvoyage(this.trip.idTrip,res.id,this.file).subscribe(
-              res=>{
-               //this.listfile=res;
-               this.router.navigate(["/trip-management"])
-              }
 
-          );
-          }
-        );
-
-      }
-    },
-    err => {
-      this.progress = 0;
-      this.message = 'Could not upload the file!';
-      this.currentFile = undefined;
-    });
-  this.selectedFiles = undefined;
- }
-);
+    console.log(this.tripForm.value);
+  this.tripservice.ajoutTrip(this.tripForm.value,1).subscribe(
+    data=>{
+      console.log(data)
+      this.trip=data;
+      this.tripservice.affecterfileauvoyage(this.trip.idTrip,this.file.id,this.trip).subscribe(
+        res=>{
+         //this.listfile=res;
+         this.router.navigate(["/trip-management"])
+        }
+     
+    );
+   }
+  );
+    
 }
 selectFile(event) {
   this.selectedFiles = event.target.files;
 }
-upload() :FileTrip{
+upload() :FileDBTrip{
   this.progress = 0;
   this.currentFile = this.selectedFiles.item(0);
   this.tripservice.upload(this.currentFile).subscribe(
@@ -116,10 +89,8 @@ upload() :FileTrip{
           data=>{
             this.file=data;
             console.log('file',this.file)
-
-            this.listfile.push(this.file);
-            console.log(this.listfile)
-
+                   
+            
           }
         );
 
@@ -134,7 +105,7 @@ upload() :FileTrip{
   return this.file;
 }
 
-supprimer(file :FileTrip){
+supprimer(file :FileDBTrip){
 
   this.listfile.splice(this.listfile.indexOf(file),1)
 }
