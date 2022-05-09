@@ -86,7 +86,7 @@ export class ModifierComponent implements OnInit,AfterContentInit {
       startDate: [data?.startDate, Validators.required],
       endDate: [data?.endDate, Validators.required],
       object: [data?.object, [Validators.required, ,Validators.maxLength(50)]],
-      file: [null, Validators.required],
+      file: [null],
     })
 }
 get(id:number){
