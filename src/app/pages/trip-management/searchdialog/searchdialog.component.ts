@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-searchdialog',
@@ -24,7 +25,7 @@ export class SearchdialogComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private tripservice:TripService) { }
+  constructor(private toastr : ToastrService,private tripservice:TripService) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -42,16 +43,35 @@ applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue;
 }
 search(){
-
+  
   this.tripservice.getUserssbymatching(this.alghForm.value.destination,this.alghForm.value.startDate,this.alghForm.value.city).subscribe(()=>this.tripservice.getUserssbymatching(this.alghForm.value.destination,this.alghForm.value.startDate,this.alghForm.value.city).subscribe(
     data=>{
+      
       this.listofusers=data
       this.dataSource = new MatTableDataSource(this.listofusers);
       this.dataSource._renderChangesSubscription;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      if(this.listofusers.length===0){
+        this.toastr.error('no user to match scroll down to close ','result');
+       let audio = new Audio()
+       audio.src= "../assets/alert.mp3"
+       audio.src= "../assets/confirm2.mp3"
+       audio.load();
+       audio.play();
+      }else{
+        this.toastr.success('scroll down ','result');
+        let audio = new Audio()
+        audio.src= "../assets/alert.mp3"
+        audio.src= "../assets/confirm2.mp3"
+        audio.load();
+        audio.play();
+      }
+      
+      
     }
   ));
+  
   }
 
 }

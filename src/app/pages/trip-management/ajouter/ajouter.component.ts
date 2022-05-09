@@ -65,6 +65,12 @@ ajouter(){
       this.tripservice.affecterfileauvoyage(this.trip.idTrip,this.file.id,this.trip).subscribe(
         res=>{
          //this.listfile=res;
+         this.toastr.success('Trip added Successfully ','Trip added Successfully');
+       let audio = new Audio()
+       audio.src= "../assets/alert.mp3"
+       audio.src= "../assets/confirm2.mp3"
+       audio.load();
+       audio.play();
          this.router.navigate(["/trip-management"])
         }
      

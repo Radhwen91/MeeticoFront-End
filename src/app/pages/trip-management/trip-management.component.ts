@@ -10,6 +10,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import {FileDBTrip} from "../../models/FileDBTrip";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-trip-management',
   templateUrl: './trip-management.component.html',
@@ -27,7 +28,7 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private tripservice:TripService,private router:Router) { }
+  constructor(private toastr : ToastrService,private tripservice:TripService,private router:Router) { }
   ngAfterViewInit(): void {
 
 
@@ -69,6 +70,12 @@ export class TripManagementComponent implements OnInit, AfterViewInit {
       data=>{
         this.listoftrips=data
         this.dataSource = new MatTableDataSource(this.listoftrips);
+        this.toastr.error('user deleted sucessfuly ','user deleted sucessfuly ');
+       let audio = new Audio()
+       audio.src= "../assets/alert.mp3"
+       audio.src= "../assets/confirm2.mp3"
+       audio.load();
+       audio.play();
       }
     )
     );

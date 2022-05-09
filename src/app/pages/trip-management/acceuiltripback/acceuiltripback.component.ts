@@ -59,7 +59,7 @@ export class AcceuiltripbackComponent implements OnInit {
           title: "NWAS NTD"
       },
       width: '600px',
-      height: '600px',
+      height: '300px',
       panelClass: 'epsSelectorPanel'
   });
 

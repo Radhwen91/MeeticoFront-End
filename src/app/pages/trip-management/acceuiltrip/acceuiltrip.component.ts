@@ -7,6 +7,7 @@ import { SearchdialogComponent } from '../searchdialog/searchdialog.component';
 
 
 
+
 @Component({
   selector: 'app-acceuiltrip',
   templateUrl: './acceuiltrip.component.html',
@@ -66,7 +67,7 @@ export class AcceuiltripComponent implements OnInit {
 
 
 
-
+    dialogRef.updatePosition({ top: '170px', left: '500px' });
     dialogRef.afterClosed().subscribe(data => {
 
     });
