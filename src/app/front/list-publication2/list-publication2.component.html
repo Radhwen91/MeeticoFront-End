@@ -1,26 +1,32 @@
 
 
-<cdk-virtual-scroll-viewport itemSize="100" class="containerr">
+<!--cdk-virtual-scroll-viewport itemSize="100" class="containerr">
 
-
-<div id="aa" class="card card__post" *cdkVirtualFor="let i of listPub;let indexOfelement=index;">
+<div id="aa" class="card card__post" *cdkVirtualFor="let i of listPub;let indexOfelement=index;"-->
+<div id="aa" class="card card__post" *ngFor="let i of listPub;let indexOfelement=index;">
   <div class="card-img">
-    <img src="../../../assets/avatar4.png" class="card-img-logo" alt="logo company"/>
+    <img src="../../assets/img/radhwen.PNG" class="card-img-logo" alt="logo company"/>
     <div class="card-head">
 
-      <p class="username">Fares Moalla</p>
+      <p class="username">{{i.userr.firstName}} {{i.userr.lastName}}</p>
+
+
+
       <p class=" card-small-font--gray">{{i.date}}</p>
     </div>
 
-    <div   class="dropdown">
+
+
+
+    <div *ngIf="user2.userId==i.userr.userId "  class="dropdown">
       <button class="btn2"mat-raised-button [matMenuTriggerFor]="menu"><i class="fas fa-ellipsis-h"></i></button>
 
       <mat-menu #menu="matMenu" >
         <button mat-menu-item (click)="UpdatePublication(i);">
           <i class="far fa-bookmark" ></i> Update</button>
 
-        <button mat-menu-item>
-          <i class="far fa-comment-alt"></i> Delete </button>
+        <button mat-menu-item (click)="deletePub(i)">
+          <i class="far fa-comment-alt" ></i> Delete </button>
         <button mat-menu-item>
           <i class="fas fa-link"></i> Copy link to post </button>
         <button mat-menu-item>
@@ -92,4 +98,4 @@
 
 
 <hr><hr>
-</cdk-virtual-scroll-viewport>
+<!--/cdk-virtual-scroll-viewport-->

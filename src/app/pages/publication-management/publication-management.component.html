@@ -61,23 +61,14 @@
                 </table>
 
 
-                <br> <br>
+
 
               </div>
 
 
 
 
-              <table class="table align-items-center table-flush">
-                <tbody>
 
-
-
-                <tr *ngFor="let file of listfile2">
-                  <img  width="200" height="200" alt="Image placeholder" src="http://localhost:8081/File/files/{{file.id}}">
-                </tr>
-                </tbody>
-              </table>
 
               <button class="btn btn-success" type="button" [disabled]="f.invalid" (click)="addPub();playSound();showToatr();openSnackBar('Post added successfully ','Undo') "   > Save</button>
 
@@ -99,7 +90,7 @@
           </mat-form-field>
 
 
-          <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/482/482631.png"/>
+
 
 
 
@@ -115,8 +106,6 @@
 
 
 
-                  <a (click)="UpdatePublication(row)"  > <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2356/premium/2356780.png?token=exp=1650965441~hmac=aded0557a43283ae7efbc1672e883b38
-"/></a>
 
                   <a (click)="ListComments(row)"> <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/901/901533.png
 "/></a>

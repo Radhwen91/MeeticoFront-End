@@ -13,19 +13,19 @@
 <div class="card">
   <div class="card__cover">
 
-    <img src="../../assets/profile/background.svg" class="card-img-top card__img-background" alt="...">
+    <img src="../..\assets\img\radhwen.PNG" class="card-img-top card__img-background" alt="...">
     <div class="card__img-parent">
       <div class="card__img card__img--radius" routerLink="/profile">
-        <img  mat-card-avatar src="../../assets/profile/photo.png" class="card__img-profile">
+
       </div>
     </div>
   </div>
   <div class="card-body ">
     <div class="card-center">
 
-      <h5 class="card-title">Fares</h5>
-      <p class="card-title">Moalla</p>
-      <a  class="addPhoto card-link">Change Photo</a>
+      <h5 class="card-title">{{user.firstName}}</h5>
+      <p class="card-title">{{user.lastName}}</p>
+      <a  class="addPhoto card-link"  routerLink="/homeTrip">Change Photo</a>
     </div>
     <li class="card-small-font list-group-item">
       <div>
@@ -44,7 +44,7 @@
       </li>
 
 
-      <li class="pointer savedItems list-group-item">Saved Items</li>
+
 
     </ul>
   </div>

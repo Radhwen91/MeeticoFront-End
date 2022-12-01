@@ -16,6 +16,8 @@ import {
 } from "../../pages/publication-management/front-publication/update-publication/update-publication.component";
 import {AlertComponent} from "../alert/alert.component";
 import {ToastrService} from "ngx-toastr";
+import {User} from "../../models/user";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-list-publication2',
@@ -43,7 +45,7 @@ public nbrlistCom:any[]=[];
   nbrLike : number;
   public listnbrLike:number[];
   public listowneduser:number[]=[];
-
+user2 : User;
 
   public listnbrdisike:number[]=[];
   lang;
@@ -67,7 +69,16 @@ public nbrlistCom:any[]=[];
 
 
   }
+  deletePub(publication:any){
+    this.publicationservice.deletePub(publication.idPublication).subscribe(()=>this.publicationservice.getPubToday().subscribe(
+        data=>{
+          this.listPub=data
 
+        }
+      )
+    );
+
+  }
 
 
 
@@ -121,7 +132,15 @@ public nbrlistCom:any[]=[];
     // this.oncomment = !this.oncomment;
   }
   ngOnInit(): void {
-    this.lang=localStorage.getItem('lang') || 'en';
+
+    this.publicationservice.connectedutilsateur().subscribe(
+      data2=>{
+        // this.ownedornot = data2
+        this.user2=data2
+        ///////////////////
+
+      } );
+    //this.lang=localStorage.getItem('lang') || 'en';
     /* const headers = new HttpHeaders({
        'Accept-Language': this.lang
      });*/

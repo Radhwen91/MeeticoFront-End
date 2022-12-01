@@ -27,7 +27,7 @@ export class PublicationService {
   nbrComments="/api/publication/nbrComments";
   badword="/api/publication/badword";
   ownedUser="/api/publication/PublicationOwner";
-
+getconnecteduser="/api/publication/getconnecteduser";
 //urladdcomment="/api/comment/testaddcomment";
   urladdcomment="/api/comment/add-comment";
   uploadfile="/api//File/upload";
@@ -54,6 +54,11 @@ export class PublicationService {
     return this.http.get<any>(this.findAlerts);
 
   }
+  connectedutilsateur() : Observable<any>{
+    return this.http.get<any>(this.getconnecteduser);
+
+  }
+
 
   bannedUsers() : Observable<any>{
     return this.http.get<any>(this.findBannedusers);
